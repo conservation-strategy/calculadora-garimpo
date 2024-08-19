@@ -1,0 +1,8 @@
+[
+    {"id":	20,	"nome":	"Caquetá", 	    "densidadePop2010":	4.66,	"densidadePop2060": 4.66, 	"PopUrbMunicipio":	0.654, 	"PopRuralMunicipio":	0.346, 	"Distancia_Garimpo_Centro":	41.3, 	"Especies_por_Municipio": 250	},
+    {"id":	21,	"nome":	"Putumayo", 	"densidadePop2010":	14.6,	"densidadePop2060": 14.6, 	"PopUrbMunicipio":	0.51, 	"PopRuralMunicipio":	0.49, 	"Distancia_Garimpo_Centro": 55.10, 	"Especies_por_Municipio": 168	},
+    {"id":	22,	"nome":	"Amazonas", 	"densidadePop2010":	0.73,	"densidadePop2060": 0.73, 	"PopUrbMunicipio":	0.498, 	"PopRuralMunicipio":	0.502, 	"Distancia_Garimpo_Centro":	88.95, 	"Especies_por_Municipio": 227	},
+    {"id":	23,	"nome":	"Guainía", 	    "densidadePop2010":	0.71,	"densidadePop2060": 0.71, 	"PopUrbMunicipio":	0.465, 	"PopRuralMunicipio":	0.535, 	"Distancia_Garimpo_Centro":	71.31, 	"Especies_por_Municipio": 93	},
+    {"id":	24,	"nome":	"Guaviare", 	"densidadePop2010":	1.66,	"densidadePop2060": 1.66, 	"PopUrbMunicipio":	0.565, 	"PopRuralMunicipio":	0.435, 	"Distancia_Garimpo_Centro":	100.6, 	"Especies_por_Municipio": 103	},
+    {"id":	25,	"nome":	"Vaupés", 	    "densidadePop2010":	0.86,	"densidadePop2060": 0.86, 	"PopUrbMunicipio":	0.286, 	"PopRuralMunicipio":	0.714, 	"Distancia_Garimpo_Centro":	153.28,  "Especies_por_Municipio": 131	}
+]

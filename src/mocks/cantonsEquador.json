@@ -1,0 +1,112 @@
+[
+  {
+    "id": 10,
+    "uf": "0001",
+    "nome": "Sucumbíos",
+    "densidadePop2010": 2.26,
+    "densidadePop2060": 2.26,
+    "PopUrbMunicipio": 0.1629,
+    "PopRuralMunicipio": 0.838,
+    "Distancia_Garimpo_Centro": 43,
+    "Especies_por_Municipio": 41
+  },
+  {
+    "id": 11,
+    "uf": "0001",
+    "nome": "Shushufindi",
+    "densidadePop2010": 17.99,
+    "densidadePop2060": 17.99,
+    "PopUrbMunicipio": 0.369,
+    "PopRuralMunicipio": 0.631,
+    "Distancia_Garimpo_Centro": 54,
+    "Especies_por_Municipio": 96
+  },
+  {
+    "id": 12,
+    "uf": "0001",
+    "nome": "Gonzalo Pizarro",
+    "densidadePop2010": 3.87,
+    "densidadePop2060": 3.87,
+    "PopUrbMunicipio": 0.2334,
+    "PopRuralMunicipio": 0.7666,
+    "Distancia_Garimpo_Centro": 15.7,
+    "Especies_por_Municipio": 70
+  },
+  {
+    "id": 13,
+    "uf": "0002",
+    "nome": "Tena",
+    "densidadePop2010": 15.59,
+    "densidadePop2060": 15.59,
+    "PopUrbMunicipio": 0.3828,
+    "PopRuralMunicipio": 0.6172,
+    "Distancia_Garimpo_Centro": 5,
+    "Especies_por_Municipio": 172
+  },
+  {
+    "id": 14,
+    "uf": "0002",
+    "nome": "Carlos Julio Arosemena",
+    "densidadePop2010": 7.31,
+    "densidadePop2060": 7.31,
+    "PopUrbMunicipio": 0.2541,
+    "PopRuralMunicipio": 0.7459,
+    "Distancia_Garimpo_Centro": 4.56,
+    "Especies_por_Municipio": 16
+  },
+  {
+    "id": 15,
+    "uf": "0003",
+    "nome": "Gualaquiza",
+    "densidadePop2010": 7.79,
+    "densidadePop2060": 7.79,
+    "PopUrbMunicipio": 0.4214,
+    "PopRuralMunicipio": 0.5786,
+    "Distancia_Garimpo_Centro": 9,
+    "Especies_por_Municipio": 57
+  },
+  {
+    "id": 16,
+    "uf": "0004",
+    "nome": "Zamora",
+    "densidadePop2010": 11.61,
+    "densidadePop2060": 11.61,
+    "PopUrbMunicipio": 0.4855,
+    "PopRuralMunicipio": 0.5145,
+    "Distancia_Garimpo_Centro": 14,
+    "Especies_por_Municipio": 146
+  },
+  {
+    "id": 17,
+    "uf": "0004",
+    "nome": "Paquisha",
+    "densidadePop2010": 14.76,
+    "densidadePop2060": 14.76,
+    "PopUrbMunicipio": 0.2602,
+    "PopRuralMunicipio": 0.7398,
+    "Distancia_Garimpo_Centro": 8.67,
+    "Especies_por_Municipio": 21
+  },
+  {
+    "id": 18,
+    "uf": "0004",
+    "nome": "Nangaritza",
+    "densidadePop2010": 2.48,
+    "densidadePop2060": 2.48,
+    "PopUrbMunicipio": 0.3408,
+    "PopRuralMunicipio": 0.6592,
+    "Distancia_Garimpo_Centro": 7.47,
+    "Especies_por_Municipio": 78
+  },
+  {
+    "id": 19,
+    "uf": "0004",
+    "nome": "Chinchipe",
+    "densidadePop2010": 8.47,
+    "densidadePop2060": 8.47,
+    "PopUrbMunicipio": 0.3469,
+    "PopRuralMunicipio": 0.6531,
+    "Distancia_Garimpo_Centro": 58.38,
+    "Especies_por_Municipio": 20
+  }
+]

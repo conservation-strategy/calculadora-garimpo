@@ -1,0 +1,101 @@
+[
+  {
+    "id": 11,
+    "sigla": "RO",
+    "nome": "Rondônia",
+    "especie": 33,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 12,
+    "sigla": "AC",
+    "nome": "Acre",
+    "especie": 125,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 13,
+    "sigla": "AM",
+    "nome": "Amazonas",
+    "especie": 93,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 14,
+    "sigla": "RR",
+    "nome": "Roraima",
+    "especie": 92,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 15,
+    "sigla": "PA",
+    "nome": "Pará",
+    "especie": 40,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 16,
+    "sigla": "AP",
+    "nome": "Amapá",
+    "especie": 117,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 17,
+    "sigla": "TO",
+    "nome": "Tocantins",
+    "especie": 11,
+    "regiao": {
+      "id": 1,
+      "sigla": "N",
+      "nome": "Norte"
+    }
+  },
+  {
+    "id": 21,
+    "sigla": "MA",
+    "nome": "Maranhão",
+    "especie": 20,
+    "regiao": {
+      "id": 2,
+      "sigla": "NE",
+      "nome": "Nordeste"
+    }
+  },
+  {
+    "id": 51,
+    "sigla": "MT",
+    "nome": "Mato Grosso",
+    "especie": 89,
+    "regiao": {
+      "id": 5,
+      "sigla": "CO",
+      "nome": "Centro-Oeste"
+    }
+  }
+]

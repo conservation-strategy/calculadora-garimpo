@@ -1,0 +1,27 @@
+[
+  {
+    "id": "001",
+    "sigla": "Amazonas"
+  },
+  {
+    "id": "002",
+    "sigla": "Huánuco"
+  },
+  {
+    "id": "003",
+    "sigla": "Loreto"
+  },
+  {
+    "id": "004",
+    "sigla": "Madre de Dios"
+  },
+  {
+    "id": "005",
+    "sigla": "San Martín"
+  },  
+  {
+    "id": "006",
+    "sigla": "Ucayali"
+  } 
+  
+]

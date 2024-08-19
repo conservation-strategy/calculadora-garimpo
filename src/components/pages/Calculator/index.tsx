@@ -1,0 +1,210 @@
+import Header from '@/components/Header'
+import Layout from '@/components/Layout'
+import * as SHome from '@/components/pages/Home/style'
+import * as SG from '@/styles/global'
+import * as S from './style'
+
+import Accordion from '@/components/Accordion'
+import FormCalculator from '@/components/FormCalculator'
+import useAppContext from '@/hooks/useAppContext'
+import ResultsCalculator from '@/components/ResultsCalculator'
+import { ReactNode, useEffect, useState } from 'react'
+import Link from 'next/link'
+import SEO from '@/components/SEO'
+
+interface GuideProps {
+  title: string
+  content: ReactNode
+}
+
+export default function Calculator() {
+  const [guideList, setGuide] = useState<GuideProps[]>([])
+  const [scrollResults, setResults] = useState(false)
+  const { state } = useAppContext()
+  const { language, dataCalculator } = state
+  const { calculator } = language
+  const { guide, safeArea } = calculator
+  const {
+    setLocation,
+    typeMining,
+    unitMeasurement,
+    ValuesHypotheses,
+    Inflation,
+    useCalculator,
+    title
+  } = guide
+  const RETORT_INDEX = 3
+
+  useEffect(() => {
+    if (dataCalculator) {
+      setResults(true)
+      setTimeout(() => {
+        setResults(false)
+      }, 1000)
+    }
+  }, [dataCalculator])
+
+  useEffect(() => {
+    setGuide([
+      {
+        title: setLocation.headline,
+
+        content: (
+          <>
+            <SG.Text>
+              <div
+                dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_01 }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: setLocation.paragraphy_list1
+                }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: setLocation.paragraphy_list2
+                }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: setLocation.paragraphy_list3
+                }}
+              ></div>
+            </SG.Text>
+            <SG.Text>
+              <div
+                dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_o3 }}
+              ></div>
+            </SG.Text>
+          </>
+        )
+      },
+      {
+        title: typeMining.headline,
+        content: (
+          <>
+            {typeMining.items
+              .filter((item, index) => index !== RETORT_INDEX)
+              .map((typeminig) => (
+                <S.Box key={typeminig.headline}>
+                  <SG.Headline size="24px">{typeminig.headline}</SG.Headline>
+                  <br />
+                  <img src={typeminig.image_url} alt={typeminig.headline} />
+                  <br />
+                  <br />
+                  <SG.Text>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: typeminig.description
+                      }}
+                    ></div>
+                  </SG.Text>
+                </S.Box>
+              ))}
+          </>
+        )
+      },
+      {
+        title: typeMining.items[RETORT_INDEX].headline,
+        content: <SG.Text>{typeMining.items[RETORT_INDEX].description}</SG.Text>
+      },
+      {
+        title: guide.unitMeasurement.headline,
+        content: (
+          <>
+            <SG.Text weight="600">{unitMeasurement.paragraphy_o3}</SG.Text>
+            <SG.Text>{unitMeasurement.paragraphy_04}</SG.Text>
+            <br />
+            <SG.Text weight="600">{unitMeasurement.paragraphy_o7}</SG.Text>
+            <SG.Text>{unitMeasurement.paragraphy_08}</SG.Text>
+            <br />
+            <SG.Text weight="600">{unitMeasurement.paragraphy_o5}</SG.Text>
+            <SG.Text>{unitMeasurement.paragraphy_06}</SG.Text>
+            <br />
+            <SG.Text weight="600">{unitMeasurement.paragraphy_01}</SG.Text>
+            <SG.Text>{unitMeasurement.paragraphy_02}</SG.Text>
+          </>
+        )
+      },
+      {
+        title: ValuesHypotheses.headline,
+        content: (
+          <>
+            <SG.Text>{ValuesHypotheses.paragraphy_01}</SG.Text>
+          </>
+        )
+      },
+      {
+        title: Inflation.headline,
+        content: (
+          <>
+            <SG.Text>
+              {Inflation.paragraphy_01}
+              <Link href={Inflation.href} target="_blank">
+                {Inflation.siteIBGE}
+              </Link>
+            </SG.Text>
+          </>
+        )
+      },
+      {
+        title: useCalculator.headline,
+        content: (
+          <>
+            <SG.Text>
+              <div
+                dangerouslySetInnerHTML={{ __html: useCalculator.text }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: useCalculator.paragraphy_01
+                }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: useCalculator.paragraphy_02
+                }}
+              ></div>
+            </SG.Text>
+            <SG.Text weight="600">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: useCalculator.paragraphy_03
+                }}
+              ></div>
+            </SG.Text>
+          </>
+        )
+      }
+    ])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [guide])
+
+  return (
+    <Layout headline={safeArea.headline} safeAreaHeight="380px" align="left">
+      <SEO title={safeArea.headline} />
+      <SG.Container style={{ paddingLeft: 0 }}>
+        <S.WrapperCalculator>
+          <S.Guide>
+            <SG.Headline>{title.headline}</SG.Headline>
+            <Accordion Items={guideList} />
+          </S.Guide>
+          <FormCalculator />
+        </S.WrapperCalculator>
+      </SG.Container>
+      <SG.Container>
+        <ResultsCalculator scrollResults={scrollResults} />
+      </SG.Container>
+    </Layout>
+  )
+}

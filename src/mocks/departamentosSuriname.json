@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "nome": "Saramacca",
+    "densidadePop2010": 4.80748074807481,
+    "densidadePop2060": 4.80748074807481,
+    "PopUrbMunicipio": 0.412,
+    "PopRuralMunicipio": 0.588,
+    "Distancia_Garimpo_Centro": 75,
+    "Especies_por_Municipio": 185
+  },
+  {
+    "id": 2,
+    "nome": "Marowijne",
+    "densidadePop2010": 3.95374972984655,
+    "densidadePop2060": 3.95374972984655,
+    "PopUrbMunicipio": 0.383,
+    "PopRuralMunicipio": 0.617,
+    "Distancia_Garimpo_Centro": 75,
+    "Especies_por_Municipio": 81
+  },
+  {
+    "id": 3,
+    "nome": "Broopondo",
+    "densidadePop2010": 2.15901683867463,
+    "densidadePop2060": 2.15901683867463,
+    "PopUrbMunicipio": 0,
+    "PopRuralMunicipio": 1,
+    "Distancia_Garimpo_Centro": 75,
+    "Especies_por_Municipio": 495
+  },
+  {
+    "id": 4,
+    "nome": "Sipaliwini",
+    "densidadePop2010": 0.283915537616703,
+    "densidadePop2060": 0.283915537616703,
+    "PopUrbMunicipio": 0,
+    "PopRuralMunicipio": 1,
+    "Distancia_Garimpo_Centro": 75,
+    "Especies_por_Municipio": 710
+  }
+]
