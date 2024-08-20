@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import useAppContext from './useAppContext'
 
-import stateBrazil from '@/mocks/state.json'
-import MunicipiosReferencia from '@/mocks/municipios_referencia.json'
-import MunicipiosCalculadora from '@/mocks/municipios_calculadora.json'
-import provinciasPeru from '@/mocks/provinciasPeru.json'
 import cantonsEquador from '@/mocks/cantonsEquador.json'
 import departamentosColombia from '@/mocks/departamentosColombia.json'
 import departamentosGuiana from '@/mocks/departamentosGuiana.json'
 import departamentosSuriname from '@/mocks/departamentosSuriname.json'
+import MunicipiosCalculadora from '@/mocks/municipios_calculadora.json'
+import MunicipiosReferencia from '@/mocks/municipios_referencia.json'
+import provinciasPeru from '@/mocks/provinciasPeru.json'
+import stateBrazil from '@/mocks/state.json'
 
 interface useCountryProps {
   initialState?: {
@@ -23,19 +23,10 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
 
   const isBrazil = useMemo(() => country && country.country === 'BR', [country])
   const isPeru = useMemo(() => country && country.country === 'PE', [country])
-  const isEquador = useMemo(
-    () => country && country.country === 'EC',
-    [country]
-  )
-  const isColombia = useMemo(
-    () => country && country.country === 'CO',
-    [country]
-  )
+  const isEquador = useMemo(() => country && country.country === 'EC', [country])
+  const isColombia = useMemo(() => country && country.country === 'CO', [country])
   const isGuiana = useMemo(() => country && country.country === 'GU', [country])
-  const isSuriname = useMemo(
-    () => country && country.country === 'SU',
-    [country]
-  )
+  const isSuriname = useMemo(() => country && country.country === 'SU', [country])
 
   const getDistrictData = useCallback(
     (id: number): any => {
@@ -61,7 +52,7 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
         )
         return data[0]
       } else if (isSuriname) {
-        const data = departamentosGuiana.filter(
+        const data = departamentosSuriname.filter(
           (departamento) => departamento.id === id
         )
         return data[0]
@@ -76,7 +67,6 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
     (uf: number) => {
       const dataDistrict: any[] = []
       if (isPeru) {
-        console.log(uf)
         provinciasPeru.forEach((m) => {
           if (Number(m.uf) === uf) {
             dataDistrict.push(m)
@@ -160,13 +150,25 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
         initialState.district(districttsFilter[0])
       }
     } else if (isPeru) {
-      const districttsFilter = getDistrict(provinciasPeru)
+      const dataDistrict: any[] = []
+      provinciasPeru.forEach((m) => {
+        if (m.uf === '001') {
+          dataDistrict.push(m)
+        }
+      })
+      const districttsFilter = getDistrict(dataDistrict)
       setDistrict(districttsFilter)
       if (initialState && initialState.district) {
         initialState.district(districttsFilter[0])
       }
     } else if (isEquador) {
-      const districttsFilter = getDistrict(cantonsEquador)
+      const dataDistrict: any[] = []
+      cantonsEquador.forEach((m) => {
+        if (m.uf === '0001') {
+          dataDistrict.push(m)
+        }
+      })
+      const districttsFilter = getDistrict(dataDistrict)
       setDistrict(districttsFilter)
       if (initialState && initialState.district) {
         initialState.district(districttsFilter[0])
