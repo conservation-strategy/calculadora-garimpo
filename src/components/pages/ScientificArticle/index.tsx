@@ -1,18 +1,16 @@
 import Layout from '@/components/Layout'
-import * as SG from '@/styles/global'
 import * as S from '@/components/pages/Publications/style'
 import * as ST from '@/components/pages/StepByStep/style'
+import * as SG from '@/styles/global'
 
-import useAppContext from '@/hooks/useAppContext'
 import SEO from '@/components/SEO'
+import useAppContext from '@/hooks/useAppContext'
 
 export default function ScientificArticle() {
   const { state } = useAppContext()
   const { language } = state
   const { publications } = language
   const { ScientificArticle } = publications
-  const publicationsWithoutMethodology = [...publications.articles]
-  publicationsWithoutMethodology.shift()
   return (
     <Layout
       headline={ScientificArticle.headline}
@@ -27,7 +25,7 @@ export default function ScientificArticle() {
         <ST.WrapperText>
           <SG.Text>{ScientificArticle.description}</SG.Text>
           <br />
-          {publicationsWithoutMethodology.map((article) => (
+          {publications.articles.filter(x => x.type == 'scientific').map((article) => (
             <S.CardPublication
               key={article.tagline}
               onClick={() => window.open(article.link)}

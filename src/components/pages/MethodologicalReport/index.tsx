@@ -1,10 +1,10 @@
 import Layout from '@/components/Layout'
-import * as SG from '@/styles/global'
 import * as S from '@/components/pages/Publications/style'
 import * as ST from '@/components/pages/StepByStep/style'
+import * as SG from '@/styles/global'
 
-import useAppContext from '@/hooks/useAppContext'
 import SEO from '@/components/SEO'
+import useAppContext from '@/hooks/useAppContext'
 
 export default function MethodologicalReport() {
   const { state } = useAppContext()
@@ -18,29 +18,29 @@ export default function MethodologicalReport() {
         <ST.WrapperText>
           <SG.Text>{methodology.description}</SG.Text>
           <br />
-          <S.CardPublication
-            key={publications.articles[0].tagline}
-            onClick={() => window.open(publications.articles[0].link)}
-          >
-            <S.PublicationImage src={publications.articles[0].image} />
-            <S.PublicationContent>
-              <SG.Headline size="20px">
-                {publications.articles[0].tagline}
-              </SG.Headline>
-              <SG.Text>{publications.articles[0].description}</SG.Text>
-              <SG.Text>{publications.articles[0].linkName}</SG.Text>
+          {publications.articles.filter(x => x.type == 'methodology').map((article) => (
+            <S.CardPublication
+              key={article.tagline}
+              onClick={() => window.open(article.link)}
+            >
+              <S.PublicationImage src={article.image} />
+              <S.PublicationContent>
+                <SG.Headline size="20px">{article.tagline}</SG.Headline>
+                <SG.Text>{article.description}</SG.Text>
+                <SG.Text>{article.linkName}</SG.Text>
 
-              <SG.Text weight="500">{publications.author}:</SG.Text>
-              {publications.articles[0].authors.map((author) => (
-                <SG.Text
-                  key={author}
-                  style={{ marginLeft: '15px', lineHeight: '100%' }}
-                >
-                  {author}
-                </SG.Text>
-              ))}
-            </S.PublicationContent>
-          </S.CardPublication>
+                <SG.Text weight="500">{publications.author}:</SG.Text>
+                {article.authors.map((author) => (
+                  <SG.Text
+                    key={author}
+                    style={{ marginLeft: '15px', lineHeight: '100%' }}
+                  >
+                    {author}
+                  </SG.Text>
+                ))}
+              </S.PublicationContent>
+            </S.CardPublication>
+          ))}
         </ST.WrapperText>
       </SG.Container>
     </Layout>

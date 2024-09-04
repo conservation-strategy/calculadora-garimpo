@@ -716,10 +716,10 @@
         "paragraphy_08": "A Calculadora de Impactos do Garimpo produz resultados gerais para cada país onde foi implementada. Em todo o território brasileiro, 1 kg de ouro gera um prejuízo entre US$ 228 mil e US$ 460 mil, considerando uma faixa de valores de danos médios da atividade ao cenário com parâmetros mais elevados da literatura. No caso do Peru, 1 kg de ouro gera impactos entre US$ 81 mil e US$ 364 mil. Na Colômbia, o mesmo 1 kg de ouro extraído gera danos socioambientais entre US$ 67 e US$ 215 mil. E para a extração de 1 kg de ouro no Equador, os impactos variam entre US$ 480 e US$ 980 mil.",
         "paragraphy_09": "É possível, porém, realizar cálculos específicos ao determinar a região de pesquisa. A CSF foi pioneira ao publicar, por exemplo, ainda em 2021, <a href='https://www.conservation-strategy.org/publications' target='_blank'>diferentes artigos científicos</a> estimando os danos socioeconômicos do garimpo nas regiões da Terra Indígena Yanomami (impacto de US$ 69 milhões somente em 2020) e da Bacia do Rio Tapajós, onde está localizada a Terra Indígena Munduruku (impacto de US$ 6,4 milhões somente em 2020). A Calculadora estimou em mais de R$ 6,6 bilhões os danos causados pela atividade nessas regiões durante o ano de 2020. ",
         "TecnicalDocuments": "Documentos técnicos produzidos pela Conservação Estratégica",
-        "paragraphy_10": "Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.",
-        "paragraphy_11": "Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.",
-        "paragraphy_12": "Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.",
-        "paragraphy_13": "Para saber mais, leia nosso relatório metodológico completo de valoração de impactos do garimpo ilegal de ouro na Amazônia, <a href='/articles'>aqui</a>."
+        "paragraphy_10": "<a href='https://www.mdpi.com/1660-4601/18/22/11869' target='_blank'>Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.</a>",
+        "paragraphy_11": "<a href='https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2' target='_blank'>Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.</a>",
+        "paragraphy_12": "<a href='https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub' target='_blank'>Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.</a>",
+        "paragraphy_13": "Para saber mais, leia nosso relatório metodológico completo de valoração de impactos do garimpo ilegal de ouro na Amazônia, <a href='/publications/scientific-article'>aqui</a>."
       },
       "ScientificArticle": {
         "headline": "Artigos científicos",
@@ -729,7 +729,8 @@
       },
       "cases": {
         "headline": "Estudo de casos",
-        "paragraphy_01": "Confira abaixo estudos de caso publicados pela equipe da CSF elaborados a partir da metodologia que deu origem à Calculadora de Impactos do Garimpo."
+        "paragraphy_01": "Confira abaixo estudos de caso publicados pela equipe da CSF elaborados a partir da metodologia que deu origem à Calculadora de Impactos do Garimpo.",
+        "contents": ["<a href= /assets/download/estudios_de_caso_de_la_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia.pdf target= _blank >Estudos de Caso da Avaliação de Impacto da Mineração Ilegal de Ouro na Amazônia</a>"]
       },
       "pressAdvisory": {
         "headline": "Imprensa",
@@ -939,9 +940,10 @@
         "investors": {
           "headline": "Patrocinadores",
           "contents": [
-            "Fundação <a href= https://www.porticus.com target= _blank >Porticus</a>",
+            "<a href= https://www.porticus.com target= _blank >Fundação Porticus</a>",
             "<a href= https://www.worldbank.org/pt/programs/amazon-sustainable-landscapes-program target= _blank >Programa de Paisagens Sustentáveis da Amazônia</a> (ASL, na sigla em inglês), sob a liderança do <a href= https://www.worldbank.org/pt/country/brazil target= _blank >Banco Mundial</a> e o apoio do <a href= https://www.thegef.org/ target= _blank >Fundo para o Meio Ambiente Mundial (GEF)</a>",
-            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>"
+            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>",
+            "Agência dos Estados Unidos para o Desenvolvimento Internacional (USAID)"
           ]
         }
       },
@@ -972,6 +974,7 @@
         "author": "Autores",
         "articles": [
           {
+            "type": "methodology",
             "tagline": "Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia",
             "image": "/assets/images/relatorio-metodologico.webp",
             "link": "/assets/download/metodologia.pdf",
@@ -987,6 +990,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Economic Impacts on Human Health Resulting from the Use of Mercury in the Illegal Gold Mining in the Brazilian Amazon: A Methodological Assessment.",
             "image": "/assets/images/artigo-1.webp",
             "link": "https://www.mdpi.com/1660-4601/18/22/11869",
@@ -1000,6 +1004,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Socioeconomic cost of dredge boat gold mining in the Tapajós basin, eastern Amazon",
             "image": "/assets/images/artigo-2.webp",
             "link": "https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub",
@@ -1014,6 +1019,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Economic valuation of artisanal small-scale gold mining impacts: A framework for value transfer application",
             "image": "/assets/images/artigo-3.jpg",
             "link": "https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2",
@@ -1024,6 +1030,35 @@
               "Leonardo Bakker",
               "Julia Queiroz",
               "Thais Vilela"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Peruana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.pdf",
+            "linkName": "Acessar artigo",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Miguel Macedo",
+              "Mario Caller"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Colombiana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.pdf",
+            "linkName": "Acessar artigo",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Myriam Vargas Morales"
             ]
           }
         ]
@@ -1777,10 +1812,10 @@
         "paragraphy_08": "La Calculadora de Impacto de la Minería de Oro produce resultados generales para cada país donde se ha implementado. En todo Brasil, 1 kg de oro genera pérdidas entre US$ 228.000 y US$ 460.000, considerando un rango de valores medios de daño de la actividad al escenario con los parámetros más altos de la literatura. En el caso de Perú, 1 kg de oro genera impactos entre US$ 81 mil y US$ 364 mil. En Colombia, el mismo 1 kg de oro extraído genera daños socioambientales entre US$ 67 mil y US$ 215 mil. Y por la extracción de 1 kg de oro en Ecuador, los impactos varían entre US$ 480 mil y US$ 980 mil.",
         "paragraphy_09": "Sin embargo, es posible realizar cálculos específicos al determinar la región de búsqueda. CSF fue pionera en publicar en 2021, <a href='https://www.conservation-strategy.org/publications' target='_blank'>diferentes artículos científicos</a> que estiman los daños socioeconómicos de la minería en las regiones de la Tierra Indígena Yanomami (impacto de US$ 69 millones solo en 2020) y la cuenca del río Tapajós, donde se encuentra la Tierra Indígena Mundurukú (impacto de US$ 6,4 millones solo en 2020). La Calculadora estimó en más de R$ 6,6 mil millones los daños causados ​​por la actividad en esas regiones durante el año 2020.",
         "TecnicalDocuments": "Documentos técnicos producidos por Conservación Estratégica",
-        "paragraphy_10": "Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.",
-        "paragraphy_11": "Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.",
-        "paragraphy_12": "Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.",
-        "paragraphy_13": "Para obtener más información, lea nuestro Reporte metodológico completo que evalúa los impactos de la minería ilegal de oro en la Amazonía <a href='/articles'>aquí</a>."
+        "paragraphy_10": "<a href='https://www.mdpi.com/1660-4601/18/22/11869' target='_blank'>Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.</a>",
+        "paragraphy_11": "<a href='https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2' target='_blank'>Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.</a>",
+        "paragraphy_12": "<a href='https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub' target='_blank'>Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.</a>",
+        "paragraphy_13": "Para obtener más información, lea nuestro Reporte metodológico completo que evalúa los impactos de la minería ilegal de oro en la Amazonía <a href='/publications/scientific-article'>aquí</a>."
       },
       "ScientificArticle": {
         "headline": "Artículos científicos",
@@ -1790,7 +1825,8 @@
       },
       "cases": {
         "headline": "Estudios de caso",
-        "paragraphy_01": "Consulte a continuación los estudios de casos publicados por el equipo de CSF, basados ​​en la metodología que dio origen a la Calculadora de Impactos de la Minería de Oro."
+        "paragraphy_01": "Consulte a continuación los estudios de casos publicados por el equipo de CSF, basados ​​en la metodología que dio origen a la Calculadora de Impactos de la Minería de Oro.",
+        "contents": ["<a href= /assets/download/estudios_de_caso_de_la_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia.pdf target= _blank >Estudios de Caso de la Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía</a>"]
       },
       "pressAdvisory": {
         "headline": "Prensa",
@@ -2001,9 +2037,10 @@
         "investors": {
           "headline": "Patrocinadores",
           "contents": [
-            "Fundação <a href= https://www.porticus.com target= _blank >Porticus</a>",
+            "<a href= https://www.porticus.com target= _blank >Fundación Porticus</a>",
             "<a href= https://www.bancomundial.org/es/programs/amazon-sustainable-landscapes-program target= _blank >Programa Paisajes Sostenibles de la Amazonía</a> (ASL, por sus siglas en inglés) bajo el liderazgo del <a href= https://www.bancomundial.org/es/home target= _blank >Banco Mundial</a> y el apoyo del <a href= https://www.thegef.org/ target= _blank >Fondo para el Medio Ambiente Mundial (GEF)</a>",
-            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>"
+            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>",
+            "Agencia de los Estados Unidos para el Desarrollo Internacional (USAID)"
           ]
         }
       },
@@ -2034,6 +2071,7 @@
         "author": "Autores",
         "articles": [
           {
+            "type": "methodology",
             "tagline": "Metodología para Valorar los Impactos de la Minería Ilegal de Oro en la Amazonía",
             "image": "/assets/images/relatorio-metodologico.webp",
             "link": "/assets/download/metodologia.pdf",
@@ -2049,6 +2087,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Impactos económicos en la salud humana resultantes del uso de mercurio en la minería ilegal de oro en la Amazonía brasileña: una evaluación metodológica.",
             "image": "/assets/images/artigo-1.webp",
             "link": "https://www.mdpi.com/1660-4601/18/22/11869",
@@ -2062,6 +2101,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Costo socioeconómico de la extracción de oro con dragas en la cuenca del Tapajós, Amazonía oriental",
             "image": "/assets/images/artigo-2.webp",
             "link": "https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub",
@@ -2076,16 +2116,46 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Economic valuation of artisanal small-scale gold mining impacts: A framework for value transfer application",
             "image": "/assets/images/artigo-3.jpg",
             "link": "https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2",
-            "linkName": "Acessar artigo",
+            "linkName": "Acceder al artículo",
             "description": "",
             "authors": [              
               "Pedro Gasparinetti",
               "Leonardo Bakker",
               "Julia Queiroz",
               "Thais Vilela"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Peruana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.pdf",
+            "linkName": "Descargar PDF",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Miguel Macedo",
+              "Mario Caller"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Colombiana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.pdf",
+            "linkName": "Descargar PDF",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Myriam Vargas Morales"
             ]
           }
         ]
@@ -2839,10 +2909,10 @@
         "paragraphy_08": "The Mining Impacts Calculator produces impactful results for each country where it has been implemented. Throughout Brazil, 1 kg of gold generates economic losses between US$228,000 and US$460,000. In the case of Peru, 1 kg of gold generates socio-environmental impacts worth between US$81,000 and US$364,000. In Colombia, the same 1 kg of gold extracted generates socio-environmental damage between US$67,000 and US$215,000. And for the extraction of 1 kg of gold in Ecuador, the impacts vary between US$480,000 and US$980,000.",
         "paragraphy_09": "It is possible to perform more specific calculations when determining the search region. CSF was a pioneer in publishing <a href='https://www.conservation-strategy.org/publications' target='_blank'>different scientific articles</a> that estimate the socioeconomic damages of mining in the regions of the Yanomami Indigenous Land (impact of US$ 69 million in 2020 alone) and the Tapajós river basin, where the Munduruku Indigenous Land is located (impact of US$ 6.4 million only in 2020). The Calculator estimated in more than R$ 6.6 billion the damages caused by the activity in those regions during the year 2020.",
         "TecnicalDocuments": "Technical documents produced by the Strategic Conservation",
-        "paragraphy_10": "Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.",
-        "paragraphy_11": "Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.",
-        "paragraphy_12": "Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.",
-        "paragraphy_13": "To learn more, read our full methodological report assessing the impacts of illegal gold mining in the Amazon, <a href='/articles'>here</a>."
+        "paragraphy_10": "<a href='https://www.mdpi.com/1660-4601/18/22/11869' target='_blank'> Bakker, L.B., Gasparinetti, P., de Queiroz, J.M. and de Vasconcellos, A.C.S., (2021). Economic impacts on human health resulting from the use of mercury in the illegal gold mining in the Brazilian Amazon: a methodological assessment. International journal of environmental research and public health, 18(22), p.11869.</a>",
+        "paragraphy_11": "<a href='https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2' target='_blank'>Gasparinetti, P. Bakker, L. Queiroz, J. Vilela, T. Lobo, F. Nagel, G. (2021) Metodologia de Valoração de Impactos do Garimpo Ilegal de Ouro na Amazônia. Conservação Estratégica, Série Técnica 53.</a>",
+        "paragraphy_12": "<a href='https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub' target='_blank'>Queiroz, J., Gasparinetti, P., Bakker, L., Lobo, F., Nagel, G. (2022). A Socioeconomic cost of dredge boat gold mining in the Brazilian Amazon: A case study in the Tapajós basin, Resources Policy.</a>",
+        "paragraphy_13": "To learn more, read our full methodological report assessing the impacts of illegal gold mining in the Amazon, <a href='/publications/scientific-article'>here</a>."
       },
       "ScientificArticle": {
         "headline": "Academic articles",
@@ -2852,7 +2922,8 @@
       },
       "cases": {
         "headline": "Study cases",
-        "paragraphy_01": "Please see below the case studies published by the CSF team, based on the methodology that gave rise to the Mining Impacts Calculator."
+        "paragraphy_01": "Please see below the case studies published by the CSF team, based on the methodology that gave rise to the Mining Impacts Calculator.",
+        "contents": ["<a href= /assets/download/estudios_de_caso_de_la_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia.pdf target= _blank >Case Studies on the Assessment of the Impacts of Illegal Gold Mining in the Amazon</a>"]
       },
       "pressAdvisory": {
         "headline": "Press",
@@ -3062,9 +3133,10 @@
         "investors": {
           "headline": "Funders",
           "contents": [
-            "Fundação <a href= https://www.porticus.com target= _blank >Porticus</a>",
+            "<a href= https://www.porticus.com target= _blank >Porticus Foundation</a>",
             "<a href= https://www.worldbank.org/en/programs/amazon-sustainable-landscapes-program target= _blank >Amazon Sustainable Landscapes Program (ASL)</a>, under the leadership of <a href= https://www.worldbank.org/en/home target= _blank >World Bank</a> and the support of <a href=  https://www.thegef.org/ target= _blank >Global Environment Facility (GEF)</a>",
-            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>"
+            "<a href= https://conservationxlabs.com/ target= _blank >Conservation X Labs</a>",
+            "United States Agency for International Development (USAID)"
           ]
         }
       },
@@ -3095,6 +3167,7 @@
         "author": "Authors",
         "articles": [
           {
+            "type": "methodology",
             "tagline": "Methodology for Valuing the Impacts of Illegal Gold Mining in the Amazon",
             "image": "/assets/images/relatorio-metodologico.webp",
             "link": "/assets/download/metodologia.pdf",
@@ -3110,6 +3183,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Economic Impacts on Human Health Resulting from the Use of Mercury in the Illegal Gold Mining in the Brazilian Amazon: A Methodological Assessment.",
             "image": "/assets/images/artigo-1.webp",
             "link": "https://www.mdpi.com/1660-4601/18/22/11869",
@@ -3123,6 +3197,7 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Socioeconomic cost of dredge boat gold mining in the Tapajós basin, eastern Amazon",
             "image": "/assets/images/artigo-2.webp",
             "link": "https://www.sciencedirect.com/science/article/abs/pii/S0301420722005451?via%3Dihub",
@@ -3137,16 +3212,46 @@
             ]
           },
           {
+            "type": "scientific",
             "tagline": "Economic valuation of artisanal small-scale gold mining impacts: A framework for value transfer application",
             "image": "/assets/images/artigo-3.jpg",
             "link": "https://www.sciencedirect.com/science/article/pii/S0301420723009704?ref=pdf_download&fr=RR-2&rr=898f44a52aa17df2",
-            "linkName": "Acessar artigo",
+            "linkName": "Access article",
             "description": "",
             "authors": [              
               "Pedro Gasparinetti",
               "Leonardo Bakker",
               "Julia Queiroz",
               "Thais Vilela"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Peruana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_peruana.pdf",
+            "linkName": "Download PDF",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Miguel Macedo",
+              "Mario Caller"
+            ]
+          },
+          {
+            "type": "methodology",
+            "tagline": "Metodología de Valoración de Impactos de la Minería Ilegal de Oro en la Amazonía Colombiana",
+            "image": "/assets/images/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.png",
+            "link": "/assets/download/metodologia_de_valoracion_de_impactos_de_la_mineria_ilegal_de_oro_en_la_amazonia_colombiana.pdf",
+            "linkName": "Download PDF",
+            "description": "",
+            "authors": [              
+              "Pedro Gasparinetti",
+              "Leonardo Bakker",
+              "Victor Araujo",
+              "Myriam Vargas Morales"
             ]
           }
         ]

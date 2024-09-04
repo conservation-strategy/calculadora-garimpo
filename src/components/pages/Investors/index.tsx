@@ -1,9 +1,9 @@
 import Layout from '@/components/Layout'
 import useAppContext from '@/hooks/useAppContext'
 
-import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
 import SEO from '@/components/SEO'
+import * as SG from '@/styles/global'
 
 export default function Investors() {
   const { state } = useAppContext()
@@ -16,8 +16,7 @@ export default function Investors() {
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           {investors.contents.map((content) => (
-            <SG.Text key={content}>
-              <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            <SG.Text key={content} dangerouslySetInnerHTML={{ __html: content }}>
             </SG.Text>
           ))}
         </S.WrapperText>

@@ -1,8 +1,8 @@
 import Layout from '@/components/Layout'
-import useAppContext from '@/hooks/useAppContext'
-import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
 import SEO from '@/components/SEO'
+import useAppContext from '@/hooks/useAppContext'
+import * as SG from '@/styles/global'
 
 export default function Cases() {
   const { state } = useAppContext()
@@ -14,6 +14,10 @@ export default function Cases() {
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>{cases.paragraphy_01}</SG.Text>
+          {cases.contents.map((content) => (
+            <SG.Text key={content} dangerouslySetInnerHTML={{ __html: content }}>
+            </SG.Text>
+          ))}
         </S.WrapperText>
       </SG.Container>
     </Layout>
