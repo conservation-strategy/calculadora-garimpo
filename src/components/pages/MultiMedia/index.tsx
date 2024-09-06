@@ -15,7 +15,7 @@ export default function MultiMedia() {
         </S.WrapperText>
         <div style={{display: 'flex'}}>
           <div style={{padding: '20px', border: '1px solid', borderRadius: '15px', marginRight: '20px'}}>
-            <a href='https://www.youtube.com/watch?v=ShDu_8x-R2c' target='_blank'>
+            <a href='https://www.youtube.com/watch?v=ShDu_8x-R2c' target='_blank' rel="noreferrer">
               <img src='/assets/images/video-1.jpg'></img>
             </a>
             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
@@ -27,7 +27,7 @@ export default function MultiMedia() {
             </h2>
           </div>
           <div style={{padding: '20px', border: '1px solid', borderRadius: '15px'}}>
-            <a href='https://www.youtube.com/watch?v=Ag29apNrziA' target='_blank'>
+            <a href='https://www.youtube.com/watch?v=Ag29apNrziA' target='_blank' rel="noreferrer">
               <img src='/assets/images/video-2.jpg'></img>
             </a>
             <div style={{display: 'flex', justifyContent: 'space-between', marginBottom: '20px'}}>
