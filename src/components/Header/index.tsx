@@ -29,7 +29,7 @@ export default function Header() {
 
       <SG.Container>
         <S.Logo onClick={() => route.push(ROUTE.home)}>
-          <img src="/assets/images/logo.png" alt="CSF" />
+          <img src="/assets/images/logo-garimpo-invertido.png" alt="Garimpo" />
         </S.Logo>
         {ismobileOrTablet && (
           <S.ButtonBarMenu onClick={() => setMenu(true)}>
@@ -69,6 +69,9 @@ export default function Header() {
             </S.DropDown>
           )}
         </S.Menu>
+
+        
+
         {!ismobileOrTablet && (
           <S.DropDown onClick={handleDropdown}>
             <S.DropDownText>{language.label}</S.DropDownText>
@@ -86,6 +89,10 @@ export default function Header() {
             </S.DropDownBox>
           </S.DropDown>
         )}
+
+        <S.Logo>
+          <img src="/assets/images/logo.png" alt="CSF" style={{marginLeft: '10px'}} />
+        </S.Logo>
       </SG.Container>
     </S.Container>
   )
