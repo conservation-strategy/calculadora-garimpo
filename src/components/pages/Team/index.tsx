@@ -4,6 +4,7 @@ import * as SG from '@/styles/global'
 import * as S from './style'
 import { useRouter } from 'next/router'
 import { ROUTE } from '@/enums'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function Team() {
@@ -15,7 +16,8 @@ export default function Team() {
   const route = useRouter()
   return (
     <Layout headline={team.headline} safeAreaHeight="200px" align="left">
-      <SEO title={team.headline} />
+      {/* <SEO title={team.headline} /> */}
+      <SEO {...seoMetadata.team} />
       <SG.Container>
         <S.CardsContainer>
           <S.CardPartner onClick={() => route.push(ROUTE.CSFAndCreators)}>

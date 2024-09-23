@@ -2,6 +2,8 @@ import Layout from '@/components/Layout'
 import * as S from '@/components/pages/StepByStep/style'
 import useAppContext from '@/hooks/useAppContext'
 import * as SG from '@/styles/global'
+import seoMetadata from '@/mocks/seo_metadata.json'
+import SEO from '@/components/SEO'
 
 export default function MultiMedia() {
   const { state } = useAppContext()
@@ -9,6 +11,7 @@ export default function MultiMedia() {
   const { multimedia } = language
   return (
     <Layout safeAreaHeight="200px" align="left" headline={multimedia.headline}>
+      <SEO {...seoMetadata.multimedia} />
       <SG.Container>
         <S.WrapperText>
           <SG.Text>{multimedia.paragraphy_01}</SG.Text>

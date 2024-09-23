@@ -4,6 +4,7 @@ import * as SG from '@/styles/global'
 import Link from 'next/link'
 import * as S from './style'
 import * as ST from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function PressAdvisory() {
@@ -16,7 +17,8 @@ export default function PressAdvisory() {
       safeAreaHeight="200px"
       align="left"
     >
-      <SEO title={pressAdvisory.headline} />
+      {/* <SEO title={pressAdvisory.headline} /> */}
+      <SEO {...seoMetadata.press} />
       <SG.Container style={{ paddingTop: 0 }}>
         <ST.WrapperText>
           <SG.Text>{pressAdvisory.text_press}</SG.Text>

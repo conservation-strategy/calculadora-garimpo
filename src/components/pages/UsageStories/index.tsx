@@ -5,6 +5,7 @@ import * as S from './style'
 import useAppContext from '@/hooks/useAppContext'
 import { useRouter } from 'next/router'
 import { ROUTE } from '@/enums'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function UsageStories() {
@@ -18,10 +19,11 @@ export default function UsageStories() {
       safeAreaHeight="200px"
       align="left"
     >
-      <SEO
+      {/* <SEO
         title={usageStories.headline}
         description={usageStories.paragraphy_01}
-      />
+      /> */}
+      <SEO {...seoMetadata.usageStories} />
       <SG.Container>
         <S.ListWrapper>
           <div>

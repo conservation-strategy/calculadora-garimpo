@@ -2,6 +2,7 @@ import Layout from '@/components/Layout'
 import useAppContext from '@/hooks/useAppContext'
 import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function PartnershipWithMpf() {
@@ -14,9 +15,14 @@ export default function PartnershipWithMpf() {
       safeAreaHeight="200px"
       align="left"
     >
-      <SEO
+      {/* <SEO
         title={partnershipMPF.headline}
         description={partnershipMPF.paragraphy_01}
+      /> */}
+      <SEO
+        title={seoMetadata.partnership.title}
+        description={seoMetadata.partnership.description}
+        image={seoMetadata.partnership.image}
       />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>

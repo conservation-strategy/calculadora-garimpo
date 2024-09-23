@@ -3,6 +3,7 @@ import Layout from '@/components/Layout'
 import * as S from './style'
 import * as SG from '@/styles/global'
 import useAppContext from '@/hooks/useAppContext'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import { useRouter } from 'next/router'
 import { ROUTE } from '@/enums'
 import SEO from '@/components/SEO'
@@ -34,9 +35,14 @@ export default function Home() {
         </S.Buttons>
       }
     >
-      <SEO
+      {/* <SEO
         title={language.header.title_CSF.headline}
         description={safeArea.headline}
+      /> */}
+      <SEO
+        title={seoMetadata.home.title}
+        description={seoMetadata.home.description}
+        image={seoMetadata.home.image}
       />
       <SG.Container>
         <S.AboutCalculator>

@@ -5,6 +5,7 @@ import * as S from '@/components/pages/Home/style'
 import * as ST from '@/components/pages/StepByStep/style'
 import { ROUTE } from '@/enums'
 import { useRouter } from 'next/router'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function Awards() {
@@ -14,7 +15,8 @@ export default function Awards() {
   const route = useRouter()
   return (
     <Layout headline={awards.headline} safeAreaHeight="200px" align="left">
-      <SEO title={awards.headline} />
+      {/* <SEO title={awards.headline} /> */}
+      <SEO {...seoMetadata.awards} />
       <SG.Container style={{ paddingTop: 0 }}>
         <ST.WrapperText>
           <S.NewsPost onClick={() => route.push(ROUTE.conservationXLabs)}>

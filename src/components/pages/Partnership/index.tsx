@@ -3,6 +3,7 @@ import useAppContext from '@/hooks/useAppContext'
 
 import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 interface PartnershipContentProps {
@@ -39,7 +40,8 @@ export default function Partnership() {
   const { partnership } = team
   return (
     <Layout headline={partnership.headline} safeAreaHeight="200px" align="left">
-      <SEO title={partnership.headline} />
+      {/* <SEO title={partnership.headline} /> */}
+      <SEO {...seoMetadata.partners} />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <PartnershipContent contents={partnership.contents} />
