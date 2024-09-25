@@ -5,6 +5,8 @@ import * as SG from '@/styles/global'
 import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
 import * as S from './style'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Header() {
   const [dropdown, setDropdown] = useState(false)
@@ -28,9 +30,19 @@ export default function Header() {
       )}
 
       <SG.Container>
-        <S.Logo onClick={() => route.push(ROUTE.home)}>
+        {/* <S.Logo onClick={() => route.push(ROUTE.home)}>
           <img src="/assets/images/logo-garimpo-invertido.png" alt="Garimpo" />
-        </S.Logo>
+        </S.Logo> */}
+        <Link href={'/'}>
+          <Image 
+            src={'/assets/images/logo-garimpo-invertido.png'} 
+            alt='Garimpo' 
+            width={64}
+            height={64}
+            sizes="(max-width: 1024px) 40px, 64px"
+            priority
+          />
+        </Link>
         {ismobileOrTablet && (
           <S.ButtonBarMenu onClick={() => setMenu(true)}>
             <i className="fi fi-rr-menu-burger"></i>
@@ -90,9 +102,20 @@ export default function Header() {
           </S.DropDown>
         )}
 
-        <S.Logo>
+        {/* <S.Logo>
           <img src="/assets/images/logo.png" alt="CSF" style={{marginLeft: '10px'}} />
-        </S.Logo>
+        </S.Logo> */}
+        <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
+          <Image          
+            // className="opacity-[0.6] ml-2"
+            src="/assets/images/logo.png"
+            alt="CSF"
+            width={34}
+            height={34}
+            sizes="(max-width: 1024px) 40px, 34px"
+            priority
+          />
+        </a>
       </SG.Container>
     </S.Container>
   )
