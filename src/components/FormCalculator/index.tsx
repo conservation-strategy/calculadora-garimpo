@@ -36,6 +36,36 @@ export interface FormInputs {
   usesTypes: '1' | '2' | '3'
 }
 
+type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
+
+const CountryDictionary = {
+  'pt_BR' : {
+    'BR': 'Brasil',
+    'EC': 'Equador',
+    'PE': 'Perú',
+    'CO': 'Colômbia',
+    'GU': 'Guiana',
+    'SU': 'Suriname'
+  },
+  'en_US' : {
+    'BR': 'Brazil',
+    'EC': 'Ecuador',
+    'PE': 'Peru',
+    'CO': 'Colombia',
+    'GU': 'Guiana',
+    'SU': 'Suriname'
+  },
+  'es_ES' : {
+    'BR': 'Brasil',
+    'EC': 'Ecuador',
+    'PE': 'Perú',
+    'CO': 'Colombia',
+    'GU': 'Guayana',
+    'SU': 'Surinam'
+  }
+}
+
+
 export default function FormCalculator() {
   const [stateListForCountry, setStateListForCountry] =
     useState<any>(stateBrazil)
@@ -261,7 +291,7 @@ export default function FormCalculator() {
           <SG.Select {...register('country')}>
             {CountryList.map((country) => (
               <option key={country.label} value={country.country}>
-                {country.label}
+                {CountryDictionary[language.id as LanguageId][country.country]}
               </option>
             ))}
           </SG.Select>
