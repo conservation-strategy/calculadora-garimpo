@@ -170,7 +170,7 @@ export default function StepByStep() {
           <SG.Headline>{Inflation.headline}</SG.Headline>
           <SG.Text>
             {Inflation.paragraphy_01}
-            <Link href={Inflation.href} target="_blank">
+            <Link href={Inflation.href} target="_blank" rel='noreferrer'>
               {Inflation.siteIBGE}
             </Link>
           </SG.Text>

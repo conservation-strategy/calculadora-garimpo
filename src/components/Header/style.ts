@@ -69,6 +69,12 @@ export const Menu = styled.nav<MenuItemProps>`
   }
 `
 
+export const MenuTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const MenuItem = styled.a<MenuItemProps>`
   font-size: 18px;
   line-height: 150%;

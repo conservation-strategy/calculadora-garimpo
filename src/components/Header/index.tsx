@@ -51,12 +51,25 @@ export default function Header() {
 
         <S.Menu active={openMenu}>
           {ismobileOrTablet && (
-            <S.MenuItem
-              onClick={() => setMenu(false)}
-              style={{ fontSize: '40px' }}
-            >
-              <i className="fi fi-rr-rectangle-xmark"></i>
-            </S.MenuItem>
+            <S.MenuTop>
+              <S.MenuItem
+                onClick={() => setMenu(false)}
+                style={{ fontSize: '40px' }}
+              >
+                <i className="fi fi-rr-rectangle-xmark"></i>
+              </S.MenuItem>
+              <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
+                <Image          
+                  // className="opacity-[0.6] ml-2"
+                  src="/assets/images/logo.png"
+                  alt="CSF"
+                  width={34}
+                  height={34}
+                  sizes="(max-width: 1024px) 40px, 34px"
+                  priority
+                />
+              </a>              
+            </S.MenuTop>
           )}
           {menu.map((item) => (
             <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
@@ -85,6 +98,7 @@ export default function Header() {
         
 
         {!ismobileOrTablet && (
+          <>
           <S.DropDown onClick={handleDropdown}>
             <S.DropDownText>{language.label}</S.DropDownText>
             <i className="fi fi-rr-angle-small-down"></i>
@@ -100,22 +114,24 @@ export default function Header() {
               </S.DropdownItem>
             </S.DropDownBox>
           </S.DropDown>
+          <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
+            <Image          
+              // className="opacity-[0.6] ml-2"
+              src="/assets/images/logo.png"
+              alt="CSF"
+              width={34}
+              height={34}
+              sizes="(max-width: 1024px) 40px, 34px"
+              priority
+            />
+          </a>
+          </>
         )}
 
         {/* <S.Logo>
           <img src="/assets/images/logo.png" alt="CSF" style={{marginLeft: '10px'}} />
         </S.Logo> */}
-        <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
-          <Image          
-            // className="opacity-[0.6] ml-2"
-            src="/assets/images/logo.png"
-            alt="CSF"
-            width={34}
-            height={34}
-            sizes="(max-width: 1024px) 40px, 34px"
-            priority
-          />
-        </a>
+        
       </SG.Container>
     </S.Container>
   )
