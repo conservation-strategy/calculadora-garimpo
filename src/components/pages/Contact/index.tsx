@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 import useAppContext from '@/hooks/useAppContext'
 import * as SG from '@/styles/global'
@@ -10,7 +11,8 @@ export default function Contact() {
   const { contact } = language
   return (
     <Layout headline={contact.headline} safeAreaHeight="200px" align="left">
-      <SEO title={contact.headline} />
+      {/* <SEO title={contact.headline} /> */}
+      <SEO {...seoMetadata.contact} />
       <SG.Container>
         <SG.Headline>{contact.tagline}</SG.Headline>
         {contact.contacts.map((contactItem) => (

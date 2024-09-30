@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout'
 import * as S from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 import useAppContext from '@/hooks/useAppContext'
 import * as SG from '@/styles/global'
@@ -10,7 +11,8 @@ export default function Cases() {
   const { cases } = language
   return (
     <Layout headline={cases.headline} safeAreaHeight="200px" align="left">
-      <SEO title={cases.headline} description={cases.paragraphy_01} />
+      {/* <SEO title={cases.headline} description={cases.paragraphy_01} /> */}
+      <SEO {...seoMetadata.caseStudies} />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>{cases.paragraphy_01}</SG.Text>

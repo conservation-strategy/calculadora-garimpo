@@ -3,6 +3,7 @@ import useAppContext from '@/hooks/useAppContext'
 
 import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 interface CSFAndCreatosContentProps {
@@ -63,7 +64,8 @@ export default function CSFAndCreatos() {
           {CSFAndCreators.nameDirector}
         </SG.Text>
       </SG.Container>
-      <SEO title={CSFAndCreators.headline} />
+      {/* <SEO title={CSFAndCreators.headline} /> */}
+      <SEO {...seoMetadata.csfAndCreators} />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <CSFAndCreatosContent contents={CSFAndCreators.contents} />

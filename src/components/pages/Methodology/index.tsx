@@ -2,6 +2,7 @@ import Layout from '@/components/Layout'
 import * as SG from '@/styles/global'
 import * as S from '@/components/pages/StepByStep/style'
 import useAppContext from '@/hooks/useAppContext'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function Methodology() {
@@ -10,10 +11,11 @@ export default function Methodology() {
   const { methodology } = language
   return (
     <Layout headline={methodology.headline} safeAreaHeight="200px" align="left">
-      <SEO
+      {/* <SEO
         title={methodology.headline}
         description={methodology.paragraphy_01}
-      />
+      /> */}
+      <SEO {...seoMetadata.methodology} />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>

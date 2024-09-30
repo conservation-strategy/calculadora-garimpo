@@ -1,6 +1,7 @@
 import FormCalculator from '@/components/FormCalculator'
 import Layout from '@/components/Layout'
 
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 import { ROUTE } from '@/enums'
 import useAppContext from '@/hooks/useAppContext'
@@ -48,7 +49,12 @@ export default function StepByStep() {
 
   return (
     <Layout headline={title.headline} safeAreaHeight="200px" align="left">
-      <SEO title={title.headline} description={setLocation.paragraphy_01} />
+      {/* <SEO title={title.headline} description={setLocation.paragraphy_01} /> */}
+      <SEO
+        title={seoMetadata.usageGuide.title}
+        description={seoMetadata.usageGuide.description}
+        image={seoMetadata.usageGuide.image}
+      />
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>

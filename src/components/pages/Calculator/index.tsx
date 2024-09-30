@@ -10,6 +10,7 @@ import useAppContext from '@/hooks/useAppContext'
 import ResultsCalculator from '@/components/ResultsCalculator'
 import { ReactNode, useEffect, useState } from 'react'
 import Link from 'next/link'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 interface GuideProps {
@@ -192,7 +193,12 @@ export default function Calculator() {
 
   return (
     <Layout headline={safeArea.headline} safeAreaHeight="380px" align="left">
-      <SEO title={safeArea.headline} />
+      {/* <SEO title={safeArea.headline} /> */}
+      <SEO
+        title={seoMetadata.calculator.title}
+        description={seoMetadata.calculator.description}
+        image={seoMetadata.calculator.image}
+      />
       <SG.Container style={{ paddingLeft: 0 }}>
         <S.WrapperCalculator>
           <S.Guide>

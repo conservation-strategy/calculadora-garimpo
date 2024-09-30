@@ -3,6 +3,7 @@ import useAppContext from '@/hooks/useAppContext'
 import * as SG from '@/styles/global'
 import * as S from './style'
 import * as ST from '@/components/pages/StepByStep/style'
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 
 export default function Publications() {
@@ -18,7 +19,8 @@ export default function Publications() {
       safeAreaHeight="200px"
       align="left"
     >
-      <SEO title={publications.headline} />
+      {/* <SEO title={publications.headline} /> */}
+      <SEO {...seoMetadata.publications} />
       <SG.Container style={{ paddingTop: 0 }}>
         <ST.WrapperText>
           <SG.Headline>{methodology.headline}</SG.Headline>

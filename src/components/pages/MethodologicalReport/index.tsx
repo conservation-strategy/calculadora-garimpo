@@ -3,6 +3,7 @@ import * as S from '@/components/pages/Publications/style'
 import * as ST from '@/components/pages/StepByStep/style'
 import * as SG from '@/styles/global'
 
+import seoMetadata from '@/mocks/seo_metadata.json'
 import SEO from '@/components/SEO'
 import useAppContext from '@/hooks/useAppContext'
 
@@ -13,7 +14,8 @@ export default function MethodologicalReport() {
   const { methodology } = publications
   return (
     <Layout headline={methodology.headline} safeAreaHeight="200px" align="left">
-      <SEO title={methodology.headline} description={methodology.description} />
+      {/* <SEO title={methodology.headline} description={methodology.description} /> */}
+      <SEO {...seoMetadata.methodologicalReport} />
       <SG.Container style={{ paddingTop: 0 }}>
         <ST.WrapperText>
           <SG.Text>{methodology.description}</SG.Text>

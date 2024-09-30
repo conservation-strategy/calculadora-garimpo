@@ -1,0 +1,102 @@
+{
+  "home": {
+    "title": "Mining Impacts Calculator | Evaluate Mining Damages",
+    "description": "Discover the Mining Impacts Calculator, a decision making tool for valuing the damages caused by gold mining in the Amazon. Try it now!",
+    "image": "logo-fundo2.png"
+  },
+  "calculator": {
+    "title": "Mining Impacts Calculator | Online Tool",
+    "description": "Calculate the social and environmental damages of gold mining in the Amazon with our valuation tool. Perform detailed analyses instantly.",
+    "image": "logo-fundo2.png"
+  },
+  "about": {
+    "title": "Mining Impacts Calculator | About",
+    "description": "Learn more about the Mining Impacts Calculator, a decision making tool for valuing the environmental damages caused by gold mining in the Amazon. Check it out!",
+    "image": "logo-fundo2.png"
+  },
+  "usageGuide": {
+    "title": "Mining Impacts Calculator | Step-by-Step Guide",
+    "description": "Follow our user guide and learn how to use the Mining Impacts Calculator. Evaluate the environmental damages caused by gold mining in the Amazon. Try it now!",
+    "image": "logo-fundo2.png"
+  },
+  "partnership": {
+    "title": "Mining Impacts Calculator | Partnership with the MPF",
+    "description": "Read about the partnership between CSF and the Federal Public Ministry to combat illegal gold mining with the Mining Impacts Calculator.",
+    "image": "logo-fundo2.png"
+  },
+  "methodology": {
+    "title": "Mining Impacts Calculator | Work Methodology",
+    "description": "Understand the methodology behind the Mining Impacts Calculator. Learn how the environmental damage valuation for illegal gold mining is performed.",
+    "image": "logo-fundo1.png"
+  },
+  "publications": {
+    "title": "Mining Impacts Calculator | Publications",
+    "description": "Access articles, reports and studies related to the Mining Impacts Calculator. Explore publications on environmental damage valuation.",
+    "image": "logo-fundo1.png"
+  },
+  "methodologicalReport": {
+    "title": "Mining Impacts Calculator | Methodological Report",
+    "description": "Download the complete methodological report of the Mining Impacts Calculator and understand the details of the valuations performed. Access now.",
+    "image": "logo-fundo1.png"
+  },
+  "scientificArticles": {
+    "title": "Mining Impacts Calculator | Scientific Articles",
+    "description": "Check out scientific articles published by the CSF team, based on the methodology behind the Mining Impacts Calculator.",
+    "image": "logo-fundo1.png"
+  },
+  "caseStudies": {
+    "title": "Mining Impacts Calculator | Case Studies",
+    "description": "Explore case studies on the application of the Mining Impacts Calculator. Discover real-world examples of how the tool is used for environmental valuation.",
+    "image": "logo-fundo1.png"
+  },
+  "team": {
+    "title": "Mining Impacts Calculator | Meet the Team",
+    "description": "Discover the creators, partners and sponsors behind the development of the Mining Impacts Calculator.",
+    "image": "logo-fundo3.png"
+  },
+  "csfAndCreators": {
+    "title": "Mining Impacts Calculator | CSF and Creators",
+    "description": "Meet the CSF team and creators responsible for the Mining Impacts Calculator. Discover the minds behind this environmental valuation tool.",
+    "image": "logo-fundo3.png"
+  },
+  "partners": {
+    "title": "Mining Impacts Calculator | Partners",
+    "description": "Learn about the strategic partnerships that strengthen the Mining Impacts Calculator, a decision making valuation tool.",
+    "image": "logo-fundo3.png"
+  },
+  "sponsors": {
+    "title": "Mining Impacts Calculator | Sponsors",
+    "description": "Meet the sponsors supporting the Mining Impacts Calculator, a decision making tool for environmental damage valuation.",
+    "image": "logo-fundo3.png"
+  },
+  "press": {
+    "title": "Mining Impacts Calculator | Press",
+    "description": "Check out news and interviews about the Mining Impacts Calculator and its potential uses in combating illegal gold mining.",
+    "image": "logo-fundo2.png"
+  },
+  "multimedia": {
+    "title": "Mining Impacts Calculator | Media Gallery",
+    "description": "Access videos and photos related to the Mining Impacts Calculator and how it's used by various actors in the fight against illegal gold mining in the Amazon.",
+    "image": "logo-fundo2.png"
+  },
+  "usageStories": {
+    "title": "Mining Impacts Calculator | Usage Stories",
+    "description": "Explore usage stories of the Mining Impacts Calculator by different actors working to combat illegal gold mining in the Amazon.",
+    "image": "logo-fundo1.png"
+  },
+  "awards": {
+    "title": "Mining Impacts Calculator | Awards",
+    "description": "View the awards and recognitions earned by the Mining Impacts Calculator. Discover the impact of this valuation tool in the fight against illegal gold mining.",
+    "image": "logo-fundo2.png"
+  },
+  "miningMap": {
+    "title": "Mining Impacts Calculator | Mining Map",
+    "description": "Access the map identifying areas in the Amazon where illegal gold mining activities are taking place.",
+    "image": "logo-fundo1.png"
+  },
+  "contact": {
+    "title": "Mining Impacts Calculator | Contact Us",
+    "description": "Get in touch with the Mining Impacts Calculator team. Ask your questions and learn how to collaborate in the fight against illegal gold mining.",
+    "image": "logo-fundo3.png"
+  }
+}
