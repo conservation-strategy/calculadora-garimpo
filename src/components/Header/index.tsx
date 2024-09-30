@@ -35,7 +35,7 @@ export default function Header() {
         </S.Logo> */}
         <Link href={'/'}>
           <Image 
-            src={'/assets/images/logo-garimpo-invertido.png'} 
+            src={'/assets/images/logo-Garimpo_BordaBranca.svg'} 
             alt='Garimpo' 
             width={64}
             height={64}

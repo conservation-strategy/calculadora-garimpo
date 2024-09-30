@@ -1,13 +1,26 @@
+import { useCallback } from 'react';
 import * as S from './style'
 import * as SG from '@/styles/global'
 import useAppContext from '@/hooks/useAppContext'
-import Link from 'next/link'
+import Link from 'next/link';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 export default function Footer() {
   const { state } = useAppContext()
   const { language } = state
   const { footer } = language
   const { copy, disclaimer } = footer
+  const router = useRouter();
+
+  const handleIconClick = useCallback(() => {
+    const isHome = router.pathname === '/';
+    if(!isHome) {
+      router.push('/');
+    } else {
+      setTimeout(() => window.scrollTo({ top:0, behavior: 'smooth' }), 100);
+    }
+  },[router]);
 
   return (
     <S.Container>
@@ -33,6 +46,49 @@ export default function Footer() {
             </S.LinksColumn>
           ))}
         </S.LinksWrapper>
+        <S.CalculatorsWrapper>
+          <S.Calculators>
+            <div
+            style={{ cursor: 'pointer '}}
+            onClick={() => handleIconClick()}
+            >
+                <Image
+                  // src="images/Garimpo_VersãoInvertida.svg"
+                  src="assets/images/logo-Garimpo_BordaBranca.svg"
+                  alt="CSF Logo"
+                  width={64}
+                  height={64}
+                  priority
+                />
+            </div>
+              <a 
+                href="https://indigenouscalculator.conservation-strategy.org/home"
+                target="_blank"
+              >
+                <Image
+                      // src="images/Indígena_VersãoInvertida.svg"
+                  src="assets/images/logo-Indigena_BordaBranca.svg"
+                  alt="CSF Logo"
+                  width={64}
+                  height={64}
+                  priority
+                />
+              </a>
+              <a 
+                href="https://deforestationcalculator.conservation-strategy.org/"
+                target="_blank"
+              >
+                <Image
+                      // src="images/Indígena_VersãoInvertida.svg"
+                  src="assets/images/logo-Desmatamento_BordaBranca.svg"
+                  alt="CSF Logo"
+                  width={64}
+                  height={64}
+                  priority
+                />
+              </a>
+          </S.Calculators>
+        </S.CalculatorsWrapper>
 
         <S.Social>
           <div>

@@ -1,6 +1,20 @@
 import { breakpoints } from '@/styles/global'
 import styled from 'styled-components'
 
+
+export const CalculatorsWrapper = styled.div`
+  display: flex;
+  width 100%;
+  justify-content: center
+`
+
+export const Calculators = styled.div`
+  display: flex;
+  gap: 48px;
+  margin-top: 50px
+`
+
+
 export const Container = styled.footer`
   width: 100%;
   background: #000;
