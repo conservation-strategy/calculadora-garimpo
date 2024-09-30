@@ -11,9 +11,10 @@ export default function SEO({
   description = 'A Calculadora de Impactos do Garimpo é uma ferramenta de valoração dos danos sociais e ambientais causados pela mineração ilegal de ouro',
   image = 'logo-fundo1.png',
 }: SEOProps) {
+  const headTitle = `${title} | CSF`;
   return (
     <Head>
-      <title>{title} | CSF</title>
+      <title>{headTitle}</title>
       <meta name="description" content={description} key="description" />
 
       {/* Open Graph Tags (for social sharing) */}
