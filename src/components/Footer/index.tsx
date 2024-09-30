@@ -64,6 +64,7 @@ export default function Footer() {
               <a 
                 href="https://indigenouscalculator.conservation-strategy.org/home"
                 target="_blank"
+                rel='noreferrer'
               >
                 <Image
                       // src="images/Indígena_VersãoInvertida.svg"
@@ -77,6 +78,7 @@ export default function Footer() {
               <a 
                 href="https://deforestationcalculator.conservation-strategy.org/"
                 target="_blank"
+                rel='noreferrer'
               >
                 <Image
                       // src="images/Indígena_VersãoInvertida.svg"
@@ -94,6 +96,7 @@ export default function Footer() {
           <div>
             <Link
               target="_blank"
+              rel='noreferrer'
               href="https://web.facebook.com/conservationstrategyfund?_rdc=1&_rdr"
               title="Facebook"
             >
@@ -101,6 +104,7 @@ export default function Footer() {
             </Link>
             <Link
               target="_blank"
+              rel='noreferrer'
               href="https://twitter.com/numbers4nature"
               title="Twitter"
             >
@@ -108,6 +112,7 @@ export default function Footer() {
             </Link>
             <Link
               target="_blank"
+              rel='noreferrer'
               href="https://www.youtube.com/user/numbers4nature"
               title="Youtube"
             >
@@ -115,6 +120,7 @@ export default function Footer() {
             </Link>
             <Link
               target="_blank"
+              rel='noreferrer'
               href="https://www.instagram.com/conservationstrategyfund/"
               title="Instagram"
             >
@@ -122,6 +128,7 @@ export default function Footer() {
             </Link>
             <Link
               target="_blank"
+              rel='noreferrer'
               href="https://www.linkedin.com/company/conservation-strategy-fund/"
               title="Linkedin"
             >

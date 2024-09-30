@@ -147,7 +147,7 @@ export default function Calculator() {
           <>
             <SG.Text>
               {Inflation.paragraphy_01}
-              <Link href={Inflation.href} target="_blank">
+              <Link href={Inflation.href} target="_blank" rel='noreferrer'>
                 {Inflation.siteIBGE}
               </Link>
             </SG.Text>
