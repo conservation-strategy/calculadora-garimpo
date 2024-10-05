@@ -11,6 +11,10 @@ interface TextProps {
   weight?: '300' | '400' | '500' | '600'
 }
 
+interface ContainerProps {
+  fontSize?: string
+}
+
 export const colors = {
   primary: '#417505',
   secondary: '#61AB0B',
@@ -20,7 +24,7 @@ export const colors = {
 
 export const breakpoints = {
   md: '768px',
-  lg: '1280px',
+  lg : '1280px',
   xl: '1440px',
   xll: '1600px'
 }
@@ -60,7 +64,8 @@ export const GlobalStyle = createGlobalStyle`
 
 `
 
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
   width: 100%;
   padding: 50px 24px;
   @media (min-width: ${breakpoints.md}) {
@@ -143,21 +148,22 @@ export const OverLay = styled.div`
 `
 
 export const Select = styled.select<Field>`
+  position: relative;
   width: 100%;
-  padding: 25px 15px;
+  padding: 16px 16px;
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 18px;
   color: #2c2c2c;
 `
 
 export const Input = styled.input<Field>`
   width: 100%;
-  padding: 25px 15px;
+  padding: 16px 16px;
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
-  border-radius: 16px;
+  border-radius: 12px;
   font-size: 18px;
   color: #2c2c2c;
   box-shadow: none;

@@ -426,7 +426,7 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlUsesTypes>
 
-      <S.ButtonSubmit id="btn-calcular" variant="primary">
+      <S.ButtonSubmit id="btn-calcular" variant="primary" style={{ marginTop: '14px' }}>
         {form.btn_calculator.btn}
       </S.ButtonSubmit>
     </SCalc.Form>

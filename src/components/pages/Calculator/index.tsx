@@ -192,22 +192,22 @@ export default function Calculator() {
   }, [guide])
 
   return (
-    <Layout headline={safeArea.headline} safeAreaHeight="380px" align="left">
+    <Layout headline={safeArea.headline} safeAreaHeight="200px" align="left">
       {/* <SEO title={safeArea.headline} /> */}
       <SEO
         title={seoMetadata.calculator.title}
         description={seoMetadata.calculator.description}
         image={seoMetadata.calculator.image}
       />
-      <SG.Container style={{ paddingLeft: 0 }}>
-        <S.WrapperCalculator>
-          <S.Guide>
-            <SG.Headline>{title.headline}</SG.Headline>
-            <Accordion Items={guideList} />
-          </S.Guide>
-          <FormCalculator />
-        </S.WrapperCalculator>
-      </SG.Container>
+        <SG.Container fontSize='12.8px' style={{ paddingLeft: 0 }}>
+          <S.WrapperCalculator>
+            <S.Guide>
+              <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
+              <Accordion Items={guideList} />
+            </S.Guide>
+            <FormCalculator />
+          </S.WrapperCalculator>
+        </SG.Container>
       <SG.Container>
         <ResultsCalculator scrollResults={scrollResults} />
       </SG.Container>
