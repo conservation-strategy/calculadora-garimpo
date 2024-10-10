@@ -576,7 +576,8 @@
             ]
           },
           "openMachineCapacity": {
-            "label": "Insira o rendimento da máquina"
+            "label": "Insira o rendimento da máquina",
+            "error": "Informe o rendimento da máquina ou selecione um dos valores sugeridos"
           },
           "valueHypothesis": {
             "label": "Hipóteses de valores",
@@ -1738,7 +1739,9 @@
             ]
           },
           "openMachineCapacity": {
-            "label": "Introduzca el rendimiento de la máquina"
+            "label": "Introduzca el rendimiento de la máquina",
+            "error": "Introduzca el rendimiento de la máquina o seleccione uno de los valores sugeridos"
+
           },
           "valueHypothesis": {
             "label": "Hipótesis de valor",
@@ -2901,7 +2904,8 @@
             ]
           },
           "openMachineCapacity": {
-            "label": "Enter machine yield"
+            "label": "Enter machine yield",
+            "error": "Enter machine yield or select one of the suggested values"
           },
           "valueHypothesis": {
             "label": "Value hypothesis",

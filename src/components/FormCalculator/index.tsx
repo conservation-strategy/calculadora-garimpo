@@ -127,7 +127,7 @@ export default function FormCalculator() {
   const knowCapacity = watch('knowMachineCapacity');
   const _state = watch('state');
 
-  console.log('state', _state);
+  console.log('state string', _state);
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -218,7 +218,7 @@ export default function FormCalculator() {
 
   useEffect(() => {
     if(knowCapacity === knowMachineCapacityTypes.NO) {
-      setTimeout(() => {}, 20);
+      // setTimeout(() => {}, 20);
       setValue(
         'machineCapacity',
         `${form.suggestedMachineCapacity.options[0]}`
@@ -245,6 +245,7 @@ export default function FormCalculator() {
 
       const analysisUnit = Number(getValues('analysisUnit'))
       const qtdAnalysis = Number(getValues('qtdAnalysis'))
+      const machineCap = Number(getValues('machineCapacity'))
       if (!qtdAnalysis || qtdAnalysis < 0) {
         if (analysisUnit === analysisUnitTypes.AMOUNT_GOLD) {
           setError('qtdAnalysis', { message: form.qtdAnalysis[2].error })
@@ -258,8 +259,15 @@ export default function FormCalculator() {
           setError('qtdAnalysis', { message: form.qtdAnalysis[6].error})
         }
         changeDataCalculator(null)
+      } else if (
+        analysisUnit === analysisUnitTypes.QTD_MACHINES &&
+        (!machineCap || machineCap < 0 || isNaN(machineCap))
+      ) {
+        clearErrors('qtdAnalysis')
+        setError('machineCapacity', { message: form.openMachineCapacity.error })
       } else {
         clearErrors('qtdAnalysis')
+        clearErrors('machineCapacity')
         changeDataCalculator(getValues())
         getcalculator(getValues())
       }
@@ -352,13 +360,16 @@ export default function FormCalculator() {
             <div style={{ position: 'relative' }}>
               <SG.Input
               onWheel={(e: FormEvent<HTMLInputElement>) => e.currentTarget.blur()}
-              // error={errors.qtdAnalysis !== undefined}
+              error={errors.machineCapacity !== undefined}
               type="number"
               {...register('machineCapacity')}
               placeholder={"0"}
               />
               <SG.InputUnit>m³/h</SG.InputUnit>
             </div>
+            {errors.machineCapacity && (
+              <S.MessageError>{errors.machineCapacity.message}</S.MessageError>
+            )}
           </S.FormControlMachineCapacity>
       }
       </>
