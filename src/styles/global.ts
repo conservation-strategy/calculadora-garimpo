@@ -164,6 +164,14 @@ export const Input = styled.input<Field>`
   transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 `
 
+export const InputUnit = styled.div`
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.5;
+`
+
 export const Text = styled.p<TextProps>`
   font-size: ${({ size }) => (size ? size : '14px')};
   line-height: 150%;

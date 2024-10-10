@@ -10,6 +10,7 @@ import useCountry from '@/hooks/useCountry'
 import Options from './Options'
 import {
   analysisUnitTypes,
+  knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
   usesValuesTypes
@@ -19,6 +20,7 @@ import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
+import { relative } from 'path'
 
 export interface FormInputs {
   knowRegion: string
@@ -27,13 +29,15 @@ export interface FormInputs {
   district: string
   typeMining: '0' | '1' | '2'
   retort: string
-  analysisUnit: '1' | '2' | '3' | '5'
+  analysisUnit: '1' | '2' | '3' | '5' | '6'
   qtdAnalysis: string
   motorPower: string
   pitdepth: string
   valueHypothesis: string
   inflation: string
   usesTypes: '1' | '2' | '3'
+  knowMachineCapacity: string | null
+  machineCapacity: string | null
 }
 
 type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
@@ -120,6 +124,10 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
+  const knowCapacity = watch('knowMachineCapacity');
+  const _state = watch('state');
+
+  console.log('state', _state);
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -176,12 +184,51 @@ export default function FormCalculator() {
   useEffect(() => {
     if (isBrazil) {
       setStateListForCountry(stateBrazil)
+      // setValue('state', `${stateBrazil[0].id}`)
     } else if (isPeru) {
       setStateListForCountry(statePeru)
     } else if (isEquador) {
       setStateListForCountry(stateEquador)
     }
   }, [isBrazil, isPeru, isEquador])
+
+  useEffect(() => {
+    if(
+      country_field !== 'PE' && 
+      Number(analysisUnit) === analysisUnitTypes.QTD_MACHINES
+    ) {
+      setValue(
+        'analysisUnit', 
+        `${form.analysisUnit.options[typeMiningValue][0].value as analysisUnitTypes}`
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country_field])
+
+  useEffect(() => {
+    if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
+      setValue(
+        'knowMachineCapacity', knowMachineCapacityTypes.NO
+      );
+      setValue(
+        'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
+      );
+    }
+  }, [analysisUnit])
+
+  useEffect(() => {
+    if(knowCapacity === knowMachineCapacityTypes.NO) {
+      setTimeout(() => {}, 20);
+      setValue(
+        'machineCapacity',
+        `${form.suggestedMachineCapacity.options[0]}`
+      )
+    } else {
+      console.log('changing capacity')
+      setValue('machineCapacity', null)
+    }
+  }, [knowCapacity])
+
 
   const handleState = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -207,6 +254,8 @@ export default function FormCalculator() {
           setError('qtdAnalysis', { message: form.qtdAnalysis[5].error })
         } else if (analysisUnit === analysisUnitTypes.YEARS_OF_MINING) {
           setError('qtdAnalysis', { message: form.qtdAnalysis[3].error })
+        } else if (analysisUnit === analysisUnitTypes.QTD_MACHINES) {
+          setError('qtdAnalysis', { message: form.qtdAnalysis[6].error})
         }
         changeDataCalculator(null)
       } else {
@@ -271,6 +320,51 @@ export default function FormCalculator() {
       </S.FormControlPitDepthOrMotorPower>
     )
   }
+  
+  let FormControlMachineCapacity = null
+
+  if(analysisUnit === '6') {
+    FormControlMachineCapacity = (
+      <>
+      <S.FormControlKnowMachineCapacity>
+        <label>{form.knowMachineCapacity.label}</label>
+        <SG.Select {...register('knowMachineCapacity')}>
+          {form.knowMachineCapacity.options.map((opt) => (
+            <option key={opt.text} value={opt.value}>
+              {opt.text}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlKnowMachineCapacity>
+      {knowCapacity === '0'
+        ? <S.FormControlMachineCapacity>
+            <label>{form.suggestedMachineCapacity.label}</label>
+            <SG.Select {...register('machineCapacity')}>
+              {form.suggestedMachineCapacity.options.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </SG.Select>
+          </S.FormControlMachineCapacity>
+        : <S.FormControlMachineCapacity>
+            <label>{form.openMachineCapacity.label}</label>
+            <div style={{ position: 'relative' }}>
+              <SG.Input
+              onWheel={(e: FormEvent<HTMLInputElement>) => e.currentTarget.blur()}
+              // error={errors.qtdAnalysis !== undefined}
+              type="number"
+              {...register('machineCapacity')}
+              placeholder={"0"}
+              />
+              <SG.InputUnit>m³/h</SG.InputUnit>
+            </div>
+          </S.FormControlMachineCapacity>
+      }
+      </>
+    )
+  }
+
 
   const formControlCityStyles = isMobile
     ? undefined
@@ -374,7 +468,10 @@ export default function FormCalculator() {
         <label htmlFor="analysisUnit">{form.analysisUnit.label}</label>
         <SG.Select id="analysisUnit" {...register('analysisUnit')}>
           {typeMiningValue && (
-            <Options data={form.analysisUnit.options[typeMiningValue]} />
+            <Options data={ country?.country === 'PE' 
+              ? form.analysisUnit.options.peru![typeMiningValue] 
+              : form.analysisUnit.options[typeMiningValue]} 
+            />
           )}
         </SG.Select>
       </S.FormControlUnitAnalysis>
@@ -394,6 +491,8 @@ export default function FormCalculator() {
       </S.FormControlHectare>
 
       {FormControlPitDepthOrMotorPower}
+
+      {FormControlMachineCapacity}
 
       <S.FormControlValueHypothesis style={formControlValueHypothesisStyles}>
         <label>{valueHypothesis.label}</label>

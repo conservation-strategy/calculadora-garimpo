@@ -47,6 +47,15 @@ export const FormControlValueHypothesis = styled(FormControl)`
   grid-area: valueHypothesis;
 `
 
+export const FormControlKnowMachineCapacity = styled(FormControl)`
+grid-area: knowMachineCapacity;
+align-self: end
+`
+export const FormControlMachineCapacity = styled(FormControl)`
+grid-area: machineCapacity;
+align-self: end
+`
+
 export const FormControlInflation = styled(FormControl)`
   grid-area: inflation;
 `
