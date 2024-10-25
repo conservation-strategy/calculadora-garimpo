@@ -19,6 +19,7 @@ import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
+import { event as gaEvent } from "nextjs-google-analytics";
 
 export interface FormInputs {
   knowRegion: string
@@ -213,6 +214,10 @@ export default function FormCalculator() {
         clearErrors('qtdAnalysis')
         changeDataCalculator(getValues())
         getcalculator(getValues())
+        gaEvent("submit_form", {
+          category: "Calculator",
+          label: "Calculator",
+        });
       }
     },
     [

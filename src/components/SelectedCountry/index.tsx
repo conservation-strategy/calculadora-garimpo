@@ -3,6 +3,7 @@ import * as SG from '@/styles/global'
 import { CountryProps } from '@/store/proveider'
 import useAppContext from '@/hooks/useAppContext'
 import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { event as gaEvent } from "nextjs-google-analytics";
 
 export const CountryList: CountryProps[] = [
   {
@@ -44,6 +45,10 @@ export default function SelectCountry() {
       (country) => country.country === event.currentTarget.value
     )
     setCountry(findCountry[0])
+    gaEvent("select_country", {
+      category: "Form",
+      label: event.currentTarget.value,
+    });
   }, [])
 
   return (

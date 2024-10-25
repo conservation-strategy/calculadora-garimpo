@@ -7,6 +7,7 @@ import ImpactChart from '../Charts/Impact'
 import useResults, { Tabs } from '@/hooks/useResults'
 import useReport from '@/hooks/useReport'
 import useResize from '@/hooks/useResize'
+import { event as gaEvent } from "nextjs-google-analytics";
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
 
@@ -70,6 +71,10 @@ export default function ResultsCalculator({
       downloadPDF()
     }, 500)
     document.body.style.overflow = 'hidden'
+    gaEvent("download_pdf", {
+      category: "Download",
+      label: "Download PDF",
+    });
   }, [downloadPDF])
 
   useEffect(() => {
