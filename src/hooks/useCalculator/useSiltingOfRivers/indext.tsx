@@ -21,7 +21,7 @@ export default function useSiltingOfRivers() {
     dredgingAndRiverSediments,
     erosionSiltingUp
   } = useFixedCalculator()
-  const { hectareToGold, goldToHecatere } = useConvertAll()
+  const { hectareToGold, goldToHecatere, numberOfMachinesToGold } = useConvertAll()
 
   const cavaGroundingCostAuFertileCalculator = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
@@ -37,7 +37,9 @@ export default function useSiltingOfRivers() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
       const distanciaGarimpoCentro = currentDistrict.Distancia_Garimpo_Centro

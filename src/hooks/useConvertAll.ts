@@ -317,7 +317,7 @@ export default function useConvertAll() {
     ({ dataCalculator } : DataCalculatoProps) => {
       const qtdAnalysis = Number(dataCalculator.qtdAnalysis);
       const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
-      const pitDepth = Number(dataCalculator.pitdepth);
+      // const pitDepth = Number(dataCalculator.pitdepth);
 
       const densidadeOuro = general ? general.densityGold : 0;
       const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
@@ -333,10 +333,29 @@ export default function useConvertAll() {
       const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
       const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
       const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
-      const tonEsterilRevolvida = totalSoloRevolvida - totalMinerioRevolvida;
+      // const tonEsterilRevolvida = totalSoloRevolvida - totalMinerioRevolvida;
       const produtividadeGramaPorTonMinerioMed = 0.4;
       const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed
       return gramaDeOuro;      
+    },
+    [general]
+  )
+
+  const numberOfMachinesToHecare = useCallback(
+    ({ dataCalculator } : DataCalculatoProps ) => {
+      const pitDepth = Number(dataCalculator.pitdepth);
+      const qtdAnalysis = Number(dataCalculator.qtdAnalysis);
+      const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+
+      const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+      const diasAno = 365;
+      const qtde1EscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+      const volumeComPerda = qtde1EscavadeiraM3porAno * qtdAnalysis;
+      /**confirmar se volumeComPerda é usado nessa equação abaixo ou deve ser outra variavel */
+      const areaAfetadaM2 = volumeComPerda / pitDepth;
+      const hectare = areaAfetadaM2 / 10000;
+
+      return Math.round(hectare * 100) / 100;      
     },
     [general]
   )
@@ -424,6 +443,7 @@ export default function useConvertAll() {
     hectareToGold,
     goldToHectarePorHe,
     proporcaoKgporHectare,
-    numberOfMachinesToGold
+    numberOfMachinesToGold,
+    numberOfMachinesToHecare
   }
 }
