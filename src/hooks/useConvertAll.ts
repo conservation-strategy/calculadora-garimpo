@@ -423,6 +423,7 @@ export default function useConvertAll() {
     goldToHecatere,
     hectareToGold,
     goldToHectarePorHe,
-    proporcaoKgporHectare
+    proporcaoKgporHectare,
+    numberOfMachinesToGold
   }
 }
