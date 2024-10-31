@@ -312,6 +312,35 @@ export default function useConvertAll() {
     [general]
   )
 
+/** Metodologia Peru */
+  const numberOfMachinesToGold  = useCallback(
+    ({ dataCalculator } : DataCalculatoProps) => {
+      const qtdAnalysis = Number(dataCalculator.qtdAnalysis);
+      const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+      const pitDepth = Number(dataCalculator.pitdepth);
+
+      const densidadeOuro = general ? general.densityGold : 0;
+      const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+      const perdaOuroEscavacao = general ? general.excavationGoldLoss : 0;
+      // const densidadeOuro = 2.76;
+      // const perdaOuroEscavacao = 2;
+      // const horasEscavadeiraDia = 10;
+      const diasAno = 365;
+      const relacaoMinerioEsteril = 7;
+
+      const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia *  qtdEscavadeiraM3porHora;
+      const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;
+      const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
+      const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
+      const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
+      const tonEsterilRevolvida = totalSoloRevolvida - totalMinerioRevolvida;
+      const produtividadeGramaPorTonMinerioMed = 0.4;
+      const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed
+      return gramaDeOuro;      
+    },
+    [general]
+  )
+
   const goldToHectarePorHe = useCallback((hectare: number, gold: number) => {
     const goldenGramForHectare = hectare / gold
     return goldenGramForHectare
