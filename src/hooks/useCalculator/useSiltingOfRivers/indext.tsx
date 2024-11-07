@@ -658,7 +658,9 @@ export default function useSiltingOfRivers() {
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
 
       if (txPrevalence === valueHypothesisTypes.CONSERVATIVE) {
         const discountRate = 0.03
