@@ -23,7 +23,7 @@ export default function useMercury() {
     heartAttack,
     soilMercuryRemediation
   } = useFixedCalculator()
-  const { hectareToGold, convertAllinGold } = useConvertAll()
+  const { hectareToGold, convertAllinGold, numberOfMachinesToGold } = useConvertAll()
 
   const neuroSymptomsGarimpeiroCalculator = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
@@ -49,7 +49,9 @@ export default function useMercury() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
 
       const weightNeuroDisabilityGoldminers = 0.368
 
@@ -154,7 +156,9 @@ export default function useMercury() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
       const { PopUrbMunicipio, PopRuralMunicipio, densidadePop2060 } =
         currentDistrict
@@ -561,7 +565,9 @@ export default function useMercury() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
 
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
       const { PopUrbMunicipio, PopRuralMunicipio, densidadePop2060 } =
@@ -1029,7 +1035,9 @@ export default function useMercury() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
 
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
       const { PopUrbMunicipio, PopRuralMunicipio, densidadePop2060 } =
@@ -1486,7 +1494,9 @@ export default function useMercury() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
 
       const quantityOfGoldGramsPerYearWell = general
         ? general.quantityOfGoldGramsPerYearWell
