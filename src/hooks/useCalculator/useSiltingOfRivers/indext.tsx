@@ -21,7 +21,7 @@ export default function useSiltingOfRivers() {
     dredgingAndRiverSediments,
     erosionSiltingUp
   } = useFixedCalculator()
-  const { hectareToGold, goldToHecatere, numberOfMachinesToGold } = useConvertAll()
+  const { hectareToGold, goldToHecatere, numberOfMachinesToGold, numberOfMachinesToHecare } = useConvertAll()
 
   const cavaGroundingCostAuFertileCalculator = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
@@ -233,7 +233,9 @@ export default function useSiltingOfRivers() {
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
 
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
