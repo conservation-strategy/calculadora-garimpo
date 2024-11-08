@@ -128,6 +128,17 @@ export default function useConvertAll() {
           hectare,
           value: 0
         }
+      } else if (analysisUnit === analysisUnitTypes.QTD_MACHINES) { /** VERIFICAR SE EXISTE DIFERENÇA ENTRE ALUVIAO E POÇO !!! */
+        const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+        const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+        const diasAno = 365;
+        const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+        const volumeComPerda = qtdEscavadeiraM3porAno * analysisUnit;  
+        const areaAfetadaM2 = volumeComPerda / pitDepth;
+        return {
+          hectare,
+          value: areaAfetadaM2 * 10000
+        }
       } else {
         const hectare = qtdAnalysis
         const hectareOverflow = hectare * overflow
