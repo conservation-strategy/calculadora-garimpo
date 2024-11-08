@@ -76,8 +76,9 @@ export default function useConvertAll() {
         const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
         const relacaoMinerioEsteril = 7;
         const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
-        const produtividadeGramaPorTonMinerioMed = 0.4;
+        const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
         const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed;
+        console.log('gramaDeOuro', gramaDeOuro)
         return gramaDeOuro;
       } else if (
         typeMining === typeMiningTypes.FERRY &&
@@ -363,7 +364,7 @@ export default function useConvertAll() {
       const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
       const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
       // const tonEsterilRevolvida = totalSoloRevolvida - totalMinerioRevolvida;
-      const produtividadeGramaPorTonMinerioMed = 0.4;
+      const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
       const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed
       return gramaDeOuro;      
     },
@@ -463,7 +464,7 @@ export default function useConvertAll() {
         const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
         const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
         const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
-        const produtividadeGramaPorTonMinerioMed = 0.4;
+        const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
         const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed;
         const areaAfetadaM2 = volumeComPerda / pitDepth;
         const areaAfetadaHa = areaAfetadaM2 / 10000;
