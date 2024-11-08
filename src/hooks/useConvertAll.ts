@@ -62,6 +62,24 @@ export default function useConvertAll() {
         //console.log('grama de ouro', goldGrass)
         return goldGrass
       } else if (
+        typeMining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+        const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+        const diasAno = 365;
+        const qtde1EscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+        const volumeComPerda = qtde1EscavadeiraM3porAno * qtdAnalysis;
+        const perdaOuroEscavacao = general ? general.excavationGoldLoss : 0;
+        const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
+        const densidadeOuro = general ? general.densityGold : 0;
+        const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
+        const relacaoMinerioEsteril = 7;
+        const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
+        const produtividadeGramaPorTonMinerioMed = 0.4;
+        const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed;
+        return gramaDeOuro;
+      } else if (
         typeMining === typeMiningTypes.FERRY &&
         analysisUnit === analysisUnitTypes.QTD_FERRY
       ) {
@@ -133,7 +151,7 @@ export default function useConvertAll() {
         const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
         const diasAno = 365;
         const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
-        const volumeComPerda = qtdEscavadeiraM3porAno * analysisUnit;  
+        const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;  
         const areaAfetadaM2 = volumeComPerda / pitDepth;
         return {
           hectare,
