@@ -679,7 +679,7 @@ export default function useSiltingOfRivers() {
           return VPLhectareSilting * valueHeCtare * 12
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
-          analysisUnit === analysisUnitTypes.IMPACTED_AREA
+          (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
           return VPLhectareSilting * valueHeCtare
         } else {
@@ -709,7 +709,7 @@ export default function useSiltingOfRivers() {
           return VPLhectareSilting * valueHeCtare * 12
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
-          analysisUnit === analysisUnitTypes.IMPACTED_AREA
+          (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
           return VPLhectareSilting * valueHeCtare
         } else {
