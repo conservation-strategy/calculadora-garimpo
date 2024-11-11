@@ -154,9 +154,10 @@ export default function useConvertAll() {
         const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
         const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;  
         const areaAfetadaM2 = volumeComPerda / pitDepth;
+        const hectare = areaAfetadaM2 / 10000
         return {
           hectare,
-          value: areaAfetadaM2 / 10000
+          value: hectare * overflow
         }
       } else {
         const hectare = qtdAnalysis
@@ -469,7 +470,7 @@ export default function useConvertAll() {
         const areaAfetadaM2 = volumeComPerda / pitDepth;
         const areaAfetadaHa = areaAfetadaM2 / 10000;
         const gramaOuroporHectare = gramaDeOuro / areaAfetadaHa;
-        return gramaOuroporHectare / 1000;
+        return gramaOuroporHectare;
       }
       
       else {
