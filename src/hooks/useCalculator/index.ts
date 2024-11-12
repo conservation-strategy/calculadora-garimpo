@@ -61,7 +61,7 @@ export default function useCalculator() {
     soilMercuryRemediationCalculator
   } = useMercury()
 
-  const { convertAllinGold, convertAllinHectare, proporcaoKgporHectare } =
+  const { convertAllinGold, convertAllinHectare, proporcaoGramaPorHectare } =
     useConvertAll()
   const { changeResults } = useAppContext()
   const { state } = useAppContext()
@@ -422,7 +422,7 @@ export default function useCalculator() {
     (data: FormInputs) => {
       if (data) {
         const goldGrass = convertAllinGold({ dataCalculator: data })
-        const proporcaoKgporHectareValue = proporcaoKgporHectare({
+        const proporcaoGramaPorHectareValue = proporcaoGramaPorHectare({
           dataCalculator: data
         })
         const { value: hecatereGrass } = convertAllinHectare({
@@ -438,7 +438,7 @@ export default function useCalculator() {
           {
             label:
               language.calculator.impacts.notMonetary.proporcaoKgporHectare,
-            value: convertGramsToKg(proporcaoKgporHectareValue),
+            value: convertGramsToKg(proporcaoGramaPorHectareValue),
             measure: language.calculator.impacts.notMonetary.kgDeAu_ha
           },
           {
@@ -468,7 +468,7 @@ export default function useCalculator() {
       calculatorSiltingOfRivers,
       calculatorMercury,
       convertAllinGold,
-      proporcaoKgporHectare,
+      proporcaoGramaPorHectare,
       convertAllinHectare,
       language
     ]
