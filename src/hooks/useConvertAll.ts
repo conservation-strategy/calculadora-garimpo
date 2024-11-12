@@ -62,7 +62,7 @@ export default function useConvertAll() {
         //console.log('grama de ouro', goldGrass)
         return goldGrass
       } else if (
-        typeMining === typeMiningTypes.ALLUVION &&
+        // typeMining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
@@ -226,11 +226,33 @@ export default function useConvertAll() {
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
           return `${Math.round(volumeM3 * 100) / 100} m³`
+        } else if(
+          typeMining === typeMiningTypes.PIT &&
+          analysisUnit === analysisUnitTypes.QTD_MACHINES
+        ) {
+          const gold = numberOfMachinesToGold({ dataCalculator });
+          const revolvedSoloTon = gold / cavaAverageProductivity
+          const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
+          const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
+          const losslessVolume = toUpturnedSoil / densityGold
+          volumeM3 = losslessVolume * excavationGoldLoss
+          return `${Math.round(volumeM3 * 100) / 100} m³`
         } else if (
           typeMining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
         ) {
           const revolvedSoloTon = qtdAnalysis / cavaAverageProductivity
+          const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
+          const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
+          const losslessVolume = toUpturnedSoil / densityGold
+          volumeM3 = losslessVolume * excavationGoldLoss
+          return `${Math.round(volumeM3 * 100) / 100} m³`
+        } else if (
+          typeMining === typeMiningTypes.ALLUVION &&
+          analysisUnit === analysisUnitTypes.QTD_MACHINES
+        ) {
+          const gold = numberOfMachinesToGold({ dataCalculator });
+          const revolvedSoloTon = gold / cavaAverageProductivity
           const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold

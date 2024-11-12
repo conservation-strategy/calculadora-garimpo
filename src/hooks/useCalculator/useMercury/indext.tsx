@@ -231,7 +231,18 @@ export default function useMercury() {
             : percentLossHgInWater
         gramsHgReleasedinWater =
           percentLossHgInWaterValue * HgAuRatio * qtdAnalysis
-      } else if (
+      } else if(
+        typemining === typeMiningTypes.PIT &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const percentLossHgInWaterValue =
+          txPrevalence === valueHypothesisTypes.CONSERVATIVE
+            ? percentLossHgInWater_convervative
+            : percentLossHgInWater
+          gramsHgReleasedinWater = 
+            percentLossHgInWaterValue * HgAuRatio * gold
+      } 
+      else if (
         typemining === typeMiningTypes.FERRY &&
         analysisUnit === analysisUnitTypes.QTD_FERRY
       ) {
@@ -648,7 +659,19 @@ export default function useMercury() {
             ? percentLossHgInWater_convervative
             : percentLossHgInWater
         gramsHgReleasedInWater = lossPercentHgInWater * HgAuRatio * qtdAnalysis
-      } else if (
+      } else if(
+        typemining === typeMiningTypes.PIT &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const percentLossHgInWaterValue =
+          txPrevalence === valueHypothesisTypes.CONSERVATIVE
+            ? percentLossHgInWater_convervative
+            : percentLossHgInWater
+          gramsHgReleasedInWater = 
+            percentLossHgInWaterValue * HgAuRatio * gold
+      } 
+      
+      else if (
         typemining === typeMiningTypes.FERRY &&
         analysisUnit === analysisUnitTypes.QTD_FERRY
       ) {
@@ -1118,6 +1141,15 @@ export default function useMercury() {
             ? percentLossHgInWater_convervative
             : percentLossHgInWater
         HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * qtdAnalysis
+      } else if(
+        typemining === typeMiningTypes.PIT &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const lossPercentHgInWater =
+          txPrevalence === valueHypothesisTypes.CONSERVATIVE
+            ? percentLossHgInWater_convervative
+            : percentLossHgInWater
+        HgGrassReleasedInWater = lossPercentHgInWater * HgAuRatio * gold
       } else if (
         typemining === typeMiningTypes.FERRY &&
         analysisUnit === analysisUnitTypes.QTD_FERRY
