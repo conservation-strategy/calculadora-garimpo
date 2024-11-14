@@ -9,6 +9,7 @@ import MunicipiosCalculadora from '@/mocks/municipios_calculadora.json'
 import MunicipiosReferencia from '@/mocks/municipios_referencia.json'
 import provinciasPeru from '@/mocks/provinciasPeru.json'
 import stateBrazil from '@/mocks/state.json'
+import municipiosBolivia from '@/mocks/municipioBolivia.json'
 
 interface useCountryProps {
   initialState?: {
@@ -27,6 +28,7 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
   const isColombia = useMemo(() => country && country.country === 'CO', [country])
   const isGuiana = useMemo(() => country && country.country === 'GU', [country])
   const isSuriname = useMemo(() => country && country.country === 'SU', [country])
+  const isBolivia = useMemo(() => country && country.country === 'BO', [country])
 
   const getDistrictData = useCallback(
     (id: number): any => {
@@ -56,9 +58,12 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
           (departamento) => departamento.id === id
         )
         return data[0]
-      } else {
-        return {}
-      }
+      } else if (isBolivia) {
+        const data = municipiosBolivia.filter(
+          municipio => municipio.id === id
+        )
+        return data
+      } else return {}
     },
     [isBrazil, isPeru, isEquador, isColombia, isGuiana, isSuriname]
   )
@@ -78,7 +83,15 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
             dataDistrict.push(m)
           }
         })
-      } else {
+      } else if (isBolivia){
+        municipiosBolivia.forEach((m) => {
+          if (m.Departamento === uf) {
+            dataDistrict.push(m)
+          }
+        })
+      }
+      
+      else {
         console.log('aqui tbm')
         MunicipiosReferencia.forEach((m) => {
           if (m.microrregiao.mesorregiao.UF.id === uf) {
@@ -191,6 +204,18 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
       if (initialState && initialState.district) {
         initialState.district(districttsFilter[0])
       }
+    } else if (isBolivia) {
+      const dataDistrict: any[] = []
+      municipiosBolivia.forEach((m) => {
+        if (m.Departamento === 1) {
+          dataDistrict.push(m)
+        }
+      })
+      const districttsFilter = getDistrict(dataDistrict)
+      setDistrict(districttsFilter)
+      if (initialState && initialState.district) {
+        initialState.district(districttsFilter[0])
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrazil, isPeru, isEquador, isColombia, isGuiana, isSuriname])
@@ -211,6 +236,7 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
     isColombia,
     isGuiana,
     isSuriname,
+    isBolivia,
     district,
     getDistrictForState,
     getDistrictData,

@@ -12,8 +12,8 @@ interface ProviderProps {
 export type languageTypes = 'pt_BR' | 'en_US' | 'es_ES' | string
 
 export interface CountryProps {
-  country: 'BR' | 'EC' | 'PE' | 'CO' | 'GU' | 'SU'
-  label: 'Brasil' | 'Ecuador' | 'Perú' | 'Colombia' | 'Guiana' | 'Suriname'
+  country: 'BR' | 'EC' | 'PE' | 'CO' | 'GU' | 'SU' | 'BO'
+  label: 'Brasil' | 'Ecuador' | 'Perú' | 'Colombia' | 'Guiana' | 'Suriname' | 'Bolivia'
 }
 
 export interface ResultsProps {

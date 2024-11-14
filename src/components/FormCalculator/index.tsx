@@ -17,6 +17,7 @@ import {
 import stateBrazil from '@/mocks/state.json'
 import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
+import stateBolivia from '@/mocks/stateBolivia.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
@@ -46,7 +47,8 @@ const CountryDictionary = {
     'PE': 'Perú',
     'CO': 'Colômbia',
     'GU': 'Guiana',
-    'SU': 'Suriname'
+    'SU': 'Suriname',
+    'BO': 'Bolívia'
   },
   'en_US' : {
     'BR': 'Brazil',
@@ -54,7 +56,8 @@ const CountryDictionary = {
     'PE': 'Peru',
     'CO': 'Colombia',
     'GU': 'Guiana',
-    'SU': 'Suriname'
+    'SU': 'Suriname',
+    'BO': 'Bolivia'
   },
   'es_ES' : {
     'BR': 'Brasil',
@@ -62,7 +65,8 @@ const CountryDictionary = {
     'PE': 'Perú',
     'CO': 'Colombia',
     'GU': 'Guayana',
-    'SU': 'Surinam'
+    'SU': 'Surinam',
+    'BO': 'Bolivia'
   }
 }
 
@@ -78,6 +82,7 @@ export default function FormCalculator() {
     isEquador,
     isGuiana,
     isSuriname,
+    isBolivia,
     district: districtList,
     currentCountry: country,
     getDistrictForState
@@ -181,6 +186,8 @@ export default function FormCalculator() {
       setStateListForCountry(statePeru)
     } else if (isEquador) {
       setStateListForCountry(stateEquador)
+    } else if (isBolivia) {
+      setStateListForCountry(stateBolivia)
     }
   }, [isBrazil, isPeru, isEquador])
 
@@ -315,7 +322,7 @@ export default function FormCalculator() {
       </S.FormControlKnowRegion>
 
       {knowRegion_field === knowRegionTypes.YES ? (
-        isBrazil || isPeru || isEquador ? (
+        isBrazil || isPeru || isEquador || isBolivia ? (
           <>
             <S.FormControlState>
               <label>{stateName}</label>
