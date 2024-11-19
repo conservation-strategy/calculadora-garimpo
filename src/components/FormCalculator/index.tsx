@@ -126,6 +126,7 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
+  const motor_power = watch('motorPower')
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -155,8 +156,11 @@ export default function FormCalculator() {
           setValue('motorPower', '130')
         } else if (findCountry[0].country === 'CO') {
           setValue('motorPower', '100')
+        } else if(findCountry[0].country === 'BO') {
+          setValue('motorPower', '120')
         }
       }
+      // console.log('motorPower', motor_power)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country_field])
@@ -173,6 +177,8 @@ export default function FormCalculator() {
           setValue('motorPower', '130')
         } else if (findCountry.country === 'CO') {
           setValue('motorPower', '100')
+        } else if (findCountry.country === 'BO') {
+          setValue('motorPower', '120')
         }
       }
     }
