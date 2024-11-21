@@ -16,6 +16,9 @@ export const FormControlCountry = styled(FormControl)`
 export const FormControlKnowRegion = styled(FormControl)`
   grid-area: knowRegion;
 `
+export const FormControlProtectedArea = styled(FormControl)`
+  grid-area: isProtectedArea;
+`
 export const FormControlState = styled(FormControl)`
   grid-area: state;
 `

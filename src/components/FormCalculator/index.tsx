@@ -24,6 +24,7 @@ import { event as gaEvent } from "nextjs-google-analytics";
 
 export interface FormInputs {
   knowRegion: string
+  isProtectedArea: '0' | '1'
   country: string
   state: string
   district: string
@@ -126,7 +127,10 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
-  const motor_power = watch('motorPower')
+  // const motor_power = watch('motorPower')
+  const protected_area = watch('isProtectedArea');
+
+  console.log('protected area', Number(protected_area) ? 'yes' : 'no', protected_area)
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -290,6 +294,26 @@ export default function FormCalculator() {
     )
   }
 
+  let FormControlProtectedArea = null
+
+  if(
+    country?.country === 'BO' && 
+    knowRegion_field === knowRegionTypes.YES
+  ) {
+    FormControlProtectedArea = (
+      <S.FormControlProtectedArea>
+        <label>{form.isProtectedArea.label}</label>
+        <SG.Select {...register('isProtectedArea')}>
+          {form.isProtectedArea.options.map((opt) => (
+            <option key={opt.text} value={opt.value}>
+              {opt.text}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlProtectedArea>      
+    )
+  }
+
   const formControlCityStyles = isMobile
     ? undefined
     : { gridArea: 'knowRegion', marginTop: '115px', marginBottom: '-15px' }
@@ -326,6 +350,8 @@ export default function FormCalculator() {
           ))}
         </SG.Select>
       </S.FormControlKnowRegion>
+
+      {FormControlProtectedArea}
 
       {knowRegion_field === knowRegionTypes.YES ? (
         isBrazil || isPeru || isEquador || isBolivia ? (

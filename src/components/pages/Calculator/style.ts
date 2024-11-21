@@ -63,6 +63,7 @@ export const Form = styled.form`
   grid-template-areas:
     'country'
     'knowRegion'
+    'isProtectedArea'
     'state'
     'city'
     'typeMIning'
@@ -79,7 +80,7 @@ export const Form = styled.form`
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       'country country country country'
-      'knowRegion knowRegion knowRegion knowRegion'
+      'knowRegion knowRegion isProtectedArea isProtectedArea'
       'state state city city'
       'typeMIning typeMIning typeMIning typeMIning'
       'retort retort retort retort'
