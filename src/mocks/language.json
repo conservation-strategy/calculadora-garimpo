@@ -339,6 +339,19 @@
               }
             ]
           },
+          "isProtectedArea": {
+            "label": "Impacto dentro de área protegida?",
+            "options": [
+              {
+                "text": "Não",
+                "value": 0
+              },
+              {
+                "text": "Sim",
+                "value": 1
+              }
+            ]
+          },
           "state": {
             "stateBrasil": "UF",
             "statePeru": "Departamento",
@@ -1432,6 +1445,19 @@
               {
                 "text": "Impactos generales medios",
                 "value": 2
+              }
+            ]
+          },
+          "isProtectedArea": {
+            "label": "¿Impactos dentro de un área protegida?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Sí",
+                "value": 1
               }
             ]
           },
@@ -2529,6 +2555,19 @@
               {
                 "text": "Average General Impacts",
                 "value": 2
+              }
+            ]
+          },
+          "isProtectedArea": {
+            "label": "Impacts within protected area?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Yes",
+                "value": 1
               }
             ]
           },
