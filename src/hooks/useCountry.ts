@@ -62,7 +62,7 @@ export default function useCountry({ initialState }: useCountryProps = {}) {
         const data = municipiosBolivia.filter(
           municipio => municipio.id === id
         )
-        return data
+        return data[0]
       } else return {}
     },
     [isBrazil, isPeru, isEquador, isColombia, isGuiana, isSuriname]

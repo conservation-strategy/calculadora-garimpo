@@ -116,6 +116,11 @@ interface WoodAndNonWoodProductsProps {
   discountRate: number
 }
 
+interface ProtecAreaMultiplier {
+  value: number
+}
+
+
 interface fixedValuesProps {
   general: generalProps | null
   carbon: CarbonProps | null
@@ -131,6 +136,7 @@ interface fixedValuesProps {
   soilMercuryRemediation: SoilMercuryRemediationProps | null
   hypertension: HypertensionProps | null
   woodAndNonWoodProducts: WoodAndNonWoodProductsProps | null
+  protectedAreaMultiplier: ProtecAreaMultiplier | null
 }
 
 export default function useFixedCalculator() {
@@ -152,7 +158,8 @@ export default function useFixedCalculator() {
     heartAttack: null,
     soilMercuryRemediation: null,
     hypertension: null,
-    woodAndNonWoodProducts: null
+    woodAndNonWoodProducts: null,
+    protectedAreaMultiplier: null
   }
 
   /************************
@@ -264,6 +271,10 @@ export default function useFixedCalculator() {
     costPMNMPerHaYearUSD: 152.8,
     discountRate: 0.03
   }
+
+  const protectedAreaMultiplier = {
+    value: 1
+  };
 
   if (isPeru) {
     general.speciesForZero = 105
@@ -525,6 +536,8 @@ export default function useFixedCalculator() {
     woodAndNonWoodProducts.costPMNMPerHaYearUSD = 119.81
     woodAndNonWoodProducts.discountRate = 0.03
   } else if (isBolivia) {
+    protectedAreaMultiplier.value = 1.38
+
     general.speciesForZero = 162
     general.GDPperCapitaBrazilUSD = 3701 /** */
     general.celciusTemperature = 24 /** */
@@ -627,7 +640,8 @@ export default function useFixedCalculator() {
     lossQI,
     neuroSymptomsGarimpeiro,
     recoverOfTopSoll,
-    soilMercuryRemediation
+    soilMercuryRemediation,
+    protectedAreaMultiplier
   }
 
   return fixedValues

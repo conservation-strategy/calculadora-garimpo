@@ -130,7 +130,7 @@ export default function FormCalculator() {
   // const motor_power = watch('motorPower')
   const protected_area = watch('isProtectedArea');
 
-  console.log('protected area', Number(protected_area) ? 'yes' : 'no', protected_area)
+  // console.log('protected area', Number(protected_area) ? 'yes' : 'no', protected_area)
 
   useEffect(() => {
     const value = Number(typeMiningValue)
