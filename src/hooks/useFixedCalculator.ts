@@ -560,7 +560,7 @@ export default function useFixedCalculator() {
     general.urbanindividualWeight = 68 /** */
     general.levelMediumContaminationFish = 0.119 /** */
     general.AverageFishConsumptionPerDayInRuralGrams = 107.9 /** */
-    general.consumptionMediumFishByDayInGramsUrban = 2.97 /** */
+    general.consumptionMediumFishByDayInGramsUrban = 30 /**era 2.97 */
     general.densityPopulationalRegionNorth2060 = 0.39 /** */
     general.excavatorHoursDays = 10 /** */
     general.excavatorCostPerKMUSD = 0.76
