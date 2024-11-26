@@ -9,7 +9,7 @@ import MunicipiosCalculadora from '@/mocks/municipios_calculadora.json'
 import MunicipiosReferencia from '@/mocks/municipios_referencia.json'
 import provinciasPeru from '@/mocks/provinciasPeru.json'
 import stateBrazil from '@/mocks/state.json'
-import municipiosBolivia from '@/mocks/municipioBolivia.json'
+import municipiosBolivia from '@/mocks/municipiosBolivia.json';
 
 interface useCountryProps {
   initialState?: {

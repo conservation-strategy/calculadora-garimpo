@@ -7,349 +7,349 @@
         "densidadePop2060": 405.790154152163,
         "PopUrbMunicipio": 0.99,
         "PopRuralMunicipio": 0.01,
-        "Distancia_Garimpo_Centro": 18.366901880976,
-        "Especies_por_Municipio": 1215.467341
+        "Distancia_Garimpo_Centro": 7.18641718641719,
+        "Especies_por_Municipio": 291
     },
     {
         "id": 20102,
         "Departamento": 1,
         "nome": "Palca",
-        "densidadePop2010": 23.7041499330656,
+        "densidadePop2010": 23.7,
         "densidadePop2060": 23.7041499330656,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 47.2837534179687,
-        "Especies_por_Municipio": 777.996542
+        "Distancia_Garimpo_Centro": -0.0554400554400554,
+        "Especies_por_Municipio": 170
     },
     {
         "id": 20201,
         "Departamento": 1,
         "nome": "Achacachi",
-        "densidadePop2010": 65.1740331491713,
+        "densidadePop2010": 65.2,
         "densidadePop2060": 65.1740331491713,
         "PopUrbMunicipio": 0.202,
         "PopRuralMunicipio": 0.798,
-        "Distancia_Garimpo_Centro": 30.2772531458731,
-        "Especies_por_Municipio": 310.656898
+        "Distancia_Garimpo_Centro": -0.949410949410949,
+        "Especies_por_Municipio": 41
     },
     {
         "id": 20202,
         "Departamento": 1,
         "nome": "Ancoraimes",
-        "densidadePop2010": 38.9818181818182,
+        "densidadePop2010": 39,
         "densidadePop2060": 38.9818181818182,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 33.9834946289063,
-        "Especies_por_Municipio": 418.837952
+        "Distancia_Garimpo_Centro": -0.741510741510742,
+        "Especies_por_Municipio": 71
     },
     {
         "id": 20402,
         "Departamento": 1,
         "nome": "Mocomoco",
-        "densidadePop2010": 30.4041353383459,
+        "densidadePop2010": 30.4,
         "densidadePop2060": 30.4041353383459,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 15.0389855947107,
-        "Especies_por_Municipio": 482.23016
+        "Distancia_Garimpo_Centro": -0.623700623700624,
+        "Especies_por_Municipio": 88
     },
     {
         "id": 20403,
         "Departamento": 1,
         "nome": "Puerto Carabuco",
-        "densidadePop2010": 33.4192771084337,
+        "densidadePop2010": 33.4,
         "densidadePop2060": 33.4192771084337,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 26.1027702570735,
-        "Especies_por_Municipio": 404.38655
+        "Distancia_Garimpo_Centro": -0.769230769230769,
+        "Especies_por_Municipio": 67
     },
     {
         "id": 20501,
         "Departamento": 1,
         "nome": "Chuma",
-        "densidadePop2010": 18.7287853577371,
+        "densidadePop2010": 18.7,
         "densidadePop2060": 18.7287853577371,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 11.4696584883256,
-        "Especies_por_Municipio": 918.769319
+        "Distancia_Garimpo_Centro": 0.214830214830215,
+        "Especies_por_Municipio": 209
     },
     {
         "id": 20502,
         "Departamento": 1,
         "nome": "Ayata",
-        "densidadePop2010": 12.9167904903418,
+        "densidadePop2010": 12.9,
         "densidadePop2060": 12.9167904903418,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 0.126303031132139,
-        "Especies_por_Municipio": 1330.402459
+        "Distancia_Garimpo_Centro": 1.004851004851,
+        "Especies_por_Municipio": 323
     },
     {
         "id": 20503,
         "Departamento": 1,
         "nome": "Aucapata",
-        "densidadePop2010": 23.7489711934156,
+        "densidadePop2010": 23.7,
         "densidadePop2060": 23.7489711934156,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 0.310192236612009,
-        "Especies_por_Municipio": 1207.387402
+        "Distancia_Garimpo_Centro": 0.769230769230769,
+        "Especies_por_Municipio": 289
     },
     {
         "id": 20601,
         "Departamento": 1,
         "nome": "Sorata",
-        "densidadePop2010": 12.8589047853971,
+        "densidadePop2010": 12.9,
         "densidadePop2060": 12.8589047853971,
         "PopUrbMunicipio": 0.119,
         "PopRuralMunicipio": 0.881,
-        "Distancia_Garimpo_Centro": 8.82637583818107,
-        "Especies_por_Municipio": 893.429678
+        "Distancia_Garimpo_Centro": 0.166320166320166,
+        "Especies_por_Municipio": 202
     },
     {
         "id": 20602,
         "Departamento": 1,
         "nome": "Guanay",
-        "densidadePop2010": 4.01781681304893,
+        "densidadePop2010": 4,
         "densidadePop2060": 4.01781681304893,
         "PopUrbMunicipio": 0.282,
         "PopRuralMunicipio": 0.718,
-        "Distancia_Garimpo_Centro": 3.40175461222331,
-        "Especies_por_Municipio": 1674.515261
+        "Distancia_Garimpo_Centro": 1.67013167013167,
+        "Especies_por_Municipio": 419
     },
     {
         "id": 20603,
         "Departamento": 1,
         "nome": "Tacacoma",
-        "densidadePop2010": 10.8419117647059,
+        "densidadePop2010": 10.8,
         "densidadePop2060": 10.8419117647059,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 0.0936770947600062,
-        "Especies_por_Municipio": 1855.368629
+        "Distancia_Garimpo_Centro": 2.01663201663202,
+        "Especies_por_Municipio": 469
     },
     {
         "id": 20604,
         "Departamento": 1,
         "nome": "Quiabaya",
-        "densidadePop2010": 19.7014925373134,
+        "densidadePop2010": 19.7,
         "densidadePop2060": 19.7014925373134,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 4.90656951719342,
-        "Especies_por_Municipio": 1032.358398
+        "Distancia_Garimpo_Centro": 0.436590436590437,
+        "Especies_por_Municipio": 241
     },
     {
         "id": 20605,
         "Departamento": 1,
         "nome": "Combaya",
-        "densidadePop2010": 40.6060606060606,
+        "densidadePop2010": 40.6,
         "densidadePop2060": 40.6060606060606,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 19.07728515625,
-        "Especies_por_Municipio": 758.10951
+        "Distancia_Garimpo_Centro": -0.0900900900900901,
+        "Especies_por_Municipio": 165
     },
     {
         "id": 20606,
         "Departamento": 1,
         "nome": "Tipuani",
-        "densidadePop2010": 34.5993377483444,
+        "densidadePop2010": 34.6,
         "densidadePop2060": 34.5993377483444,
         "PopUrbMunicipio": 0.246,
         "PopRuralMunicipio": 0.754,
-        "Distancia_Garimpo_Centro": 0.803603479173448,
-        "Especies_por_Municipio": 2053.040685
+        "Distancia_Garimpo_Centro": 2.3977823977824,
+        "Especies_por_Municipio": 524
     },
     {
         "id": 20607,
         "Departamento": 1,
         "nome": "Mapiri",
-        "densidadePop2010": 10.0978925900748,
+        "densidadePop2010": 10.1,
         "densidadePop2060": 10.0978925900748,
         "PopUrbMunicipio": 0.432,
         "PopRuralMunicipio": 0.568,
-        "Distancia_Garimpo_Centro": 0,
-        "Especies_por_Municipio": 1944.184402
+        "Distancia_Garimpo_Centro": 2.18988218988219,
+        "Especies_por_Municipio": 494
     },
     {
         "id": 20608,
         "Departamento": 1,
         "nome": "Teoponte",
-        "densidadePop2010": 7.26570397111913,
+        "densidadePop2010": 7.3,
         "densidadePop2060": 7.26570397111913,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 3.69611338417203,
-        "Especies_por_Municipio": 2138.6644
+        "Distancia_Garimpo_Centro": 2.56410256410256,
+        "Especies_por_Municipio": 548
     },
     {
         "id": 20701,
         "Departamento": 1,
         "nome": "Apolo",
-        "densidadePop2010": 1.5710111879142,
+        "densidadePop2010": 1.6,
         "densidadePop2060": 1.5710111879142,
         "PopUrbMunicipio": 0.314,
         "PopRuralMunicipio": 0.686,
-        "Distancia_Garimpo_Centro": 13.4166489385911,
-        "Especies_por_Municipio": 1670.076459
+        "Distancia_Garimpo_Centro": 1.66320166320166,
+        "Especies_por_Municipio": 418
     },
     {
         "id": 20702,
         "Departamento": 1,
         "nome": "Pelechuco",
-        "densidadePop2010": 2.77359968664317,
+        "densidadePop2010": 2.8,
         "densidadePop2060": 2.77359968664317,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 10.0591534658579,
-        "Especies_por_Municipio": 706.983858
+        "Distancia_Garimpo_Centro": -0.194040194040194,
+        "Especies_por_Municipio": 150
     },
     {
         "id": 20905,
         "Departamento": 1,
         "nome": "Cairoma",
-        "densidadePop2010": 19.872029250457,
+        "densidadePop2010": 19.9,
         "densidadePop2060": 19.872029250457,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 53.199388515625,
-        "Especies_por_Municipio": 738.411366
+        "Distancia_Garimpo_Centro": -0.131670131670132,
+        "Especies_por_Municipio": 159
     },
     {
         "id": 21001,
         "Departamento": 1,
         "nome": "Inquisivi",
-        "densidadePop2010": 4.60405937594668,
+        "densidadePop2010": 4.6,
         "densidadePop2060": 4.60405937594668,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 20.7253282487657,
-        "Especies_por_Municipio": 1222.287311
+        "Distancia_Garimpo_Centro": 0.796950796950797,
+        "Especies_por_Municipio": 293
     },
     {
         "id": 21002,
         "Departamento": 1,
         "nome": "Quime",
-        "densidadePop2010": 10.1493212669683,
+        "densidadePop2010": 10.1,
         "densidadePop2060": 10.1493212669683,
         "PopUrbMunicipio": 0.379,
         "PopRuralMunicipio": 0.621,
-        "Distancia_Garimpo_Centro": 35.5892431640625,
-        "Especies_por_Municipio": 806.991029
+        "Distancia_Garimpo_Centro": 0,
+        "Especies_por_Municipio": 178
     },
     {
         "id": 21003,
         "Departamento": 1,
         "nome": "Cajuata",
-        "densidadePop2010": 12.5721596724667,
+        "densidadePop2010": 12.6,
         "densidadePop2060": 12.5721596724667,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 14.8347768035239,
-        "Especies_por_Municipio": 1832.900995
+        "Distancia_Garimpo_Centro": 1.97505197505197,
+        "Especies_por_Municipio": 463
     },
     {
         "id": 21004,
         "Departamento": 1,
         "nome": "Colquiri",
-        "densidadePop2010": 19.5084269662921,
+        "densidadePop2010": 19.5,
         "densidadePop2060": 19.5084269662921,
         "PopUrbMunicipio": 0.304,
         "PopRuralMunicipio": 0.696,
-        "Distancia_Garimpo_Centro": 72.7425898844401,
-        "Especies_por_Municipio": 303.721535
+        "Distancia_Garimpo_Centro": -0.963270963270963,
+        "Especies_por_Municipio": 39
     },
     {
         "id": 21005,
         "Departamento": 1,
         "nome": "Ichoca",
-        "densidadePop2010": 9.76429404900817,
+        "densidadePop2010": 9.8,
         "densidadePop2060": 9.76429404900817,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 56.00865234375,
-        "Especies_por_Municipio": 339.405685
+        "Distancia_Garimpo_Centro": -0.893970893970894,
+        "Especies_por_Municipio": 49
     },
     {
         "id": 21006,
         "Departamento": 1,
         "nome": "Licoma (Villa Libertad)",
-        "densidadePop2010": 38.5364238410596,
+        "densidadePop2010": 38.5,
         "densidadePop2060": 38.5364238410596,
         "PopUrbMunicipio": 0.426,
         "PopRuralMunicipio": 0.574,
-        "Distancia_Garimpo_Centro": 21.9695365439967,
-        "Especies_por_Municipio": 1320.854177
+        "Distancia_Garimpo_Centro": 0.990990990990991,
+        "Especies_por_Municipio": 321
     },
     {
         "id": 21101,
         "Departamento": 1,
         "nome": "Chulumani",
-        "densidadePop2010": 75.0659722222222,
+        "densidadePop2010": 75.1,
         "densidadePop2060": 75.0659722222222,
         "PopUrbMunicipio": 0.116,
         "PopRuralMunicipio": 0.884,
-        "Distancia_Garimpo_Centro": 10.4873440781745,
-        "Especies_por_Municipio": 2037.327078
+        "Distancia_Garimpo_Centro": 2.36313236313236,
+        "Especies_por_Municipio": 519
     },
     {
         "id": 21102,
         "Departamento": 1,
         "nome": "Irupana",
-        "densidadePop2010": 13.8546886184681,
+        "densidadePop2010": 13.9,
         "densidadePop2060": 13.8546886184681,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 18.3154447955588,
-        "Especies_por_Municipio": 1460.082329
+        "Distancia_Garimpo_Centro": 1.25433125433125,
+        "Especies_por_Municipio": 359
     },
     {
         "id": 21103,
         "Departamento": 1,
         "nome": "Yanacachi",
-        "densidadePop2010": 14.0703259005146,
+        "densidadePop2010": 14.1,
         "densidadePop2060": 14.0703259005146,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 15.3488873883929,
-        "Especies_por_Municipio": 1210.799297
+        "Distancia_Garimpo_Centro": 0.776160776160776,
+        "Especies_por_Municipio": 290
     },
     {
         "id": 21104,
         "Departamento": 1,
         "nome": "Palos Blancos",
-        "densidadePop2010": 6.99061277705346,
+        "densidadePop2010": 7,
         "densidadePop2060": 6.99061277705346,
         "PopUrbMunicipio": 0.222,
         "PopRuralMunicipio": 0.778,
-        "Distancia_Garimpo_Centro": 8.42906399429985,
-        "Especies_por_Municipio": 1950.290256
+        "Distancia_Garimpo_Centro": 2.1968121968122,
+        "Especies_por_Municipio": 495
     },
     {
         "id": 21105,
         "Departamento": 1,
         "nome": "La Asunta",
-        "densidadePop2010": 14.9470732562215,
+        "densidadePop2010": 14.9,
         "densidadePop2060": 14.9470732562215,
         "PopUrbMunicipio": 0.059,
         "PopRuralMunicipio": 0.941,
-        "Distancia_Garimpo_Centro": 2.79918534486559,
-        "Especies_por_Municipio": 1848.230575
+        "Distancia_Garimpo_Centro": 2.002772002772,
+        "Especies_por_Municipio": 467
     },
     {
         "id": 21401,
         "Departamento": 1,
         "nome": "Coroico",
-        "densidadePop2010": 18.8786496350365,
+        "densidadePop2010": 18.9,
         "densidadePop2060": 18.8786496350365,
         "PopUrbMunicipio": 0.121,
         "PopRuralMunicipio": 0.879,
-        "Distancia_Garimpo_Centro": 2.44128513122023,
-        "Especies_por_Municipio": 1970.269752
+        "Distancia_Garimpo_Centro": 2.23839223839224,
+        "Especies_por_Municipio": 501
     },
     {
         "id": 21402,
@@ -359,920 +359,920 @@
         "densidadePop2060": 27,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 8.7562981151234,
-        "Especies_por_Municipio": 1811.639432
+        "Distancia_Garimpo_Centro": 1.93347193347193,
+        "Especies_por_Municipio": 457
     },
     {
         "id": 21501,
         "Departamento": 1,
         "nome": "Ixiamas",
-        "densidadePop2010": 0.263324215949226,
+        "densidadePop2010": 0.3,
         "densidadePop2060": 0.263324215949226,
         "PopUrbMunicipio": 0.43,
         "PopRuralMunicipio": 0.57,
-        "Distancia_Garimpo_Centro": 78.8615384083014,
-        "Especies_por_Municipio": 1287.968702
+        "Distancia_Garimpo_Centro": 0.928620928620929,
+        "Especies_por_Municipio": 312
     },
     {
         "id": 21502,
         "Departamento": 1,
         "nome": "San Buenaventura",
-        "densidadePop2010": 3.30987394957983,
+        "densidadePop2010": 3.3,
         "densidadePop2060": 3.30987394957983,
         "PopUrbMunicipio": 0.396,
         "PopRuralMunicipio": 0.604,
-        "Distancia_Garimpo_Centro": 78.1594533843994,
-        "Especies_por_Municipio": 1489.827379
+        "Distancia_Garimpo_Centro": 1.31670131670132,
+        "Especies_por_Municipio": 368
     },
     {
         "id": 21601,
         "Departamento": 1,
         "nome": "Charazani (Gral.Perez)",
-        "densidadePop2010": 5.19537572254335,
+        "densidadePop2010": 5.2,
         "densidadePop2060": 5.19537572254335,
         "PopUrbMunicipio": 0.254,
         "PopRuralMunicipio": 0.746,
-        "Distancia_Garimpo_Centro": 0.491611434936523,
-        "Especies_por_Municipio": 1448.778967
+        "Distancia_Garimpo_Centro": 1.23354123354123,
+        "Especies_por_Municipio": 356
     },
     {
         "id": 21602,
         "Departamento": 1,
         "nome": "Curva",
-        "densidadePop2010": 6.24584717607973,
+        "densidadePop2010": 6.2,
         "densidadePop2060": 6.24584717607973,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 4.97451963297526,
-        "Especies_por_Municipio": 575.49811
+        "Distancia_Garimpo_Centro": -0.443520443520444,
+        "Especies_por_Municipio": 114
     },
     {
         "id": 22001,
         "Departamento": 1,
         "nome": "Caranavi",
-        "densidadePop2010": 34.1106870229008,
+        "densidadePop2010": 34.1,
         "densidadePop2060": 34.1106870229008,
         "PopUrbMunicipio": 0.264,
         "PopRuralMunicipio": 0.736,
-        "Distancia_Garimpo_Centro": 6.04619821293339,
-        "Especies_por_Municipio": 1975.530851
+        "Distancia_Garimpo_Centro": 2.24532224532225,
+        "Especies_por_Municipio": 502
     },
     {
         "id": 22002,
         "Departamento": 1,
         "nome": "Alto Beni",
-        "densidadePop2010": 11.4801136363636,
+        "densidadePop2010": 11.5,
         "densidadePop2060": 11.4801136363636,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 6.00000881702115,
-        "Especies_por_Municipio": 1985.613876
+        "Distancia_Garimpo_Centro": 2.26611226611227,
+        "Especies_por_Municipio": 505
     },
     {
         "id": 30301,
         "Departamento": 2,
         "nome": "Independencia",
-        "densidadePop2010": 16.3265573770492,
+        "densidadePop2010": 16.3,
         "densidadePop2060": 16.3265573770492,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 48.4085865142617,
-        "Especies_por_Municipio": 848.978208
+        "Distancia_Garimpo_Centro": 0.0831600831600832,
+        "Especies_por_Municipio": 190
     },
     {
         "id": 30302,
         "Departamento": 2,
         "nome": "Morochata",
-        "densidadePop2010": 17.8205479452055,
+        "densidadePop2010": 17.8,
         "densidadePop2060": 17.8205479452055,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 45.7029208223417,
-        "Especies_por_Municipio": 610.379427
+        "Distancia_Garimpo_Centro": -0.374220374220374,
+        "Especies_por_Municipio": 124
     },
     {
         "id": 30303,
         "Departamento": 2,
         "nome": "Cocapata",
-        "densidadePop2010": 2.86078788728445,
+        "densidadePop2010": 2.9,
         "densidadePop2060": 2.86078788728445,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 12.1668739398578,
-        "Especies_por_Municipio": 1367.247146
+        "Distancia_Garimpo_Centro": 1.08108108108108,
+        "Especies_por_Municipio": 334
     },
     {
         "id": 30901,
         "Departamento": 2,
         "nome": "Quillacollo",
-        "densidadePop2010": 299.752212389381,
+        "densidadePop2010": 299.8,
         "densidadePop2060": 299.752212389381,
         "PopUrbMunicipio": 0.952,
         "PopRuralMunicipio": 0.0479999999999999,
-        "Distancia_Garimpo_Centro": 50.3483008897569,
-        "Especies_por_Municipio": 267.171598
+        "Distancia_Garimpo_Centro": -1.03257103257103,
+        "Especies_por_Municipio": 29
     },
     {
         "id": 30903,
         "Departamento": 2,
         "nome": "Tiquipaya",
-        "densidadePop2010": 189.85878962536,
+        "densidadePop2010": 189.9,
         "densidadePop2060": 189.85878962536,
         "PopUrbMunicipio": 0.918,
         "PopRuralMunicipio": 0.0820000000000001,
-        "Distancia_Garimpo_Centro": 44.8561106487772,
-        "Especies_por_Municipio": 284.306388
+        "Distancia_Garimpo_Centro": -1.004851004851,
+        "Especies_por_Municipio": 33
     },
     {
         "id": 31001,
         "Departamento": 2,
         "nome": "Sacaba",
-        "densidadePop2010": 295.074858757062,
+        "densidadePop2010": 295.1,
         "densidadePop2060": 295.074858757062,
         "PopUrbMunicipio": 0.87,
         "PopRuralMunicipio": 0.13,
-        "Distancia_Garimpo_Centro": 64.3647129321809,
-        "Especies_por_Municipio": 320.20495
+        "Distancia_Garimpo_Centro": -0.935550935550936,
+        "Especies_por_Municipio": 43
     },
     {
         "id": 31002,
         "Departamento": 2,
         "nome": "Colomi",
-        "densidadePop2010": 39.8477876106195,
+        "densidadePop2010": 39.8,
         "densidadePop2060": 39.8477876106195,
         "PopUrbMunicipio": 0.203,
         "PopRuralMunicipio": 0.797,
-        "Distancia_Garimpo_Centro": 54.9614855213994,
-        "Especies_por_Municipio": 685.973123
+        "Distancia_Garimpo_Centro": -0.228690228690229,
+        "Especies_por_Municipio": 145
     },
     {
         "id": 31003,
         "Departamento": 2,
         "nome": "Villa Tunari",
-        "densidadePop2010": 5.53249563699826,
+        "densidadePop2010": 5.5,
         "densidadePop2060": 5.53249563699826,
         "PopUrbMunicipio": 0.122,
         "PopRuralMunicipio": 0.878,
-        "Distancia_Garimpo_Centro": 60.6083261520899,
-        "Especies_por_Municipio": 1332.919602
+        "Distancia_Garimpo_Centro": 1.01178101178101,
+        "Especies_por_Municipio": 324
     },
     {
         "id": 31101,
         "Departamento": 2,
         "nome": "Tapacari",
-        "densidadePop2010": 15.5360576923077,
+        "densidadePop2010": 15.5,
         "densidadePop2060": 15.5360576923077,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 82.3172255642362,
-        "Especies_por_Municipio": 275.823779
+        "Distancia_Garimpo_Centro": -1.01871101871102,
+        "Especies_por_Municipio": 31
     },
     {
         "id": 31201,
         "Departamento": 2,
         "nome": "Totora",
-        "densidadePop2010": 7.95785616124599,
+        "densidadePop2010": 8,
         "densidadePop2060": 7.95785616124599,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 143.594026909722,
-        "Especies_por_Municipio": 1034.147921
+        "Distancia_Garimpo_Centro": 0.436590436590437,
+        "Especies_por_Municipio": 241
     },
     {
         "id": 31202,
         "Departamento": 2,
         "nome": "Pojo",
-        "densidadePop2010": 4.31071576334299,
+        "densidadePop2010": 4.3,
         "densidadePop2060": 4.31071576334299,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 169.62391578125,
-        "Especies_por_Municipio": 1198.43961
+        "Distancia_Garimpo_Centro": 0.755370755370755,
+        "Especies_por_Municipio": 287
     },
     {
         "id": 31203,
         "Departamento": 2,
         "nome": "Pocona",
-        "densidadePop2010": 12.9220779220779,
+        "densidadePop2010": 12.9,
         "densidadePop2060": 12.9220779220779,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 126.014066308594,
-        "Especies_por_Municipio": 567.015404
+        "Distancia_Garimpo_Centro": -0.457380457380457,
+        "Especies_por_Municipio": 112
     },
     {
         "id": 31204,
         "Departamento": 2,
         "nome": "Chimore",
-        "densidadePop2010": 9.6427289048474,
+        "densidadePop2010": 9.6,
         "densidadePop2060": 9.6427289048474,
         "PopUrbMunicipio": 0.288,
         "PopRuralMunicipio": 0.712,
-        "Distancia_Garimpo_Centro": 111.03453913762,
-        "Especies_por_Municipio": 1159.66628
+        "Distancia_Garimpo_Centro": 0.679140679140679,
+        "Especies_por_Municipio": 276
     },
     {
         "id": 31205,
         "Departamento": 2,
         "nome": "Puerto Villarroel",
-        "densidadePop2010": 23.1156732891832,
+        "densidadePop2010": 23.1,
         "densidadePop2060": 23.1156732891832,
         "PopUrbMunicipio": 0.279,
         "PopRuralMunicipio": 0.721,
-        "Distancia_Garimpo_Centro": 132.680666022478,
-        "Especies_por_Municipio": 1346.351281
+        "Distancia_Garimpo_Centro": 1.03950103950104,
+        "Especies_por_Municipio": 328
     },
     {
         "id": 31206,
         "Departamento": 2,
         "nome": "Entre Rios (Bulo Bulo)",
-        "densidadePop2010": 17.1063529411765,
+        "densidadePop2010": 17.1,
         "densidadePop2060": 17.1063529411765,
         "PopUrbMunicipio": 0.442,
         "PopRuralMunicipio": 0.558,
-        "Distancia_Garimpo_Centro": 172.482064553571,
-        "Especies_por_Municipio": 1518.321121
+        "Distancia_Garimpo_Centro": 1.36521136521137,
+        "Especies_por_Municipio": 375
     },
     {
         "id": 31601,
         "Departamento": 2,
         "nome": "Tiraque",
-        "densidadePop2010": 10.8319327731092,
+        "densidadePop2010": 10.8,
         "densidadePop2060": 10.8319327731092,
         "PopUrbMunicipio": 0.113,
         "PopRuralMunicipio": 0.887,
-        "Distancia_Garimpo_Centro": 87.4073947368421,
-        "Especies_por_Municipio": 962.413767
+        "Distancia_Garimpo_Centro": 0.297990297990298,
+        "Especies_por_Municipio": 221
     },
     {
         "id": 31602,
         "Departamento": 2,
         "nome": "Shinahota",
-        "densidadePop2010": 32.8780487804878,
+        "densidadePop2010": 32.9,
         "densidadePop2060": 32.8780487804878,
         "PopUrbMunicipio": 0.272,
         "PopRuralMunicipio": 0.728,
-        "Distancia_Garimpo_Centro": 90.3146899414063,
-        "Especies_por_Municipio": 1685.498507
+        "Distancia_Garimpo_Centro": 1.69092169092169,
+        "Especies_por_Municipio": 422
     },
     {
         "id": 70101,
         "Departamento": 3,
         "nome": "Santa Cruz de la Sierra",
-        "densidadePop2010": 1341.4953271028,
+        "densidadePop2010": 1341.5,
         "densidadePop2060": 1341.4953271028,
         "PopUrbMunicipio": 0.992,
         "PopRuralMunicipio": 0.00800000000000001,
-        "Distancia_Garimpo_Centro": 126.348920479911,
-        "Especies_por_Municipio": 952.401575
+        "Distancia_Garimpo_Centro": 0.284130284130284,
+        "Especies_por_Municipio": 219
     },
     {
         "id": 70103,
         "Departamento": 3,
         "nome": "Porongo (Ayacucho)",
-        "densidadePop2010": 17.8689727463312,
+        "densidadePop2010": 17.9,
         "densidadePop2060": 17.8689727463312,
         "PopUrbMunicipio": 0.266,
         "PopRuralMunicipio": 0.734,
-        "Distancia_Garimpo_Centro": 147.312546715561,
-        "Especies_por_Municipio": 1234.151021
+        "Distancia_Garimpo_Centro": 0.824670824670825,
+        "Especies_por_Municipio": 297
     },
     {
         "id": 70104,
         "Departamento": 3,
         "nome": "La Guardia",
-        "densidadePop2010": 184.372406639004,
+        "densidadePop2010": 184.4,
         "densidadePop2060": 184.372406639004,
         "PopUrbMunicipio": 0.886,
         "PopRuralMunicipio": 0.114,
-        "Distancia_Garimpo_Centro": 162.688646484375,
-        "Especies_por_Municipio": 1279.118187
+        "Distancia_Garimpo_Centro": 0.907830907830908,
+        "Especies_por_Municipio": 309
     },
     {
         "id": 70105,
         "Departamento": 3,
         "nome": "El Torno",
-        "densidadePop2010": 65.2556701030928,
+        "densidadePop2010": 65.3,
         "densidadePop2060": 65.2556701030928,
         "PopUrbMunicipio": 0.64,
         "PopRuralMunicipio": 0.36,
-        "Distancia_Garimpo_Centro": 166.824023543074,
-        "Especies_por_Municipio": 1387.555883
+        "Distancia_Garimpo_Centro": 1.11573111573112,
+        "Especies_por_Municipio": 339
     },
     {
         "id": 70201,
         "Departamento": 3,
         "nome": "Warnes",
-        "densidadePop2010": 161.087218045113,
+        "densidadePop2010": 161.1,
         "densidadePop2060": 161.087218045113,
         "PopUrbMunicipio": 0.838,
         "PopRuralMunicipio": 0.162,
-        "Distancia_Garimpo_Centro": 88.0064390811012,
-        "Especies_por_Municipio": 1044.408527
+        "Distancia_Garimpo_Centro": 0.457380457380457,
+        "Especies_por_Municipio": 244
     },
     {
         "id": 70202,
         "Departamento": 3,
         "nome": "Okinawa Uno",
-        "densidadePop2010": 13.4411764705882,
+        "densidadePop2010": 13.4,
         "densidadePop2060": 13.4411764705882,
         "PopUrbMunicipio": 0.513,
         "PopRuralMunicipio": 0.487,
-        "Distancia_Garimpo_Centro": 85.3490564630682,
-        "Especies_por_Municipio": 999.744411
+        "Distancia_Garimpo_Centro": 0.374220374220374,
+        "Especies_por_Municipio": 232
     },
     {
         "id": 70301,
         "Departamento": 3,
         "nome": "San Ignacio de Velasco",
-        "densidadePop2010": 1.27247462542291,
+        "densidadePop2010": 1.3,
         "densidadePop2060": 1.27247462542291,
         "PopUrbMunicipio": 0.442,
         "PopRuralMunicipio": 0.558,
-        "Distancia_Garimpo_Centro": 95.9622798187023,
-        "Especies_por_Municipio": 926.736402
+        "Distancia_Garimpo_Centro": 0.228690228690229,
+        "Especies_por_Municipio": 211
     },
     {
         "id": 70401,
         "Departamento": 3,
         "nome": "Buena Vista",
-        "densidadePop2010": 5.79261862917399,
+        "densidadePop2010": 5.8,
         "densidadePop2060": 5.79261862917399,
         "PopUrbMunicipio": 0.342,
         "PopRuralMunicipio": 0.658,
-        "Distancia_Garimpo_Centro": 147.996624080882,
-        "Especies_por_Municipio": 1458.199422
+        "Distancia_Garimpo_Centro": 1.25433125433125,
+        "Especies_por_Municipio": 359
     },
     {
         "id": 70402,
         "Departamento": 3,
         "nome": "San Carlos",
-        "densidadePop2010": 19.2732463295269,
+        "densidadePop2010": 19.3,
         "densidadePop2060": 19.2732463295269,
         "PopUrbMunicipio": 0.651,
         "PopRuralMunicipio": 0.349,
-        "Distancia_Garimpo_Centro": 149.692148185484,
-        "Especies_por_Municipio": 1331.985646
+        "Distancia_Garimpo_Centro": 1.01178101178101,
+        "Especies_por_Municipio": 324
     },
     {
         "id": 70403,
         "Departamento": 3,
         "nome": "Yapacani",
-        "densidadePop2010": 8.01745817312688,
+        "densidadePop2010": 8,
         "densidadePop2060": 8.01745817312688,
         "PopUrbMunicipio": 0.658,
         "PopRuralMunicipio": 0.342,
-        "Distancia_Garimpo_Centro": 154.290265679254,
-        "Especies_por_Municipio": 1270.697701
+        "Distancia_Garimpo_Centro": 0.893970893970894,
+        "Especies_por_Municipio": 307
     },
     {
         "id": 70404,
         "Departamento": 3,
         "nome": "San Juan de Yapacani",
-        "densidadePop2010": 6.69924812030075,
+        "densidadePop2010": 6.7,
         "densidadePop2060": 6.69924812030075,
         "PopUrbMunicipio": 0.588,
         "PopRuralMunicipio": 0.412,
-        "Distancia_Garimpo_Centro": 134.741732421875,
-        "Especies_por_Municipio": 1282.514573
+        "Distancia_Garimpo_Centro": 0.914760914760915,
+        "Especies_por_Municipio": 310
     },
     {
         "id": 70601,
         "Departamento": 3,
         "nome": "Portachuelo",
-        "densidadePop2010": 18.1387867647059,
+        "densidadePop2010": 18.1,
         "densidadePop2060": 18.1387867647059,
         "PopUrbMunicipio": 0.788,
         "PopRuralMunicipio": 0.212,
-        "Distancia_Garimpo_Centro": 121.169682207661,
-        "Especies_por_Municipio": 1247.94325
+        "Distancia_Garimpo_Centro": 0.845460845460845,
+        "Especies_por_Municipio": 300
     },
     {
         "id": 70602,
         "Departamento": 3,
         "nome": "Santa Rosa del Sara",
-        "densidadePop2010": 5.72657376261413,
+        "densidadePop2010": 5.7,
         "densidadePop2060": 5.72657376261413,
         "PopUrbMunicipio": 0.273,
         "PopRuralMunicipio": 0.727,
-        "Distancia_Garimpo_Centro": 117.728278049699,
-        "Especies_por_Municipio": 1285.680183
+        "Distancia_Garimpo_Centro": 0.921690921690922,
+        "Especies_por_Municipio": 311
     },
     {
         "id": 70901,
         "Departamento": 3,
         "nome": "Samaipata",
-        "densidadePop2010": 5.30094893809309,
+        "densidadePop2010": 5.3,
         "densidadePop2060": 5.30094893809309,
         "PopUrbMunicipio": 0.42,
         "PopRuralMunicipio": 0.58,
-        "Distancia_Garimpo_Centro": 218.061750294811,
-        "Especies_por_Municipio": 1141.778276
+        "Distancia_Garimpo_Centro": 0.644490644490644,
+        "Especies_por_Municipio": 271
     },
     {
         "id": 70902,
         "Departamento": 3,
         "nome": "Pampa Grande",
-        "densidadePop2010": 7.30657439446367,
+        "densidadePop2010": 7.3,
         "densidadePop2060": 7.30657439446367,
         "PopUrbMunicipio": 0.388,
         "PopRuralMunicipio": 0.612,
-        "Distancia_Garimpo_Centro": 223.298999131944,
-        "Especies_por_Municipio": 679.371121
+        "Distancia_Garimpo_Centro": -0.242550242550243,
+        "Especies_por_Municipio": 143
     },
     {
         "id": 70903,
         "Departamento": 3,
         "nome": "Mairana",
-        "densidadePop2010": 14.1598712446352,
+        "densidadePop2010": 14.2,
         "densidadePop2060": 14.1598712446352,
         "PopUrbMunicipio": 0.664,
         "PopRuralMunicipio": 0.336,
-        "Distancia_Garimpo_Centro": 220.005670833333,
-        "Especies_por_Municipio": 1194.98965
+        "Distancia_Garimpo_Centro": 0.748440748440748,
+        "Especies_por_Municipio": 286
     },
     {
         "id": 71002,
         "Departamento": 3,
         "nome": "General Saavedra",
-        "densidadePop2010": 26.2897196261682,
+        "densidadePop2010": 26.3,
         "densidadePop2060": 26.2897196261682,
         "PopUrbMunicipio": 0.371,
         "PopRuralMunicipio": 0.629,
-        "Distancia_Garimpo_Centro": 84.9734330658784,
-        "Especies_por_Municipio": 1213.592673
+        "Distancia_Garimpo_Centro": 0.783090783090783,
+        "Especies_por_Municipio": 291
     },
     {
         "id": 71003,
         "Departamento": 3,
         "nome": "Mineros",
-        "densidadePop2010": 64.1435294117647,
+        "densidadePop2010": 64.1,
         "densidadePop2060": 64.1435294117647,
         "PopUrbMunicipio": 0.789,
         "PopRuralMunicipio": 0.211,
-        "Distancia_Garimpo_Centro": 79.9765930606618,
-        "Especies_por_Municipio": 1214.698437
+        "Distancia_Garimpo_Centro": 0.783090783090783,
+        "Especies_por_Municipio": 291
     },
     {
         "id": 71004,
         "Departamento": 3,
         "nome": "Fernandez Alonso",
-        "densidadePop2010": 25.7581274382315,
+        "densidadePop2010": 25.8,
         "densidadePop2060": 25.7581274382315,
         "PopUrbMunicipio": 0.592,
         "PopRuralMunicipio": 0.408,
-        "Distancia_Garimpo_Centro": 78.0469720394737,
-        "Especies_por_Municipio": 1301.277585
+        "Distancia_Garimpo_Centro": 0.949410949410949,
+        "Especies_por_Municipio": 315
     },
     {
         "id": 71005,
         "Departamento": 3,
         "nome": "San Pedro",
-        "densidadePop2010": 7.72193713919179,
+        "densidadePop2010": 7.7,
         "densidadePop2060": 7.72193713919179,
         "PopUrbMunicipio": 0.388,
         "PopRuralMunicipio": 0.612,
-        "Distancia_Garimpo_Centro": 70.7448017808447,
-        "Especies_por_Municipio": 1374.626457
+        "Distancia_Garimpo_Centro": 1.0949410949411,
+        "Especies_por_Municipio": 336
     },
     {
         "id": 71101,
         "Departamento": 3,
         "nome": "Concepcion",
-        "densidadePop2010": 0.677245997580259,
+        "densidadePop2010": 0.7,
         "densidadePop2060": 0.677245997580259,
         "PopUrbMunicipio": 0.527,
         "PopRuralMunicipio": 0.473,
-        "Distancia_Garimpo_Centro": 34.3339185954349,
-        "Especies_por_Municipio": 1042.232099
+        "Distancia_Garimpo_Centro": 0.45045045045045,
+        "Especies_por_Municipio": 243
     },
     {
         "id": 71103,
         "Departamento": 3,
         "nome": "San Ramon",
-        "densidadePop2010": 18.6646586345382,
+        "densidadePop2010": 18.7,
         "densidadePop2060": 18.6646586345382,
         "PopUrbMunicipio": 0.854,
         "PopRuralMunicipio": 0.146,
-        "Distancia_Garimpo_Centro": 21.8739007670085,
-        "Especies_por_Municipio": 1171.921377
+        "Distancia_Garimpo_Centro": 0.6999306999307,
+        "Especies_por_Municipio": 279
     },
     {
         "id": 71301,
         "Departamento": 3,
         "nome": "Comarapa",
-        "densidadePop2010": 5.97237380627558,
+        "densidadePop2010": 6,
         "densidadePop2060": 5.97237380627558,
         "PopUrbMunicipio": 0.334,
         "PopRuralMunicipio": 0.666,
-        "Distancia_Garimpo_Centro": 207.869650688559,
-        "Especies_por_Municipio": 961.680129
+        "Distancia_Garimpo_Centro": 0.297990297990298,
+        "Especies_por_Municipio": 221
     },
     {
         "id": 71501,
         "Departamento": 3,
         "nome": "Ascencion de Guarayos",
-        "densidadePop2010": 4.14337774740918,
+        "densidadePop2010": 4.1,
         "densidadePop2060": 4.14337774740918,
         "PopUrbMunicipio": 0.738,
         "PopRuralMunicipio": 0.262,
-        "Distancia_Garimpo_Centro": 22.8439965597617,
-        "Especies_por_Municipio": 1116.717554
+        "Distancia_Garimpo_Centro": 0.595980595980596,
+        "Especies_por_Municipio": 264
     },
     {
         "id": 71502,
         "Departamento": 3,
         "nome": "Urubicha",
-        "densidadePop2010": 0.965286293745873,
+        "densidadePop2010": 1,
         "densidadePop2060": 0.965286293745873,
         "PopUrbMunicipio": 0.894,
         "PopRuralMunicipio": 0.106,
-        "Distancia_Garimpo_Centro": 35.3349035644531,
-        "Especies_por_Municipio": 1011.705802
+        "Distancia_Garimpo_Centro": 0.395010395010395,
+        "Especies_por_Municipio": 235
     },
     {
         "id": 71503,
         "Departamento": 3,
         "nome": "El Puente",
-        "densidadePop2010": 2.48710811602696,
+        "densidadePop2010": 2.5,
         "densidadePop2060": 2.48710811602696,
         "PopUrbMunicipio": 0.309,
         "PopRuralMunicipio": 0.691,
-        "Distancia_Garimpo_Centro": 43.9719661576466,
-        "Especies_por_Municipio": 1220.436144
+        "Distancia_Garimpo_Centro": 0.796950796950797,
+        "Especies_por_Municipio": 293
     },
     {
         "id": 80101,
         "Departamento": 4,
         "nome": "Trinidad",
-        "densidadePop2010": 50.9185502727981,
+        "densidadePop2010": 50.9,
         "densidadePop2060": 50.9185502727981,
         "PopUrbMunicipio": 0.953,
         "PopRuralMunicipio": 0.047,
-        "Distancia_Garimpo_Centro": 153.018377757353,
-        "Especies_por_Municipio": 1284.064361
+        "Distancia_Garimpo_Centro": 0.921690921690922,
+        "Especies_por_Municipio": 311
     },
     {
         "id": 80102,
         "Departamento": 4,
         "nome": "San Javier",
-        "densidadePop2010": 0.713802272177907,
+        "densidadePop2010": 4.7,
         "densidadePop2060": 0.713802272177907,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 111.306193855286,
-        "Especies_por_Municipio": 1296.254127
+        "Distancia_Garimpo_Centro": 0.942480942480942,
+        "Especies_por_Municipio": 314
     },
     {
         "id": 80201,
         "Departamento": 4,
         "nome": "Riberalta",
-        "densidadePop2010": 10.3535816035816,
+        "densidadePop2010": 10.4,
         "densidadePop2060": 10.3535816035816,
         "PopUrbMunicipio": 0.885,
         "PopRuralMunicipio": 0.115,
-        "Distancia_Garimpo_Centro": 33.7502107121894,
-        "Especies_por_Municipio": 1321.091353
+        "Distancia_Garimpo_Centro": 0.990990990990991,
+        "Especies_por_Municipio": 321
     },
     {
         "id": 80202,
         "Departamento": 4,
         "nome": "Guayaramerin",
-        "densidadePop2010": 6.7588199513382,
+        "densidadePop2010": 6.8,
         "densidadePop2060": 6.7588199513382,
         "PopUrbMunicipio": 0.856,
         "PopRuralMunicipio": 0.144,
-        "Distancia_Garimpo_Centro": 63.5441984514509,
-        "Especies_por_Municipio": 1332.061686
+        "Distancia_Garimpo_Centro": 1.01178101178101,
+        "Especies_por_Municipio": 324
     },
     {
         "id": 80301,
         "Departamento": 4,
         "nome": "Reyes",
-        "densidadePop2010": 1.14094012398964,
+        "densidadePop2010": 1.1,
         "densidadePop2060": 1.14094012398964,
         "PopUrbMunicipio": 0.544,
         "PopRuralMunicipio": 0.456,
-        "Distancia_Garimpo_Centro": 63.6490221862793,
-        "Especies_por_Municipio": 1153.125051
+        "Distancia_Garimpo_Centro": 0.665280665280665,
+        "Especies_por_Municipio": 274
     },
     {
         "id": 80302,
         "Departamento": 4,
         "nome": "San Borja",
-        "densidadePop2010": 3.28312012939274,
+        "densidadePop2010": 3.3,
         "densidadePop2060": 3.28312012939274,
         "PopUrbMunicipio": 0.543,
         "PopRuralMunicipio": 0.457,
-        "Distancia_Garimpo_Centro": 21.6261948647952,
-        "Especies_por_Municipio": 1581.180991
+        "Distancia_Garimpo_Centro": 1.48995148995149,
+        "Especies_por_Municipio": 393
     },
     {
         "id": 80303,
         "Departamento": 4,
         "nome": "Santa Rosa",
-        "densidadePop2010": 0.849693000409333,
+        "densidadePop2010": 0.8,
         "densidadePop2060": 0.849693000409333,
         "PopUrbMunicipio": 0.499,
         "PopRuralMunicipio": 0.501,
-        "Distancia_Garimpo_Centro": 86.153067887931,
-        "Especies_por_Municipio": 1248.106484
+        "Distancia_Garimpo_Centro": 0.852390852390852,
+        "Especies_por_Municipio": 301
     },
     {
         "id": 80304,
         "Departamento": 4,
         "nome": "Rurrenabaque",
-        "densidadePop2010": 9.83307148468185,
+        "densidadePop2010": 9.8,
         "densidadePop2060": 9.83307148468185,
         "PopUrbMunicipio": 0.7,
         "PopRuralMunicipio": 0.3,
-        "Distancia_Garimpo_Centro": 59.8454967249428,
-        "Especies_por_Municipio": 1616.827421
+        "Distancia_Garimpo_Centro": 1.55925155925156,
+        "Especies_por_Municipio": 403
     },
     {
         "id": 80401,
         "Departamento": 4,
         "nome": "Santa Ana de Yacuma",
-        "densidadePop2010": 0.897516752069373,
+        "densidadePop2010": 0.9,
         "densidadePop2060": 0.897516752069373,
         "PopUrbMunicipio": 0.661,
         "PopRuralMunicipio": 0.339,
-        "Distancia_Garimpo_Centro": 102.062244384766,
-        "Especies_por_Municipio": 1418.616304
+        "Distancia_Garimpo_Centro": 1.17810117810118,
+        "Especies_por_Municipio": 348
     },
     {
         "id": 80402,
         "Departamento": 4,
         "nome": "Exaltacion",
-        "densidadePop2010": 0.261767036450079,
+        "densidadePop2010": 0.3,
         "densidadePop2060": 0.261767036450079,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 133.3415084375,
-        "Especies_por_Municipio": 1301.366639
+        "Distancia_Garimpo_Centro": 0.949410949410949,
+        "Especies_por_Municipio": 315
     },
     {
         "id": 80501,
         "Departamento": 4,
         "nome": "San Ignacio",
-        "densidadePop2010": 1.11592482690406,
+        "densidadePop2010": 1.1,
         "densidadePop2060": 1.11592482690406,
         "PopUrbMunicipio": 0.476,
         "PopRuralMunicipio": 0.524,
-        "Distancia_Garimpo_Centro": 110.020013970588,
-        "Especies_por_Municipio": 1338.009005
+        "Distancia_Garimpo_Centro": 1.01871101871102,
+        "Especies_por_Municipio": 325
     },
     {
         "id": 80601,
         "Departamento": 4,
         "nome": "Loreto",
-        "densidadePop2010": 0.743778801843318,
+        "densidadePop2010": 0.7,
         "densidadePop2060": 0.743778801843318,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 140.82931451057,
-        "Especies_por_Municipio": 1191.8655
+        "Distancia_Garimpo_Centro": 0.741510741510742,
+        "Especies_por_Municipio": 285
     },
     {
         "id": 80602,
         "Departamento": 4,
         "nome": "San Andres",
-        "densidadePop2010": 1.41070862815503,
+        "densidadePop2010": 1.4,
         "densidadePop2060": 1.41070862815503,
         "PopUrbMunicipio": 0.187,
         "PopRuralMunicipio": 0.813,
-        "Distancia_Garimpo_Centro": 117.505095329733,
-        "Especies_por_Municipio": 1278.171456
+        "Distancia_Garimpo_Centro": 0.907830907830908,
+        "Especies_por_Municipio": 309
     },
     {
         "id": 80701,
         "Departamento": 4,
         "nome": "San Joaquin",
-        "densidadePop2010": 0.913824465666212,
+        "densidadePop2010": 0.9,
         "densidadePop2060": 0.913824465666212,
         "PopUrbMunicipio": 0.659,
         "PopRuralMunicipio": 0.341,
-        "Distancia_Garimpo_Centro": 209.427086956522,
-        "Especies_por_Municipio": 1216.963675
+        "Distancia_Garimpo_Centro": 0.79002079002079,
+        "Especies_por_Municipio": 292
     },
     {
         "id": 80702,
         "Departamento": 4,
         "nome": "San Ramon",
-        "densidadePop2010": 0.51157316594743,
+        "densidadePop2010": 18.7,
         "densidadePop2060": 0.51157316594743,
         "PopUrbMunicipio": 0.715,
         "PopRuralMunicipio": 0.285,
-        "Distancia_Garimpo_Centro": 213.550427389706,
-        "Especies_por_Municipio": 1126.301807
+        "Distancia_Garimpo_Centro": 0.616770616770617,
+        "Especies_por_Municipio": 267
     },
     {
         "id": 80703,
         "Departamento": 4,
         "nome": "Puerto Siles",
-        "densidadePop2010": 0.476849642004773,
+        "densidadePop2010": 0.5,
         "densidadePop2060": 0.476849642004773,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 206.958789930556,
-        "Especies_por_Municipio": 1271.5247
+        "Distancia_Garimpo_Centro": 0.893970893970894,
+        "Especies_por_Municipio": 307
     },
     {
         "id": 80801,
         "Departamento": 4,
         "nome": "Magdalena",
-        "densidadePop2010": 0.947196870925685,
+        "densidadePop2010": 0.9,
         "densidadePop2060": 0.947196870925685,
         "PopUrbMunicipio": 0.708,
         "PopRuralMunicipio": 0.292,
-        "Distancia_Garimpo_Centro": 180.600123809814,
-        "Especies_por_Municipio": 931.444382
+        "Distancia_Garimpo_Centro": 0.242550242550243,
+        "Especies_por_Municipio": 213
     },
     {
         "id": 80802,
         "Departamento": 4,
         "nome": "Baures",
-        "densidadePop2010": 0.350266330249509,
+        "densidadePop2010": 0.4,
         "densidadePop2060": 0.350266330249509,
         "PopUrbMunicipio": 0.357,
         "PopRuralMunicipio": 0.643,
-        "Distancia_Garimpo_Centro": 78.1166138102214,
-        "Especies_por_Municipio": 1015.090344
+        "Distancia_Garimpo_Centro": 0.401940401940402,
+        "Especies_por_Municipio": 236
     },
     {
         "id": 80803,
         "Departamento": 4,
         "nome": "Huacaraje",
-        "densidadePop2010": 1.01261061946903,
+        "densidadePop2010": 1,
         "densidadePop2060": 1.01261061946903,
         "PopUrbMunicipio": 0.499,
         "PopRuralMunicipio": 0.501,
-        "Distancia_Garimpo_Centro": 35.3401345880682,
-        "Especies_por_Municipio": 959.374722
+        "Distancia_Garimpo_Centro": 0.291060291060291,
+        "Especies_por_Municipio": 220
     },
     {
         "id": 90101,
         "Departamento": 5,
         "nome": "Cobija",
-        "densidadePop2010": 173.794247787611,
+        "densidadePop2010": 173.8,
         "densidadePop2060": 173.794247787611,
         "PopUrbMunicipio": 0.954,
         "PopRuralMunicipio": 0.0459999999999999,
-        "Distancia_Garimpo_Centro": 11.8120170410156,
-        "Especies_por_Municipio": 1278.913877
+        "Distancia_Garimpo_Centro": 0.907830907830908,
+        "Especies_por_Municipio": 309
     },
     {
         "id": 90102,
         "Departamento": 5,
         "nome": "Porvenir",
-        "densidadePop2010": 10.1734693877551,
+        "densidadePop2010": 10.2,
         "densidadePop2060": 10.1734693877551,
         "PopUrbMunicipio": 0.552,
         "PopRuralMunicipio": 0.448,
-        "Distancia_Garimpo_Centro": 34.5142208226522,
-        "Especies_por_Municipio": 1303.571836
+        "Distancia_Garimpo_Centro": 0.956340956340956,
+        "Especies_por_Municipio": 316
     },
     {
         "id": 90103,
         "Departamento": 5,
         "nome": "Bolpebra (Mukden)",
-        "densidadePop2010": 0.941925218774861,
+        "densidadePop2010": 0.9,
         "densidadePop2060": 0.941925218774861,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 24.0484911193848,
-        "Especies_por_Municipio": 1231.958982
+        "Distancia_Garimpo_Centro": 0.817740817740818,
+        "Especies_por_Municipio": 296
     },
     {
         "id": 90104,
         "Departamento": 5,
         "nome": "Bella Flor",
-        "densidadePop2010": 0.702007205352548,
+        "densidadePop2010": 0.7,
         "densidadePop2060": 0.702007205352548,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 20.6575436391195,
-        "Especies_por_Municipio": 1294.810551
+        "Distancia_Garimpo_Centro": 0.935550935550936,
+        "Especies_por_Municipio": 313
     },
     {
         "id": 90201,
         "Departamento": 5,
         "nome": "Puerto Rico",
-        "densidadePop2010": 1.35280940825089,
+        "densidadePop2010": 1.4,
         "densidadePop2060": 1.35280940825089,
         "PopUrbMunicipio": 0.438,
         "PopRuralMunicipio": 0.562,
-        "Distancia_Garimpo_Centro": 7.99963784907414,
-        "Especies_por_Municipio": 1327.325525
+        "Distancia_Garimpo_Centro": 0.997920997920998,
+        "Especies_por_Municipio": 322
     },
     {
         "id": 90202,
         "Departamento": 5,
         "nome": "San Pedro (Conquista)",
-        "densidadePop2010": 1.26165413533835,
+        "densidadePop2010": 1.3,
         "densidadePop2060": 1.26165413533835,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 11.6322167400784,
-        "Especies_por_Municipio": 1167.208537
+        "Distancia_Garimpo_Centro": 0.693000693000693,
+        "Especies_por_Municipio": 278
     },
     {
         "id": 90203,
         "Departamento": 5,
         "nome": "Filadelfia",
-        "densidadePop2010": 0.518334316783276,
+        "densidadePop2010": 0.5,
         "densidadePop2060": 0.518334316783276,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 28.6525762879508,
-        "Especies_por_Municipio": 1349.88126
+        "Distancia_Garimpo_Centro": 1.04643104643105,
+        "Especies_por_Municipio": 329
     },
     {
         "id": 90301,
         "Departamento": 5,
         "nome": "Puerto Gonzales Moreno",
-        "densidadePop2010": 6.96551724137931,
+        "densidadePop2010": 7,
         "densidadePop2060": 6.96551724137931,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 11.8075877511161,
-        "Especies_por_Municipio": 1279.644483
+        "Distancia_Garimpo_Centro": 0.907830907830908,
+        "Especies_por_Municipio": 309
     },
     {
         "id": 90302,
         "Departamento": 5,
         "nome": "San Lorenzo",
-        "densidadePop2010": 2.7227258518287,
+        "densidadePop2010": 2.7,
         "densidadePop2060": 2.7227258518287,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 18.5433347817445,
-        "Especies_por_Municipio": 1337.411054
+        "Distancia_Garimpo_Centro": 1.01871101871102,
+        "Especies_por_Municipio": 325
     },
     {
         "id": 90303,
         "Departamento": 5,
         "nome": "El Sena",
-        "densidadePop2010": 1.47419061240411,
+        "densidadePop2010": 1.5,
         "densidadePop2060": 1.47419061240411,
         "PopUrbMunicipio": 0.313,
         "PopRuralMunicipio": 0.687,
-        "Distancia_Garimpo_Centro": 30.3363621621054,
-        "Especies_por_Municipio": 1364.444626
+        "Distancia_Garimpo_Centro": 1.07415107415107,
+        "Especies_por_Municipio": 333
     },
     {
         "id": 90401,
         "Departamento": 5,
         "nome": "Santa Rosa del Abuna",
-        "densidadePop2010": 0.639285714285714,
+        "densidadePop2010": 0.6,
         "densidadePop2060": 0.639285714285714,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 10.1127653666178,
-        "Especies_por_Municipio": 1292.686522
+        "Distancia_Garimpo_Centro": 0.935550935550936,
+        "Especies_por_Municipio": 313
     },
     {
         "id": 90402,
         "Departamento": 5,
         "nome": "Ingavi",
-        "densidadePop2010": 0.335827705785727,
+        "densidadePop2010": 0.3,
         "densidadePop2060": 0.335827705785727,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 19.6668446909587,
-        "Especies_por_Municipio": 1251.601314
+        "Distancia_Garimpo_Centro": 0.852390852390852,
+        "Especies_por_Municipio": 301
     },
     {
         "id": 90501,
         "Departamento": 5,
         "nome": "Nuevo Manoa (Nueva Esperanza)",
-        "densidadePop2010": 0.656013001083424,
+        "densidadePop2010": 0.7,
         "densidadePop2060": 0.656013001083424,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 14.3754242675781,
-        "Especies_por_Municipio": 1222.330938
+        "Distancia_Garimpo_Centro": 0.796950796950797,
+        "Especies_por_Municipio": 293
     },
     {
         "id": 90502,
         "Departamento": 5,
         "nome": "Villa Nueva (Loma Alta)",
-        "densidadePop2010": 1.12478093235191,
+        "densidadePop2010": 1.1,
         "densidadePop2060": 1.12478093235191,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 29.5470348917643,
-        "Especies_por_Municipio": 1237.792193
+        "Distancia_Garimpo_Centro": 0.831600831600832,
+        "Especies_por_Municipio": 298
     },
     {
         "id": 90503,
         "Departamento": 5,
         "nome": "Santos Mercado",
-        "densidadePop2010": 0.374476987447699,
+        "densidadePop2010": 0.4,
         "densidadePop2060": 0.374476987447699,
         "PopUrbMunicipio": 0,
         "PopRuralMunicipio": 1,
-        "Distancia_Garimpo_Centro": 17.7916700367647,
-        "Especies_por_Municipio": 1210.365689
+        "Distancia_Garimpo_Centro": 0.776160776160776,
+        "Especies_por_Municipio": 290
     }
 ]
