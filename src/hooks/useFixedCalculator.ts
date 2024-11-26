@@ -539,7 +539,7 @@ export default function useFixedCalculator() {
     protectedAreaMultiplier.value = 1.38
 
     general.speciesForZero = 162
-    general.GDPperCapitaBrazilUSD = 3701 /** */
+    general.GDPperCapitaBrazilUSD = 14906 /**mudado de 3701 */
     general.celciusTemperature = 24 /** */
     general.kmRotatedPerLiter = 2.5 /** */
     general.excavationGoldLoss = 2 /** */
@@ -558,7 +558,7 @@ export default function useFixedCalculator() {
     general.methyladPercent = 0.22 /** */
     general.ruralIndividualWeight = 55 /** */
     general.urbanindividualWeight = 68 /** */
-    general.levelMediumContaminationFish = 0.119 /** */
+    general.levelMediumContaminationFish = 0.19 /**mudado de 0.119 */
     general.AverageFishConsumptionPerDayInRuralGrams = 107.9 /** */
     general.consumptionMediumFishByDayInGramsUrban = 30 /**era 2.97 */
     general.densityPopulationalRegionNorth2060 = 0.39 /** */
