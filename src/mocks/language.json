@@ -293,13 +293,13 @@
           "unitMeasurement": {
             "headline": "Unidade de medida",
             "paragraphy_01": "Anos de exploração do garimpo:",
-            "paragraphy_02": "Para o garimpo de poço, sua idade pode ser utilizada como uma aproximação do tamanho, quantidade de ouro extraído e de mercúrio utilizado.",
+            "paragraphy_02": "Para o garimpo de poço, sua idade pode ser utilizada como uma aproximação do tamanho, quantidade de ouro extraído e de mercúrio utilizado. Aplicado apenas no garimpo de poço.",
             "paragraphy_o3": "Quantidade de ouro:",
-            "paragraphy_04": "Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Essa unidade de medida pode ser utilizada quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata.",
+            "paragraphy_04": "Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Essa unidade de medida pode ser utilizada quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata. Aplicado em todos os tipos de garimpo: aluvião, balsa ou poço.",
             "paragraphy_o5": "Quantidade de balsas em um ano:",
-            "paragraphy_06": "Para o garimpo de balsas, é necessário que o usuário saiba a quantidade de balsas/dragas existentes em um determinado rio. Ao realizar o cálculo, é possível também inserir a potência do motor da balsa, que no Brasil e no Equador é em média de 55cv, na Colômbia, 100cv, e no Peru, de 130cv.",
+            "paragraphy_06": "Para o garimpo de balsas, é necessário que o usuário saiba a quantidade de balsas/dragas existentes em um determinado rio. Ao realizar o cálculo, é possível também inserir a potência do motor da balsa, que no Brasil e no Equador é em média de 55cv, na Colômbia, 100cv, e no Peru, de 130cv. Aplicado apenas no garimpo de balsa.",
             "paragraphy_o7": "Tamanho do garimpo:",
-            "paragraphy_08": "Para o garimpo de aluvião, seu tamanho é dado pela multiplicação de sua área pela profundidade média das cavas. Essa unidade de medida é utilizada quando se conhece o local do garimpo ilegal, havendo possibilidade de detalhar o contexto com parâmetros específicos."
+            "paragraphy_08": "Para o garimpo de aluvião, seu tamanho é dado pela multiplicação de sua área pela profundidade média das cavas. Essa unidade de medida é utilizada quando se conhece o local do garimpo ilegal, havendo possibilidade de detalhar o contexto com parâmetros específicos. Aplicado apenas no garimpo de aluvião."
           },
           "ValuesHypotheses": {
             "headline": "Hipóteses de valores",
@@ -1389,13 +1389,13 @@
           "unitMeasurement": {
             "headline": "Unidad de medida",
             "paragraphy_01": "Años de exploración de la mina:",
-            "paragraphy_02": "La edad de la mina se puede utilizar como una aproximación del tamaño, cantidad de oro extraído y mercurio utilizado.",
+            "paragraphy_02": "La edad de la mina se puede utilizar como una aproximación del tamaño, cantidad de oro extraído y mercurio utilizado. Aplicado sólo en minería de pozos.",
             "paragraphy_o3": "Cantidad de oro:",
-            "paragraphy_04": "Considera el contexto promedio de productividad e impacto de la minería en la Amazonía. Esta unidad de medida puede ser utilizada cuando se incauta oro ilegal sin conocer su origen exacto.",
+            "paragraphy_04": "Considera el contexto promedio de productividad e impacto de la minería en la Amazonía. Esta unidad de medida puede ser utilizada cuando se incauta oro ilegal sin conocer su origen exacto. Aplicado en todo tipo de minería: aluvión, balsa o pozo.",
             "paragraphy_o5": "Número de balsas en un año:",
-            "paragraphy_06": "Para la minería de balsa, es necesario que el usuario conozca el número de balsas/dragas en un río determinado. Al realizar el cálculo, también es posible insertar la potencia del motor de la balsa, que en Brasil y Ecuador es en promedio de 55hp, en Colombia de 100hp y en Perú de 130hp.",
+            "paragraphy_06": "Para la minería de balsa, es necesario que el usuario conozca el número de balsas/dragas en un río determinado. Al realizar el cálculo, también es posible insertar la potencia del motor de la balsa, que en Brasil y Ecuador es en promedio de 55hp, en Colombia de 100hp y en Perú de 130hp. Sólo se aplica a la minería de ferry.",
             "paragraphy_o7": "Tamaño de la mina:",
-            "paragraphy_08": "El tamaño de la mina se obtiene multiplicando su área por la profundidad promedio de las fosas. Se utiliza cuando se conoce la ubicación de la minería ilegal, con la posibilidad de detallar el contexto con parámetros específicos."
+            "paragraphy_08": "El tamaño de la mina se obtiene multiplicando su área por la profundidad promedio de las fosas. Se utiliza cuando se conoce la ubicación de la minería ilegal, con la posibilidad de detallar el contexto con parámetros específicos. Aplicado únicamente en minería aluvial."
           },
           "ValuesHypotheses": {
             "headline": "Hipótesis de valor",
@@ -2486,13 +2486,13 @@
           "unitMeasurement": {
             "headline": "Units of measurement",
             "paragraphy_01": "Years of exploration of the mine:",
-            "paragraphy_02": "The age of the mine can be used as an approximation of the size, amount of gold extracted and mercury used.",
+            "paragraphy_02": "The age of the mine can be used as an approximation of the size, amount of gold extracted and mercury used. Applied only in well mining.",
             "paragraphy_o3": "Amount of gold:",
-            "paragraphy_04": "Considers the average context of productivity and impact of mining in the Amazon. It is used when illegal gold is seized without knowing its exact origin.",
+            "paragraphy_04": "Considers the average context of productivity and impact of mining in the Amazon. It is used when illegal gold is seized without knowing its exact origin. Applied in all types of mining: alluvium, ferry or well.",
             "paragraphy_o5": "Number of rafts in a year",
-            "paragraphy_06": "For ferry mining, it is necessary to know the number of bolts/dredgers in a given river. When using the tool, it is also possible to insert the power of the ferry's engine, which in Brazil and Ecuador is on average 55hp, in Colombia, 100hp, and in Peru, 130hp.",
+            "paragraphy_06": "For ferry mining, it is necessary to know the number of bolts/dredgers in a given river. When using the tool, it is also possible to insert the power of the ferry's engine, which in Brazil and Ecuador is on average 55hp, in Colombia, 100hp, and in Peru, 130hp. Only applied to ferry mining.",
             "paragraphy_o7": "Mine size:",
-            "paragraphy_08": "For alluvial mining, the size of the mine is obtained by multiplying its area by the average depth of the pits. It is used when the location of illegal mining is known, with the possibility of detailing the context with specific parameters."
+            "paragraphy_08": "For alluvial mining, the size of the mine is obtained by multiplying its area by the average depth of the pits. It is used when the location of illegal mining is known, with the possibility of detailing the context with specific parameters. Applied only in alluvial mining."
           },
           "ValuesHypotheses": {
             "headline": "Value hypothesis",
