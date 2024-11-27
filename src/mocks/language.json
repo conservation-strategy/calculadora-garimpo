@@ -307,9 +307,9 @@
           },
           "Inflation": {
             "headline": "Inflação",
-            "paragraphy_01": "Os valores originais da calculadora são de 2022. Para atualizá-los para o ano corrente, insira o valor acumulado da inflação entre janeiro de 2023 e o ano em que estiver fazendo o cálculo. Por exemplo, se entre 2023 e 2025 houve uma inflação acumulada de 7,5%, insira o valor 7,5 no campo indicado. No Brasil, você pode calcular a inflação acumulada pelo ",
-            "siteIBGE": "site do IBGE.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "Os valores originais da calculadora são de: 2022 para o Brasil; 2023 para a Colômbia, Peru e Equador; 2024 para Guiana, Suriname e Bolívia. Para atualizá-los para o ano corrente, insira o valor acumulado da inflação. Por exemplo, se entre 2023 e 2025 houve uma inflação acumulada de 7,5%, insira o valor 7,5 no campo indicado. Os valores da inflação anual por país podem ser observados na ",
+            "siteIBGE": "base de dados do Banco Mundial.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Usos da calculadora",
