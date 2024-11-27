@@ -42,7 +42,8 @@ export default function Layout({
       changeLanguage(languageStorage)
     }
 
-    if (country) {
+    if (country && country !== 'undefined') {
+      // console.log('country', typeof country)
       changeCountry(JSON.parse(country))
     } else {
       changeCountry(countryDetection)
