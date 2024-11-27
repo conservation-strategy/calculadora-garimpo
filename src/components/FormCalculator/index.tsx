@@ -61,7 +61,7 @@ const CountryDictionary = {
     'EC': 'Ecuador',
     'PE': 'Perú',
     'CO': 'Colombia',
-    'GU': 'Guayana',
+    'GU': 'Guyana',
     'SU': 'Surinam'
   }
 }
