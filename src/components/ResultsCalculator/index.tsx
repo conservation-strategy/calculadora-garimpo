@@ -72,8 +72,7 @@ export default function ResultsCalculator({
     }, 500)
     document.body.style.overflow = 'hidden'
     gaEvent("download_pdf", {
-      category: "Download",
-      label: "Download PDF",
+      pdf_name: "Report",
     });
   }, [downloadPDF])
 

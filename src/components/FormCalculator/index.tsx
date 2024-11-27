@@ -215,8 +215,7 @@ export default function FormCalculator() {
         changeDataCalculator(getValues())
         getcalculator(getValues())
         gaEvent("submit_form", {
-          category: "Calculator",
-          label: "Calculator",
+          form_name: "Calculator"
         });
       }
     },
