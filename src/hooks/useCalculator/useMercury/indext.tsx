@@ -1218,6 +1218,9 @@ export default function useMercury() {
       const popMenOver40inTheRegion =
         toPopulationAffectedMercuryHair * proMenOver40ByPopTotal
 
+        console.log('&&&', concentrationMediaMercuryHair,
+          deflectionPatternAverageMercury)
+
       const disnorm0 = normDist(
         0,
         concentrationMediaMercuryHair,
@@ -1344,11 +1347,13 @@ export default function useMercury() {
         deflectionPatternAverageMercury,
         1
       )
+      console.log('###', disnorm0, disnorm2)
 
       const distNorm0ate2 = ((1 - disnorm0 - (1 - disnorm2)) * (1 - 1)) / 1
       const distNorm2ate4 = ((1 - disnorm2 - (1 - disnorm4)) * (1 - 1)) / 1
       const distNorm4ate6 =
         ((1 - disnorm4 - (1 - disnorm6)) * (1.69 - 1)) / 1.69
+        // console.log('!!!', disnorm4, disnorm6)
       const distNorm6ate8 =
         ((1 - disnorm6 - (1 - disnorm8)) * (1.81 - 1)) / 1.81
       const distNorm8ate10 =
@@ -1359,6 +1364,7 @@ export default function useMercury() {
         ((1 - disnorm12 - (1 - disnorm14)) * (2.16 - 1)) / 2.16
       const distNorm14ate16 =
         ((1 - disnorm14 - (1 - disnorm16)) * (2.16 - 1)) / 2.16
+        console.log('!!!', disnorm14, disnorm16)
       const distNorm16ate18 =
         ((1 - disnorm16 - (1 - disnorm18)) * (2.16 - 1)) / 2.16
       const distNorm18ate20 =
@@ -1406,31 +1412,61 @@ export default function useMercury() {
         distNorm36ate38 +
         distNorm38ate40
 
+  //       console.log('##', distNorm0ate2 +
+  //         distNorm2ate4, 
+  //         distNorm4ate6 ,
+  //         distNorm6ate8 ,
+  //         distNorm8ate10 ,
+  //         distNorm10ate12 ,
+  //         distNorm12ate14 ,
+  //         distNorm14ate16 ,
+  //         distNorm16ate18 ,
+  //         distNorm18ate20 ,
+  //         distNorm20ate22 ,
+  //         distNorm22ate24 ,
+  //         distNorm24ate26 ,
+  //         distNorm26ate28 ,
+  //         distNorm28ate30 ,
+  //         distNorm30ate32 ,
+  //         distNorm32ate34 ,
+  //         distNorm34ate36 ,
+  //         distNorm36ate38 ,
+  //         distNorm38ate40
+  // )
       const annualHeartAttackRisk =
         attributableFraction *
         propHomensAcima40AnosComInfartoporPopHomensAcima40anosRegiaoPais
+        // console.log('###', attributableFraction , propHomensAcima40AnosComInfartoporPopHomensAcima40anosRegiaoPais)
       const heartAttackSurvivalProbability = 1 - annualHeartAttackRisk
+      // console.log('###', annualHeartAttackRisk)
       const productHeartAttack = Math.pow(
         heartAttackSurvivalProbability,
         duracaoDaIncapacidadeInfarto
       )
+      // console.log('###', heartAttackSurvivalProbability,duracaoDaIncapacidadeInfarto)
       const riscoAcumuladoInfartoMercurio = 1 - productHeartAttack
+      // console.log('**', productHeartAttack)
 
       const menOver40InTheRegionIn27Years =
         riscoAcumuladoInfartoMercurio * popMenOver40inTheRegion
+        // console.log('**', riscoAcumuladoInfartoMercurio, popMenOver40inTheRegion)
       //console.log("riscoAcumuladoInfartoMercurio", riscoAcumuladoInfartoMercurio,"popMenOver40inTheRegion", popMenOver40inTheRegion)
       //console.log('Homens acima de 40anos', menOver40InTheRegionIn27Years)
 
       const infarctionAttributableFraction =
         (menOver40InTheRegionIn27Years * 1000) / toPopulationAffectedMercuryHair
+        // console.log('***', menOver40InTheRegionIn27Years, toPopulationAffectedMercuryHair)
       const infarctionIncidence =
         (infarctionAttributableFraction * toPopulationAffectedMercuryHair) /
         1000
-
+      // console.log('###', infarctionAttributableFraction , toPopulationAffectedMercuryHair)
       const calculation0 = infarctionIncidence * weightOfDisabilityDisease
+      // console.log('####', infarctionIncidence , weightOfDisabilityDisease)
       const calculation1 =
         (constant * Math.exp(discountRate * yearStartOfDisabilityInfarction)) /
         Math.pow(bplusr, 2)
+        // console.log('calculation1', calculation1)
+        // console.log('####', constant, Math.exp(discountRate * yearStartOfDisabilityInfarction), Math.pow(bplusr, 2))
       const calculation2 =
         bplusr *
         (durationDisabilityInfarction + yearStartOfDisabilityInfarction)
@@ -1451,20 +1487,25 @@ export default function useMercury() {
           calculation1 *
           (Math.exp(calculation2) * calculation3 - calculation4) +
           calculation5 * calculation6)
+          // console.log('^^', calculation0, agwt, calculation1, calculation2, calculation3 - calculation4)
       const DALYInfarction = dalyInfarInfarto * aDALYUSD
+      // console.log('^^^', dalyInfarInfarto , aDALYUSD)
 
       //const annualInfarctTreatmentCostUSD = 2300;
       const infarctionIncidenceTreatment =
         (infarctionAttributableFraction * toPopulationAffectedMercuryHair) /
         1000
+        // console.log(infarctionAttributableFraction, toPopulationAffectedMercuryHair)
       const toCostOfInfarctionTreatmentYears =
         infarctionIncidenceTreatment *
         durationDisabilityInfarction *
         annualInfarctTreatmentCostUSD
+        // console.log(infarctionIncidenceTreatment, durationDisabilityInfarction, annualInfarctTreatmentCostUSD)
       const toDALYCostAndInfarctionTreatment =
         toCostOfInfarctionTreatmentYears + DALYInfarction
+        // console.log(toCostOfInfarctionTreatmentYears, DALYInfarction)
 
-      //console.log('toDALYCostAndInfarctionTreatment', toDALYCostAndInfarctionTreatment)
+      console.log('toDALYCostAndInfarctionTreatment', toDALYCostAndInfarctionTreatment)
 
       return {
         toMethylatedWater,

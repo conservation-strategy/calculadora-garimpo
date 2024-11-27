@@ -7,7 +7,7 @@ import * as S from './style'
 import * as SCalc from '../pages/Calculator/style'
 import * as SG from '@/styles/global'
 import useCountry from '@/hooks/useCountry'
-import Options from './Options'
+import Options, { OptionsWithStandartFlagging } from './Options'
 import {
   analysisUnitTypes,
   knowRegionTypes,
@@ -65,7 +65,7 @@ const CountryDictionary = {
     'EC': 'Ecuador',
     'PE': 'Perú',
     'CO': 'Colombia',
-    'GU': 'Guayana',
+    'GU': 'Guyana',
     'SU': 'Surinam',
     'BO': 'Bolivia'
   }
@@ -75,6 +75,7 @@ const CountryDictionary = {
 export default function FormCalculator() {
   const [stateListForCountry, setStateListForCountry] =
     useState<any>(stateBrazil)
+  const [ standartMotorPower, setStandartMotorPower ] = useState("55");
   const { state, changeCountry, changeDataCalculator } = useAppContext()
   const {
     isBrazil,
@@ -128,7 +129,7 @@ export default function FormCalculator() {
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
   // const motor_power = watch('motorPower')
-  const protected_area = watch('isProtectedArea');
+  // const protected_area = watch('isProtectedArea');
 
   // console.log('protected area', Number(protected_area) ? 'yes' : 'no', protected_area)
 
@@ -156,12 +157,16 @@ export default function FormCalculator() {
           findCountry[0].country === 'EC'
         ) {
           setValue('motorPower', '55')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'CO') {
           setValue('motorPower', '100')
+          setStandartMotorPower('55')
         } else if(findCountry[0].country === 'BO') {
-          setValue('motorPower', '120')
+          setValue('motorPower', '100')
+          setStandartMotorPower('100')
         }
       }
       // console.log('motorPower', motor_power)
@@ -177,12 +182,15 @@ export default function FormCalculator() {
         changeCountry(findCountry)
         if (findCountry.country === 'BR' || findCountry.country === 'EC') {
           setValue('motorPower', '55')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'CO') {
           setValue('motorPower', '100')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'BO') {
-          setValue('motorPower', '120')
+          setValue('motorPower', '100')
         }
       }
     }
@@ -284,11 +292,12 @@ export default function FormCalculator() {
     Number(typeMiningValue) === typeMiningTypes.FERRY &&
     Number(analysisUnit) === analysisUnitTypes.QTD_FERRY
   ) {
+    const flag = motorPower.default
     FormControlPitDepthOrMotorPower = (
       <S.FormControlPitDepthOrMotorPower>
         <label>{motorPower.label}</label>
         <SG.Select {...register('motorPower')}>
-          <Options data={motorPower.options} />
+          <OptionsWithStandartFlagging data={motorPower.options} standart={{ value: standartMotorPower, flag }} />
         </SG.Select>
       </S.FormControlPitDepthOrMotorPower>
     )
@@ -326,7 +335,7 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form onSubmit={handleSubmit}>
+    <SCalc.Form isProtectedAreaVisible={FormControlProtectedArea !== null} onSubmit={handleSubmit}>
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
@@ -447,7 +456,7 @@ export default function FormCalculator() {
       </S.FormControlValueHypothesis>
 
       <S.FormControlInflation>
-        <label>{inflation.label}</label>
+        <label>{inflation.label} {isBolivia ? '2024 (%)' : '2022 (%)'}</label>
         <SG.Input
           type="number"
           {...register('inflation')}

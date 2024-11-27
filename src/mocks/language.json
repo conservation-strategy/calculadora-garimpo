@@ -486,7 +486,8 @@
                 "text": "250cv",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(valor padrão)"
           },
           "pitdepth": {
             "label": "Profundidade da cava",
@@ -1560,7 +1561,7 @@
                 "value": 25
               },
               {
-                "text": "55cv (Valor estándar)",
+                "text": "55cv",
                 "value": 55
               },
               {
@@ -1595,7 +1596,8 @@
                 "text": "250cv",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(Valor estándar)"
           },
           "pitdepth": {
             "label": "Profundidad del socavón",
@@ -2670,7 +2672,7 @@
                 "value": 25
               },
               {
-                "text": "55hp (Standard value)",
+                "text": "55hp",
                 "value": 55
               },
               {
@@ -2705,7 +2707,8 @@
                 "text": "250hp",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(Standard value)"
           },
           "pitdepth": {
             "label": "Pit depth",
@@ -2758,7 +2761,7 @@
             ]
           },
           "inflation": {
-            "label": "Accumulated inflation since January 2022 (%)",
+            "label": "Accumulated inflation since January ",
             "placeholder": "Enter inflation in this format: 10 or 6.2"
           },
           "useCalculator": {

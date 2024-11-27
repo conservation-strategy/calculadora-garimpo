@@ -1,5 +1,5 @@
 import { breakpoints, Input, Select } from '@/styles/global'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const WrapperButton = styled.div`
   width: 450px;
@@ -49,7 +49,11 @@ export const Box = styled.div`
   margin-bottom: 50px;
 `
 
-export const Form = styled.form`
+interface FormProps {
+  isProtectedAreaVisible?: boolean;
+}
+
+export const Form = styled.form<FormProps>`
   min-height: 985px;
   padding: 24px;
   background: #ffffff;
@@ -75,12 +79,13 @@ export const Form = styled.form`
     'inflation'
     'useTypes'
     'submit';
+
   @media (min-width: ${breakpoints.md}) {
     padding: 35px 30px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       'country country country country'
-      'knowRegion knowRegion isProtectedArea isProtectedArea'
+      'knowRegion knowRegion knowRegion knowRegion'
       'state state city city'
       'typeMIning typeMIning typeMIning typeMIning'
       'retort retort retort retort'
@@ -90,10 +95,27 @@ export const Form = styled.form`
       'inflation inflation inflation inflation'
       'useTypes useTypes useTypes useTypes'
       'submit submit submit submit';
+
+    ${({ isProtectedAreaVisible }) => isProtectedAreaVisible && css`
+      grid-template-areas:
+        'country country country country'
+        'knowRegion knowRegion isProtectedArea isProtectedArea'
+        'state state city city'
+        'typeMIning typeMIning typeMIning typeMIning'
+        'retort retort retort retort'
+        'unitAnalysis unitAnalysis unitAnalysis unitAnalysis'
+        'hectare hectare pitDepth pitDepth'
+        'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
+        'inflation inflation inflation inflation'
+        'useTypes useTypes useTypes useTypes'
+        'submit submit submit submit';
+    `}
   }
+
   @media (min-width: ${breakpoints.lg}) {
     margin-top: -120px;
   }
+
   & select {
     margin-top: 8px;
   }
