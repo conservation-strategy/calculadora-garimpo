@@ -1467,7 +1467,7 @@
             "stateEquador": "Provincia"
           },
           "district": {
-            "label": "Município"
+            "label": "Municipio"
           },
           "typeMining": {
             "label": "Tipo de extracción",
