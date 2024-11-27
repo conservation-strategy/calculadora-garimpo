@@ -1403,9 +1403,9 @@
           },
           "Inflation": {
             "headline": "Inflación",
-            "paragraphy_01": "Los valores originales de la calculadora corresponden al año 2022. Para actualizar al año actual, ingrese el valor de inflación acumulada entre enero de 2023 y el año que está calculando. Por ejemplo, si entre 2023 y 2025 hubo una inflación acumulada de 7,5%, ingrese el valor 7,5 en el campo indicado. En Brasil, se puede calcular la inflación acumulada por el ",
-            "siteIBGE": "sitio web de IBGE.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "Los valores originales de la calculadora son: 2022 para Brasil; 2023 para Colombia, Perú y Ecuador; 2024 para Guyana, Surinam y Bolivia. Para actualizarlos para el año en curso, ingrese el valor de inflación acumulada. Por ejemplo, si entre 2023 y 2025 hubo una inflación acumulada del 7,5%, ingrese el valor 7,5 en el campo indicado. Los valores de inflación anual por país se pueden ver en la ",
+            "siteIBGE": "base de datos del Banco Mundial.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Usos de la calculadora",
@@ -2500,9 +2500,9 @@
           },
           "Inflation": {
             "headline": "Inflation",
-            "paragraphy_01": "The original values of the calculator are for 2022. To update to the current year, enter the cumulative inflation value between January 2023 and the year you are calculating. For example, if between 2023 and 2025 there was a cumulative inflation of 7.5%, enter the value 7.5 in the indicated field. In Brazil, cumulative inflation can be calculated on the ",
-            "siteIBGE": "IBGE website.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "The original values of the calculator are: 2022 for Brazil; 2023 for Colombia, Peru and Ecuador; 2024 for Guyana, Suriname and Bolivia. To update them for the current year, enter the accumulated inflation value. For example, if between 2023 and 2025 there was accumulated inflation of 7.5%, enter the value 7.5 in the indicated field. Annual inflation values by country can be seen in ",
+            "siteIBGE": "the World Bank database.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Uses of the Calculator",
