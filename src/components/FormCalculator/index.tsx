@@ -293,7 +293,7 @@ export default function FormCalculator() {
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
           <SG.Select {...register('country')}>
-          {[...CountryList].sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
+            {CountryList.map((country) => (
               <option key={country.label} value={country.country}>
                 {CountryDictionary[language.id as LanguageId][country.country]}
               </option>
