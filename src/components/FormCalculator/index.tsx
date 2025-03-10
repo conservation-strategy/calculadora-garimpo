@@ -271,7 +271,7 @@ export default function FormCalculator() {
 
   let stateName = form.state.stateBrasil
 
-  if (isPeru) {
+  if (isPeru || isBolivia) {
     stateName = form.state.statePeru
   } else if (isEquador) {
     stateName = form.state.stateEquador
