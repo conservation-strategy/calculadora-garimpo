@@ -334,7 +334,7 @@ export default function FormCalculator() {
   if(analysisUnit === '6') {
     FormControlMachineCapacity = (
       <>
-      <S.FormControlKnowMachineCapacity>
+      {/* <S.FormControlKnowMachineCapacity>
         <label>{form.knowMachineCapacity.label}</label>
         <SG.Select {...register('knowMachineCapacity')}>
           {form.knowMachineCapacity.options.map((opt) => (
@@ -371,7 +371,17 @@ export default function FormCalculator() {
               <S.MessageError>{errors.machineCapacity.message}</S.MessageError>
             )}
           </S.FormControlMachineCapacity>
-      }
+      } */}
+      <S.FormControlMachineCapacity>
+        <label>{form.suggestedMachineCapacity.label}</label>
+        <SG.Select {...register('machineCapacity')}>
+          {form.suggestedMachineCapacity.options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlMachineCapacity>      
       </>
     )
   }

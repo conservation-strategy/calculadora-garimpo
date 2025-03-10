@@ -570,9 +570,9 @@
             ]
           },
           "suggestedMachineCapacity": {
-            "label": "Rendimentos sugeridos ",
+            "label": "Rendimento da máquina ",
             "options": [
-              2.5 , 70 , 160 
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
             ]
           },
           "openMachineCapacity": {
@@ -1733,9 +1733,9 @@
             ]
           },
           "suggestedMachineCapacity": {
-            "label": "Rendimiento sugeridos",
+            "label": "Rendimiento de la máquina",
             "options": [
-              2.5 , 70 , 160 
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
             ]
           },
           "openMachineCapacity": {
@@ -2898,9 +2898,9 @@
             ]
           },
           "suggestedMachineCapacity": {
-            "label": "Suggested yields",
+            "label": "Machine yield",
             "options": [
-              2.5 , 70 , 160 
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
             ]
           },
           "openMachineCapacity": {
