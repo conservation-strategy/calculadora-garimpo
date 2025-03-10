@@ -268,17 +268,17 @@
               {
                 "headline": "Aluvião",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": " Extração de minério pela escavação de valas (cavas) abertas, em geral, na beira de rios. Também conhecido como garimpo de baixão ou de barranco, é o tipo de garimpo ilegal mais comum na Amazônia."
+                "description": " Extração de minério pela escavação de valas (cavas) abertas, em geral, na beira de rios. Também conhecido como garimpo de baixão ou de barranco, é o tipo de garimpo ilegal mais comum na Amazônia. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: hectare impactado ou gramas de ouro extraído."
               },
               {
                 "headline": "Balsa",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extração de minério pela dragagem do leito dos rios. Realizada em barcos ou flutuantes, não gera desmatamento, mas tem maior impacto em termos de contaminação dos rios por mercúrio."
+                "description": "Extração de minério pela dragagem do leito dos rios. Realizada em barcos ou flutuantes, não gera desmatamento, mas tem maior impacto em termos de contaminação dos rios por mercúrio. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: Quantidade de balsas em um ano ou grama de ouro extraído."
               },
               {
                 "headline": "Poço",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extração de minério por meio de túneis subterrâneos. Tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério."
+                "description": "Extração de minério por meio de túneis subterrâneos. Tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: Anos de exploração do garimpo ou grama de ouro extraído."
               },
               {
                 "headline": "Uso de retorta",
@@ -1378,17 +1378,17 @@
               {
                 "headline": "Aluvial",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": "Extracción de mineral mediante la excavación de zanjas abiertas (cavidades), generalmente en las orillas de los ríos. También conocido como “garimpo de barranco”, es el tipo de extracción minera ilegal más común en la Amazonía."
+                "description": "Extracción de mineral mediante la excavación de zanjas abiertas (cavidades), generalmente en las orillas de los ríos. También conocido como “garimpo de barranco”, es el tipo de extracción minera ilegal más común en la Amazonía. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: hectárea impactada o gramos de oro extraído."
               },
               {
                 "headline": "Balsa (flotante)",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extracción de mineral por dragado de cauces de ríos. Realizado en balsas o botes flotantes, no genera deforestación, pero tiene un mayor impacto debido a la contaminación por mercurio de los ríos."
+                "description": "Extracción de mineral por dragado de cauces de ríos. Realizado en balsas o botes flotantes, no genera deforestación, pero tiene un mayor impacto debido a la contaminación por mercurio de los ríos. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: la cantidad de balsas en un año o gramos de oro extraído."
               },
               {
                 "headline": "Socavón",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extracción de mineral a través de túneles subterráneos. Tiene menores impactos en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral."
+                "description": "Extracción de mineral a través de túneles subterráneos. Tiene menores impactos en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: años de explotación de la minería o gramos de oro extraído."
               },
               {
                 "headline": "Uso de retorta",
@@ -2489,17 +2489,17 @@
               {
                 "headline": "Alluvial",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": "Extraction of ore by digging open trenches (cavities), generally on the banks of rivers. Also known as garimpo de barranco, it is the most common type of illegal mining in the Amazon."
+                "description": "Extraction of ore by digging open trenches (cavities), generally on the banks of rivers. Also known as garimpo de barranco, it is the most common type of illegal mining in the Amazon. For this type of extraction, analysis can be conducted using two input units: impacted hectare or grams of extracted gold."
               },
               {
                 "headline": "Ferry",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extraction of ore by dredging riverbeds. The ore is then carried out on rafts or floating boats. This does not generate deforestation, but it has a greater impact in terms of mercury contamination of rivers."
+                "description": "Extraction of ore by dredging riverbeds. The ore is then carried out on rafts or floating boats. This does not generate deforestation, but it has a greater impact in terms of mercury contamination of rivers. For this type of extraction, analysis can be conducted using two input units: the number of dredges in a year or grams of extracted gold."
               },
               {
                 "headline": "Pit",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extraction of ore through underground tunnels. It has lower impacts in terms of deforestation and erosion, but it also uses mercury in mineral processing."
+                "description": "Extraction of ore through underground tunnels. It has lower impacts in terms of deforestation and erosion, but it also uses mercury in mineral processing. For this type of extraction, analysis can be conducted using two input units: years of mining exploitation or grams of extracted gold."
               },
               {
                 "headline": "Retort use",
