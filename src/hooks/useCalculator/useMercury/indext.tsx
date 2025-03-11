@@ -143,7 +143,14 @@ export default function useMercury() {
         }
       }
     },
-    [general, neuroSymptomsGarimpeiro, convertAllinGold, hectareToGold]
+    [
+      general, 
+      neuroSymptomsGarimpeiro, 
+      convertAllinGold, 
+      hectareToGold,
+      numberOfMachinesToGold
+    
+    ]
   )
 
   const lossQICalculator = useCallback(
@@ -563,7 +570,14 @@ export default function useMercury() {
         value: toLossQIFetuses
       }
     },
-    [hectareToGold, getDistrictData, general, lossQI, convertAllinGold]
+    [
+      hectareToGold, 
+      getDistrictData, 
+      general, 
+      lossQI, 
+      convertAllinGold,
+      numberOfMachinesToGold
+    ]
   )
 
   const hypertensionCalculator = useCallback(
@@ -1045,7 +1059,14 @@ export default function useMercury() {
         value: toDALYCostAndHypertensionTreatment
       }
     },
-    [hectareToGold, getDistrictData, general, hypertension, convertAllinGold]
+    [
+      hectareToGold, 
+      getDistrictData, 
+      general, 
+      hypertension, 
+      convertAllinGold,
+      numberOfMachinesToGold
+    ]
   )
 
   const heartAttackCalculator = useCallback(
@@ -1513,7 +1534,14 @@ export default function useMercury() {
         value: toDALYCostAndInfarctionTreatment
       }
     },
-    [hectareToGold, getDistrictData, general, heartAttack, convertAllinGold]
+    [
+      hectareToGold, 
+      getDistrictData, 
+      general, 
+      heartAttack, 
+      convertAllinGold, 
+      numberOfMachinesToGold
+    ]
   )
 
   const soilMercuryRemediationCalculator = useCallback(
@@ -1586,7 +1614,67 @@ export default function useMercury() {
         return toCostOfSoilHgRemediation
       }
     },
-    [general, hectareToGold, soilMercuryRemediation]
+    [general, hectareToGold, soilMercuryRemediation, numberOfMachinesToGold]
+  )
+
+  const waterRemediationCalculator = useCallback(
+    ({ dataCalculator }: DataCalculatoProps) => {
+      if(dataCalculator.country !== 'PE') {
+        console.log('not Peru, returning zero for water remediation')
+        return 0
+      }
+      const valueHypothesis = Number(dataCalculator.valueHypothesis)
+      const typeMining = Number(dataCalculator.typeMining)
+      const qtdAnalysis = Number(dataCalculator.qtdAnalysis)
+      const analysisUnit = Number(dataCalculator.analysisUnit)
+
+      const hgAuRatio = general ? general.HgAuRatio : 0
+      const hgLostInWater = general
+        ? valueHypothesis === valueHypothesisTypes.CONSERVATIVE
+          ? typeMining === typeMiningTypes.FERRY
+            ? general.percentLossHgInWater_ferry__convervative
+            : general.percentLossHgInWater_convervative
+          : typeMining === typeMiningTypes.FERRY
+            ? general.percentLossHgInWater_ferry
+            : general.percentLossHgInWater
+        : 0
+      
+      const methylatedHgPctg = general
+      ? valueHypothesis === valueHypothesisTypes.CONSERVATIVE
+        ? general.methyladPercent_conservative
+        : general.methyladPercent
+      : 0
+
+      const hgInSoil = soilMercuryRemediation
+        ? soilMercuryRemediation.HgContainedSoilinGrassPerTon
+        : 0
+      
+      const soilDensity = soilMercuryRemediation 
+        ? soilMercuryRemediation.DensidadeSolo
+        : 0
+
+      const remediationCost = soilMercuryRemediation
+        ? soilMercuryRemediation.remediationCostUSDPerTonOfSoil
+        : 0
+      
+      const gold =
+        analysisUnit === analysisUnitTypes.IMPACTED_AREA
+          ? hectareToGold({ dataCalculator })
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
+      
+      const hgl = gold * hgAuRatio * hgLostInWater * (1 - methylatedHgPctg)
+      const ret = ((hgl / hgInSoil) / soilDensity) * remediationCost
+      console.log('impacto remediação de mercurio na agua', ret);
+      return ret      
+    },
+    [
+      general,
+      soilMercuryRemediation,
+      hectareToGold,
+      numberOfMachinesToGold
+    ]
   )
 
   return {
