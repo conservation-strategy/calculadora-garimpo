@@ -1617,7 +1617,7 @@ export default function useMercury() {
     [general, hectareToGold, soilMercuryRemediation, numberOfMachinesToGold]
   )
 
-  const waterRemediationCalculator = useCallback(
+  const waterMercuryRemediationCalculator = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
       if(dataCalculator.country !== 'PE') {
         console.log('not Peru, returning zero for water remediation')
