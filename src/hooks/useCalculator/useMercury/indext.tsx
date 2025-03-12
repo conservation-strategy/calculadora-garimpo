@@ -1649,8 +1649,8 @@ export default function useMercury() {
         ? soilMercuryRemediation.HgContainedSoilinGrassPerTon
         : 0
       
-      const soilDensity = soilMercuryRemediation 
-        ? soilMercuryRemediation.DensidadeSolo
+      const sedimentDensity = soilMercuryRemediation 
+        ? soilMercuryRemediation.DensidadeSedimento
         : 0
 
       const remediationCost = soilMercuryRemediation
@@ -1665,7 +1665,7 @@ export default function useMercury() {
             : qtdAnalysis
       
       const hgl = gold * hgAuRatio * hgLostInWater * (1 - methylatedHgPctg)
-      const ret = ((hgl / hgInSoil) / soilDensity) * remediationCost
+      const ret = ((hgl / hgInSoil) / sedimentDensity) * remediationCost
       console.log('impacto remediação de mercurio na agua', ret);
       return ret      
     },
