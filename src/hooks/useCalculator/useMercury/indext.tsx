@@ -1682,6 +1682,7 @@ export default function useMercury() {
     lossQICalculator,
     hypertensionCalculator,
     heartAttackCalculator,
-    soilMercuryRemediationCalculator
+    soilMercuryRemediationCalculator,
+    waterMercuryRemediationCalculator
   }
 }

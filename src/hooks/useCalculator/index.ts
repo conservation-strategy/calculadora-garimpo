@@ -58,7 +58,8 @@ export default function useCalculator() {
     lossQICalculator,
     hypertensionCalculator,
     heartAttackCalculator,
-    soilMercuryRemediationCalculator
+    soilMercuryRemediationCalculator,
+    waterMercuryRemediationCalculator
   } = useMercury()
 
   const { convertAllinGold, convertAllinHectare, proporcaoGramaPorHectare } =
@@ -307,6 +308,15 @@ export default function useCalculator() {
         Number(data.inflation)
       )
 
+      const waterMercuryRemediation = waterMercuryRemediationCalculator({
+        dataCalculator: data
+      }) 
+
+      const totalWaterMercuryRemediation = calculatorTotalImpact(
+        waterMercuryRemediation,
+        Number(data.inflation)
+      )
+
       const totalImpacts: DataImpacts[] = []
 
       const impactNotMonetary: DataImpactsNoMonetary[] = []
@@ -383,6 +393,13 @@ export default function useCalculator() {
           .sub_impact_soil_remediation,
         value: totalSoilMercuryRemediation
       })
+
+      if(totalWaterMercuryRemediation) {
+        totalImpacts.push({
+          name: language.calculator.impacts.mercuryContamination.sub_impact_water_remediation,
+          value: totalWaterMercuryRemediation
+        })
+      }
 
       setMercury(totalImpacts)
       return {
