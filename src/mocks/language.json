@@ -712,6 +712,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Perda de Qi em Fetos",
             "sub_impact_soil_remediation": "Remediação do solo",
             "sub_impact_neuropsychological_symptoms": "Sintomas Neuropsicológicos",
+            "sub_impact_water_remediation": "Remediação da água",
             "paragraphy_01": "A extração de 1 kg de ouro utiliza $HgAuRatio de mercúrio, dos quais $lossPercentHgInWater são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km, em que, dentro dele, <strong>$people pessoas</strong> estão expostas a riscos aumentados pela exposição ao mercúrio oriundo do garimpo.",
             "paragraphy_02": "Dependendo do nível de consumo de peixes, um indivíduo terá um aumento médio do nível de mercúrio entre 4ug/g e 15ug/g, levando a problemas neuropsicológicos, cognitivos e cardíacos.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"
@@ -1876,6 +1877,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Pérdida de Qi en Fetos",
             "sub_impact_soil_remediation": "Remediación del suelo",
             "sub_impact_neuropsychological_symptoms": "Síntomas neuropsicológicos",
+            "sub_impact_water_remediation": "Remediación del agua",
             "paragraphy_01": "La extracción de 1 kg de oro utiliza $HgAuRatio de mercurio, de los cuales el $lossPercentHgInWater se vierte en los ríos. De estos, el 3% están metilados, volviéndose aún más tóxicos y siendo absorbidos por los peces, que pueden migrar hasta 2000 km, contaminando a las personas que se alimentan de ellos. En un escenario conservador, consideramos que el radio de dispersión del mercurio es de 100 km, dentro del cual <strong>$people personas</strong> están expuestas a mayores riesgos por exposición al mercurio proveniente de la minería.",
             "paragraphy_02": "Dependiendo del nivel de consumo de pescado, un individuo tendrá un aumento promedio en el nivel de mercurio entre 4 ug/g y 15 ug/g, lo que provocará problemas neuropsicológicos, cognitivos y cardíacos.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"
@@ -3040,6 +3042,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Loss of Qi in Fetuses",
             "sub_impact_soil_remediation": "Soil remediation",
             "sub_impact_neuropsychological_symptoms": "Neuropsychological Symptoms",
+            "sub_impact_water_remediation": "Water remediation",
             "paragraphy_01": "The extraction of 1 kg of gold uses $HgAuRatio of mercury, of which $lossPercentHgInWater is discharged into rivers. Of these, 3% are methylated, becoming even more toxic and being absorbed by fish, which can migrate up to 2,000 km, contaminating people who eat them. Conservatively, we consider that the radius of mercury dispersion is 100 km, in which, within it, <strong>$people</strong> people are exposed to greater risks due to exposure to mercury from mining.",
             "paragraphy_02": "Depending on the level of fish consumption, an individual will have an average increase in mercury level between 4ug/g and 15ug/g, leading to neuropsychological, cognitive and cardiac problems.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"
