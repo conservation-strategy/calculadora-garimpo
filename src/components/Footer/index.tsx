@@ -54,11 +54,13 @@ export default function Footer() {
             >
                 <Image
                   // src="images/Garimpo_VersãoInvertida.svg"
-                  src="assets/images/logo-Garimpo_BordaBranca.svg"
+                  src="/assets/images/logo-GARIMPO_BORDABRANCA.png"
+                  // src="/assets/images/logo-Garimpo_BordaBranca.svg"
                   alt="CSF Logo"
                   width={64}
                   height={64}
                   priority
+                  style={{ objectFit: 'contain' }}
                 />
             </div>
               <a 
