@@ -107,10 +107,10 @@ export default function Footer() {
             <Link
               target="_blank"
               rel='noreferrer'
-              href="https://twitter.com/numbers4nature"
+              href="https://bsky.app/profile/numbers4nature.bsky.social"
               title="Twitter"
             >
-              <i className="fi fi-brands-twitter"></i>
+              <IconBlueSky/>
             </Link>
             <Link
               target="_blank"
@@ -144,5 +144,15 @@ export default function Footer() {
         </S.Copy>
       </SG.Container>
     </S.Container>
+  )
+}
+
+const IconBlueSky = () => {
+  return (
+    <div>
+      <svg width="25" height="22" viewBox="0 0 25 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5.31076 1.45666C8.11945 3.57247 11.141 7.86188 12.25 10.1637V16.2436C12.25 16.1142 12.2002 16.2604 12.093 16.5755C11.5142 18.2813 9.25334 24.9388 4.08346 19.6165C1.36128 16.8143 2.6215 14.0121 7.57662 13.1661C4.7419 13.65 1.55498 12.8503 0.680641 9.71508C0.42875 8.81317 0 3.2578 0 2.50748C0 -1.25097 3.28415 -0.06961 5.31076 1.45666ZM19.1892 1.45666C16.3805 3.57247 13.359 7.86188 12.25 10.1637V16.2436C12.25 16.1142 12.2998 16.2604 12.407 16.5755C12.9858 18.2813 15.2467 24.9388 20.4165 19.6165C23.1387 16.8143 21.8785 14.0121 16.9234 13.1661C19.7581 13.65 22.945 12.8503 23.8194 9.71508C24.0712 8.81317 24.5 3.2578 24.5 2.50748C24.5 -1.25097 21.2162 -0.06961 19.1892 1.45666Z" fill="currentColor"/>
+      </svg>
+    </div>
   )
 }
