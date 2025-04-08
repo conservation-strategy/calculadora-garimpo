@@ -46,6 +46,14 @@ export const Logo = styled.div`
   }
 `
 
+export const MenuDesktop = styled.nav`
+  display: none;
+  gap: 1.5rem;
+  @media (min-width: ${breakpoints.lg}) {
+    display: flex
+  }
+`
+
 export const Menu = styled.nav<MenuItemProps>`
   position: fixed;
   width: 80%;
@@ -61,7 +69,7 @@ export const Menu = styled.nav<MenuItemProps>`
   transition: right 0.3s;
   @media (min-width: ${breakpoints.lg}) {
     position: initial;
-    display: flex;
+    display: none;
     flex-direction: row;
     justify-content: center;
     background-color: transparent;
@@ -97,7 +105,7 @@ export const DropDown = styled.div`
   width: 250px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   height: 30px;
   color: #fff;
   justify-content: space-between;
@@ -124,16 +132,21 @@ export const DropDownText = styled.span`
 
 export const DropDownBox = styled.div<DropDownBoxProps>`
   width: 250px;
+  background-color: ${({ active }) => (active ? colors.secondary : 'transparent')};
   height: ${({ active }) => (active ? '170px' : 0)};
   overflow: ${({ active }) => (active ? 'auto' : 'hidden')};
   border: 1px solid ${({ active }) => (active ? '#fff' : 'transparent')};
   cursor: ${({ active }) => (active ? 'pointer' : 'auto')};
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
   position: absolute;
   top: 50px;
   right: 0;
-  padding: 16px 16px 0 16px;
   border-radius: 8px;
-  transition: height 0.2s;
+  transition: all 0.2s;
   display: flex;
   flex-direction: column;
   @media (min-width: ${breakpoints.lg}) {
@@ -144,12 +157,18 @@ export const DropDownBox = styled.div<DropDownBoxProps>`
 export const DropdownItem = styled.a`
   cursor: pointer;
   display: flex;
-  height: 30px;
+  justify-content: start;
+  align-items: center;
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
   gap: 16px;
   color: #fff;
   font-size: 24px;
   line-height: 20px;
-  margin-bottom: 20px;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2)
+  }
   @media (min-width: ${breakpoints.lg}) {
     font-size: 16px;
   }
