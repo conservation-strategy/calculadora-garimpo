@@ -20,12 +20,15 @@ export const colors = {
   primary: '#F6A249',
   primary_dark: '#F48D1F',
   secondary: '#673928',
+  neutral_1: "#E4D2D2",
+  neutral_2: "#D8D8D8",
   green: '#417505',
   outline: '#AF8313',
   outline_hover: '#E9A701'
 }
 
 export const breakpoints = {
+  sm: '640px',
   md: '768px',
   lg : '1280px',
   xl: '1440px',
