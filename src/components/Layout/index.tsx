@@ -56,7 +56,9 @@ export default function Layout({
       <S.SafeArea height={safeAreaHeight}>
         <Header />
         <SG.Container>
-          <SG.Headline weight="300" color="#fff" align={align}>
+          <SG.Headline weight="300" color="#fff" align={align}
+          style={{ maxWidth: "74ch", marginInline: "auto" }}
+          >
             {headline}
           </SG.Headline>
           {SafeAreaCTA}
