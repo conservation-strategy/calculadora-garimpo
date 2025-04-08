@@ -102,6 +102,11 @@ export const Social = styled.div`
     color: inherit;
     font-size: 25px;
     text-decoration: none;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    &:hover {
+      opacity: 1;
+    }
   }
   > div {
     display: flex;
