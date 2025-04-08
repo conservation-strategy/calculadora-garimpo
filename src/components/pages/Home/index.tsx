@@ -28,7 +28,7 @@ export default function Home() {
           </SG.Button>
           <SG.Button
             onClick={() => route.push(ROUTE.calculator)}
-            variant="outline"
+            variant="primary"
           >
             {safeArea.buttonActions.calculator}
           </SG.Button>

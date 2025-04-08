@@ -16,8 +16,10 @@ interface ContainerProps {
 }
 
 export const colors = {
-  primary: '#417505',
-  secondary: '#61AB0B',
+  primary: '#F6A249',
+  primary_dark: '#F48D1F',
+  secondary: '#673928',
+  green: '#417505',
   outline: '#AF8313',
   outline_hover: '#E9A701'
 }
@@ -86,7 +88,7 @@ export const Container = styled.div<ContainerProps>`
 
 export const Button = styled.button<ButtonProps>`
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   height: 80px;
   font-size: 18px;
   font-weight: 600;
@@ -95,6 +97,7 @@ export const Button = styled.button<ButtonProps>`
   padding: 0 30px;
   text-transform: uppercase;
   color: #fff;
+  transition: background-color 300ms;
   a {
     color: #fff;
     text-decoration: none;
@@ -102,7 +105,7 @@ export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     if (variant === 'primary') {
       return css`
-        background: ${colors.primary};
+        background-color: ${colors.primary};
         &:hover {
           background-color: ${colors.secondary};
         }
