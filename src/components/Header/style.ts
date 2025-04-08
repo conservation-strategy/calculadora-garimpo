@@ -47,6 +47,7 @@ export const Logo = styled.div`
 `
 
 export const MenuDesktop = styled.nav`
+  font-size: 18px;
   display: none;
   gap: 1.5rem;
   @media (min-width: ${breakpoints.lg}) {
@@ -123,6 +124,8 @@ export const DropDown = styled.div`
 
 export const DropDownText = styled.span`
   font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.025em;
   line-height: 17px;
   color: #fff;
   @media (min-width: ${breakpoints.lg}) {
