@@ -145,10 +145,10 @@
           }
         ],
         "disclaimer": {
-          "text": "A CSF não se responsabiliza pelas consequências do uso da calculadora"
+          "text": "A CSF não se responsabiliza pelas consequências do uso da calculadora."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · Todos os direitos reservados"
         }
       },
       "home": {
@@ -1241,10 +1241,10 @@
           }
         ],
         "disclaimer": {
-          "text": "CSF no se hace responsable de las consecuencias del uso de la calculadora"
+          "text": "CSF no se responsabiliza por las consecuencias del uso de la calculadora."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · Todos los derechos reservados"
         }
       },
       "home": {
@@ -2338,10 +2338,10 @@
           }
         ],
         "disclaimer": {
-          "text": "CSF is not responsible for any consequences of using the Calculator"
+          "text": "CSF is not responsible for the consequences of using the calculator."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · All rights reserved"
         }
       },
       "home": {
