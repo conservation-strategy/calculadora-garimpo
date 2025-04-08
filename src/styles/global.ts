@@ -49,7 +49,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html, body {
-        font-family: 'Poppins', sans-serif;
+        font-family: 'Segoe UI This', sans-serif;
         height: 100%;
     }
 
@@ -101,6 +101,7 @@ export const Container = styled.div<ContainerProps>`
 `
 
 export const Button = styled.button<ButtonProps>`
+  font-family: inherit;
   width: 100%;
   border-radius: 12px;
   height: 80px;

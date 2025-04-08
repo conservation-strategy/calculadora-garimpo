@@ -6,6 +6,7 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { segoeUIThis } from '@/fonts/fonts';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -71,7 +72,7 @@ export default class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="Impact Calculator" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <body>
+        <body className={segoeUIThis.className}>
           <Main />
           <NextScript />
         </body>
