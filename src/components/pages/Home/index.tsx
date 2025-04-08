@@ -84,10 +84,10 @@ export default function Home() {
                 <S.CardHeader>
                   <S.CardIcon src={item.icon} />
                 </S.CardHeader>
-                <SG.Text align="center" weight="600">
+                <SG.Text align="left" weight="600">
                   {item.title}
                 </SG.Text>
-                <SG.Text align="center">{item.description}</SG.Text>
+                <SG.Text align="left">{item.description}</SG.Text>
                 <S.CardButton
                   onClick={() => route.push(`/impact/${item.slug}`)}
                 >

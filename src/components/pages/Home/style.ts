@@ -47,7 +47,7 @@ export const AboutCalculator = styled.div`
 
 export const ImpactsWrapper = styled.div`
   width: 100%;
-  background: url('assets/images/background.webp') no-repeat center top;
+  background: ${colors.secondary};
   background-size: cover;
   h2 {
     color: #fff;
@@ -87,12 +87,10 @@ export const Card = styled.div`
 `
 
 export const CardIcon = styled.img`
-  margin: 0 auto;
   display: block;
 `
 
 export const CardHeader = styled.div`
-  width: 100%;
   height: 85px;
   margin-bottom: 20px;
   @media (min-width: ${breakpoints.lg}) {
@@ -113,7 +111,7 @@ export const CardButton = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   &:hover {
-    background-color: ${colors.primary};
+    background-color: ${colors.secondary};
     color: #fff;
   }
 `
