@@ -14,7 +14,7 @@ export default function Header() {
   const { state, changeLanguage } = useAppContext()
   const { ismobileOrTablet } = useResize()
   const route = useRouter()
-  const [hasScrolled, setHasScrolled] = useState(false);
+  // const [hasScrolled, setHasScrolled] = useState(false);
 
   const { language } = state
   const { header } = language
@@ -23,6 +23,20 @@ export default function Header() {
   const handleDropdown = useCallback(() => {
     setDropdown((prevState) => !prevState)
   }, [])
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.scrollY;
+  //     if (scrollTop > 0) {
+  //       setHasScrolled(true);
+  //     } else {
+  //       setHasScrolled(false);
+  //     }
+  //   };
+  
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   return (
     <S.Container>
@@ -36,7 +50,7 @@ export default function Header() {
         </S.Logo> */}
         <Link href={'/'}>
           <Image 
-            src={'/assets/images/logo-GARIMPO_BORDABRANCA.png'} 
+            src={'/assets/images/logo_garimpo-principal.png'} 
             alt='Garimpo' 
             width={64}
             height={64}
