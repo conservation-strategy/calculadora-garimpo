@@ -1,5 +1,5 @@
 import { breakpoints, colors } from '@/styles/global'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 interface MenuItemProps {
   active?: boolean
@@ -24,7 +24,7 @@ export const Container = styled.header`
 `
 
 export const ButtonBarMenu = styled.button`
-  font-size: 35px;
+  font-size: 24px;
   color: #fff;
   margin-left: auto;
 `

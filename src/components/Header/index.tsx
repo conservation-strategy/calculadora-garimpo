@@ -3,7 +3,7 @@ import useAppContext from '@/hooks/useAppContext'
 import useResize from '@/hooks/useResize'
 import * as SG from '@/styles/global'
 import { useRouter } from 'next/router'
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useEffect } from 'react';
 import * as S from './style'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -14,6 +14,7 @@ export default function Header() {
   const { state, changeLanguage } = useAppContext()
   const { ismobileOrTablet } = useResize()
   const route = useRouter()
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const { language } = state
   const { header } = language
@@ -29,7 +30,7 @@ export default function Header() {
         <S.Overlay onClick={() => setMenu(false)} />
       )}
 
-      <SG.Container>
+      <SG.Container variant='nav'>
         {/* <S.Logo onClick={() => route.push(ROUTE.home)}>
           <img src="/assets/images/logo-garimpo-invertido.png" alt="Garimpo" />
         </S.Logo> */}
@@ -39,8 +40,9 @@ export default function Header() {
             alt='Garimpo' 
             width={64}
             height={64}
-            sizes="(max-width: 1024px) 40px, 64px"
+            sizes="(max-width: 768px) 48px, 64px"
             priority
+            style={{ width: 'auto', height: 'auto' }}
           />
         </Link>
         {ismobileOrTablet && (

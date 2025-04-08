@@ -12,7 +12,8 @@ interface TextProps {
 }
 
 interface ContainerProps {
-  fontSize?: string
+  fontSize?: string;
+  variant?: 'nav';
 }
 
 export const colors = {
@@ -69,7 +70,6 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div<ContainerProps>`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
   width: 100%;
-  padding: 50px 24px;
   @media (min-width: ${breakpoints.md}) {
     width: 720px;
     margin-left: auto;
@@ -84,6 +84,17 @@ export const Container = styled.div<ContainerProps>`
   @media (min-width: ${breakpoints.xll}) {
     width: 1552px;
   }
+  ${({ variant }) => {
+    if(variant === 'nav') {
+      return css `
+        padding: 16px 24px
+      `
+    } else {
+      return css `
+        padding: 50px 24px
+      `
+    }
+  }}
 `
 
 export const Button = styled.button<ButtonProps>`
