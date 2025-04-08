@@ -11,7 +11,7 @@ interface DropDownBoxProps {
 
 export const Container = styled.header`
   width: 100%;
-  background: rgba(0, 0, 0, 0.46);
+  background: ${colors.primary};
   > div {
     display: flex;
     justify-content: center;
@@ -80,8 +80,9 @@ export const MenuItem = styled.a<MenuItemProps>`
   line-height: 150%;
   color: ${({ active }) => (active ? colors.primary : '#fff')};
   cursor: pointer;
+  text-underline-offset: 8px;
   &:hover {
-    color: ${colors.primary};
+    text-decoration: underline;
   }
   @media (min-width: ${breakpoints.md}) {
     font-size: 24px;
