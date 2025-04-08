@@ -83,7 +83,7 @@ export default function Header() {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '1.5rem'
+          gap: '3rem'
         }}
         >
           <Link href={'/'}>
@@ -92,7 +92,7 @@ export default function Header() {
               alt='Garimpo' 
               width={64}
               height={64}
-              sizes="(max-width: 768px) 48px, 64px"
+              sizes="(max-width: 768px) 41px, 53px"
               priority
               style={{ width: 'auto', height: 'auto' }}
             />
@@ -100,7 +100,9 @@ export default function Header() {
           {!ismobileOrTablet &&
             <S.MenuDesktop>
               {menu.map((item) => (
-                <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
+                <S.MenuItem key={item.label} onClick={() => route.push(item.href)}
+                style={{ fontWeight: '700', letterSpacing: '0.025em' }}
+                >
                   {item.label}
                 </S.MenuItem>
               ))}
