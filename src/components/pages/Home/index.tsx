@@ -17,6 +17,7 @@ export default function Home() {
 
   return (
     <Layout
+      isHero
       headline={safeArea.headline}
       SafeAreaCTA={
         <S.Buttons>

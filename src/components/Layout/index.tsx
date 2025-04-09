@@ -12,7 +12,8 @@ interface LayoutProps {
   headline: string
   align?: 'left' | 'center'
   SafeAreaCTA?: ReactNode
-  safeAreaHeight?: string
+  safeAreaHeight?: string;
+  isHero: boolean
 }
 
 export default function Layout({
@@ -20,7 +21,8 @@ export default function Layout({
   headline,
   SafeAreaCTA,
   safeAreaHeight,
-  align = 'center'
+  align = 'center',
+  isHero
 }: LayoutProps) {
   const { changeCountry, changeLanguage } = useAppContext()
   const languageUser = useLanguage()
@@ -57,7 +59,7 @@ export default function Layout({
         <Header />
         <SG.Container>
           <SG.Headline weight="300" color="#fff" align={align}
-          style={{ maxWidth: "74ch", marginInline: "auto" }}
+          isHero={isHero}
           >
             {headline}
           </SG.Headline>

@@ -9,6 +9,7 @@ interface TextProps {
   align?: 'left' | 'right' | 'center'
   size?: string
   weight?: '300' | '400' | '500' | '600'
+  isHero?: boolean;
 }
 
 interface ContainerProps {
@@ -211,4 +212,13 @@ export const Headline = styled.h2<TextProps>`
   @media (min-width: ${breakpoints.md}) {
     font-size: ${({ size }) => (size ? size : '30px')};
   }
+
+  ${({ isHero }) => {
+    return isHero
+    ? css `
+      max-width: 74ch;
+      margin-inline: auto
+    `
+    : ''
+  }}
 `
