@@ -19,110 +19,110 @@ export default function Methodology() {
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_01 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <img src={methodology.image} alt={methodology.headline} />
           <br />
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_02 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_03 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_04 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_05 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_06 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_07 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_07_1 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_07_2 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Headline>
-            <div
+            <span
               dangerouslySetInnerHTML={{
                 __html: methodology.resultsOfCalculator
               }}
-            ></div>
+            ></span>
           </SG.Headline>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_08 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_09 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Headline>
-            <div
+            <span
               dangerouslySetInnerHTML={{
                 __html: methodology.TecnicalDocuments
               }}
-            ></div>
+            ></span>
           </SG.Headline>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_10 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_11 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_12 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: methodology.paragraphy_13 }}
-            ></div>
+            ></span>
           </SG.Text>
           <br />
         </S.WrapperText>
