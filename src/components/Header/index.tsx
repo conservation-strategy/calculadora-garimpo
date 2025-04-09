@@ -183,7 +183,7 @@ export default function Header() {
                 transition: 'transform 0.2s',
                 transitionDelay: '0.2s',
                 transformOrigin: 'center',
-                transform: `${dropdown ? 'scaleY(-1)' : ''}`
+                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
               }}
               ></i>
               <S.DropDownBox active={dropdown}>
