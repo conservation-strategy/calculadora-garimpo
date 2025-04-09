@@ -19,9 +19,6 @@ export const WrapperContent = styled.div`
 export const WrapperText = styled.div`
   width: 100%;
   padding: 50px 0;
-  @media (min-width: ${breakpoints.lg}) {
-    width: 50%;
-  }
 `
 
 export const CardsContainer = styled.div`
