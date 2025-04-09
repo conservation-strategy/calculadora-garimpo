@@ -6,7 +6,8 @@ interface MenuItemProps {
 }
 
 interface DropDownBoxProps {
-  active: boolean
+  active: boolean;
+  variant?: 'mobile' | 'desktop';
 }
 
 export const Container = styled.header`
@@ -135,7 +136,6 @@ export const DropDownText = styled.span`
 
 export const DropDownBox = styled.div<DropDownBoxProps>`
   width: 250px;
-  background-color: ${({ active }) => (active ? colors.secondary : 'transparent')};
   height: ${({ active }) => (active ? '170px' : 0)};
   overflow: ${({ active }) => (active ? 'auto' : 'hidden')};
   border: 1px solid ${({ active }) => (active ? '#fff' : 'transparent')};
@@ -155,6 +155,15 @@ export const DropDownBox = styled.div<DropDownBoxProps>`
   @media (min-width: ${breakpoints.lg}) {
     width: 142px;
   }
+  ${({ variant, active }: DropDownBoxProps) => {
+    return variant === 'mobile'
+    ? css `
+      background-color: transparent
+    `
+    : css `
+      background-color: ${({ active }) => (active ? colors.secondary : 'transparent')};
+    `
+  }}
 `
 
 export const DropdownItem = styled.a`
