@@ -24,7 +24,9 @@ export default function useDeforestation() {
     hectareToGold,
     goldToHecatere,
     goldToHectarePorHe,
-    convertAllinHectare
+    convertAllinHectare,
+    numberOfMachinesToGold,
+    numberOfMachinesToHecare
   } = useConvertAll()
 
   const bioprospectingCalculator = useCallback(
@@ -65,7 +67,14 @@ export default function useDeforestation() {
       ) {
         const valorTotalBioprospeccao = VPLBioprospecting * hectare
         return valorTotalBioprospeccao
-      } else {
+      } else if (
+        typemining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const valorTotalBioprospeccao = VPLBioprospecting * hectare
+        return valorTotalBioprospeccao
+      }
+      else {
         return 0
       }
     },
@@ -101,6 +110,12 @@ export default function useDeforestation() {
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
+      ) {
+        const valorTotalCarbono = VPLCarbon * hectare
+        return valorTotalCarbono
+      } else if (
+        typemining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         const valorTotalCarbono = VPLCarbon * hectare
         return valorTotalCarbono
@@ -154,6 +169,11 @@ export default function useDeforestation() {
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
       ) {
         return VPLHectareCulturedAndSpecies * hectare
+      } else if (
+        typemining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        return VPLHectareCulturedAndSpecies * hectare
       } else {
         return 0
       }
@@ -179,11 +199,15 @@ export default function useDeforestation() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
       const goldeGramPerHa = goldToHectarePorHe(valueHeCtare, gold)
 
       const soilSurfaceRecPerHa_conservative = recoverOfTopSoll
@@ -248,7 +272,7 @@ export default function useDeforestation() {
 
       if (
         typemining === typeMiningTypes.ALLUVION &&
-        analysisUnit === analysisUnitTypes.IMPACTED_AREA
+        (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
         const surfaceSoilRecoveryWithoutFreight =
           soilSurfaceRecPerHaValue * hectareValue
@@ -322,7 +346,7 @@ export default function useDeforestation() {
         return VPLHaRecreation * hectare * 12
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
-        analysisUnit === analysisUnitTypes.IMPACTED_AREA
+        (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
         return VPLHaRecreation * hectare
       } else {
@@ -366,7 +390,7 @@ export default function useDeforestation() {
         return VPLwoodAndNonWoodProducts * hectare * 12
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
-        analysisUnit === analysisUnitTypes.IMPACTED_AREA
+        (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
         return VPLwoodAndNonWoodProducts * hectare
       } else {

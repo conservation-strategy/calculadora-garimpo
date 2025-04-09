@@ -30,7 +30,13 @@ export enum analysisUnitTypes {
   IMPACTED_AREA = 1,
   AMOUNT_GOLD = 2,
   YEARS_OF_MINING = 3,
-  QTD_FERRY = 5
+  QTD_FERRY = 5,
+  QTD_MACHINES = 6
+}
+
+export enum knowMachineCapacityTypes {
+  YES = '1',
+  NO = '0'
 }
 
 export enum valueHypothesisTypes {

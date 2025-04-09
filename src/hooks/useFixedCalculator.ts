@@ -100,6 +100,7 @@ interface SoilMercuryRemediationProps {
   lossPercentHgInSoil: number
   HgContainedSoilinGrassPerTon: number
   DensidadeSolo: number
+  DensidadeSedimento: number
   remediationCostUSDPerTonOfSoil: number
 }
 
@@ -257,6 +258,7 @@ export default function useFixedCalculator() {
     lossPercentHgInSoil: 0.14,
     HgContainedSoilinGrassPerTon: 0.24,
     DensidadeSolo: 2.76,
+    DensidadeSedimento: 2.7,
     remediationCostUSDPerTonOfSoil: 37.6
   }
 

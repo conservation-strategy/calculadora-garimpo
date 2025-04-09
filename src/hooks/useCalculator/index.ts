@@ -58,10 +58,11 @@ export default function useCalculator() {
     lossQICalculator,
     hypertensionCalculator,
     heartAttackCalculator,
-    soilMercuryRemediationCalculator
+    soilMercuryRemediationCalculator,
+    waterMercuryRemediationCalculator
   } = useMercury()
 
-  const { convertAllinGold, convertAllinHectare, proporcaoKgporHectare } =
+  const { convertAllinGold, convertAllinHectare, proporcaoGramaPorHectare } =
     useConvertAll()
   const { changeResults } = useAppContext()
   const { state } = useAppContext()
@@ -307,6 +308,15 @@ export default function useCalculator() {
         Number(data.inflation)
       )
 
+      const waterMercuryRemediation = waterMercuryRemediationCalculator({
+        dataCalculator: data
+      }) 
+
+      const totalWaterMercuryRemediation = calculatorTotalImpact(
+        waterMercuryRemediation,
+        Number(data.inflation)
+      )
+
       const totalImpacts: DataImpacts[] = []
 
       const impactNotMonetary: DataImpactsNoMonetary[] = []
@@ -384,6 +394,13 @@ export default function useCalculator() {
         value: totalSoilMercuryRemediation
       })
 
+      if(totalWaterMercuryRemediation) {
+        totalImpacts.push({
+          name: language.calculator.impacts.mercuryContamination.sub_impact_water_remediation,
+          value: totalWaterMercuryRemediation
+        })
+      }
+
       setMercury(totalImpacts)
       return {
         impactNotMonetary
@@ -422,7 +439,7 @@ export default function useCalculator() {
     (data: FormInputs) => {
       if (data) {
         const goldGrass = convertAllinGold({ dataCalculator: data })
-        const proporcaoKgporHectareValue = proporcaoKgporHectare({
+        const proporcaoGramaPorHectareValue = proporcaoGramaPorHectare({
           dataCalculator: data
         })
         const { value: hecatereGrass } = convertAllinHectare({
@@ -438,7 +455,7 @@ export default function useCalculator() {
           {
             label:
               language.calculator.impacts.notMonetary.proporcaoKgporHectare,
-            value: convertGramsToKg(proporcaoKgporHectareValue),
+            value: convertGramsToKg(proporcaoGramaPorHectareValue),
             measure: language.calculator.impacts.notMonetary.kgDeAu_ha
           },
           {
@@ -468,7 +485,7 @@ export default function useCalculator() {
       calculatorSiltingOfRivers,
       calculatorMercury,
       convertAllinGold,
-      proporcaoKgporHectare,
+      proporcaoGramaPorHectare,
       convertAllinHectare,
       language
     ]
