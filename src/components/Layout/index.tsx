@@ -55,7 +55,9 @@ export default function Layout({
   }, [languageUser, countryDetection])
 
   return (
+    <>
     <main>
+      <Header />
       <S.SafeArea height={safeAreaHeight} isHome={isHome}>
         <div
         style={{ 
@@ -68,8 +70,7 @@ export default function Layout({
           background: "#000000",
           opacity: 0.5
         }}
-        ></div>
-        <Header />
+        ></div>        
         {isHome
         ? <S.HeroContent>
             <div>
@@ -85,8 +86,9 @@ export default function Layout({
             </SG.Headline>
           </SG.Container>}
       </S.SafeArea>
-      {children}
-      <Footer />
+      {children}      
     </main>
+    <Footer />
+    </>
   )
 }

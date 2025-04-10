@@ -10,7 +10,7 @@ export const SafeArea = styled.div<SafeAreaProps>`
   position: relative;
   z-index: 0;
   width: 100%;
-  min-height: ${({ height }) => (height ? height : '100vh')};
+  min-height: ${({ height }) => (height ? height : 'calc(100vh - 77px)')};
   background: ${({ isHome }) => (isHome ? "url('/assets/images/backgrounds/hero_4.jpg') no-repeat center top" : "url('/assets/images/backgrounds/page_header_2.jpg') no-repeat center bottom")};
   background-size: cover;
   display: flex;
