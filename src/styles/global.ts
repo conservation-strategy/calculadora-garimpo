@@ -1,7 +1,8 @@
 import styled, { createGlobalStyle, css } from 'styled-components'
 
 interface ButtonProps {
-  variant: 'primary' | 'outline'
+  variant: 'primary' | 'outline';
+  maxWidth?: number
 }
 
 interface TextProps {
@@ -104,6 +105,7 @@ export const Container = styled.div<ContainerProps>`
 export const Button = styled.button<ButtonProps>`
   font-family: inherit;
   width: 100%;
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : 'none' )};
   border-radius: 12px;
   height: 80px;
   font-size: 18px;
@@ -213,10 +215,14 @@ export const Headline = styled.h2<TextProps>`
     font-size: ${({ size }) => (size ? size : '30px')};
   }
 
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${({ size }) => (size ? size : '36px')};
+  }
+
   ${({ isHero }) => {
     return isHero
     ? css `
-      max-width: 74ch;
+      max-width: 64ch;
       margin-inline: auto
     `
     : ''
