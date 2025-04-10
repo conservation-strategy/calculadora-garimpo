@@ -140,8 +140,8 @@ export default function Footer() {
           </S.Social>
           </S.BottomLinksWrapper>
           <S.Copy>
-            <S.Text>{disclaimer.text}</S.Text>
-            <S.Text>{copy.copyright}</S.Text>
+            <S.Text style={{ opacity: 0.5 }}>{disclaimer.text}</S.Text>
+            <S.Text style={{ opacity: 0.5 }}>{copy.copyright}</S.Text>
           </S.Copy>
       </SG.Container>
     </S.Container>
