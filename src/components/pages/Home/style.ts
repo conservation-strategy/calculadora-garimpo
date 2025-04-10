@@ -29,6 +29,7 @@ export const Buttons = styled.div`
   margin: 100px auto 0 auto;
   gap: 20px;
   justify-content: center;
+  align-items: center;
   @media (min-width: ${breakpoints.md}) {
     margin: 80px auto 0 auto;
     width: 720px;
