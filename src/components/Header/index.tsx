@@ -87,14 +87,9 @@ export default function Header() {
         }}
         >
           <Link href={'/'}>
-            <Image 
-              src={'/assets/images/logo_garimpo-principal.png'} 
+            <S.Logo 
+              src={'/assets/images/logo_garimpo-principal.svg'} 
               alt='Garimpo' 
-              width={64}
-              height={64}
-              sizes="(max-width: 768px) 41px, 53px"
-              priority
-              style={{ width: 'auto', height: 'auto' }}
             />
           </Link>
           {!ismobileOrTablet &&

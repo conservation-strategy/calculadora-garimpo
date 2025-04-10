@@ -29,25 +29,34 @@ export const ButtonBarMenu = styled.button`
   margin-left: auto;
 `
 
-export const Logo = styled.div`
-  width: 142px;
-  cursor: pointer;
+// export const Logo = styled.div`
+//   width: 142px;
+//   cursor: pointer;
 
-  > img {
-    width: 85px;
-    display: block;
-    margin: 0 auto;
+//   > img {
+//     width: 85px;
+//     display: block;
+//     margin: 0 auto;
+//   }
+//   @media (min-width: ${breakpoints.lg}) {
+//     > img {
+//       display: inline;
+//       margin: 0;
+//     }
+//   }
+// `
+
+export const Logo = styled.img`
+  width: 64px;
+  height: 64px;
+  
+  @media (max-width: 768px) {
+    width: 41px;
+    height: 41px;
   }
-  @media (min-width: ${breakpoints.lg}) {
-    > img {
-      display: inline;
-      margin: 0;
-    }
-  }
-`
+`;
 
 export const MenuDesktop = styled.nav`
-  font-size: 18px;
   display: none;
   gap: 1.5rem;
   @media (min-width: ${breakpoints.lg}) {
@@ -98,7 +107,7 @@ export const MenuItem = styled.a<MenuItemProps>`
   }
 
   @media (min-width: ${breakpoints.lg}) {
-    font-size: 18px;
+    font-size: 16px;
   }
 `
 

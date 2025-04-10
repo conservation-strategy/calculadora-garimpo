@@ -53,14 +53,13 @@ export default function Footer() {
               style={{ cursor: 'pointer '}}
               onClick={() => handleIconClick()}
               >
-                  <Image
+                  <img
                     // src="images/Garimpo_VersãoInvertida.svg"
-                    src="/assets/images/logo_garimpo-principal.png"
+                    src="/assets/images/logo_garimpo-principal.svg"
                     // src="/assets/images/logo-Garimpo_BordaBranca.svg"
                     alt="CSF Logo"
                     width={64}
-                    height={64}
-                    priority
+                    height={64}                  
                     style={{ objectFit: 'contain' }}
                   />
               </div>
@@ -69,13 +68,12 @@ export default function Footer() {
                   target="_blank"
                   rel='noreferrer'
                 >
-                  <Image
+                  <img
                         // src="images/Indígena_VersãoInvertida.svg"
-                    src="/assets/images/logo_indigena-principal.png"
+                    src="/assets/images/logo_indigena-principal.svg"
                     alt="CSF Logo"
                     width={64}
-                    height={64}
-                    priority
+                    height={64}                  
                     style={{ objectFit: 'contain' }}
                   />
                 </a>
@@ -84,13 +82,12 @@ export default function Footer() {
                   target="_blank"
                   rel='noreferrer'
                 >
-                  <Image
+                  <img
                         // src="images/Indígena_VersãoInvertida.svg"
-                    src="/assets/images/logo_desmatamento-principal.png"
+                    src="/assets/images/logo_desmatamento-principal.svg"
                     alt="CSF Logo"
                     width={64}
-                    height={64}
-                    priority
+                    height={64}                  
                     style={{ objectFit: 'contain' }}
                   />
                 </a>
