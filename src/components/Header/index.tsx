@@ -149,7 +149,7 @@ export default function Header() {
             >
               <S.DropDownText>{language.label}</S.DropDownText>
               <i className="fi fi-rr-angle-small-down"></i>
-              <S.DropDownBox active={dropdown} variant='mobile'>
+              <S.DropDownBox active={dropdown}>
                 <S.DropdownItem onClick={() => changeLanguage('pt_BR')}>
                   Português
                 </S.DropdownItem>
