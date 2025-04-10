@@ -14,7 +14,7 @@ export default function Header() {
   const { state, changeLanguage } = useAppContext()
   const { ismobileOrTablet } = useResize()
   const route = useRouter()
-  // const [hasScrolled, setHasScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -25,16 +25,7 @@ export default function Header() {
 
   const handleDropdown = useCallback(() => {
     setDropdown((prevState) => !prevState)
-  }, [])
-
-  // const handleClickOutsideDropdown = useCallback(() => {
-  //   console.log('onblur active')
-  //   if(timeoutRef.current) clearTimeout(timeoutRef.current);
-  //   timeoutRef.current = setTimeout(() => {
-  //     console.log('disabling dropdown')
-  //     setDropdown(false);
-  //   }, 200);
-  // },[timeoutRef.current]);
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -55,22 +46,22 @@ export default function Header() {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     if (scrollTop > 0) {
-  //       setHasScrolled(true);
-  //     } else {
-  //       setHasScrolled(false);
-  //     }
-  //   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
   
-  //   window.addEventListener('scroll', handleScroll);
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, []);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <S.Container>
+    <S.Container isScrolled={isScrolled}>
       {ismobileOrTablet && openMenu && (
         <S.Overlay onClick={() => setMenu(false)} />
       )}
@@ -86,6 +77,7 @@ export default function Header() {
           gap: '3rem'
         }}
         >
+
           <Link href={'/'}>
             <S.Logo 
               src={'/assets/images/logo_garimpo-principal.svg'} 

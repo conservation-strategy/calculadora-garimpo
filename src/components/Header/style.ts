@@ -9,11 +9,16 @@ interface DropDownBoxProps {
   active: boolean;
 }
 
-export const Container = styled.header`
+interface ContainerProps {
+  isScrolled: boolean;
+}
+
+export const Container = styled.header<ContainerProps>`
   width: 100%;
   position: sticky;
   top:0;
   z-index:10;
+  opacity: ${({ isScrolled }) => (isScrolled ? 0.95 : 1 )};
   background: ${colors.primary};
   > div {
     display: flex;
