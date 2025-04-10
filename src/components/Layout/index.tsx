@@ -60,7 +60,7 @@ export default function Layout({
         <Header />
         {isHome
         ? <S.HeroContent>
-            <div style={{ transform: 'translateY(-30%)'}}>
+            <div>
               <SG.Headline weight="300" color="#fff" align={align} isHero>
                 {convertToBold(headline)}
               </SG.Headline>

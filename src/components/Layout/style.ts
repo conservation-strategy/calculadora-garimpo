@@ -14,14 +14,14 @@ export const SafeArea = styled.div<SafeAreaProps>`
   display: flex; // Add this
   flex-direction: column; // Add this
 
-  @media (min-width: ${breakpoints.md}) {
+
     > div {
       margin-top: ${({ height }) => (height ? '0' : '80px')};
     }
-  }
 `
 
 export const HeroContent = styled.div`
+  padding: 0 24px;
   width: 100%;
   flex: 1;
   display: flex;
@@ -29,4 +29,10 @@ export const HeroContent = styled.div`
   align-items: center;
   justify-content: center;
   margin-block: auto;
+
+  @media(min-width: ${breakpoints.md}) {
+    > div {
+      transform: translateY(-50%);
+    }
+  }
 `
