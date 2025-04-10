@@ -6,6 +6,7 @@ import Header from '../Header'
 import * as SG from '@/styles/global'
 import * as S from './style'
 import useCountryDetection from '@/hooks/useCountryDetection'
+import { convertToBold } from '@/utils/text'
 
 interface LayoutProps {
   children: ReactNode
@@ -61,7 +62,7 @@ export default function Layout({
         ? <S.HeroContent>
             <div style={{ transform: 'translateY(-30%)'}}>
               <SG.Headline weight="300" color="#fff" align={align} isHero>
-                {headline}
+                {convertToBold(headline)}
               </SG.Headline>
               {SafeAreaCTA}
             </div>
@@ -72,7 +73,6 @@ export default function Layout({
             </SG.Headline>
           </SG.Container>}
       </S.SafeArea>
-
       {children}
       <Footer />
     </main>
