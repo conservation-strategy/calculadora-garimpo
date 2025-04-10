@@ -13,7 +13,7 @@ interface LayoutProps {
   align?: 'left' | 'center'
   SafeAreaCTA?: ReactNode
   safeAreaHeight?: string;
-  isHero?: boolean
+  isHome?: boolean
 }
 
 export default function Layout({
@@ -22,7 +22,7 @@ export default function Layout({
   SafeAreaCTA,
   safeAreaHeight,
   align = 'center',
-  isHero
+  isHome
 }: LayoutProps) {
   const { changeCountry, changeLanguage } = useAppContext()
   const languageUser = useLanguage()
@@ -57,14 +57,20 @@ export default function Layout({
     <main>
       <S.SafeArea height={safeAreaHeight}>
         <Header />
-        <SG.Container>
-          <SG.Headline weight="300" color="#fff" align={align}
-          isHero={isHero}
-          >
-            {headline}
-          </SG.Headline>
-          {SafeAreaCTA}
-        </SG.Container>
+        {isHome
+        ? <S.HeroContent>
+            <div style={{ transform: 'translateY(-30%)'}}>
+              <SG.Headline weight="300" color="#fff" align={align} isHero>
+                {headline}
+              </SG.Headline>
+              {SafeAreaCTA}
+            </div>
+          </S.HeroContent>
+        : <SG.Container>
+            <SG.Headline weight="600" color="#fff" align={align}>
+              {headline}
+            </SG.Headline>
+          </SG.Container>}
       </S.SafeArea>
 
       {children}
