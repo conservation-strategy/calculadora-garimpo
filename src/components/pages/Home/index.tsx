@@ -22,12 +22,14 @@ export default function Home() {
       SafeAreaCTA={
         <S.Buttons>
           <SG.Button
+            maxWidth={300}
             onClick={() => route.push(ROUTE.stepByStep)}
             variant="primary"
           >
             {safeArea.buttonActions.introduction}
           </SG.Button>
           <SG.Button
+            maxWidth={300}
             onClick={() => route.push(ROUTE.calculator)}
             variant="primary"
           >
