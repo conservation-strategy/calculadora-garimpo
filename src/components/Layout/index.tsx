@@ -13,7 +13,7 @@ interface LayoutProps {
   align?: 'left' | 'center'
   SafeAreaCTA?: ReactNode
   safeAreaHeight?: string;
-  isHero: boolean
+  isHero?: boolean
 }
 
 export default function Layout({
