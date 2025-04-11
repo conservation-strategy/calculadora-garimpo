@@ -54,13 +54,13 @@ export const ButtonBarMenu = styled.button`
 //   }
 // `
 
-export const Logo = styled.img`
-  width: 64px;
-  height: 64px;
-  
-  @media (max-width: 768px) {
-    width: 41px;
-    height: 41px;
+export const Logo = styled.img`  
+  width: 41px;
+  height: 41px;
+
+  @media (min-width: ${breakpoints.md}) {
+    width: 64px;
+    height: 64px;    
   }
 `;
 
