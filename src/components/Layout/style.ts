@@ -49,7 +49,7 @@ export const HeroContent = styled.div`
 `
 
 export const BgImageContainer = styled.div<BgImageContainerProps>`
-  position: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
+  position: 'absolute';
   z-index: 0;
   top: ${({ isHome }) => (isHome ? '77px' : '0')};
   left: 0;
@@ -61,6 +61,7 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
   }
 
   @media(min-width: ${breakpoints.lg}) {
+    position: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
     top: ${({ isHome }) => (isHome ? '104px' : '0')};
   }
 `
