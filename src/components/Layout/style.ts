@@ -1,4 +1,4 @@
-import { breakpoints } from '@/styles/global'
+import { breakpoints, colors } from '@/styles/global'
 import styled from 'styled-components'
 
 interface SafeAreaProps {
@@ -6,18 +6,32 @@ interface SafeAreaProps {
   isHome?: boolean;
 }
 
+interface BgImageContainerProps {
+  isHome?: boolean
+}
+
 export const SafeArea = styled.div<SafeAreaProps>`
   position: relative;
   z-index: 0;
   width: 100%;
   min-height: ${({ height }) => (height ? height : 'calc(100vh - 77px)')};
-  background: ${({ isHome }) => (isHome ? "url('/assets/images/backgrounds/hero_4.jpg') no-repeat center top" : "url('/assets/images/backgrounds/page_header_2.jpg') no-repeat center bottom")};
+  background: ${colors.neutral_1};
   background-size: cover;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+
+  @media(min-width: ${breakpoints.md}) {
+    min-height: ${({ height }) => (height ? height : 'calc(100vh - 100px)')};
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    min-height: ${({ height }) => (height ? height : 'calc(100vh - 104px)')};
+  }
 `
 
 export const HeroContent = styled.div`
+  position: relative;
+  z-index: 1;
   padding: 0 24px;
   width: 100%;
   flex: 1;
@@ -32,4 +46,12 @@ export const HeroContent = styled.div`
       transform: translateY(-30%);
     }
   }
+`
+
+export const BgImageContainer = styled.div<BgImageContainerProps>`
+  positon: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
+  top: ${({ isHome }) => (isHome ? '77px' : '0')};
+  left: 0;
+  width: 100%;
+  height: 100%;
 `
