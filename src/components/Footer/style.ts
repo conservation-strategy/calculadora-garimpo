@@ -15,6 +15,8 @@ export const Calculators = styled.div`
 
 
 export const Container = styled.footer`
+  position: relative;
+  z-index: 1;
   width: 100%;
   background: ${colors.neutral_2};
 `
