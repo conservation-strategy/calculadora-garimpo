@@ -1,12 +1,16 @@
 import useAppContext from '@/hooks/useAppContext'
 import useLanguage from '@/hooks/useLanguage'
-import { ReactNode, useEffect } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import Footer from '../Footer'
 import Header from '../Header'
 import * as SG from '@/styles/global'
 import * as S from './style'
 import useCountryDetection from '@/hooks/useCountryDetection'
 import { convertToBold } from '@/utils/text'
+import Image from 'next/image'
+
+const homeBackgroundImage = '/assets/images/backgrounds/hero_1.jpg';
+const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_5.png';
 
 interface LayoutProps {
   children: ReactNode
@@ -28,6 +32,7 @@ export default function Layout({
   const { changeCountry, changeLanguage } = useAppContext()
   const languageUser = useLanguage()
   const { country: countryDetection } = useCountryDetection()
+  const [isBgLoaded, setIsBgLoaded] = useState(false);
 
   useEffect(() => {
     const country = sessionStorage.getItem('country')
@@ -59,7 +64,27 @@ export default function Layout({
     <main>
       <Header />
       <S.SafeArea height={safeAreaHeight} isHome={isHome}>
-        <div
+        <Image
+        alt="background image"
+        src={isHome ? homeBackgroundImage : pageHeaderBackgoundImage}
+        style={{
+          position: isHome ? 'fixed' : 'absolute',
+          zIndex: 0,
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: isHome ? '0 77px' : 'bottom',
+          filter: 'brightness(50%)',
+          transition: 'opacity 500ms ease-in-out',
+          opacity: isBgLoaded ? 1 : 0
+        }}
+        width={4000}
+        height={3000}
+        onLoad={() => setIsBgLoaded(true)}
+        />
+        {/* <div
         style={{ 
           position: 'absolute',
           zIndex: -1,
@@ -70,7 +95,7 @@ export default function Layout({
           background: "#000000",
           opacity: 0.5
         }}
-        ></div>        
+        ></div>         */}
         {isHome
         ? <S.HeroContent>
             <div>
@@ -80,13 +105,15 @@ export default function Layout({
               {SafeAreaCTA}
             </div>
           </S.HeroContent>
-        : <SG.Container>
+        : <SG.Container style={{ position: 'relative', zIndex: 1 }}>
             <SG.Headline weight="600" color="#fff" align={align}>
               {headline}
             </SG.Headline>
           </SG.Container>}
       </S.SafeArea>
-      {children}      
+      <div style={{ background: '#fff', position: 'relative', zIndex: 1 }}>
+        {children}
+      </div>
     </main>
     <Footer />
     </>
