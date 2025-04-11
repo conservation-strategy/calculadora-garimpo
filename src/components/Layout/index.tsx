@@ -10,7 +10,7 @@ import { convertToBold } from '@/utils/text'
 import Image from 'next/image'
 
 const homeBackgroundImage = '/assets/images/backgrounds/hero_1.jpg';
-const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_5.png';
+const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_2.jpg';
 
 interface LayoutProps {
   children: ReactNode
@@ -64,26 +64,23 @@ export default function Layout({
     <main>
       <Header />
       <S.SafeArea height={safeAreaHeight} isHome={isHome}>
-        <Image
-        alt="background image"
-        src={isHome ? homeBackgroundImage : pageHeaderBackgoundImage}
-        style={{
-          position: isHome ? 'fixed' : 'absolute',
-          zIndex: 0,
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          objectPosition: isHome ? '0 77px' : 'bottom',
-          filter: 'brightness(50%)',
-          transition: 'opacity 500ms ease-in-out',
-          opacity: isBgLoaded ? 1 : 0
-        }}
-        width={4000}
-        height={3000}
-        onLoad={() => setIsBgLoaded(true)}
-        />
+        <S.BgImageContainer isHome={isHome}>
+          <Image
+          alt="background image"
+          src={isHome ? homeBackgroundImage : pageHeaderBackgoundImage}
+          style={{            
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: isHome ? 'top' : 'center',
+            filter: 'brightness(50%)',
+            transition: 'opacity 500ms ease-in-out',
+            opacity: isBgLoaded ? 1 : 0
+          }}
+          fill
+          onLoad={() => setIsBgLoaded(true)}
+          />
+        </S.BgImageContainer>
         {/* <div
         style={{ 
           position: 'absolute',

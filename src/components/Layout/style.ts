@@ -49,9 +49,18 @@ export const HeroContent = styled.div`
 `
 
 export const BgImageContainer = styled.div<BgImageContainerProps>`
-  positon: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
+  position: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
+  z-index: 0;
   top: ${({ isHome }) => (isHome ? '77px' : '0')};
   left: 0;
   width: 100%;
   height: 100%;
+
+  @media(min-width: ${breakpoints.md}) {
+    top: ${({ isHome }) => (isHome ? '100px' : '0')};
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    top: ${({ isHome }) => (isHome ? '104px' : '0')};
+  }
 `
