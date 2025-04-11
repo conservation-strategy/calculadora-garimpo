@@ -82,8 +82,8 @@ export const Menu = styled.nav<MenuItemProps>`
   display: flex;
   flex-direction: column;
   z-index: 999;
-  gap: 2rem;
-  padding: 2rem;
+  gap: 1.75rem;
+  padding: 1.5rem 2.5rem;
   transition: right 0.3s;
   @media (min-width: ${breakpoints.lg}) {
     position: initial;
@@ -98,7 +98,7 @@ export const Menu = styled.nav<MenuItemProps>`
 export const MenuTop = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
 `
 
 export const MenuItem = styled.a<MenuItemProps>`
@@ -145,6 +145,9 @@ export const DropDownText = styled.span`
   letter-spacing: 0.025em;
   line-height: 17px;
   color: #fff;
+  @media (min-width: ${breakpoints.md}) {
+    font-size: 24px;
+  }
   @media (min-width: ${breakpoints.lg}) {
     font-size: 14px;
   }

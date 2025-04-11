@@ -107,11 +107,26 @@ export default function Header() {
             <S.MenuTop>
               <S.MenuItem
                 onClick={() => setMenu(false)}
-                style={{ fontSize: '40px' }}
+                style={{ 
+                  fontSize: '40px', 
+                  height: '40px', 
+                  transform: 'translateY(-0.25rem)'
+                }}
               >
-                <i className="fi fi-rr-rectangle-xmark"></i>
+                <i className="fi fi-rr-rectangle-xmark"
+                style={{ height: '40px' }}
+                ></i>
               </S.MenuItem>
-              <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
+              <a 
+              href='https://www.conservation-strategy.org/' 
+              target='_blank' 
+              rel='noreferrer' 
+              style={{ 
+                opacity: 0.6, 
+                marginLeft: '10px',
+                transform: 'translateY(.125rem)'
+              }}
+              >
                 <Image          
                   // className="opacity-[0.6] ml-2"
                   src="/assets/images/logo.png"
