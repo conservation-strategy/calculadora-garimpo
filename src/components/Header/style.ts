@@ -82,8 +82,8 @@ export const Menu = styled.nav<MenuItemProps>`
   display: flex;
   flex-direction: column;
   z-index: 999;
-  gap: 40px;
-  padding: 40px;
+  gap: 2rem;
+  padding: 2rem;
   transition: right 0.3s;
   @media (min-width: ${breakpoints.lg}) {
     position: initial;
@@ -103,6 +103,7 @@ export const MenuTop = styled.div`
 
 export const MenuItem = styled.a<MenuItemProps>`
   font-size: 18px;
+  font-weight: 700;
   line-height: 150%;
   color: ${({ active }) => (active ? colors.primary : '#fff')};
   cursor: pointer;
@@ -126,11 +127,10 @@ export const DropDown = styled.div`
   gap: 8px;
   height: 30px;
   color: #fff;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: start;
   position: relative;
-  border: 1px solid #fff;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   @media (min-width: ${breakpoints.lg}) {
     justify-content: flex-end;
     padding: 0;
@@ -140,13 +140,34 @@ export const DropDown = styled.div`
 `
 
 export const DropDownText = styled.span`
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.025em;
   line-height: 17px;
   color: #fff;
   @media (min-width: ${breakpoints.lg}) {
     font-size: 14px;
+  }
+`
+
+export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
+  position: absolute;
+  top: 2.25rem;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  font-size: 16px;
+  transition: opacity 200ms ease-out;
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  pointer-events: ${({ active }) => (active ? 'auto' : 'none')};
+  > div {
+   font-weight: 700;
+   padding: .5rem;
+   opacity: 0.7;
+  }
+  > div:active {
+   opacity: 1;
   }
 `
 
@@ -160,8 +181,8 @@ export const DropDownBox = styled.div<DropDownBoxProps>`
   &::-webkit-scrollbar {
     display: none;
   }
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none; 
   position: absolute;
   top: 50px;
   right: 0;
@@ -184,7 +205,7 @@ export const DropdownItem = styled.a`
   width: 100%;
   gap: 16px;
   color: #fff;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 20px;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2)

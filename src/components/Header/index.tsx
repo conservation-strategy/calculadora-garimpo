@@ -132,21 +132,29 @@ export default function Header() {
           {ismobileOrTablet && (
             <S.DropDown 
             onClick={handleDropdown}
-            // onBlur={handleClickOutsideDropdown}
+            ref={dropdownRef}
             >
               <S.DropDownText>{language.label}</S.DropDownText>
-              <i className="fi fi-rr-angle-small-down"></i>
-              <S.DropDownBox active={dropdown}>
-                <S.DropdownItem onClick={() => changeLanguage('pt_BR')}>
+              <i className="fi fi-rr-angle-small-down"
+              style={{
+                height: '16px',
+                marginLeft: '0.5rem',
+                transition: 'transform 0.2s',
+                transitionDelay: '0.2s',
+                transformOrigin: 'center',
+                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
+              }}></i>
+              <S.DropDownBoxMobile active={dropdown}>
+                <div onClick={() => changeLanguage('pt_BR')}>
                   Português
-                </S.DropdownItem>
-                <S.DropdownItem onClick={() => changeLanguage('es_ES')}>
+                </div>
+                <div onClick={() => changeLanguage('es_ES')}>
                   Español
-                </S.DropdownItem>
-                <S.DropdownItem onClick={() => changeLanguage('en_US')}>
+                </div>
+                <div onClick={() => changeLanguage('en_US')}>
                   English
-                </S.DropdownItem>
-              </S.DropDownBox>
+                </div>
+              </S.DropDownBoxMobile>
             </S.DropDown>
           )}
         </S.Menu>
