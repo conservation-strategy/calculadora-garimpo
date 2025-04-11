@@ -14,18 +14,18 @@ export const SafeArea = styled.div<SafeAreaProps>`
   position: relative;
   z-index: 0;
   width: 100%;
-  min-height: ${({ height }) => (height ? height : 'calc(100vh - 77px)')};
+  min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 77px)' : 'none')};
   background: ${colors.neutral_1};
   background-size: cover;
   display: flex;
   flex-direction: column;
 
   @media(min-width: ${breakpoints.md}) {
-    min-height: ${({ height }) => (height ? height : 'calc(100vh - 100px)')};
+    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
   }
 
   @media(min-width: ${breakpoints.lg}) {
-    min-height: ${({ height }) => (height ? height : 'calc(100vh - 104px)')};
+    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 104px)' : 'none')};
   }
 `
 
