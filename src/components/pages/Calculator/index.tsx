@@ -53,35 +53,35 @@ export default function Calculator() {
         content: (
           <>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_01 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list1
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list2
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list3
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_o3 }}
-              ></div>
+              ></span>
             </SG.Text>
           </>
         )
@@ -100,11 +100,11 @@ export default function Calculator() {
                   <br />
                   <br />
                   <SG.Text>
-                    <div
+                    <span
                       dangerouslySetInnerHTML={{
                         __html: typeminig.description
                       }}
-                    ></div>
+                    ></span>
                   </SG.Text>
                 </S.Box>
               ))}
@@ -159,30 +159,30 @@ export default function Calculator() {
         content: (
           <>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: useCalculator.text }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_01
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_02
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_03
                 }}
-              ></div>
+              ></span>
             </SG.Text>
           </>
         )
