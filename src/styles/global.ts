@@ -107,12 +107,11 @@ export const Button = styled.button<ButtonProps>`
   width: 100%;
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : 'none' )};
   border-radius: 12px;
-  height: 80px;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  padding: 0 30px;
+  padding: 24px 32px;
   text-transform: uppercase;
   color: #fff;
   transition: background-color 300ms;
