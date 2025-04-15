@@ -40,8 +40,8 @@ export const LinksWrapper = styled.div`
 export const LinksColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  margin-bottom: 50px;
+  gap: 14px;
+  margin-bottom: 40px;
   @media (min-width: ${breakpoints.lg}) {
     margin: 0;
   }
@@ -50,27 +50,31 @@ export const LinksColumn = styled.div`
 export const Links = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px;
 `
 
 export const Link = styled.a`
   color: inherit;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 30px;
   cursor: pointer;
+
+  @media(min-width: ${breakpoints.md}) {
+    font-size: 16px;
+  }
 `
 
 export const BottomLinksWrapper = styled.div`
-  margin-top: 3rem;
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 2.5rem;
   @media(min-width: ${breakpoints.lg}) {
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
+    margin-top: 50px;
   }
 `
 
@@ -99,7 +103,7 @@ export const Social = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 48px 0;
+  margin: 1rem 0;
   a {
     color: inherit;
     font-size: 25px;
@@ -120,7 +124,7 @@ export const Copy = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 3rem;
+  margin-top: 2.5rem;
   justify-content: space-between;
   align-items: center;
   @media(min-width: ${breakpoints.lg}) {
@@ -143,18 +147,24 @@ export const ButtonWhite = styled.button`
 
 export const Headline = styled.h5`
   font-weight: 700;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 48px;
   color: inherit;
+
+  @media(min-width: ${breakpoints.sm}) {
+    font-size: 20px;
+  }
 `
 
 export const Text = styled.p`
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   color: inherit;
   text-align: center;
-  @media (min-width: ${breakpoints.md}) {
+  @media (min-width: ${breakpoints.sm}) {
     text-align: left;
+    font-size: 16px;
   }
+
 `
