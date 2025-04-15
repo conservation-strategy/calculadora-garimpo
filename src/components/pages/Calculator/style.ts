@@ -12,7 +12,7 @@ export const WrapperCalculator = styled.div`
   display: grid;
   grid-template-columns: auto;
   margin-bottom: 3.125em;
-  padding: 0 1.875em;
+  padding: 0 0 0 1.875em;
   gap: 1.25em;
   justify-content: space-between;
   align-items: flex-start;
