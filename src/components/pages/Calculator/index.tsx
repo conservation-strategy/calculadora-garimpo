@@ -208,7 +208,7 @@ export default function Calculator() {
             <FormCalculator />
           </S.WrapperCalculator>
         </SG.Container>
-      <SG.Container>
+      <SG.Container padding='0 24px 50px'>
         <ResultsCalculator scrollResults={scrollResults} />
       </SG.Container>
     </Layout>
