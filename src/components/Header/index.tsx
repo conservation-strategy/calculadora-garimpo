@@ -66,7 +66,7 @@ export default function Header() {
         <S.Overlay onClick={() => setMenu(false)} />
       )}
 
-      <SG.Container variant='nav'>
+      <SG.Container padding='16px 24px'>
         {/* <S.Logo onClick={() => route.push(ROUTE.home)}>
           <img src="/assets/images/logo-garimpo-invertido.png" alt="Garimpo" />
         </S.Logo> */}

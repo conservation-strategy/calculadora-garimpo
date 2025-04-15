@@ -16,6 +16,7 @@ interface TextProps {
 interface ContainerProps {
   fontSize?: string;
   variant?: 'nav';
+  padding?: string;
 }
 
 export const colors = {
@@ -89,17 +90,7 @@ export const Container = styled.div<ContainerProps>`
   @media (min-width: ${breakpoints.xll}) {
     width: 1552px;
   }
-  ${({ variant }) => {
-    if(variant === 'nav') {
-      return css `
-        padding: 16px 24px
-      `
-    } else {
-      return css `
-        padding: 50px 24px
-      `
-    }
-  }}
+  padding: ${({ padding }) => ( padding ?? '50px 24px')}; 
 `
 
 export const Button = styled.button<ButtonProps>`
