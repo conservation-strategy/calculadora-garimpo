@@ -9,8 +9,8 @@ import useCountryDetection from '@/hooks/useCountryDetection'
 import { convertToBold } from '@/utils/text'
 import Image from 'next/image'
 
-const homeBackgroundImage = '/assets/images/backgrounds/hero_1.jpg';
-const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_2.jpg';
+const homeBackgroundImage = '/assets/images/backgrounds/hero_1.webp';
+const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_2.webp';
 
 interface LayoutProps {
   children: ReactNode
@@ -74,7 +74,7 @@ export default function Layout({
             objectFit: 'cover',
             objectPosition: isHome ? 'top' : 'center',
             filter: 'brightness(50%)',
-            transition: 'opacity 500ms ease-in-out',
+            transition: 'opacity 150ms ease-out',
             opacity: isBgLoaded ? 1 : 0
           }}
           fill
