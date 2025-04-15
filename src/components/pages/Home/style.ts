@@ -40,9 +40,10 @@ export const Buttons = styled.div`
 export const AboutCalculator = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 100px;
+  gap: 50px;
   @media (min-width: ${breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 100px
   }
 `
 
@@ -60,7 +61,7 @@ export const CardsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 100px;
+  gap: 50px;
   margin-top: 50px;
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
