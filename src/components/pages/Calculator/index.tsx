@@ -93,7 +93,9 @@ export default function Calculator() {
             {typeMining.items
               .filter((item, index) => index !== RETORT_INDEX)
               .map((typeminig) => (
-                <S.Box key={typeminig.headline}>
+                <div key={typeminig.headline}
+                style={{ marginBottom: '2rem' }}
+                >
                   <SG.Headline size="24px">{typeminig.headline}</SG.Headline>
                   <br />
                   <img src={typeminig.image_url} alt={typeminig.headline} />
@@ -106,7 +108,7 @@ export default function Calculator() {
                       }}
                     ></span>
                   </SG.Text>
-                </S.Box>
+                </div>
               ))}
           </>
         )
