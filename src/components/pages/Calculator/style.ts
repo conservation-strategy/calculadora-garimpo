@@ -91,7 +91,7 @@ export const Form = styled.form`
       'submit submit submit submit';
   }
   @media (min-width: ${breakpoints.lg}) {
-    margin-top: -120px;
+    margin-top: 0;
   }
   & select {
     margin-top: 8px;
