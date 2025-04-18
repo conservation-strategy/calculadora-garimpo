@@ -40,12 +40,6 @@ export const HeroContent = styled.div`
   align-items: center;
   justify-content: center;
   margin-inline: auto;
-  margin-top: 80px; 
-  @media(min-width: ${breakpoints.md}) {
-    > div {
-      transform: translateY(-30%);
-    }
-  }
 `
 
 export const BgImageContainer = styled.div<BgImageContainerProps>`

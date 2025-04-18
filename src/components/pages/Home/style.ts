@@ -26,7 +26,7 @@ export const Buttons = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 100px auto 0 auto;
+  margin: 2rem auto 0 auto;
   gap: 2rem;
   justify-content: center;
   align-items: center;
