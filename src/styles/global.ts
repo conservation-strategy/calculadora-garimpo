@@ -102,7 +102,7 @@ export const Button = styled.button<ButtonProps>`
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  padding: 24px 32px;
+  padding: 17px 28px;
   text-transform: uppercase;
   color: #fff;
   transition: background-color 300ms;
