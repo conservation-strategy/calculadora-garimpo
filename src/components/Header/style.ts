@@ -176,7 +176,7 @@ export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
 
 export const DropDownBox = styled.div<DropDownBoxProps>`
   width: 250px;
-  background-color: ${({ active }) => (active ? colors.secondary : 'transparent')};
+  background-color: ${({ active }) => (active ? colors.neutral_1 : 'transparent')};
   height: ${({ active }) => (active ? '170px' : 0)};
   overflow: ${({ active }) => (active ? 'auto' : 'hidden')};
   border: 1px solid ${({ active }) => (active ? '#fff' : 'transparent')};
@@ -207,11 +207,11 @@ export const DropdownItem = styled.a`
   height: 100%;
   width: 100%;
   gap: 16px;
-  color: #fff;
+  color: #000;
   font-size: 18px;
   line-height: 20px;
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2)
+    background-color: rgba(0, 0, 0, 0.2)
   }
   @media (min-width: ${breakpoints.lg}) {
     font-size: 16px;

@@ -49,10 +49,10 @@ export const AboutCalculator = styled.div`
 
 export const ImpactsWrapper = styled.div`
   width: 100%;
-  background: ${colors.secondary};
+  background: ${colors.neutral_1};
   background-size: cover;
   h2 {
-    color: #fff;
+    color: #000s;
   }
 `
 
@@ -103,7 +103,7 @@ export const CardHeader = styled.div`
 export const CardButton = styled.button`
   width: 100%;
   display: block;
-  border: 1px solid ${colors.secondary};
+  border: 1px solid ${colors.neutral_1};
   border-radius: 6px;
   font-size: 18px;
   line-height: 150%;
@@ -112,9 +112,9 @@ export const CardButton = styled.button`
   margin-top: auto;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background-color 150ms ease-in-out;
   &:hover {
-    background-color: ${colors.secondary};
-    color: #fff;
+    background-color: ${colors.neutral_1};
   }
 `
 
