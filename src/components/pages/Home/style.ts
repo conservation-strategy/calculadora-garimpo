@@ -31,7 +31,7 @@ export const Buttons = styled.div`
   justify-content: center;
   align-items: center;
   @media (min-width: ${breakpoints.md}) {
-    margin: 80px auto 0 auto;
+    margin: 2.5rem auto 0 auto;
     width: 720px;
     flex-direction: row;
   }

@@ -98,11 +98,11 @@ export const Button = styled.button<ButtonProps>`
   width: 100%;
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : 'none' )};
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  padding: 17px 28px;
+  padding: 21px 24px;
   text-transform: uppercase;
   color: #fff;
   transition: background-color 300ms;
@@ -212,7 +212,7 @@ export const Headline = styled.h2<TextProps>`
   ${({ isHero }) => {
     return isHero
     ? css `
-      max-width: 64ch;
+      max-width: 45ch;
       margin-inline: auto
     `
     : ''
