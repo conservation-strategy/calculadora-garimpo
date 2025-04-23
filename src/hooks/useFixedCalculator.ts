@@ -305,7 +305,7 @@ export default function useFixedCalculator() {
 
     carbon.carbonCostPerHaUSD = 259.73
 
-    recoverOfTopSoll.hectare = 0.31
+    recoverOfTopSoll.hectare = 0.1
     recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 933.19
     recoverOfTopSoll.soilSurfaceRecPerHa = 2536.63
     recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500
