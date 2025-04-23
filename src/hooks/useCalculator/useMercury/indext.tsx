@@ -1656,14 +1656,8 @@ export default function useMercury() {
       const remediationCost = soilMercuryRemediation
         ? soilMercuryRemediation.remediationCostUSDPerTonOfSoil
         : 0
-      
-      const gold =
-        analysisUnit === analysisUnitTypes.IMPACTED_AREA
-          ? hectareToGold({ dataCalculator })
-          : analysisUnit === analysisUnitTypes.QTD_MACHINES
-            ? numberOfMachinesToGold({ dataCalculator })
-            : qtdAnalysis
-      
+
+      const gold = convertAllinGold({ dataCalculator });
       const hgl = gold * hgAuRatio * hgLostInWater * (1 - methylatedHgPctg)
       const ret = ((hgl / hgInSoil) / sedimentDensity) * remediationCost
       console.log('impacto remediação de mercurio na agua', ret);
