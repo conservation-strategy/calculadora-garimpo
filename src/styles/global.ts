@@ -20,9 +20,9 @@ interface ContainerProps {
 }
 
 export const colors = {
-  primary: '#673928',
+  primary: '#F6A249',
   secondary_dark: '#F48D1F',
-  secondary: '#F6A249',
+  secondary: '#673928',
   neutral_1: "#E4D2D2",
   neutral_2: "#D8D8D8",
   green: '#417505',
