@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components';
+import { doppioOne, gudea } from '@/fonts/fonts';
 
 interface ButtonProps {
   variant: 'primary' | 'outline';
@@ -52,8 +53,12 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html, body {
-        font-family: 'Segoe UI This', sans-serif;
+        font-family: ${gudea.style.fontFamily}, sans-serif;
         height: 100%;
+    }
+
+    h2 {
+      font-family: ${doppioOne.style.fontFamily}, sans-serif;
     }
 
     button {
@@ -194,6 +199,7 @@ export const Text = styled.p<TextProps>`
 `
 
 export const Headline = styled.h2<TextProps>`
+  font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: ${({ size }) => (size ? size : '25px')};
   line-height: 175%;
   font-weight: ${({ weight }) => (weight ? weight : '600')};

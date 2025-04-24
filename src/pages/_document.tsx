@@ -6,7 +6,7 @@ import Document, {
   DocumentContext
 } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { segoeUIThis } from '@/fonts/fonts';
+import { doppioOne, gudea } from '@/fonts/fonts';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -41,15 +41,6 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="Author" content="Linze User Experience" key="author" />
 
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-
-          <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-            crossOrigin="anonymous"
-          />
-
           <link
             href="https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css"
             rel="stylesheet"
@@ -72,7 +63,7 @@ export default class MyDocument extends Document {
           <meta name="apple-mobile-web-app-title" content="Impact Calculator" />
           <link rel="manifest" href="/manifest.json" />
         </Head>
-        <body className={segoeUIThis.className}>
+        <body className={`${gudea.className}`}>
           <Main />
           <NextScript />
         </body>

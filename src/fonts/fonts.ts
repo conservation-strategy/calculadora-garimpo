@@ -1,4 +1,21 @@
 import localFont from 'next/font/local';
+import { Gudea, Doppio_One } from 'next/font/google';
+
+export const gudea = Gudea({
+  weight: ['400', '700'], // Regular and Bold
+  style: ['normal', 'italic'], // Normal and Italic
+  display: 'swap',
+  subsets: ['latin']
+});
+
+export const doppioOne = Doppio_One({
+  weight: '400', // Regular
+  style: 'normal', // Normal
+  display: 'swap',
+  subsets: ['latin']
+});
+
+
 
 export const segoeUIThis = localFont({
   src: [
