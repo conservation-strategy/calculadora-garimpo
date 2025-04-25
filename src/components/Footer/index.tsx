@@ -46,102 +46,103 @@ export default function Footer() {
             </S.LinksColumn>
           ))}
         </S.LinksWrapper>
-        <S.CalculatorsWrapper>
-          <S.Calculators>
-            <div
-            style={{ cursor: 'pointer '}}
-            onClick={() => handleIconClick()}
-            >
-                <Image
-                  // src="images/Garimpo_VersãoInvertida.svg"
-                  src="/assets/images/logo-GARIMPO_BORDABRANCA.png"
-                  // src="/assets/images/logo-Garimpo_BordaBranca.svg"
-                  alt="CSF Logo"
-                  width={64}
-                  height={64}
-                  priority
-                  style={{ objectFit: 'contain' }}
-                />
-            </div>
-              <a 
-                href="https://indigenouscalculator.conservation-strategy.org/home"
-                target="_blank"
-                rel='noreferrer'
+        <S.BottomLinksWrapper>
+          {/* <S.CalculatorsWrapper> */}
+            <S.Calculators>
+              <div
+              style={{ cursor: 'pointer '}}
+              onClick={() => handleIconClick()}
               >
-                <Image
-                      // src="images/Indígena_VersãoInvertida.svg"
-                  src="assets/images/logo-Indigena_BordaBranca.svg"
-                  alt="CSF Logo"
-                  width={64}
-                  height={64}
-                  priority
-                />
-              </a>
-              <a 
-                href="https://deforestationcalculator.conservation-strategy.org/"
-                target="_blank"
-                rel='noreferrer'
-              >
-                <Image
-                      // src="images/Indígena_VersãoInvertida.svg"
-                  src="assets/images/logo-Desmatamento_BordaBranca.svg"
-                  alt="CSF Logo"
-                  width={64}
-                  height={64}
-                  priority
-                />
-              </a>
-          </S.Calculators>
-        </S.CalculatorsWrapper>
+                  <img
+                    // src="images/Garimpo_VersãoInvertida.svg"
+                    src="/assets/images/logo_garimpo-principal.svg"
+                    // src="/assets/images/logo-Garimpo_BordaBranca.svg"
+                    alt="CSF Logo"
+                    width={64}
+                    height={64}                  
+                    style={{ objectFit: 'contain' }}
+                  />
+              </div>
+                <a 
+                  href="https://indigenouscalculator.conservation-strategy.org/home"
+                  target="_blank"
+                  rel='noreferrer'
+                >
+                  <img
+                        // src="images/Indígena_VersãoInvertida.svg"
+                    src="/assets/images/logo_indigena-principal.svg"
+                    alt="CSF Logo"
+                    width={64}
+                    height={64}                  
+                    style={{ objectFit: 'contain' }}
+                  />
+                </a>
+                <a 
+                  href="https://deforestationcalculator.conservation-strategy.org/"
+                  target="_blank"
+                  rel='noreferrer'
+                >
+                  <img
+                        // src="images/Indígena_VersãoInvertida.svg"
+                    src="/assets/images/logo_desmatamento-principal.svg"
+                    alt="CSF Logo"
+                    width={64}
+                    height={64}                  
+                    style={{ objectFit: 'contain' }}
+                  />
+                </a>
+            </S.Calculators>
+          {/* </S.CalculatorsWrapper> */}
 
-        <S.Social>
-          <div>
-            <Link
-              target="_blank"
-              rel='noreferrer'
-              href="https://web.facebook.com/conservationstrategyfund?_rdc=1&_rdr"
-              title="Facebook"
-            >
-              <i className="fi fi-brands-facebook"></i>
-            </Link>
-            <Link
-              target="_blank"
-              rel='noreferrer'
-              href="https://bsky.app/profile/numbers4nature.bsky.social"
-              title="Twitter"
-            >
-              <IconBlueSky/>
-            </Link>
-            <Link
-              target="_blank"
-              rel='noreferrer'
-              href="https://www.youtube.com/user/numbers4nature"
-              title="Youtube"
-            >
-              <i className="fi fi-brands-youtube"></i>
-            </Link>
-            <Link
-              target="_blank"
-              rel='noreferrer'
-              href="https://www.instagram.com/conservationstrategyfund/"
-              title="Instagram"
-            >
-              <i className="fi fi-brands-instagram"></i>
-            </Link>
-            <Link
-              target="_blank"
-              rel='noreferrer'
-              href="https://www.linkedin.com/company/conservation-strategy-fund/"
-              title="Linkedin"
-            >
-              <i className="fi fi-brands-linkedin"></i>
-            </Link>
-          </div>
-        </S.Social>
-        <S.Copy>
-          <S.Text>{disclaimer.text}</S.Text>
-          <S.Text>{copy.copyright}</S.Text>
-        </S.Copy>
+          <S.Social>
+            <div>
+              <Link
+                target="_blank"
+                rel='noreferrer'
+                href="https://web.facebook.com/conservationstrategyfund?_rdc=1&_rdr"
+                title="Facebook"
+              >
+                <i className="fi fi-brands-facebook"></i>
+              </Link>
+              <Link
+                target="_blank"
+                rel='noreferrer'
+                href="https://bsky.app/profile/numbers4nature.bsky.social"
+                title="Twitter"
+              >
+                <IconBlueSky/>
+              </Link>
+              <Link
+                target="_blank"
+                rel='noreferrer'
+                href="https://www.youtube.com/user/numbers4nature"
+                title="Youtube"
+              >
+                <i className="fi fi-brands-youtube"></i>
+              </Link>
+              <Link
+                target="_blank"
+                rel='noreferrer'
+                href="https://www.instagram.com/conservationstrategyfund/"
+                title="Instagram"
+              >
+                <i className="fi fi-brands-instagram"></i>
+              </Link>
+              <Link
+                target="_blank"
+                rel='noreferrer'
+                href="https://www.linkedin.com/company/conservation-strategy-fund/"
+                title="Linkedin"
+              >
+                <i className="fi fi-brands-linkedin"></i>
+              </Link>
+            </div>
+          </S.Social>
+          </S.BottomLinksWrapper>
+          <S.Copy>
+            <S.Text style={{ opacity: 0.5 }}>{disclaimer.text}</S.Text>
+            <S.Text style={{ opacity: 0.5 }}>{copy.copyright}</S.Text>
+          </S.Copy>
       </SG.Container>
     </S.Container>
   )

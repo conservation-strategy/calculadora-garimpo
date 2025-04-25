@@ -17,18 +17,21 @@ export default function Home() {
 
   return (
     <Layout
+      isHome
       headline={safeArea.headline}
       SafeAreaCTA={
         <S.Buttons>
           <SG.Button
+            maxWidth={200}
             onClick={() => route.push(ROUTE.stepByStep)}
             variant="primary"
           >
             {safeArea.buttonActions.introduction}
           </SG.Button>
           <SG.Button
+            maxWidth={200}
             onClick={() => route.push(ROUTE.calculator)}
-            variant="outline"
+            variant="primary"
           >
             {safeArea.buttonActions.calculator}
           </SG.Button>
@@ -84,10 +87,10 @@ export default function Home() {
                 <S.CardHeader>
                   <S.CardIcon src={item.icon} />
                 </S.CardHeader>
-                <SG.Text align="center" weight="600">
+                <SG.Text align="left" weight="600">
                   {item.title}
                 </SG.Text>
-                <SG.Text align="center">{item.description}</SG.Text>
+                <SG.Text align="left">{item.description}</SG.Text>
                 <S.CardButton
                   onClick={() => route.push(`/impact/${item.slug}`)}
                 >

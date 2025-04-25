@@ -169,8 +169,6 @@ export default function ResultsCalculator({
       </S.ValuesWrapper>
 
       <S.ImpactTextValuation>
-        <br />
-        <br />
         <SG.Headline>{valuation.headline}</SG.Headline>
         <SG.Text>{textUsesTypes}</SG.Text>
       </S.ImpactTextValuation>

@@ -1,7 +1,9 @@
-import styled, { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components';
+import { doppioOne, gudea } from '@/fonts/fonts';
 
 interface ButtonProps {
-  variant: 'primary' | 'outline'
+  variant: 'primary' | 'outline';
+  maxWidth?: number
 }
 
 interface TextProps {
@@ -9,20 +11,28 @@ interface TextProps {
   align?: 'left' | 'right' | 'center'
   size?: string
   weight?: '300' | '400' | '500' | '600'
+  isHero?: boolean;
 }
 
 interface ContainerProps {
-  fontSize?: string
+  fontSize?: string;
+  variant?: 'nav';
+  padding?: string;
 }
 
 export const colors = {
-  primary: '#417505',
-  secondary: '#61AB0B',
+  primary: '#F6A249',
+  secondary_dark: '#F48D1F',
+  secondary: '#673928',
+  neutral_1: "#E4D2D2",
+  neutral_2: "#D8D8D8",
+  green: '#417505',
   outline: '#AF8313',
   outline_hover: '#E9A701'
 }
 
 export const breakpoints = {
+  sm: '640px',
   md: '768px',
   lg : '1280px',
   xl: '1440px',
@@ -43,8 +53,12 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     html, body {
-        font-family: 'Poppins', sans-serif;
+        font-family: ${gudea.style.fontFamily}, sans-serif;
         height: 100%;
+    }
+
+    h2 {
+      font-family: ${doppioOne.style.fontFamily}, sans-serif;
     }
 
     button {
@@ -67,7 +81,6 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div<ContainerProps>`
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '1rem')};
   width: 100%;
-  padding: 50px 24px;
   @media (min-width: ${breakpoints.md}) {
     width: 720px;
     margin-left: auto;
@@ -82,19 +95,22 @@ export const Container = styled.div<ContainerProps>`
   @media (min-width: ${breakpoints.xll}) {
     width: 1552px;
   }
+  padding: ${({ padding }) => ( padding ?? '50px 24px')}; 
 `
 
 export const Button = styled.button<ButtonProps>`
+  font-family: inherit;
   width: 100%;
-  border-radius: 8px;
-  height: 80px;
-  font-size: 18px;
+  max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : 'none' )};
+  border-radius: 12px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  padding: 0 30px;
+  padding: 21px 24px;
   text-transform: uppercase;
   color: #fff;
+  transition: background-color 300ms;
   a {
     color: #fff;
     text-decoration: none;
@@ -102,7 +118,7 @@ export const Button = styled.button<ButtonProps>`
   ${({ variant }) => {
     if (variant === 'primary') {
       return css`
-        background: ${colors.primary};
+        background-color: ${colors.primary};
         &:hover {
           background-color: ${colors.secondary};
         }
@@ -191,6 +207,7 @@ export const Text = styled.p<TextProps>`
 `
 
 export const Headline = styled.h2<TextProps>`
+  font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: ${({ size }) => (size ? size : '25px')};
   line-height: 175%;
   font-weight: ${({ weight }) => (weight ? weight : '600')};
@@ -201,4 +218,17 @@ export const Headline = styled.h2<TextProps>`
   @media (min-width: ${breakpoints.md}) {
     font-size: ${({ size }) => (size ? size : '30px')};
   }
+
+  @media (min-width: ${breakpoints.lg}) {
+    font-size: ${({ size }) => (size ? size : '36px')};
+  }
+
+  ${({ isHero }) => {
+    return isHero
+    ? css `
+      max-width: 45ch;
+      margin-inline: auto
+    `
+    : ''
+  }}
 `

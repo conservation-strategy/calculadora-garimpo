@@ -26,11 +26,12 @@ export const Buttons = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 100px auto 0 auto;
-  gap: 20px;
+  margin: 2rem auto 0 auto;
+  gap: 2rem;
   justify-content: center;
+  align-items: center;
   @media (min-width: ${breakpoints.md}) {
-    margin: 80px auto 0 auto;
+    margin: 2.5rem auto 0 auto;
     width: 720px;
     flex-direction: row;
   }
@@ -39,18 +40,19 @@ export const Buttons = styled.div`
 export const AboutCalculator = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  gap: 100px;
+  gap: 50px;
   @media (min-width: ${breakpoints.lg}) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 100px
   }
 `
 
 export const ImpactsWrapper = styled.div`
   width: 100%;
-  background: url('assets/images/background.webp') no-repeat center top;
+  background: ${colors.neutral_1};
   background-size: cover;
   h2 {
-    color: #fff;
+    color: #000s;
   }
 `
 
@@ -59,7 +61,7 @@ export const CardsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  gap: 100px;
+  gap: 50px;
   margin-top: 50px;
   @media (min-width: ${breakpoints.lg}) {
     flex-direction: row;
@@ -87,12 +89,10 @@ export const Card = styled.div`
 `
 
 export const CardIcon = styled.img`
-  margin: 0 auto;
   display: block;
 `
 
 export const CardHeader = styled.div`
-  width: 100%;
   height: 85px;
   margin-bottom: 20px;
   @media (min-width: ${breakpoints.lg}) {
@@ -103,7 +103,7 @@ export const CardHeader = styled.div`
 export const CardButton = styled.button`
   width: 100%;
   display: block;
-  border: 1px solid ${colors.secondary};
+  border: 1px solid ${colors.neutral_1};
   border-radius: 6px;
   font-size: 18px;
   line-height: 150%;
@@ -112,9 +112,9 @@ export const CardButton = styled.button`
   margin-top: auto;
   cursor: pointer;
   text-transform: uppercase;
+  transition: background-color 150ms ease-in-out;
   &:hover {
-    background-color: ${colors.primary};
-    color: #fff;
+    background-color: ${colors.neutral_1};
   }
 `
 
