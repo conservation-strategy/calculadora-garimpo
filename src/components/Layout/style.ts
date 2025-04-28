@@ -76,7 +76,6 @@ export const ScrollDown = styled.div<ScrollDownProps>`
   color: #fff;
   transition: opacity 750ms ease-in-out;
   opacity: ${({ isScrolled }) => (isScrolled ? 0 : 1)};
-  animation: ${bounce} 1s infinite;
 
   @media(max-height: 730px) {
     bottom: -8px;
