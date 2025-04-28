@@ -115,6 +115,8 @@ export const MenuMobile = styled.nav<MenuItemProps>`
 
   background-color: rgba(228, 210, 210, 0.9);
   backdrop-filter: blur(10px);
+
+  font-size: 22px;
   
   @media(max-height: 725px) {
     gap: 1.5rem;
@@ -128,9 +130,17 @@ export const MenuTop = styled.div`
   align-items: end;
 `
 
+export const MenuItemsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+`
+
 export const MenuItem = styled.a<MenuItemProps>`
   font-family: ${doppioOne.style.fontFamily}, sans-serif;
-  font-size: 18px;
+  font-size: inherit;
   font-weight: 700;
   line-height: 150%;
   cursor: pointer;
@@ -167,21 +177,23 @@ export const DropDown = styled.div`
 export const DropDownMobile = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
   color: inherit;
+  font-size: 22px;
 `
 
 export const DropDownMobileButton = styled.button`
   position: relative;
   -webkit-tap-highlight-color: transparent;
-  padding: 0 1.5rem;
+  padding: 0 1.75rem;
   color: inherit;
+  font-size: inherit;
 `
 
 export const DropDownText = styled.span`
   font-family: ${doppioOne.style.fontFamily}, sans-serif;
-  font-size: 18px;
+  font-size: inherit;
   font-weight: 700;
   letter-spacing: 0.025em;
   line-height: 17px;
@@ -199,8 +211,8 @@ export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.7vh;
   width: 100%;
-  gap: .25rem;
   font-size: 16px;
   transition: opacity 200ms ease-out;
   opacity: ${({ active }) => (active ? 1 : 0)};
@@ -209,7 +221,7 @@ export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
    width: 100%;
    text-align: center;
    font-weight: 700;
-   padding: .5rem 0;
+   padding: .275rem 0;
    opacity: 0.7;
   }
   > div:active {

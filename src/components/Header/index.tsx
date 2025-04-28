@@ -90,59 +90,61 @@ export default function Header({
           </button>         
         </S.MenuTop>
       )}
-      {menu.map((item) => (
-        <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
-          {item.label}
-        </S.MenuItem>
-      ))}
-      {ismobileOrTablet && (
-        <S.DropDownMobile 
-        onClick={handleDropdown}
-        ref={dropdownRef}
-        >
-          <S.DropDownMobileButton>
-            <S.DropDownText>{language.label}</S.DropDownText>
-            <i className="fi fi-rr-angle-small-down"
-            style={{
-              position: 'absolute',
-              right: 0,
-              top: 0,
-              bottom: 0,
-              marginBlock: 'auto',
-              height: '13px',
-              marginLeft: '0.5rem',
-              transition: 'transform 0.2s',
-              transitionDelay: '0.2s',
-              transformOrigin: 'center',
-              transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
-            }}></i>
-          </S.DropDownMobileButton>
-          <S.DropDownBoxMobile active={dropdown}>
-            <div onClick={() => changeLanguage('pt_BR')}>
-              Português
-            </div>
-            <div onClick={() => changeLanguage('es_ES')}>
-              Español
-            </div>
-            <div onClick={() => changeLanguage('en_US')}>
-              English
-            </div>
-          </S.DropDownBoxMobile>
-        </S.DropDownMobile>
-      )}
-      <a 
-          href='https://www.conservation-strategy.org/' 
-          target='_blank' 
-          rel='noreferrer' 
-          style={{ 
-            opacity: 0.6,
-            transform: 'translateY(.125rem)',
-            width: '34px',
-            color: 'inherit'
-          }}
+      <S.MenuItemsContainer>
+        {menu.map((item) => (
+          <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
+            {item.label}
+          </S.MenuItem>
+        ))}
+        {ismobileOrTablet && (
+          <S.DropDownMobile 
+          onClick={handleDropdown}
+          ref={dropdownRef}
           >
-            <CSFLogo/>
-          </a>
+            <S.DropDownMobileButton>
+              <S.DropDownText>{language.label}</S.DropDownText>
+              <i className="fi fi-rr-angle-small-down"
+              style={{
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                bottom: 0,
+                marginBlock: 'auto',
+                height: '22px',
+                marginLeft: '0.5rem',
+                transition: 'transform 0.2s',
+                transitionDelay: '0.2s',
+                transformOrigin: 'center',
+                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
+              }}></i>
+            </S.DropDownMobileButton>
+            <S.DropDownBoxMobile active={dropdown}>
+              <div onClick={() => changeLanguage('pt_BR')}>
+                Português
+              </div>
+              <div onClick={() => changeLanguage('es_ES')}>
+                Español
+              </div>
+              <div onClick={() => changeLanguage('en_US')}>
+                English
+              </div>
+            </S.DropDownBoxMobile>
+          </S.DropDownMobile>
+        )}
+      </S.MenuItemsContainer>
+      <a 
+      href='https://www.conservation-strategy.org/' 
+      target='_blank' 
+      rel='noreferrer' 
+      style={{ 
+        opacity: 0.6,
+        transform: 'translateY(.125rem)',
+        width: '34px',
+        color: 'inherit'
+      }}
+      >
+        <CSFLogo/>
+      </a>
     </S.MenuMobile>
     <S.Container isScrolled={isScrolled}>
       {/* {ismobileOrTablet && openMenu && (
