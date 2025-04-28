@@ -32,7 +32,7 @@ export const WrapperCalculator = styled.div`
 
 export const Guide = styled.div`
   max-width: 100%;
-  padding: 3.125em 2em 0 2em;
+  padding: 2.5em 2em 0 2em;
   background: #ffffff;
   box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
 
@@ -50,15 +50,14 @@ export const Box = styled.div`
 `
 
 export const Form = styled.form`
-  min-height: 985px;
   padding: 24px;
   background: #ffffff;
   box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
   margin-top: 48px;
   border-radius: 20px;
   display: grid;
-  gap: 16px;
-  align-items: flex-start;
+  gap: 12px;
+  align-items: flex-end;
   grid-template-columns: repeat(1, 1fr);
   grid-template-areas:
     'country'
@@ -76,15 +75,14 @@ export const Form = styled.form`
     'useTypes'
     'submit';
   @media (min-width: ${breakpoints.md}) {
-    padding: 35px 30px;
+    padding: 28px 30px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       'country country country country'
       'knowRegion knowRegion knowRegion knowRegion'
       'state state city city'
       'typeMIning typeMIning typeMIning typeMIning'
-      'retort retort retort retort'
-      'unitAnalysis unitAnalysis unitAnalysis unitAnalysis'
+      'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
       'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'

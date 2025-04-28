@@ -167,22 +167,22 @@ export const Select = styled.select<Field>`
   position: relative;
   font-family: inherit;
   width: 100%;
-  padding: 16px 16px;
+  padding: 8px 8px;
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 16px;
   color: #2c2c2c;
 `
 
 export const Input = styled.input<Field>`
   font-family: inherit;
   width: 100%;
-  padding: 16px 16px;
+  padding: 8px 8px;
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: 12px;
-  font-size: 18px;
+  font-size: 16px;
   color: #2c2c2c;
   box-shadow: none;
   transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
