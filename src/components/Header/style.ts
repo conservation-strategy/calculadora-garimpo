@@ -68,6 +68,7 @@ export const Logo = styled.img`
 export const MenuDesktop = styled.nav`
   display: none;
   gap: 1.5rem;
+  color: #fff;
   @media (min-width: ${breakpoints.lg}) {
     display: flex
   }
@@ -96,8 +97,33 @@ export const Menu = styled.nav<MenuItemProps>`
   }
 `
 
+export const MenuMobile = styled.nav<MenuItemProps>`
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  padding 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  transition: opacity 300ms ease-in-out;
+  opacity: ${({ active }) => (active ? 1 : 0)};
+  pointer-events: ${({ active }) => (active ? 'auto' : 'none')};
+
+  background-color: rgba(228, 210, 210, 0.9);
+  backdrop-filter: blur(10px);
+  
+  @media(max-height: 725px) {
+    gap: 1.5rem;
+  }
+`
+
 export const MenuTop = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: end;
 `
@@ -107,7 +133,6 @@ export const MenuItem = styled.a<MenuItemProps>`
   font-size: 18px;
   font-weight: 700;
   line-height: 150%;
-  color: ${({ active }) => (active ? colors.primary : '#fff')};
   cursor: pointer;
   text-underline-offset: 8px;
   &:hover {
@@ -123,7 +148,6 @@ export const MenuItem = styled.a<MenuItemProps>`
 `
 
 export const DropDown = styled.div`
-  width: 250px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -137,8 +161,22 @@ export const DropDown = styled.div`
     justify-content: flex-end;
     padding: 0;
     border: 0;
-    width: 142px;
   }
+`
+
+export const DropDownMobile = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  color: inherit;
+`
+
+export const DropDownMobileButton = styled.button`
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0 1.5rem;
+  color: inherit;
 `
 
 export const DropDownText = styled.span`
@@ -147,7 +185,7 @@ export const DropDownText = styled.span`
   font-weight: 700;
   letter-spacing: 0.025em;
   line-height: 17px;
-  color: #fff;
+  color: inherit;
   @media (min-width: ${breakpoints.md}) {
     font-size: 24px;
   }
@@ -157,19 +195,21 @@ export const DropDownText = styled.span`
 `
 
 export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
-  position: absolute;
-  top: 2.25rem;
-  left: 0;
+  margin-top: -0.5rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 100%;
   gap: .25rem;
   font-size: 16px;
   transition: opacity 200ms ease-out;
   opacity: ${({ active }) => (active ? 1 : 0)};
   pointer-events: ${({ active }) => (active ? 'auto' : 'none')};
   > div {
+   width: 100%;
+   text-align: center;
    font-weight: 700;
-   padding: .5rem;
+   padding: .5rem 0;
    opacity: 0.7;
   }
   > div:active {

@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './style'
 import Image from 'next/image'
 import Link from 'next/link'
+import { CSFLogo } from '../Icons';
 
 export default function Header({
   isScrolled
@@ -65,10 +66,90 @@ export default function Header({
   // }, []);
 
   return (
-    <S.Container isScrolled={isScrolled}>
-      {ismobileOrTablet && openMenu && (
-        <S.Overlay onClick={() => setMenu(false)} />
+    <>
+    <S.MenuMobile active={openMenu}>
+      {ismobileOrTablet && (
+        <S.MenuTop>              
+          <S.Logo          
+            // className="opacity-[0.6] ml-2"
+            src="/assets/images/logo_garimpo-mono_preto.svg"
+            alt="Logo Calculadora Garimpo Monocrome preto"
+          />
+          
+
+          <button
+            onClick={() => setMenu(false)}
+            style={{ 
+              fontSize: '40px', 
+              height: '40px', 
+            }}
+          >
+            <i className="fi fi-rr-rectangle-xmark"
+            style={{ height: '40px' }}
+            ></i>
+          </button>         
+        </S.MenuTop>
       )}
+      {menu.map((item) => (
+        <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
+          {item.label}
+        </S.MenuItem>
+      ))}
+      {ismobileOrTablet && (
+        <S.DropDownMobile 
+        onClick={handleDropdown}
+        ref={dropdownRef}
+        >
+          <S.DropDownMobileButton>
+            <S.DropDownText>{language.label}</S.DropDownText>
+            <i className="fi fi-rr-angle-small-down"
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              marginBlock: 'auto',
+              height: '13px',
+              marginLeft: '0.5rem',
+              transition: 'transform 0.2s',
+              transitionDelay: '0.2s',
+              transformOrigin: 'center',
+              transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
+            }}></i>
+          </S.DropDownMobileButton>
+          <S.DropDownBoxMobile active={dropdown}>
+            <div onClick={() => changeLanguage('pt_BR')}>
+              Português
+            </div>
+            <div onClick={() => changeLanguage('es_ES')}>
+              Español
+            </div>
+            <div onClick={() => changeLanguage('en_US')}>
+              English
+            </div>
+          </S.DropDownBoxMobile>
+        </S.DropDownMobile>
+      )}
+      <a 
+          href='https://www.conservation-strategy.org/' 
+          target='_blank' 
+          rel='noreferrer' 
+          style={{ 
+            opacity: 0.6,
+            transform: 'translateY(.125rem)',
+            width: '34px',
+            color: 'inherit'
+          }}
+          >
+            <CSFLogo/>
+          </a>
+    </S.MenuMobile>
+    <S.Container isScrolled={isScrolled}>
+      {/* {ismobileOrTablet && openMenu && (
+        <S.Overlay onClick={() => setMenu(false)} />
+      )} */}
+
+      
 
       <SG.Container padding='16px 24px'>
         {/* <S.Logo onClick={() => route.push(ROUTE.home)}>
@@ -85,7 +166,7 @@ export default function Header({
           <Link href={'/'}>
             <S.Logo 
               src={'/assets/images/logo_garimpo-principal.svg'} 
-              alt='Garimpo' 
+              alt='Logo Calculadora Garimpo' 
             />
           </Link>
           {!ismobileOrTablet &&
@@ -105,80 +186,6 @@ export default function Header({
             <i className="fi fi-rr-menu-burger"></i>
           </S.ButtonBarMenu>
         )}
-
-        <S.Menu active={openMenu}>
-          {ismobileOrTablet && (
-            <S.MenuTop>
-              <S.MenuItem
-                onClick={() => setMenu(false)}
-                style={{ 
-                  fontSize: '40px', 
-                  height: '40px', 
-                  transform: 'translateY(-0.25rem)'
-                }}
-              >
-                <i className="fi fi-rr-rectangle-xmark"
-                style={{ height: '40px' }}
-                ></i>
-              </S.MenuItem>
-              <a 
-              href='https://www.conservation-strategy.org/' 
-              target='_blank' 
-              rel='noreferrer' 
-              style={{ 
-                opacity: 0.6, 
-                marginLeft: '10px',
-                transform: 'translateY(.125rem)'
-              }}
-              >
-                <Image          
-                  // className="opacity-[0.6] ml-2"
-                  src="/assets/images/logo.png"
-                  alt="CSF"
-                  width={34}
-                  height={34}
-                  sizes="(max-width: 1024px) 40px, 34px"
-                  priority
-                />
-              </a>              
-            </S.MenuTop>
-          )}
-          {menu.map((item) => (
-            <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
-              {item.label}
-            </S.MenuItem>
-          ))}
-          {ismobileOrTablet && (
-            <S.DropDown 
-            onClick={handleDropdown}
-            ref={dropdownRef}
-            >
-              <S.DropDownText>{language.label}</S.DropDownText>
-              <i className="fi fi-rr-angle-small-down"
-              style={{
-                height: '16px',
-                marginLeft: '0.5rem',
-                transition: 'transform 0.2s',
-                transitionDelay: '0.2s',
-                transformOrigin: 'center',
-                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
-              }}></i>
-              <S.DropDownBoxMobile active={dropdown}>
-                <div onClick={() => changeLanguage('pt_BR')}>
-                  Português
-                </div>
-                <div onClick={() => changeLanguage('es_ES')}>
-                  Español
-                </div>
-                <div onClick={() => changeLanguage('en_US')}>
-                  English
-                </div>
-              </S.DropDownBoxMobile>
-            </S.DropDown>
-          )}
-        </S.Menu>
-
-        
 
         {!ismobileOrTablet && (
           <div style={{
@@ -233,5 +240,6 @@ export default function Header({
         
       </SG.Container>
     </S.Container>
+    </>
   )
 }
