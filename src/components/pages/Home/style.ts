@@ -1,5 +1,6 @@
-import { breakpoints, colors } from '@/styles/global'
-import styled, { css } from 'styled-components'
+import { breakpoints, colors } from '@/styles/global';
+import styled, { css } from 'styled-components';
+import { gudea } from '@/fonts/fonts';
 
 interface CardProps {
   position?: 'horizontal' | 'vertical'
@@ -105,6 +106,7 @@ export const CardButton = styled.button`
   display: block;
   border: 1px solid ${colors.neutral_1};
   border-radius: 6px;
+  font-family: ${gudea.style.fontFamily}, sans-serif;
   font-size: 18px;
   line-height: 150%;
   text-align: center;
