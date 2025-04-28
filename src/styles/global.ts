@@ -165,6 +165,7 @@ export const OverLay = styled.div`
 
 export const Select = styled.select<Field>`
   position: relative;
+  font-family: inherit;
   width: 100%;
   padding: 16px 16px;
   background: #ffffff;
@@ -175,6 +176,7 @@ export const Select = styled.select<Field>`
 `
 
 export const Input = styled.input<Field>`
+  font-family: inherit;
   width: 100%;
   padding: 16px 16px;
   background: #ffffff;
