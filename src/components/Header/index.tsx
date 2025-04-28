@@ -67,6 +67,7 @@ export default function Header({
 
   return (
     <>
+    {/* mobile overlay menu */}
     <S.MenuMobile active={openMenu}>
       {ismobileOrTablet && (
         <S.MenuTop>              
@@ -146,6 +147,8 @@ export default function Header({
         <CSFLogo/>
       </a>
     </S.MenuMobile>
+
+    {/* navbar */}
     <S.Container isScrolled={isScrolled}>
       {/* {ismobileOrTablet && openMenu && (
         <S.Overlay onClick={() => setMenu(false)} />

@@ -26,7 +26,6 @@ export const Container = styled.header<ContainerProps>`
     justify-content: center;
     align-items: center;
     @media (min-width: ${breakpoints.lg}) {
-      padding-top: 20px;
       justify-content: space-between;
     }
   }
@@ -117,6 +116,7 @@ export const MenuMobile = styled.nav<MenuItemProps>`
   backdrop-filter: blur(10px);
 
   font-size: 22px;
+  letter-spacing: .1em;
   
   @media(max-height: 725px) {
     gap: 1.5rem;
@@ -142,6 +142,7 @@ export const MenuItem = styled.a<MenuItemProps>`
   font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: inherit;
   font-weight: 700;
+  letter-spacing: inherit;
   line-height: 150%;
   cursor: pointer;
   text-underline-offset: 8px;

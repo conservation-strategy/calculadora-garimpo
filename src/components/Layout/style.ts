@@ -29,7 +29,7 @@ export const SafeArea = styled.div<SafeAreaProps>`
   }
 
   @media(min-width: ${breakpoints.lg}) {
-    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 104px)' : 'none')};
+    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
   }
 `
 
@@ -60,7 +60,6 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
 
   @media(min-width: ${breakpoints.lg}) {
     position: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
-    top: ${({ isHome }) => (isHome ? '104px' : '0')};
   }
 `
 
