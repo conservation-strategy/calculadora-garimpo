@@ -11,6 +11,7 @@ export const Container = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     'headline headline'
+    'button_pdf button_pdf'
     'resume_graphic resume_graphic'
     'values values'
     'charts-preview charts-preview'
@@ -41,7 +42,7 @@ export const ResultsHeadline = styled.div`
 
 export const ButtonPDF = styled.div`
   grid-area: button_pdf;
-  display: none;
+  padding: 0 24px;
   button {
     display: flex;
     gap: 16px;
