@@ -10,8 +10,6 @@ export const SafeArea = styled.div`
   width: 100%;
   min-height: 70vh;
   padding-bottom: 50px;
-  background: url('/assets/images/background.webp') no-repeat center top;
-  background-size: cover;
   > div {
     margin-top: 0;
   }
