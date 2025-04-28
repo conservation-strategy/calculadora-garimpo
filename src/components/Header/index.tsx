@@ -8,13 +8,17 @@ import * as S from './style'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function Header() {
+export default function Header({
+  isScrolled
+}: {
+  isScrolled: boolean
+}) {
   const [dropdown, setDropdown] = useState(false)
   const [openMenu, setMenu] = useState(false)
   const { state, changeLanguage } = useAppContext()
   const { ismobileOrTablet } = useResize()
   const route = useRouter()
-  const [isScrolled, setIsScrolled] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -46,19 +50,19 @@ export default function Header() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 0) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const scrollTop = window.scrollY;
+  //     if (scrollTop > 0) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   };
   
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => window.removeEventListener('scroll', handleScroll);
+  // }, []);
 
   return (
     <S.Container isScrolled={isScrolled}>

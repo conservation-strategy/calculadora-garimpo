@@ -1,4 +1,4 @@
-import { breakpoints, colors } from '@/styles/global'
+import { breakpoints, colors, bounce } from '@/styles/global'
 import styled from 'styled-components'
 
 interface SafeAreaProps {
@@ -8,6 +8,10 @@ interface SafeAreaProps {
 
 interface BgImageContainerProps {
   isHome?: boolean
+}
+
+interface ScrollDownProps {
+  isScrolled: boolean;
 }
 
 export const SafeArea = styled.div<SafeAreaProps>`
@@ -57,5 +61,24 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
   @media(min-width: ${breakpoints.lg}) {
     position: ${({ isHome }) => (isHome ? 'fixed' : 'absolute')};
     top: ${({ isHome }) => (isHome ? '104px' : '0')};
+  }
+`
+
+export const ScrollDown = styled.div<ScrollDownProps>`
+  position: absolute;
+  z-index: 2;
+  bottom: 8px;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: 64px;
+  height: auto;
+  color: #fff;
+  transition: opacity 750ms ease-in-out;
+  opacity: ${({ isScrolled }) => (isScrolled ? 0 : 1)};
+  animation: ${bounce} 1s infinite;
+
+  @media(max-height: 730px) {
+    bottom: -8px;
   }
 `

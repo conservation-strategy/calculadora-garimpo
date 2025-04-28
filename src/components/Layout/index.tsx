@@ -8,6 +8,7 @@ import * as S from './style'
 import useCountryDetection from '@/hooks/useCountryDetection'
 import { convertToBold } from '@/utils/text'
 import Image from 'next/image'
+import { ChevronCompactDown } from '../Icons'
 
 const homeBackgroundImage = '/assets/images/backgrounds/hero_1.webp';
 const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_2.webp';
@@ -33,6 +34,21 @@ export default function Layout({
   const languageUser = useLanguage()
   const { country: countryDetection } = useCountryDetection()
   const [isBgLoaded, setIsBgLoaded] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      if (scrollTop > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+  
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const country = sessionStorage.getItem('country')
@@ -57,12 +73,12 @@ export default function Layout({
       changeCountry(countryDetection)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [languageUser, countryDetection])
+  }, [languageUser, countryDetection]);
 
   return (
     <>
-    <main>
-      <Header />
+    <main style={{ scrollBehavior: 'smooth' }}>
+      <Header isScrolled={isScrolled} />
       <S.SafeArea height={safeAreaHeight} isHome={isHome}>
         <S.BgImageContainer isHome={isHome}>
           <Image
@@ -94,14 +110,19 @@ export default function Layout({
         }}
         ></div>         */}
         {isHome
-        ? <S.HeroContent>
+        ? <>
+          <S.HeroContent>
             <div>
               <SG.Headline weight="300" color="#fff" align={align} isHero>
-                {convertToBold(headline)}
+                {headline}
               </SG.Headline>
-              {SafeAreaCTA}
+              {SafeAreaCTA}              
             </div>
           </S.HeroContent>
+          <S.ScrollDown isScrolled={isScrolled} >
+            <ChevronCompactDown/>
+          </S.ScrollDown>
+          </>
         : <SG.Container style={{ position: 'relative', zIndex: 1 }}>
             <SG.Headline weight="600" color="#fff" align={align}>
               {headline}
