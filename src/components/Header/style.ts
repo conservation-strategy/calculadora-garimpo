@@ -1,5 +1,6 @@
 import { breakpoints, colors } from '@/styles/global'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components';
+import { doppioOne } from '@/fonts/fonts';
 
 interface MenuItemProps {
   active?: boolean
@@ -102,6 +103,7 @@ export const MenuTop = styled.div`
 `
 
 export const MenuItem = styled.a<MenuItemProps>`
+  font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 150%;
@@ -140,6 +142,7 @@ export const DropDown = styled.div`
 `
 
 export const DropDownText = styled.span`
+  font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.025em;
