@@ -64,6 +64,7 @@ export const GlobalStyle = createGlobalStyle`
     button {
         border: 0;
         background-color: transparent;
+        color: inherit;
     }
 
     img {
