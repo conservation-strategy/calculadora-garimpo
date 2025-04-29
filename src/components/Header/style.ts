@@ -103,7 +103,7 @@ export const MenuMobile = styled.nav<MenuItemProps>`
   left: 0;
   width: 100vw;
   height: 100vh;
-  padding 16px 24px;
+  padding 16px 24px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -173,6 +173,7 @@ export const DropDown = styled.div`
     padding: 0;
     border: 0;
   }
+  letter-spacing: .025em;
 `
 
 export const DropDownMobile = styled.div`
@@ -190,13 +191,14 @@ export const DropDownMobileButton = styled.button`
   padding: 0 1.75rem;
   color: inherit;
   font-size: inherit;
+  letter-spacing: .1em;
 `
 
 export const DropDownText = styled.span`
   font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: inherit;
   font-weight: 700;
-  letter-spacing: 0.025em;
+  letter-spacing: inherit;
   line-height: 17px;
   color: inherit;
   @media (min-width: ${breakpoints.md}) {
@@ -208,7 +210,7 @@ export const DropDownText = styled.span`
 `
 
 export const DropDownBoxMobile = styled.div<DropDownBoxProps>`
-  margin-top: -0.5rem;
+  margin-top: -0.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
