@@ -34,6 +34,11 @@ export const Buttons = styled.div`
     width: 720px;
     flex-direction: row;
   }
+  
+  @media(max-height: 700px) {
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
 `
 
 export const AboutCalculator = styled.div`

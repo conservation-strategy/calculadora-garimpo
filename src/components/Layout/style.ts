@@ -66,7 +66,7 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
 export const ScrollDown = styled.div<ScrollDownProps>`
   position: absolute;
   z-index: 2;
-  bottom: 8px;
+  bottom: 8%;
   left: 0;
   right: 0;
   margin-inline: auto;
@@ -76,7 +76,5 @@ export const ScrollDown = styled.div<ScrollDownProps>`
   transition: opacity 750ms ease-in-out;
   opacity: ${({ isScrolled }) => (isScrolled ? 0 : 1)};
 
-  @media(max-height: 730px) {
-    bottom: -8px;
-  }
+  
 `
