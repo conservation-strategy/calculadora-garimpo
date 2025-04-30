@@ -14,12 +14,13 @@ const homeBackgroundImage = '/assets/images/backgrounds/hero_1.webp';
 const pageHeaderBackgoundImage = '/assets/images/backgrounds/page_header_2.webp';
 
 interface LayoutProps {
-  children: ReactNode
-  headline: string
-  align?: 'left' | 'center'
-  SafeAreaCTA?: ReactNode
+  children: ReactNode;
+  headline: string;
+  align?: 'left' | 'center';
+  SafeAreaCTA?: ReactNode;
   safeAreaHeight?: string;
-  isHome?: boolean
+  isHome?: boolean;
+  isCalculator?: boolean;
 }
 
 export default function Layout({
@@ -28,7 +29,8 @@ export default function Layout({
   SafeAreaCTA,
   safeAreaHeight,
   align = 'center',
-  isHome
+  isHome,
+  isCalculator
 }: LayoutProps) {
   const { changeCountry, changeLanguage } = useAppContext()
   const languageUser = useLanguage()
@@ -123,11 +125,13 @@ export default function Layout({
             <ChevronCompactDown/>
           </S.ScrollDown>
           </>
-        : <SG.Container style={{ position: 'relative', zIndex: 1 }}>
+        : !isCalculator && 
+          <SG.Container style={{ position: 'relative', zIndex: 1 }}>
             <SG.Headline weight="600" color="#fff" align={align}>
               {headline}
             </SG.Headline>
-          </SG.Container>}
+          </SG.Container>
+        }
       </S.SafeArea>
       <div style={{ background: '#fff', position: 'relative', zIndex: 1 }}>
         {children}
