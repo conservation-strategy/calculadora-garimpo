@@ -125,7 +125,7 @@ export default function ResultsCalculator({
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>
           <i className="fi fi-rr-document" style={{ fontSize: '20px' }}></i>
-          {resume.download_pdf}
+          {"Download PDF"}
         </SG.Button>
       </S.ButtonPDF>
       <S.ValuesWrapper>
