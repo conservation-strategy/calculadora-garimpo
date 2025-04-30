@@ -49,7 +49,12 @@ export const Box = styled.div`
   margin-bottom: 50px;
 `
 
-export const Form = styled.form`
+interface FormProps {
+  hasUF: boolean
+}
+
+
+export const Form = styled.form<FormProps>`
   padding: 24px;
   background: #ffffff;
   box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
@@ -80,7 +85,7 @@ export const Form = styled.form`
     grid-template-areas:
       'country country country country'
       'knowRegion knowRegion knowRegion knowRegion'
-      'state state city city'
+      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
       'typeMIning typeMIning typeMIning typeMIning'
       'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
@@ -92,6 +97,7 @@ export const Form = styled.form`
   }
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 0;
+    transform: translateY(-30px);
   }
   & select {
     margin-top: 8px;

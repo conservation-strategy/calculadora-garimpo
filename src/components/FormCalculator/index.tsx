@@ -403,7 +403,7 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form onSubmit={handleSubmit}>
+    <SCalc.Form onSubmit={handleSubmit} hasUF={!!isBrazil || !!isPeru || !!isEquador}>
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
@@ -459,7 +459,7 @@ export default function FormCalculator() {
           </>
         ) : (
           <>
-            <S.FormControlCity style={formControlCityStyles}>
+            <S.FormControlCity>
               <label>{district}</label>
               <SG.Select {...register('district')}>
                 {districtList.map((district) => (
