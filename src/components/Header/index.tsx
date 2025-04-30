@@ -7,7 +7,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import * as S from './style'
 import Image from 'next/image'
 import Link from 'next/link'
-import { CSFLogo } from '../Icons';
+import { CloseIcon, CSFLogo } from '../Icons';
 
 export default function Header({
   isScrolled
@@ -81,13 +81,10 @@ export default function Header({
           <button
             onClick={() => setMenu(false)}
             style={{ 
-              fontSize: '40px', 
-              height: '40px', 
+              width: '32px'
             }}
           >
-            <i className="fi fi-rr-rectangle-xmark"
-            style={{ height: '40px' }}
-            ></i>
+            <CloseIcon/>
           </button>         
         </S.MenuTop>
       )}
