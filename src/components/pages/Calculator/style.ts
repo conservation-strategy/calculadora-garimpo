@@ -61,7 +61,7 @@ export const Form = styled.form<FormProps>`
   margin-top: 48px;
   border-radius: 20px;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-end;
   grid-template-columns: repeat(1, 1fr);
   grid-template-areas:
@@ -79,8 +79,22 @@ export const Form = styled.form<FormProps>`
     'inflation'
     'useTypes'
     'submit';
+
   @media (min-width: ${breakpoints.md}) {
-    padding: 28px 30px;
+    padding: 20px 24px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+      'country country knowRegion knowRegion'
+      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
+      'typeMIning typeMIning typeMIning typeMIning'
+      'unitAnalysis unitAnalysis retort retort'
+      'hectare hectare pitDepth pitDepth'
+      'machineCapacity machineCapacity machineCapacity machineCapacity'
+      'valueHypothesis valueHypothesis useTypes useTypes'
+      'submit submit submit submit';
+  }
+  @media (min-width: 1440px) {
+    padding: 20px 24px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       'country country country country'
@@ -90,19 +104,39 @@ export const Form = styled.form<FormProps>`
       'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
-      'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
-      'inflation inflation inflation inflation'
-      'useTypes useTypes useTypes useTypes'
+      'valueHypothesis valueHypothesis useTypes useTypes'
       'submit submit submit submit';
+  }
+  @media(min-width: 1680px) {
+    padding: 28px 30px;
+    grid-template-areas:
+      'country country country country'
+      'knowRegion knowRegion knowRegion knowRegion'
+      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
+      'typeMIning typeMIning typeMIning typeMIning'
+      'unitAnalysis unitAnalysis retort retort'
+      'hectare hectare pitDepth pitDepth'
+      'machineCapacity machineCapacity machineCapacity machineCapacity'
+      'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
+      'useTypes useTypes useTypes useTypes'
+      'submit submit submit submit';  
   }
   @media (min-width: ${breakpoints.lg}) {
     margin-top: 0;
     transform: translateY(-30px);
   }
   & select {
-    margin-top: 8px;
+    margin-top: 4px;
   }
   & input {
-    margin-top: 8px;
+    margin-top: 4px;
+  }
+  @media(min-width: 1600px){
+    & select {
+      margin-top: 8px;
+    }
+    & input {
+      margin-top: 8px;
+    }
   }
 `

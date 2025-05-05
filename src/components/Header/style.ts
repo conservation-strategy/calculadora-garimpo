@@ -59,6 +59,11 @@ export const Logo = styled.img`
   height: 41px;
 
   @media (min-width: ${breakpoints.md}) {
+    width: 48px;
+    height: 48px;    
+  }
+
+  @media (min-width: ${breakpoints.xl}) {
     width: 64px;
     height: 64px;    
   }

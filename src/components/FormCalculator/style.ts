@@ -5,7 +5,16 @@ export const FormControl = styled.div`
   width: 100%;
   > label {
     font-weight: 600;
-    font-size: 15px;
+    font-size: 13px;
+  }
+  @media(min-width: 1440px) {
+    > label {
+      font-size: 14px
+  }
+  @media(min-width: 1600px) {
+    > label {
+      font-size: 15px
+  }  
   }
 `
 
@@ -66,6 +75,15 @@ export const FormControlUsesTypes = styled(FormControl)`
 
 export const ButtonSubmit = styled(Button)`
   grid-area: submit;
+  margin-top: 4px;
+
+  @media(min-width: 1440px) {
+    margin-top: 8px
+  }
+
+  @media(min-width: 1680px) {
+    margin-top: 14px
+  }
 `
 
 export const MessageError = styled.span`

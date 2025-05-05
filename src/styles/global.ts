@@ -172,8 +172,15 @@ export const Select = styled.select<Field>`
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 14px;
   color: #2c2c2c;
+  
+  @media(min-width: 1440px) {
+    font-size: 15px
+  }
+  @media(min-width: 1600px) {
+    font-size: 16px
+  }
 `
 
 export const Input = styled.input<Field>`
@@ -183,10 +190,17 @@ export const Input = styled.input<Field>`
   background: #ffffff;
   border: 2px solid ${({ error }) => (error ? 'red' : 'rgba(0, 0, 0, 0.2)')};
   border-radius: 12px;
-  font-size: 16px;
+  font-size: 14px;
   color: #2c2c2c;
   box-shadow: none;
   transition: 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  
+  @media(min-width: 1440px) {
+    font-size: 15px
+  }
+  @media(min-width: 1600px) {
+    font-size: 16px
+  }
 `
 
 export const InputUnit = styled.div`

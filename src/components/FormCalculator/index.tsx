@@ -526,14 +526,14 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlValueHypothesis>
 
-      <S.FormControlInflation>
+      {/* <S.FormControlInflation>
         <label>{inflation.label}</label>
         <SG.Input
           type="number"
           {...register('inflation')}
           placeholder={inflation.placeholder}
         />
-      </S.FormControlInflation>
+      </S.FormControlInflation> */}
 
       <S.FormControlUsesTypes>
         <label>{form.useCalculator.headline}</label>
@@ -550,7 +550,7 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlUsesTypes>
 
-      <S.ButtonSubmit id="btn-calcular" variant="primary" style={{ marginTop: '14px' }}>
+      <S.ButtonSubmit id="btn-calcular" variant="primary">
         {form.btn_calculator.btn}
       </S.ButtonSubmit>
     </SCalc.Form>
