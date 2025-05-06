@@ -36,9 +36,40 @@ export const Guide = styled.div`
   background: #ffffff;
   box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
 
+  display: none;
+  @media (min-width: ${breakpoints.md}) {
+    
+  }
+
   @media (min-width: ${breakpoints.lg}) {
+    display: block;
     max-width: 90%;
   }
+`
+interface DropdownProps {
+  isOpen: boolean;
+}
+export const MobileGuide = styled.div`
+  max-width: 100%;
+  padding: 1em 2em 0 2em;
+  background: #ffffff;
+  box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+
+  @media (min-width: ${breakpoints.lg}) {
+    display: none;
+  }
+`
+export const DropdownButton = styled.button`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+export const DropdownContent = styled.div<DropdownProps>`
+  overflow: hidden;
+  transition: all 500ms ease-out;
+  max-height: ${({ isOpen }) => (isOpen ? '1000px' : '0')};
 `
 
 export const Box = styled.div`
@@ -58,7 +89,7 @@ export const Form = styled.form<FormProps>`
   padding: 24px;
   background: #ffffff;
   box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
-  margin-top: 48px;
+  margin-top: 24px;
   border-radius: 20px;
   display: grid;
   gap: 10px;

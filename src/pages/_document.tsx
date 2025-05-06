@@ -47,6 +47,11 @@ export default class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
+            href="https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css"
+            rel="stylesheet"
+            crossOrigin="anonymous"
+          />
+          <link
             href="https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css"
             rel="stylesheet"
             crossOrigin="anonymous"

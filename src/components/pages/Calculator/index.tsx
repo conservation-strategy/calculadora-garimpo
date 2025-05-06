@@ -21,6 +21,7 @@ interface GuideProps {
 export default function Calculator() {
   const [guideList, setGuide] = useState<GuideProps[]>([])
   const [scrollResults, setResults] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { state } = useAppContext()
   const { language, dataCalculator } = state
   const { calculator } = language
@@ -211,6 +212,25 @@ export default function Calculator() {
                 <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
                 <Accordion Items={guideList} />
               </S.Guide>
+              <S.MobileGuide>
+                <S.DropdownButton
+                onClick={() => setIsDropdownOpen(prev => !prev)}
+                >
+                  <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
+                  <i className="fi fi-sr-angle-down"
+                  style={{
+                    fontWeight: 'bold',
+                    transition: 'transform 0.2s',
+                    transitionDelay: '0.2s',
+                    transformOrigin: 'center',
+                    transform: `${isDropdownOpen ? 'scaleY(-1)' : 'scaleY(1)'}`
+                  }}
+                ></i>                  
+                </S.DropdownButton>
+                <S.DropdownContent isOpen={isDropdownOpen}>
+                  <Accordion Items={guideList} />
+                </S.DropdownContent>
+              </S.MobileGuide>
             </div>
             <FormCalculator />
           </S.WrapperCalculator>
