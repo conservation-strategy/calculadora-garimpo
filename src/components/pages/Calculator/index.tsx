@@ -223,7 +223,7 @@ export default function Calculator() {
                     transition: 'transform 0.2s',
                     transitionDelay: '0.2s',
                     transformOrigin: 'center',
-                    transform: `${isDropdownOpen ? 'scaleY(-1)' : 'scaleY(1)'}`
+                    transform: `${isDropdownOpen ? 'scaleY(-1) translateY(30%)' : 'scaleY(1) translateY(-20%)'}`
                   }}
                 ></i>                  
                 </S.DropdownButton>
