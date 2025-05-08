@@ -227,18 +227,16 @@ export const WrapperInfografic = styled.div`
 `
 
 export const LoadingWrapper = styled.div`
-  width: 500px;
+  
+  width: 100%;
+  max-width: 500px;
   padding: 30px;
-  border-radius: 8px;
-  position: fixed;
+  border-radius: 8px;  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
-  z-index: 9999;
-  left: 50%;
-  margin-left: -250px;
-  top: 30%;
+  z-index: 9999;  
   background-color: #fff;
   overflow: hidden;
 `

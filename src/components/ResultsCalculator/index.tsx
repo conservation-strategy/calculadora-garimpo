@@ -110,10 +110,22 @@ export default function ResultsCalculator({
       {loadingPDF === true && (
         <>
           <S.Overlay />
-          <S.LoadingWrapper>
-            <img src="/assets/images/checklist.gif" width={80} alt="" />
-            <SG.Text>{pdf.loading}</SG.Text>
-          </S.LoadingWrapper>
+          <SG.Container
+          style={{ 
+            position: 'fixed',
+            top: '30%', 
+            left: 0, 
+            width: '100%', 
+            zIndex: '999', 
+            display: 'flex', 
+            justifyContent: 'center' 
+          }}
+          >
+            <S.LoadingWrapper>
+              <img src="/assets/images/checklist.gif" width={80} alt="" />
+              <SG.Text>{pdf.loading}</SG.Text>
+            </S.LoadingWrapper>
+          </SG.Container>
         </>
       )}
 
