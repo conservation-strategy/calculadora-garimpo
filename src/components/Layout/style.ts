@@ -25,10 +25,10 @@ export const SafeArea = styled.div<SafeAreaProps>`
   flex-direction: column;
 
   @media(min-width: ${breakpoints.md}) {
-    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
+    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 84px)' : 'none')};
   }
 
-  @media(min-width: ${breakpoints.lg}) {
+  @media(min-width: ${breakpoints.xl}) {
     min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
   }
 `
@@ -53,8 +53,12 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
   left: 0;
   width: 100%;
   height: 100%;
-
+  
   @media(min-width: ${breakpoints.md}) {
+    top: ${({ isHome }) => (isHome ? '84px' : '0')};
+  }
+
+  @media(min-width: ${breakpoints.xl}) {
     top: ${({ isHome }) => (isHome ? '100px' : '0')};
   }
 
