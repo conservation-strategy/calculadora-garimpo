@@ -127,7 +127,7 @@ export default function FormCalculator() {
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
   // const knowCapacity = watch('knowMachineCapacity');
-  // const _state = watch('state');
+  const _state = watch('state');
   
 
   useEffect(() => {
@@ -239,6 +239,14 @@ export default function FormCalculator() {
     },
     [getDistrictForState, setValue]
   )
+
+  useEffect(() => {
+    // console.log('setting district...')
+    // console.log('districtList', districtList);
+    if(districtList.length){
+      setValue('district', districtList[0].id);
+    }
+  }, [_state, districtList]);
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
