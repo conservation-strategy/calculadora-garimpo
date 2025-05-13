@@ -89,9 +89,7 @@ const customLabel = ({
   )
 }
 
-const customLegend = ({ payload }: any) => {
-  const { isBrazil } = useCountry()  // Add this line to get isBrazil
-
+const customLegend = ({ payload, isBrazil }: any) => {
   return (
     <>
       {payload.map((item: any) => (
@@ -148,7 +146,7 @@ export default function ImpactChart({
       <PieChart width={350} height={650}>
         <Legend
           margin={{ top: 50 }}
-          content={customLegend}
+          content={(props) => customLegend({ ...props, isBrazil })}
           layout="vertical"
           verticalAlign="bottom"
           align="right"
@@ -181,7 +179,7 @@ export default function ImpactChart({
         <PieChart width={chartWidth} height={chartHeight}>
           <Legend
             margin={{ top: 50 }}
-            content={customLegend}
+            content={(props) => customLegend({ ...props, isBrazil })}
             layout="vertical"
             verticalAlign={verticalAlign}
             align="right"
