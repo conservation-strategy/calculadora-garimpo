@@ -22,7 +22,7 @@ export const parseHtmlToLinkObject = (htmlString: string) => {
         text: href.trim(),
         link: href,
         color: 'blue',
-        decoration: 'underline' as 'underline' // Type assertion to satisfy pdfMake types
+        decoration: 'underline' as const // Type assertion to satisfy pdfMake types
       };
     }
     
@@ -41,7 +41,7 @@ export const parseHtmlToLinkObjectWithLabel = (htmlString: string) => {
         text: text.trim(),
         link: href,
         color: 'blue',
-        decoration: 'underline' as 'underline' // Type assertion to satisfy pdfMake types
+        decoration: 'underline' as const // Type assertion to satisfy pdfMake types
       };
     }
     
