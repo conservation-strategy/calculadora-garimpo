@@ -3024,7 +3024,7 @@
             "sub_impact_forest_products": "Forest products",
             "sub_impact_recreation": "Recreation",
             "sub_impact_culture_and_species": "Culture and Species",
-            "paragraphy_01": "The extraction of <strong>$grams grams of gold</strong> is carried out in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates a total deforestation of <strong>$hectare hectares</strong >, including indirect deforestation.",
+            "paragraphy_01": "The extraction of <strong>$grams grams of gold</strong> is carried out in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates a total deforestation of <strong>$hectare hectares</strong>, including indirect deforestation.",
             "paragraphy_02": "The deforestation of these <strong>$hectare hectares</strong> hectares leads to the loss of opportunities to carry out other activities, such as the extraction of non-timber forest products, recreational and cultural use, and the maintenance of ecosystem services for climate regulation and erosion control.",
             "infograpuic_url": "/assets/infographic/deforestationPTBR.svg",
             "withOverflow": "(overflow).",
