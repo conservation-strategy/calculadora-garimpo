@@ -7,6 +7,7 @@ import useResults from './useResults'
 import { LanguageTypeProps } from '@/store'
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces'
 import { typeMiningTypes } from '@/enums'
+import { extractLabelFromHtmlAnchor, parseHtmlToLinkObject, parseHtmlToLinkObjectWithLabel } from '@/utils/text'
 
 interface useReportProps {
   results: resultsType
@@ -399,15 +400,15 @@ export default function useReport({
             marginTop: 20
           },
           {
-            text: language.methodology.paragraphy_10,
+            text:  parseHtmlToLinkObjectWithLabel(language.methodology.paragraphy_10),
             marginBottom: 15
           },
           {
-            text: language.methodology.paragraphy_11,
+            text: parseHtmlToLinkObjectWithLabel(language.methodology.paragraphy_11),
             marginBottom: 15
           },
           {
-            text: language.methodology.paragraphy_12,
+            text: parseHtmlToLinkObjectWithLabel(language.methodology.paragraphy_12),
             marginBottom: 15
           },
 
