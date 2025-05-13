@@ -573,7 +573,8 @@
             "label": "Rendimento da máquina (m³/h)",
             "options": [
               2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
-            ]
+            ],
+            "standart": "(Valor padrão)"
           },
           "openMachineCapacity": {
             "label": "Insira o rendimento da máquina",
@@ -1555,7 +1556,7 @@
                     "value": 2
                   },
                   {
-                    "text": "Número de maquinas excavadoras",
+                    "text": "Número de máquinas retroexcavadoras",
                     "value": 6
                   }
                 ],
@@ -1737,7 +1738,8 @@
             "label": "Rendimiento de la máquina (m³/h)",
             "options": [
               2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
-            ]
+            ],
+            "standart": "(Valor estandar)"
           },
           "openMachineCapacity": {
             "label": "Introduzca el rendimiento de la máquina",
@@ -2903,7 +2905,8 @@
             "label": "Machine yield (m³/h)",
             "options": [
               2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
-            ]
+            ],
+            "standart": "(Standart value)"
           },
           "openMachineCapacity": {
             "label": "Enter machine yield",

@@ -10,7 +10,7 @@ import useCountry from '@/hooks/useCountry'
 import Options from './Options'
 import {
   analysisUnitTypes,
-  knowMachineCapacityTypes,
+  // knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
   usesValuesTypes
@@ -115,7 +115,8 @@ export default function FormCalculator() {
       knowRegion: knowRegionTypes.YES,
       retort: '1',
       analysisUnit: '1',
-      usesTypes: '1'
+      usesTypes: '1',
+      machineCapacity: '70'
     }
   })
 
@@ -125,10 +126,9 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
-  const knowCapacity = watch('knowMachineCapacity');
-  const _state = watch('state');
-
-  console.log('state string', _state);
+  // const knowCapacity = watch('knowMachineCapacity');
+  // const _state = watch('state');
+  
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -206,29 +206,29 @@ export default function FormCalculator() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country_field])
 
-  useEffect(() => {
-    if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
-      setValue(
-        'knowMachineCapacity', knowMachineCapacityTypes.NO
-      );
-      setValue(
-        'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
-      );
-    }
-  }, [analysisUnit])
+  // useEffect(() => {
+  //   if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
+  //     // setValue(
+  //     //   'knowMachineCapacity', knowMachineCapacityTypes.NO
+  //     // );
+  //     setValue(
+  //       'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
+  //     );
+  //   }
+  // }, [analysisUnit])
 
-  useEffect(() => {
-    if(knowCapacity === knowMachineCapacityTypes.NO) {
-      // setTimeout(() => {}, 20);
-      setValue(
-        'machineCapacity',
-        `${form.suggestedMachineCapacity.options[0]}`
-      )
-    } else {
-      console.log('changing capacity')
-      setValue('machineCapacity', null)
-    }
-  }, [knowCapacity])
+  // useEffect(() => {
+  //   if(knowCapacity === knowMachineCapacityTypes.NO) {
+  //     // setTimeout(() => {}, 20);
+  //     setValue(
+  //       'machineCapacity',
+  //       `${form.suggestedMachineCapacity.options[0]}`
+  //     )
+  //   } else {
+  //     console.log('changing capacity')
+  //     setValue('machineCapacity', null)
+  //   }
+  // }, [knowCapacity])
 
 
   const handleState = useCallback(
@@ -381,7 +381,7 @@ export default function FormCalculator() {
         <SG.Select {...register('machineCapacity')}>
           {form.suggestedMachineCapacity.options.map((opt) => (
             <option key={opt} value={opt}>
-              {opt}
+              {opt === 70 ? `${opt} ${form.suggestedMachineCapacity.standart}` : opt}
             </option>
           ))}
         </SG.Select>
