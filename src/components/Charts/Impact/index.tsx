@@ -90,6 +90,8 @@ const customLabel = ({
 }
 
 const customLegend = ({ payload }: any) => {
+  const { isBrazil } = useCountry()  // Add this line to get isBrazil
+
   return (
     <>
       {payload.map((item: any) => (
@@ -97,7 +99,12 @@ const customLegend = ({ payload }: any) => {
           <S.LabelColor color={item.payload.fill} />
           <S.LegendeTextWrapper key={item.name}>
             <S.LegendHeadline>{item.payload.name}</S.LegendHeadline>
-            <S.LegendText>{toBRL(Number(item.payload.value))}</S.LegendText>
+            <S.LegendText>
+              {isBrazil 
+                ? toBRL(Number(item.payload.value))
+                : toUSD(Number(item.payload.value))
+              }
+            </S.LegendText>
           </S.LegendeTextWrapper>
         </S.LegendWrapper>
       ))}
