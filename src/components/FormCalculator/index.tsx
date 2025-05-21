@@ -10,6 +10,7 @@ import useCountry from '@/hooks/useCountry'
 import Options from './Options'
 import {
   analysisUnitTypes,
+  countryCodes,
   knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
@@ -20,8 +21,9 @@ import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
-import { relative } from 'path'
+// import { relative } from 'path'
 import { event as gaEvent } from "nextjs-google-analytics";
+import useInflation from '@/hooks/useInflation'
 
 export interface FormInputs {
   knowRegion: string
@@ -43,30 +45,30 @@ export interface FormInputs {
 
 type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
 
-const CountryDictionary = {
-  'pt_BR' : {
-    'BR': 'Brasil',
-    'EC': 'Equador',
-    'PE': 'Perú',
-    'CO': 'Colômbia',
-    'GU': 'Guiana',
-    'SU': 'Suriname'
+const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
+  'pt_BR': {
+    [countryCodes.BR]: 'Brasil',
+    [countryCodes.EC]: 'Equador',
+    [countryCodes.PE]: 'Perú',
+    [countryCodes.CO]: 'Colômbia',
+    [countryCodes.GU]: 'Guiana',
+    [countryCodes.SU]: 'Suriname'
   },
-  'en_US' : {
-    'BR': 'Brazil',
-    'EC': 'Ecuador',
-    'PE': 'Peru',
-    'CO': 'Colombia',
-    'GU': 'Guiana',
-    'SU': 'Suriname'
+  'en_US': {
+    [countryCodes.BR]: 'Brazil',
+    [countryCodes.EC]: 'Ecuador',
+    [countryCodes.PE]: 'Peru',
+    [countryCodes.CO]: 'Colombia',
+    [countryCodes.GU]: 'Guiana',
+    [countryCodes.SU]: 'Suriname'
   },
-  'es_ES' : {
-    'BR': 'Brasil',
-    'EC': 'Ecuador',
-    'PE': 'Perú',
-    'CO': 'Colombia',
-    'GU': 'Guyana',
-    'SU': 'Surinam'
+  'es_ES': {
+    [countryCodes.BR]: 'Brasil',
+    [countryCodes.EC]: 'Ecuador',
+    [countryCodes.PE]: 'Perú',
+    [countryCodes.CO]: 'Colombia',
+    [countryCodes.GU]: 'Guyana',
+    [countryCodes.SU]: 'Surinam'
   }
 }
 
@@ -128,7 +130,19 @@ export default function FormCalculator() {
   const knowCapacity = watch('knowMachineCapacity');
   const _state = watch('state');
 
-  console.log('state string', _state);
+  // console.log('state string', _state);
+  // console.log('country field', country_field);
+
+  const inflationData = useInflation(country?.country);
+
+  // useEffect(() => {
+  //   const fetchInflation = async () => {
+  //     const response = await fetch(`/api/inflation?country=${country?.country}`);
+  //     const data = await response.json();
+  //     console.log('inflation', data);
+  //   }
+  //   fetchInflation();
+  // },[country]);
 
   useEffect(() => {
     const value = Number(typeMiningValue)

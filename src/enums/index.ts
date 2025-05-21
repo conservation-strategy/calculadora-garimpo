@@ -73,3 +73,12 @@ export enum ROUTE {
   DownloadPDF = '/report/pdf',
   PDFViewer = '/report/view'
 }
+
+export enum countryCodes {
+  BR = 'BR',
+  EC = 'EC',
+  PE = 'PE',
+  CO = 'CO',
+  GU = 'GU',
+  SU = 'SU'
+}
