@@ -10,6 +10,7 @@ import useCountry from '../useCountry'
 import useDeforestation from './useDeforesation'
 import useMercury from './useMercury/indext'
 import useSiltingOfRivers from './useSiltingOfRivers/indext'
+import useInflation from '../useInflation'
 
 export interface DataCalculatorProps {
   dataCalculator: FormInputs
@@ -36,7 +37,8 @@ export default function useCalculator() {
   const [impactsNotMonetary, setNoMonetary] = useState<DataImpactsNoMonetary[]>(
     []
   )
-  const { isBrazil, getValueToCountry } = useCountry()
+  const { isBrazil, getValueToCountry, currentCountry } = useCountry();
+  const inflationData = useInflation(currentCountry?.country);
   const {
     bioprospectingCalculator,
     carbonCalculator,
@@ -74,33 +76,49 @@ export default function useCalculator() {
     return totalValue
   }, [])
 
-  const calculateInflation = useCallback((inflation: number, total: number) => {
+  const calculateInflation = useCallback((inflation: number | undefined, total: number) => {
     if (inflation) {
       return (inflation / 100) * total
     }
     return 0
   }, [])
 
+  // const totalWithInflation = useCallback(
+  //   (inflation: number, total: number) => {
+  //     if (isBrazil) {
+  //       const valueInflation2020at2021 = calculateInflation(14.58, total)
+  //       const valueInflation = calculateInflation(inflation, total)
+  //       const totalInflation = valueInflation2020at2021 + valueInflation + total
+  //       return totalInflation
+  //     } else {
+  //       const valueInflation = calculateInflation(inflation, total)
+  //       const totalInflation = valueInflation + total
+  //       return totalInflation
+  //     }
+  //   },
+  //   [isBrazil, calculateInflation]
+  // )
+
   const totalWithInflation = useCallback(
-    (inflation: number, total: number) => {
+    (total: number) => {
       if (isBrazil) {
         const valueInflation2020at2021 = calculateInflation(14.58, total)
-        const valueInflation = calculateInflation(inflation, total)
+        const valueInflation = calculateInflation(inflationData.data?.data, total)
         const totalInflation = valueInflation2020at2021 + valueInflation + total
         return totalInflation
       } else {
-        const valueInflation = calculateInflation(inflation, total)
+        const valueInflation = calculateInflation(inflationData.data?.data, total)
         const totalInflation = valueInflation + total
         return totalInflation
       }
     },
-    [isBrazil, calculateInflation]
+    [isBrazil, calculateInflation, inflationData.data]
   )
 
   const calculatorTotalImpact = useCallback(
-    (total: number, inflation: number) => {
+    (total: number) => {
       const totalWithDolar = getValueToCountry(total, 5.33)
-      return totalWithInflation(Number(inflation), totalWithDolar)
+      return totalWithInflation(totalWithDolar)
     },
     [totalWithInflation, getValueToCountry]
   )
@@ -108,31 +126,29 @@ export default function useCalculator() {
   const calculatorDeforestation = useCallback(
     (data: FormInputs) => {
       const bio = bioprospectingCalculator({ dataCalculator: data })
-      const totalBio = calculatorTotalImpact(bio, Number(data.inflation))
+      const totalBio = calculatorTotalImpact(bio)
 
       const carbon = carbonCalculator({ dataCalculator: data })
-      const totalCarbon = calculatorTotalImpact(carbon, Number(data.inflation))
+      const totalCarbon = calculatorTotalImpact(carbon)
 
       const culturedAndSpecies = culturedAndSpeciesCalculator({
         dataCalculator: data
       })
       const totalCulturedAndSpecies = calculatorTotalImpact(
         culturedAndSpecies,
-        Number(data.inflation)
+        
       )
 
       const recoveryOfTopsoil = recoveryOfTopsoilCalculator({
         dataCalculator: data
       })
       const totalRecoveryOfTopsoil = calculatorTotalImpact(
-        recoveryOfTopsoil,
-        Number(data.inflation)
+        recoveryOfTopsoil        
       )
 
       const recreation = recreationCalculator({ dataCalculator: data })
       const totalRecreation = calculatorTotalImpact(
-        recreation,
-        Number(data.inflation)
+        recreation        
       )
 
       const woodAndNonWoodProducts = woodAndNonWoodProductsCalculator({
@@ -140,7 +156,7 @@ export default function useCalculator() {
       })
       const totalWoodAndNonWoodProducts = calculatorTotalImpact(
         woodAndNonWoodProducts,
-        Number(data.inflation)
+        
       )
 
       const totalImpacts = [
@@ -194,31 +210,27 @@ export default function useCalculator() {
         dataCalculator: data
       })
       const totalcavaGroundingCostAuNorm = calculatorTotalImpact(
-        cavaGroundingCostAuNorm,
-        Number(data.inflation)
+        cavaGroundingCostAuNorm
       )
 
       const { value: cavaGroundingCostAuFertile, lossyVolume } =
         cavaGroundingCostAuFertileCalculator({ dataCalculator: data })
       const totalcavaGroundingCostAuFertile = calculatorTotalImpact(
-        cavaGroundingCostAuFertile,
-        Number(data.inflation)
+        cavaGroundingCostAuFertile
       )
 
       const dredgingAndRiverSediments = dredgingAndRiverSedimentsCalculator({
         dataCalculator: data
       })
       const totalDredgingAndRiverSediments = calculatorTotalImpact(
-        dredgingAndRiverSediments,
-        Number(data.inflation)
+        dredgingAndRiverSediments
       )
 
       const erosionSiltingUp = erosionSiltingUpCalculator({
         dataCalculator: data
       })
       const totalErosionSiltingUp = calculatorTotalImpact(
-        erosionSiltingUp,
-        Number(data.inflation)
+        erosionSiltingUp
       )
 
       const totalImpacts: DataImpacts[] = []
@@ -271,8 +283,7 @@ export default function useCalculator() {
       const { value: neuroSymptomsGarimpeiro, qtdOfMinersAffected } =
         neuroSymptomsGarimpeiroCalculator({ dataCalculator: data })
       const totalNeuroSymptomsGarimpeiro = calculatorTotalImpact(
-        neuroSymptomsGarimpeiro,
-        Number(data.inflation)
+        neuroSymptomsGarimpeiro        
       )
 
       const {
@@ -280,13 +291,12 @@ export default function useCalculator() {
         concentrationMediaMercuryHair,
         porcentNascidosVivosPerdaQIAcimaDe2Pts
       } = lossQICalculator({ dataCalculator: data })
-      const totalLossQI = calculatorTotalImpact(lossQI, Number(data.inflation))
+      const totalLossQI = calculatorTotalImpact(lossQI )
 
       const { value: hypertension, peopleAbove20YearsoldInTheRegionIn52Years } =
         hypertensionCalculator({ dataCalculator: data })
       const totalHypertension = calculatorTotalImpact(
-        hypertension,
-        Number(data.inflation)
+        hypertension        
       )
 
       const {
@@ -296,16 +306,14 @@ export default function useCalculator() {
         menOver40InTheRegionIn27Years
       } = heartAttackCalculator({ dataCalculator: data })
       const totalHeartAttack = calculatorTotalImpact(
-        heartAttack,
-        Number(data.inflation)
+        heartAttack        
       )
 
       const soilMercuryRemediation = soilMercuryRemediationCalculator({
         dataCalculator: data
       })
       const totalSoilMercuryRemediation = calculatorTotalImpact(
-        soilMercuryRemediation,
-        Number(data.inflation)
+        soilMercuryRemediation        
       )
 
       const waterMercuryRemediation = waterMercuryRemediationCalculator({
@@ -313,8 +321,7 @@ export default function useCalculator() {
       }) 
 
       const totalWaterMercuryRemediation = calculatorTotalImpact(
-        waterMercuryRemediation,
-        Number(data.inflation)
+        waterMercuryRemediation        
       )
 
       const totalImpacts: DataImpacts[] = []
