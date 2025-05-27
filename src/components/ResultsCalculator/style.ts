@@ -6,6 +6,7 @@ interface TabHeaderItemProps {
 }
 
 export const Container = styled.div`
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -31,14 +32,23 @@ export const Container = styled.div`
   }
 `
 
+export const HeaderNote = styled.div`
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-24px);
+`
+
 export const ResultsHeadline = styled.div`
   grid-area: headline;
   display: flex;
+  flex-direction: column;
   justify-content: start;
-  @media (min-width: ${breakpoints.md}) {
-    display: inline-block;
-  }
+  align-items: start;
 `
+// @media (min-width: ${breakpoints.md}) {
+//   display: inline-block;
+// }
 
 export const ButtonPDF = styled.div`
   grid-area: button_pdf;

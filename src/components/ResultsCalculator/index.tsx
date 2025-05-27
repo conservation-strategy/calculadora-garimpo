@@ -9,6 +9,7 @@ import useReport from '@/hooks/useReport'
 import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
 
+
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
 
 interface ResultsCalculatorProps {
@@ -45,8 +46,9 @@ export default function ResultsCalculator({
     infographicDeforestation,
     infographicMercury,
     infographicSiltingOfRivers,
-    settab
-  } = useResults({ results, dataCalculator, language })
+    settab,
+    inflationData
+  } = useResults({ results, dataCalculator, language });
   const { downloadPDF, loadingPDF, setLoading } = useReport({
     results,
     dataCalculator,
@@ -129,10 +131,26 @@ export default function ResultsCalculator({
         </>
       )}
 
+      {/* <S.HeaderNote>
+        {`
+        Inflação acumulada desde ${inflationData.yearOfRef} usada: ${inflationData.data?.toFixed(2)}%.
+        Fonte: (${inflationData.fallback ? 'FRED' : 'Banco Mundial'}).
+        `}
+      </S.HeaderNote> */}
+
       <S.ResultsHeadline>
         <SG.Headline weight="300" color={SG.colors.primary}>
-          {resume.results}
+          {resume.results}          
         </SG.Headline>
+        <span
+        style={{ fontStyle: 'italic' }}
+        >
+          {resume.headnote.text
+            .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
+            .replace('<inflationData>', `${inflationData.data?.toFixed(2)}`)
+            .replace('<source>', inflationData.fallback ? 'FRED' : resume.headnote.source)            
+          }
+        </span>
       </S.ResultsHeadline>
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>

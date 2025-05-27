@@ -1,9 +1,9 @@
 import { FormInputs } from '@/components/FormCalculator'
-import { retortTypes, typeMiningTypes } from '@/enums'
+import { countryCodes, retortTypes, typeMiningTypes } from '@/enums'
 import convertGramsToKg from '@/utils/convertGramsToKg'
 import roundValue from '@/utils/roundValue'
 import roundPercent from '@/utils/roundPercent'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import useAppContext from '../useAppContext'
 import useConvertAll from '../useConvertAll'
 import useCountry from '../useCountry'
@@ -39,6 +39,18 @@ export default function useCalculator() {
   )
   const { isBrazil, getValueToCountry, currentCountry } = useCountry();
   const inflationData = useInflation(currentCountry?.country);
+  const yearOfRef = useMemo(
+    () => currentCountry?.country === countryCodes.BR
+      ? 2022
+      : (
+          currentCountry?.country === countryCodes.CO ||
+          currentCountry?.country === countryCodes.PE ||
+          currentCountry?.country === countryCodes.EC
+        )
+        ? 2023
+        : 2024,
+    [currentCountry]
+  );
   const {
     bioprospectingCalculator,
     carbonCalculator,
@@ -545,6 +557,7 @@ export default function useCalculator() {
     getcalculator,
     calculatorDeforestation,
     sumTotal,
+    inflationData: {...inflationData.data, yearOfRef },
     impacts: {
       deforestationImpacts,
       siltingOfRiversImpacts,

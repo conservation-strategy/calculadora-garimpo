@@ -29,7 +29,8 @@ export default function useReport({
     textUsesTypes,
     textDeforestation,
     textSiltingOfRivers,
-    textMercury
+    textMercury,
+    inflationData
   } = useResults({ results, dataCalculator, language })
 
   const [loadingPDF, setLoading] = useState<string | boolean>('start')
@@ -238,6 +239,14 @@ export default function useReport({
               }
             ],
             marginTop: 30,
+          },
+          {
+            text: language.calculator.resume.headnote.text
+                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
+                    .replace('<inflationData>', `${inflationData.data?.toFixed(2)}`)
+                    .replace('<source>', inflationData.fallback ? 'FRED' : language.calculator.resume.headnote.source),
+            fontSize: 8,
+            marginTop: 10,
             pageBreak: 'after'
           }
         ]

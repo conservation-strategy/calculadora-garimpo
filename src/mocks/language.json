@@ -608,6 +608,10 @@
         },
         "resume": {
           "resumeText": "Resumo",
+          "headnote": {
+            "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>).",
+            "source": "Banco Mundial"
+          },          
           "results": "Resultado",
           "download_pdf": "Baixar PDF",
           "monetary_impacts": "Impactos monetários",
@@ -1773,6 +1777,10 @@
         },
         "resume": {
           "resumeText": "Resumo",
+          "headnote": {
+            "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>).",
+            "source": "Banco Mundial"
+          },
           "results": "Resultado",
           "download_pdf": "Descargar PDF",
           "monetary_impacts": "Impactos monetarios",
@@ -2938,6 +2946,10 @@
         },
         "resume": {
           "resumeText": "Resume",
+          "headnote": {
+            "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>).",
+            "source": "World Bank"
+          },        
           "results": "Results",
           "download_pdf": "Download PDF",
           "monetary_impacts": "Monetary impacts",

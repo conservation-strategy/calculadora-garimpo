@@ -87,7 +87,7 @@ export default function useResults({
   const [totalMercury, setTotalMercury] = useState<string>('')
   const [valueGold, setValueGold] = useState<number>(0)
   const [tabActive, settab] = useState<number | null>(null)
-  const { sumTotal } = useCalculator()
+  const { sumTotal, inflationData } = useCalculator()
   const { isBrazil, isPeru, isColombia, isEquador, getDistrictData } =
     useCountry()
   const { convertAllinGold, convertAllinHectare, cubicMeters } = useConvertAll()
@@ -531,6 +531,7 @@ export default function useResults({
     infographicMercury,
     tabActive,
     language,
-    settab
+    settab,
+    inflationData
   }
 }
