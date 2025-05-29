@@ -24,6 +24,7 @@ import useResize from '@/hooks/useResize'
 // import { relative } from 'path'
 import { event as gaEvent } from "nextjs-google-analytics";
 import useInflation from '@/hooks/useInflation'
+import useGoldPrice from '@/hooks/useGoldPrice'
 
 export interface FormInputs {
   knowRegion: string
@@ -133,16 +134,10 @@ export default function FormCalculator() {
   // console.log('state string', _state);
   // console.log('country field', country_field);
 
-  const inflationData = useInflation(country?.country);
+  // const inflationData = useInflation(country?.country);
+  // const goldPriceData = useGoldPrice();
 
-  // useEffect(() => {
-  //   const fetchInflation = async () => {
-  //     const response = await fetch(`/api/inflation?country=${country?.country}`);
-  //     const data = await response.json();
-  //     console.log('inflation', data);
-  //   }
-  //   fetchInflation();
-  // },[country]);
+  // console.log('gold price', goldPriceData);
 
   useEffect(() => {
     const value = Number(typeMiningValue)

@@ -21,7 +21,7 @@ const useInflation = (country: countryCodes | undefined) => {
                     throw new Error('Failed to fetch inflation data');
                 }
                 const _data = await response.json();
-                console.log('hook data', _data);
+                // console.log('hook data', _data);
                 setData(_data);
             } catch (error) {
                 console.error('Error fetching inflation data:', error);
