@@ -539,6 +539,7 @@ export default function useResults({
     tabActive,
     language,
     settab,
-    inflationData
+    inflationData,
+    goldPriceData
   }
 }

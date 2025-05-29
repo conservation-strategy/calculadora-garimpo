@@ -33,10 +33,19 @@ export const Container = styled.div`
 `
 
 export const HeaderNote = styled.div`
-  position: absolute;
-  left: 0;
-  right: 0;
-  transform: translateY(-24px);
+  font-style: italic;
+  color: #5b5b5b;
+
+  font-size: 10px;
+
+  @media(min-width: ${breakpoints.md}) {
+    font-size: 12px;
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    font-size: 14px;
+  }
+  
 `
 
 export const ResultsHeadline = styled.div`

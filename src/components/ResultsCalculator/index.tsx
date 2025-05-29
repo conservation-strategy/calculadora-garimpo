@@ -47,7 +47,8 @@ export default function ResultsCalculator({
     infographicMercury,
     infographicSiltingOfRivers,
     settab,
-    inflationData
+    inflationData,
+    goldPriceData
   } = useResults({ results, dataCalculator, language });
   const { downloadPDF, loadingPDF, setLoading } = useReport({
     results,
@@ -142,15 +143,24 @@ export default function ResultsCalculator({
         <SG.Headline weight="300" color={SG.colors.primary}>
           {resume.results}          
         </SG.Headline>
-        <span
-        style={{ fontStyle: 'italic' }}
-        >
-          {resume.headnote.text
-            .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
-            .replace('<inflationData>', `${inflationData.data?.toFixed(2)}`)
-            .replace('<source>', inflationData.fallback ? 'FRED' : resume.headnote.source)            
-          }
-        </span>
+        <S.HeaderNote>
+          {`${
+            resume.headnote[0].text
+              .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
+              .replace('<inflationData>', (inflationData?.data ?? 0).toFixed(2))
+              .replace('<source>', inflationData.fallback ? resume.headnote[0].source[1] : resume.headnote[0].source[0])
+          }`}
+        </S.HeaderNote>
+        <S.HeaderNote>
+          {`${
+            resume.headnote[1].text
+              .replace('<priceData>', `${goldPriceData?.data.toFixed(2)}`)
+              .replace('<date>', goldPriceData?.timestamp ? 
+                new Date(goldPriceData.timestamp).toLocaleDateString('en-CA')
+                : 'N/A')
+              .replace('<source>', goldPriceData?.fallback ? resume.headnote[1].source[1] : resume.headnote[1].source[0])
+          }`}
+        </S.HeaderNote>
       </S.ResultsHeadline>
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>

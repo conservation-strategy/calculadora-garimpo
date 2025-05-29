@@ -608,10 +608,22 @@
         },
         "resume": {
           "resumeText": "Resumo",
-          "headnote": {
-            "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>).",
-            "source": "Banco Mundial"
-          },          
+          "headnote": [
+            {
+              "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>).",
+              "source": [
+                "Banco Mundial",
+                "FRED"
+              ]
+            },
+            {
+              "text": "Preço do ouro usado: US$<priceData>/g (Fonte: <source>, atualizado em <date>).",
+              "source": [
+                "Metalprice API",
+                "GoldAPI.io"
+              ]
+            }
+          ],          
           "results": "Resultado",
           "download_pdf": "Baixar PDF",
           "monetary_impacts": "Impactos monetários",
@@ -1777,10 +1789,19 @@
         },
         "resume": {
           "resumeText": "Resumo",
-          "headnote": {
-            "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>).",
-            "source": "Banco Mundial"
-          },
+          "headnote": [
+            {
+              "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>).",
+              "source": "Banco Mundial"
+            },
+            {
+              "text": "Precio del oro utilizado: US$<priceData>/g (Fuente: <source>, actualizado el <date>).",
+              "source": [
+                "Metalprice API",
+                "GoldAPI.io"
+              ]
+            }
+          ],
           "results": "Resultado",
           "download_pdf": "Descargar PDF",
           "monetary_impacts": "Impactos monetarios",
@@ -2946,10 +2967,19 @@
         },
         "resume": {
           "resumeText": "Resume",
-          "headnote": {
-            "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>).",
-            "source": "World Bank"
-          },        
+          "headnote": [
+            {
+              "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>).",
+              "source": ["World Bank", "FRED"]
+            },
+            {
+              "text": "Gold price used: US$<priceData>/g (Source: <source>, updated on <date>).",
+              "source": [
+                "Metalprice API",
+                "GoldAPI.io"
+              ]
+            }
+          ],        
           "results": "Results",
           "download_pdf": "Download PDF",
           "monetary_impacts": "Monetary impacts",
