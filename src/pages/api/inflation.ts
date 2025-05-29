@@ -4,9 +4,15 @@ import { countryCodes } from '@/enums';
 import { CACHE_VERSION, CACHE_DURATION, CACHE_REVALIDATION } from '@/lib/api/inflation';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  if (req.method !== 'GET') {
+    res.setHeader('Cache-Control', 'no-store');
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
   const { country, forceRefresh } = req.query;
 
   if (!Object.values(countryCodes).includes(country as countryCodes)) {
+    res.setHeader('Cache-Control', 'no-store');
     return res.status(400).json({ error: 'invalid country param' });
   }
 
@@ -14,41 +20,57 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     req.headers['x-force-refresh'] === 'true' || 
     forceRefresh === 'true';
 
-  if (shouldSkipCache) {
-    res.setHeader('Cache-Control', 'no-store');
-  } else {
-    // Include version in the Vary header to ensure different versions are cached separately
-    res.setHeader('Vary', 'x-cache-version');
-    res.setHeader('x-cache-version', CACHE_VERSION);
-    res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
-  }
-
   try {
     console.log('fetching inflation data from primary source...')
     const response = await fetchCumulativeInflationData(country as countryCodes);
+    const responseWithMetadata = {
+      ...response,
+      cacheVersion: CACHE_VERSION,
+      cachedAt: new Date().toISOString()
+    };
 
     if (!response.ok) {
       console.log('fetch from primary source failed. Status:', response.status);
       console.log('fetching from fallback source...')
       const fallback = await fetchCumulativeInflationData(country as countryCodes, true);
-      if (fallback.ok) {
-        return res.status(200).json({
-          ...fallback,
-          cacheVersion: CACHE_VERSION,
-          cachedAt: new Date().toISOString()
-        });
+      
+      if (!fallback.ok) {
+        res.setHeader('Cache-Control', 'no-store');
+        throw new Error(`Failed to fetch inflation data. Status: ${fallback.status}`);
       }
-      throw new Error(`Failed to fetch inflation data. Status: ${fallback.status}`);
+
+      const fallbackWithMetadata = {
+        ...fallback,
+        cacheVersion: CACHE_VERSION,
+        cachedAt: new Date().toISOString()
+      };
+
+      if (shouldSkipCache) {
+        res.setHeader('Cache-Control', 'no-store');
+      } else {
+        res.setHeader('Vary', 'x-cache-version');
+        res.setHeader('x-cache-version', CACHE_VERSION);
+        res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
+      }
+
+      return res.status(200).json(fallbackWithMetadata);
     }
 
-    return res.status(200).json({
-      ...response,
-      cacheVersion: CACHE_VERSION,
-      cachedAt: new Date().toISOString()
-    });
+    if (shouldSkipCache) {
+      res.setHeader('Cache-Control', 'no-store');
+    } else {
+      res.setHeader('Vary', 'x-cache-version');
+      res.setHeader('x-cache-version', CACHE_VERSION);
+      res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
+    }
+
+    return res.status(200).json(responseWithMetadata);
   } catch (error) {
+    res.setHeader('Cache-Control', 'no-store');
     console.error('Error fetching inflation data:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({ 
+      error: 'Internal server error',
+    });
   }
 };
 
