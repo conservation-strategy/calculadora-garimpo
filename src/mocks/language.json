@@ -639,7 +639,7 @@
           "component_graphics_gold": "ouro",
           "component_graphics_silting": "assoreamento",
           "TextTotalImpacts": {
-            "impactedArea": "para $value hactare(s)",
+            "impactedArea": "para $value hectare(s)",
             "amoutGold": "para $value gramas de ouro",
             "yearsOfMining": "para $value anos de garimpo",
             "ferry": "para $value balsas"
