@@ -29,7 +29,7 @@ export const fetchGoldPriceInUSD = async (): Promise<GoldPriceResponse> => {
         if(!GOLD_API_KEY) console.warn('missing env: GOLD_API_KEY');
 
         let primaryFailed = false;
-        let response;
+        let response: any;
         
         console.log('Fetching gold price data from primary source...');
         try {
