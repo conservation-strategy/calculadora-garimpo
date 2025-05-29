@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { countryCodes } from '@/enums';
 import { GoldPriceResponse } from '@/lib/api/gold';
 
 const useGoldPrice = () => {
@@ -12,6 +11,7 @@ const useGoldPrice = () => {
             setIsLoading(true)
             try {
                 const response = await fetch(`/api/gold`);
+                // console.log('response in hook', response)
                 if (!response.ok) {
                     throw new Error(`Failed to fetch gold price data. Status ${response.status}`);
                 }
@@ -19,7 +19,7 @@ const useGoldPrice = () => {
                 // console.log('gold hook data', _data);
                 setData(_data);
             } catch (error) {
-                console.error('Error fetching inflation data:', error);
+                console.error('Error fetching gold price data:', error);
                 setError(error);
             } finally {
                 setIsLoading(false);
