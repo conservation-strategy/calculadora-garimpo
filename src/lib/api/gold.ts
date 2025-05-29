@@ -1,5 +1,9 @@
 import { fetchWithRetries } from ".";
 
+export const CACHE_VERSION = '1.0';
+export const CACHE_DURATION = 7 * 24 * 60 * 60; // 1 WEEK
+export const CACHE_REVALIDATION = 24 * 60 * 60; // 1 DAY
+
 const METAL_PRICE_API_KEY = process.env.METAL_PRICE_API_KEY;
 const METAL_PRICE_API_URL = `https://api.metalpriceapi.com/v1/latest?api_key=${METAL_PRICE_API_KEY}&base=USD&currencies=XAU`;
 const GOLD_API_KEY = process.env.GOLD_API_KEY;
