@@ -34,7 +34,14 @@ export const fetchGoldPriceInUSD = async (): Promise<GoldPriceResponse> => {
         console.log('Fetching gold price data from primary source...');
         try {
             response = await fetchWithRetries(METAL_PRICE_API_URL);
-            primaryFailed = !response.ok;
+            const currentRequests = Number(response.headers.get('x-api-current'));
+            const quota = Number(response.headers.get('x-api-quota'));
+            
+            primaryFailed = !response.ok || (currentRequests > quota);
+            
+            if (currentRequests > quota) {
+                console.warn('Rate limit exceeded for primary source');
+            }
         } catch (error) {
             console.error('Error fetching gold price data from primary source:', error);
             primaryFailed = true;
