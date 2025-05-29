@@ -22,6 +22,8 @@ import useConvertAll from './useConvertAll'
 import useCountry from './useCountry'
 import useFixedCalculator from './useFixedCalculator'
 import usePopSize100kmRadius from './usePopSize100kmRadius'
+// import { getGoldPrice } from '@/lib/api/gold'
+import useGoldPrice from './useGoldPrice'
 
 export interface textImpactProps {
   paragraphy_01: string
@@ -93,6 +95,8 @@ export default function useResults({
   const { convertAllinGold, convertAllinHectare, cubicMeters } = useConvertAll()
   const { getPopSize100kmRadius } = usePopSize100kmRadius()
   const { general } = useFixedCalculator()
+  const { data: goldPriceData } = useGoldPrice();
+
 
   const convertCurrency = useCallback(
     (value: number) => {
@@ -101,11 +105,14 @@ export default function useResults({
     [isBrazil]
   )
 
-  const getValueGold = useCallback(() => {
+  const getValueGold = useCallback(async() => {
     const totalGold = convertAllinGold({
       dataCalculator: dataCalculator as FormInputs
     })
-    const totalGoldwithPrice = totalGold * currency.gold
+    // const goldPriceData = await getGoldPrice();
+    const goldPrice = goldPriceData?.data || 0
+    console.log('goldPrice in calculator', goldPrice)
+    const totalGoldwithPrice = totalGold * goldPrice
     const totalGoldPriceWithCountry = isBrazil
       ? totalGoldwithPrice * currency.dolar
       : totalGoldwithPrice
