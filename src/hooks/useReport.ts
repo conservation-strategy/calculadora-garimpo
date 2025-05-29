@@ -30,7 +30,8 @@ export default function useReport({
     textDeforestation,
     textSiltingOfRivers,
     textMercury,
-    inflationData
+    inflationData,
+    goldPriceData
   } = useResults({ results, dataCalculator, language })
 
   const [loadingPDF, setLoading] = useState<string | boolean>('start')
@@ -241,12 +242,21 @@ export default function useReport({
             marginTop: 30,
           },
           {
-            text: language.calculator.resume.headnote.text
+            text: language.calculator.resume.headnote[0].text
                     .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
                     .replace('<inflationData>', `${inflationData.data?.toFixed(2)}`)
-                    .replace('<source>', inflationData.fallback ? 'FRED' : language.calculator.resume.headnote.source),
+                    .replace('<source>', inflationData.fallback ? language.calculator.resume.headnote[0].source[1] : language.calculator.resume.headnote[0].source[0])
+                    .replace('<date>', inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'),
             fontSize: 8,
             marginTop: 10,
+          },
+          {
+            text: language.calculator.resume.headnote[1].text
+                    .replace('<priceData>', `${goldPriceData?.data.toFixed(2)}`)
+                    .replace('<source>', goldPriceData?.fallback ? language.calculator.resume.headnote[1].source[1] : language.calculator.resume.headnote[1].source[0])
+                    .replace('<date>', goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'),
+            fontSize: 8,
+            // marginTop: 10,
             pageBreak: 'after'
           }
         ]
