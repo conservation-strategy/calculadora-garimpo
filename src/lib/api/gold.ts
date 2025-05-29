@@ -16,9 +16,8 @@ export interface GoldPriceResponse {
     fallback: boolean;
     timestamp?: string;
     error?: string;
-  }
-  
-  // ... existing code ...
+}
+
 
 export const fetchGoldPriceInUSD = async (): Promise<GoldPriceResponse> => {
     try {
@@ -73,5 +72,19 @@ export const fetchGoldPriceInUSD = async (): Promise<GoldPriceResponse> => {
             fallback: false,
             error: error.message || 'Failed to fetch gold price data'
         };
+    }
+}
+
+
+export const getGoldPrice = async () => {
+    try {
+        const response = await fetch('/api/gold');
+        if(!response.ok) {
+            throw new Error(`failed to fetch gold price data. Status: ${response.status}`);
+        }
+        return response.json();
+    } catch(error: any) {
+        console.error(error || 'Fail to fetch data from Gold price API');
+        return null;
     }
 }
