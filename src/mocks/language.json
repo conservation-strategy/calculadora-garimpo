@@ -610,7 +610,7 @@
           "resumeText": "Resumo",
           "headnote": [
             {
-              "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>).",
+              "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>, atualizado em <date>).",
               "source": [
                 "Banco Mundial",
                 "FRED"
@@ -1791,8 +1791,8 @@
           "resumeText": "Resumo",
           "headnote": [
             {
-              "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>).",
-              "source": "Banco Mundial"
+              "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>, actualizado el <date>).",
+              "source": ["Banco Mundial", "FRED"]
             },
             {
               "text": "Precio del oro utilizado: US$<priceData>/g (Fuente: <source>, actualizado el <date>).",
@@ -2969,7 +2969,7 @@
           "resumeText": "Resume",
           "headnote": [
             {
-              "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>).",
+              "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>, updated on <date>).",
               "source": ["World Bank", "FRED"]
             },
             {

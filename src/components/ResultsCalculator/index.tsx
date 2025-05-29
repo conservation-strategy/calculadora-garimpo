@@ -149,6 +149,7 @@ export default function ResultsCalculator({
               .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
               .replace('<inflationData>', (inflationData?.data ?? 0).toFixed(2))
               .replace('<source>', inflationData.fallback ? resume.headnote[0].source[1] : resume.headnote[0].source[0])
+              .replace('<date>', inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A')
           }`}
         </S.HeaderNote>
         <S.HeaderNote>

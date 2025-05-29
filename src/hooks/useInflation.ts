@@ -4,6 +4,7 @@ import { countryCodes } from '@/enums';
 interface InflationData {
     data: number;
     fallback: boolean;
+    cachedAt: string;
 }
 
 const useInflation = (country: countryCodes | undefined) => {
