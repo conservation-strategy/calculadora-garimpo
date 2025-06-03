@@ -7,16 +7,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       let _fallback = false;
       try {
         console.log('Fetching dollar API data from primary source...');
+        let _date = new Date();
+        _date.setDate(_date.getDate() - 1);
         data = await fetchDollarQuotation();
   
         if(data.data.value) {
-          if(data.data.value.length === 0) {
-            let _date = new Date();
-            _date.setDate(_date.getDate() - 1);
+          if(data.data.value.length === 0) {            
             for(let i=0; i<2; i++) {
               _date.setDate(_date.getDate() - 1);
               _date.setHours(0, 0, 0, 0);
-              console.log(`Fetching primary API data for date: ${_date}`);
+              console.log(`Fetching primary dollar API data for date: ${_date}`);
               data = await fetchDollarQuotation(_date);
               if(data.data.value && data.data.value.length > 0) break
             }
@@ -24,16 +24,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         if(!data.data.value || data.data.value.length === 0) {
           _fallback = true;
-          console.log('Primary API returned empty data, trying fallback API...');
+          console.log('Primary dollar API returned empty data, trying fallback API...');
           data = await fetchDollarQuotation(new Date(), _fallback);
         }
       } catch (error: any) {
         if(!_fallback) {
-          console.log('Primary API returned error:', error.message);
-          console.log('trying fallback API...')
+          console.log('Primary dollar API returned error:', error.message);
+          console.log('trying fallback dollar API...')
           data = await fetchDollarQuotation(new Date(), true);
         } else {
-          throw new Error('Fallback API failed:', error.message)
+          throw new Error('Fallback dollar API failed:', error.message)
         }
       }
       console.log(data);
