@@ -11,6 +11,7 @@ import useDeforestation from './useDeforesation'
 import useMercury from './useMercury/indext'
 import useSiltingOfRivers from './useSiltingOfRivers/indext'
 import useInflation from '../useInflation'
+import useDollar from '../useDollar'
 
 export interface DataCalculatorProps {
   dataCalculator: FormInputs
@@ -51,6 +52,9 @@ export default function useCalculator() {
         : 2024,
     [currentCountry]
   );
+
+  const dolarData = useDollar();
+
   const {
     bioprospectingCalculator,
     carbonCalculator,
@@ -129,7 +133,7 @@ export default function useCalculator() {
 
   const calculatorTotalImpact = useCallback(
     (total: number) => {
-      const totalWithDolar = getValueToCountry(total, 5.33)
+      const totalWithDolar = getValueToCountry(total, dolarData?.data?.value || 0)
       return totalWithInflation(totalWithDolar)
     },
     [totalWithInflation, getValueToCountry]
@@ -558,6 +562,7 @@ export default function useCalculator() {
     calculatorDeforestation,
     sumTotal,
     inflationData: {...inflationData.data, yearOfRef },
+    dolarData: dolarData.data,
     impacts: {
       deforestationImpacts,
       siltingOfRiversImpacts,

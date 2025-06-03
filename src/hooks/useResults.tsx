@@ -89,7 +89,7 @@ export default function useResults({
   const [totalMercury, setTotalMercury] = useState<string>('')
   const [valueGold, setValueGold] = useState<number>(0)
   const [tabActive, settab] = useState<number | null>(null)
-  const { sumTotal, inflationData } = useCalculator()
+  const { sumTotal, inflationData, dolarData } = useCalculator()
   const { isBrazil, isPeru, isColombia, isEquador, getDistrictData } =
     useCountry()
   const { convertAllinGold, convertAllinHectare, cubicMeters } = useConvertAll()
@@ -114,7 +114,7 @@ export default function useResults({
     console.log('goldPrice in calculator', goldPrice)
     const totalGoldwithPrice = totalGold * goldPrice
     const totalGoldPriceWithCountry = isBrazil
-      ? totalGoldwithPrice * currency.dolar
+      ? totalGoldwithPrice * (dolarData?.value || 0)
       : totalGoldwithPrice
     setValueGold(totalGoldPriceWithCountry)
   }, [isBrazil, dataCalculator, convertAllinGold])
