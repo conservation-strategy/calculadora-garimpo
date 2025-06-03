@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       let _fallback = false;
       try {
         console.log('Fetching dollar API data from primary source...');
-        let _date = new Date();
+        const _date = new Date();
         _date.setDate(_date.getDate() - 1);
         data = await fetchDollarQuotation();
   
