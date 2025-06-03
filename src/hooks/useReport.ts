@@ -7,6 +7,7 @@ import useResults from './useResults'
 import { LanguageTypeProps } from '@/store'
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces'
 import { typeMiningTypes } from '@/enums'
+import useCountry from './useCountry'
 
 interface useReportProps {
   results: resultsType
@@ -31,10 +32,12 @@ export default function useReport({
     textSiltingOfRivers,
     textMercury,
     inflationData,
-    goldPriceData
+    goldPriceData,
+    dolarData
   } = useResults({ results, dataCalculator, language })
 
   const [loadingPDF, setLoading] = useState<string | boolean>('start')
+  const { isBrazil } = useCountry();
 
   const getBase64ImageFromURL = useCallback((url: string) => {
     return new Promise((resolve, reject) => {
@@ -242,21 +245,29 @@ export default function useReport({
             marginTop: 30,
           },
           {
-            text: language.calculator.resume.headnote[0].text
-                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
-                    .replace('<inflationData>', `${inflationData.data?.toFixed(2)}`)
-                    .replace('<source>', inflationData.fallback ? language.calculator.resume.headnote[0].source[1] : language.calculator.resume.headnote[0].source[0])
-                    .replace('<date>', inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'),
-            fontSize: 8,
-            marginTop: 10,
+            text: language.calculator.resume.headnote.note,
+            fontSize:8,
+            marginTop: 10
           },
           {
-            text: language.calculator.resume.headnote[1].text
-                    .replace('<priceData>', `${goldPriceData?.data.toFixed(2)}`)
-                    .replace('<source>', goldPriceData?.fallback ? language.calculator.resume.headnote[1].source[1] : language.calculator.resume.headnote[1].source[0])
-                    .replace('<date>', goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'),
+            text: `${language.calculator.resume.headnote.table.rows[0].index
+                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)}: ${inflationData.data?.toFixed(2)} (${language.calculator.resume.headnote.table.columns[2]}: ${inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}).`,
             fontSize: 8,
             // marginTop: 10,
+          },
+          {
+            text: `${language.calculator.resume.headnote.table.rows[1].index}: ${goldPriceData?.data.toFixed(2)} (${language.calculator.resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'}).`,
+            fontSize: 8,
+            // marginTop: 10,            
+          },
+          isBrazil
+          ? {
+            text: `${language.calculator.resume.headnote.table.rows[2].index}: ${dolarData?.value} (${language.calculator.resume.headnote.table.columns[2]}: ${dolarData?.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${dolarData?.date ? new Date(dolarData.date).toLocaleDateString('en-CA') : 'N/A'}).`,
+            fontSize: 8,
+            pageBreak: 'after'
+          } 
+          : {
+            text: "",
             pageBreak: 'after'
           }
         ]

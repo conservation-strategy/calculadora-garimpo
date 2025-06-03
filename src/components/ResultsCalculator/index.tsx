@@ -8,6 +8,7 @@ import useResults, { Tabs } from '@/hooks/useResults'
 import useReport from '@/hooks/useReport'
 import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
+import useCountry from '@/hooks/useCountry'
 
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
@@ -26,6 +27,7 @@ export default function ResultsCalculator({
   const { resume, pdf, valuation, impacts } = calculator
   const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } =
     impacts
+  const { isBrazil } = useCountry();
 
   const {
     totalGold,
@@ -48,7 +50,8 @@ export default function ResultsCalculator({
     infographicSiltingOfRivers,
     settab,
     inflationData,
-    goldPriceData
+    goldPriceData,
+    dolarData
   } = useResults({ results, dataCalculator, language });
   const { downloadPDF, loadingPDF, setLoading } = useReport({
     results,
@@ -143,7 +146,7 @@ export default function ResultsCalculator({
         <SG.Headline weight="300" color={SG.colors.primary}>
           {resume.results}          
         </SG.Headline>
-        <S.HeaderNote>
+        {/* <S.HeaderNote>
           {`${
             resume.headnote[0].text
               .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
@@ -162,6 +165,76 @@ export default function ResultsCalculator({
               .replace('<source>', goldPriceData?.fallback ? resume.headnote[1].source[1] : resume.headnote[1].source[0])
           }`}
         </S.HeaderNote>
+        {isBrazil && <S.HeaderNote>
+          {`${
+            resume.headnote[2].text
+              .replace('<priceData>', `${dolarData?.value.toFixed(2)}`)
+              .replace('<date>', dolarData?.date ? 
+                new Date(dolarData.date).toLocaleDateString('en-CA')
+                : 'N/A')
+              .replace('<source>', dolarData?.fallback ? resume.headnote[2].source[1] : resume.headnote[2].source[0])
+          }`}
+        </S.HeaderNote>} */}
+        <S.HeaderNote>
+          {resume.headnote.note}
+        </S.HeaderNote>
+        <S.HeaderIndexTable>          
+          {/* Header row */}
+          {resume.headnote.table.columns.map((item, index) => (
+              <div key={index}
+              style={{ color: '#5b5b5b'}}
+              >
+                {item}
+              </div>
+          ))}
+
+          {/* Row 1 - Inflation */}
+          <div>
+            {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef}`)}
+          </div>
+          <div>
+            {inflationData.data?.toFixed(2)}
+          </div>
+          <div>
+            {inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
+          </div>
+          <div>
+            {inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
+          </div>
+
+          {/* Row 2 - Gold Price */}
+          <div>
+            {resume.headnote.table.rows[1].index}
+          </div>
+          <div>
+            {goldPriceData?.data.toFixed(2)}
+          </div>
+          <div>
+            {goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
+          </div>
+          <div>
+            {goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
+          </div>
+
+          {/* Row 3 - Dollar */}
+          {isBrazil &&
+            <>
+            <div>
+              {resume.headnote.table.rows[2].index}
+            </div>
+            <div>
+              {dolarData?.value.toFixed(2)}
+            </div>
+            <div>
+              {dolarData?.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
+            </div>
+            <div>
+              {dolarData?.date ? new Date(dolarData.date).toLocaleDateString('en-CA') : 'N/A'}
+            </div>
+            </>
+          }
+      </S.HeaderIndexTable>
+
       </S.ResultsHeadline>
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>

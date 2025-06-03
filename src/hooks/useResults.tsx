@@ -540,6 +540,7 @@ export default function useResults({
     language,
     settab,
     inflationData,
-    goldPriceData
+    goldPriceData,
+    dolarData
   }
 }

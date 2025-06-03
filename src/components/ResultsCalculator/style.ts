@@ -32,9 +32,40 @@ export const Container = styled.div`
   }
 `
 
+export const HeaderIndexTable = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
+  border: 1px solid #d9d9d9;
+  > div {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+    &:nth-child(4n) {
+      border-right: none;
+    }
+    &:nth-last-child(-n+4) {
+      border-bottom: none;
+    }
+  }
+
+  font-size: 12px;
+
+  @media(min-width: ${breakpoints.md}) {
+    font-size: 14px
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    font-size: 16px
+  }
+`
+
 export const HeaderNote = styled.div`
   font-style: italic;
   color: #5b5b5b;
+  margin-bottom: .5rem;
 
   font-size: 10px;
 

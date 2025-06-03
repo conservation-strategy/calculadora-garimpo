@@ -607,23 +607,36 @@
           }
         },
         "resume": {
-          "resumeText": "Resumo",
-          "headnote": [
-            {
-              "text": "Inflação acumulada desde <yearOfRef> usada: <inflationData>% (Fonte: <source>, atualizado em <date>).",
-              "source": [
-                "Banco Mundial",
-                "FRED"
+          "resumeText": "Resumo",          
+          "headnote": {
+            "note": "Os índices abaixo foram utilizados para estimar o valor dos impactos.",
+            "table":{
+              "columns": ["Índice", "Valor", "Fonte", "Atualizado em"],            
+              "rows":[
+                {
+                  "index": "Inflação acumulada desde <yearOfRef> (%)",
+                  "source": [
+                    "Banco Mundial",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Preço do ouro (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "Câmbio do US$ (R$)",
+                  "source": [
+                    "Banco Central do Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
               ]
-            },
-            {
-              "text": "Preço do ouro usado: US$<priceData>/g (Fonte: <source>, atualizado em <date>).",
-              "source": [
-                "Metalprice API",
-                "GoldAPI.io"
-              ]
-            }
-          ],          
+            }   
+          },
           "results": "Resultado",
           "download_pdf": "Baixar PDF",
           "monetary_impacts": "Impactos monetários",
@@ -1789,19 +1802,35 @@
         },
         "resume": {
           "resumeText": "Resumo",
-          "headnote": [
-            {
-              "text":"Inflación acumulada desde <yearOfRef>: <inflationData>% (Fuente: <source>, actualizado el <date>).",
-              "source": ["Banco Mundial", "FRED"]
-            },
-            {
-              "text": "Precio del oro utilizado: US$<priceData>/g (Fuente: <source>, actualizado el <date>).",
-              "source": [
-                "Metalprice API",
-                "GoldAPI.io"
+          "headnote": {
+            "note": "Los índices siguientes se utilizaron para estimar el valor de los impactos.",
+            "table":{
+              "columns": ["Índice", "Valor", "Fuente", "Actualizado el"],
+              "rows":[
+                {
+                  "index": "Inflación acumulada desde <yearOfRef>: (%)",
+                  "source": [
+                    "Banco Mundial",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Precio del oro (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "Cambio del US$ (R$)",
+                  "source": [
+                    "Banco Central de Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
               ]
             }
-          ],
+          },
           "results": "Resultado",
           "download_pdf": "Descargar PDF",
           "monetary_impacts": "Impactos monetarios",
@@ -2967,19 +2996,35 @@
         },
         "resume": {
           "resumeText": "Resume",
-          "headnote": [
-            {
-              "text":"Accumulated inflation since <yearOfRef> used: <inflationData>% (Source: <source>, updated on <date>).",
-              "source": ["World Bank", "FRED"]
-            },
-            {
-              "text": "Gold price used: US$<priceData>/g (Source: <source>, updated on <date>).",
-              "source": [
-                "Metalprice API",
-                "GoldAPI.io"
+          "headnote": {
+            "note": "The indexes below were used to estimate the value of the impacts.",
+            "table":{
+              "columns": ["Index", "Value", "Source", "Date"],            
+              "rows":[
+                {
+                  "index": "Accumulated inflation since <yearOfRef> (%)",
+                  "source": [
+                    "World Bank",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Gold price (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "US$ exchange rate (R$)",
+                  "source": [
+                    "Banco Central do Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
               ]
             }
-          ],        
+          },        
           "results": "Results",
           "download_pdf": "Download PDF",
           "monetary_impacts": "Monetary impacts",
