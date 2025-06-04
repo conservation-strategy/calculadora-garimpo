@@ -242,33 +242,8 @@ export default function useReport({
               }
             ],
             marginTop: 30,
-          },
-          {
-            text: language.calculator.resume.headnote.note,
-            fontSize:8,
-            marginTop: 10
-          },
-          {
-            text: `${language.calculator.resume.headnote.table.rows[0].index
-                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)}: ${inflationData.data?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}).`,
-            fontSize: 8,
-            // marginTop: 10,
-          },
-          {
-            text: `${language.calculator.resume.headnote.table.rows[1].index}: ${goldPriceData.data?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'}).`,
-            fontSize: 8,
-            // marginTop: 10,            
-          },
-          isBrazil
-          ? {
-            text: `${language.calculator.resume.headnote.table.rows[2].index}: ${dollarPriceData.value?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${dollarPriceData.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}).`,
-            fontSize: 8,
             pageBreak: 'after'
-          } 
-          : {
-            text: "",
-            pageBreak: 'after'
-          }
+          },          
         ]
 
         const deforestationPage: Content = isFerry
@@ -437,15 +412,55 @@ export default function useReport({
           },
           {
             text: language.methodology.paragraphy_12,
-            marginBottom: 15
+            marginBottom: 15,
+            pageBreak:'after'
           },
+        ]
 
+        const notesPage: Content = [
+          {
+            text: language.calculator.resume.headnote.note,
+          },
+          {
+            table: {
+              headerRows: 1,
+              widths: ['auto', 'auto', 'auto', 'auto'],
+              body: [
+                [
+                  { text: language.calculator.resume.headnote.table.columns[0], style: 'tableHeader', fontSize: 8, bold: true },
+                  { text: language.calculator.resume.headnote.table.columns[1], style: 'tableHeader', fontSize: 8, bold: true },
+                  { text: language.calculator.resume.headnote.table.columns[2], style: 'tableHeader', fontSize: 8, bold: true },
+                  { text: language.calculator.resume.headnote.table.columns[3], style: 'tableHeader', fontSize: 8, bold: true }
+                ],
+                [
+                  { text: language.calculator.resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef}`), fontSize: 8 },
+                  { text: `${inflationData.data?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+                  { text: inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0], fontSize: 8 },
+                  { text: inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+                ],
+                [
+                  { text: language.calculator.resume.headnote.table.rows[1].index, fontSize: 8 },
+                  { text: `${goldPriceData.data?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+                  { text: goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0], fontSize: 8 },
+                  { text: goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+                ],
+                ...(isBrazil ? [[
+                  { text: language.calculator.resume.headnote.table.rows[2].index, fontSize: 8 },
+                  { text: `${dollarPriceData.value?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+                  { text: dollarPriceData.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0], fontSize: 8 },
+                  { text: dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+                ]] : [])
+              ]
+            },
+            margin: [0, 5, 0, 0],
+          },      
           {
             text: language.footer.disclaimer.text,
             alignment: 'left',
             marginBottom: 15,
-            marginTop: 20
-          }
+            marginTop: 20,
+            fontSize: 8
+          }          
         ]
 
         const docDefinition: TDocumentDefinitions = {
@@ -461,7 +476,8 @@ export default function useReport({
             ...deforestationPage,
             ...siltingOfRiverPage,
             ...mercuryPage,
-            ...impactsNotMonetaryPage
+            ...impactsNotMonetaryPage,
+            ...notesPage
           ],
           header: () => {
             return headerPage
