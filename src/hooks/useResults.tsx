@@ -23,7 +23,7 @@ import useCountry from './useCountry'
 import useFixedCalculator from './useFixedCalculator'
 import usePopSize100kmRadius from './usePopSize100kmRadius'
 // import { getGoldPrice } from '@/lib/api/gold'
-import useGoldPrice from './useGoldPrice'
+import { usePriceData } from '@/store/api'
 
 export interface textImpactProps {
   paragraphy_01: string
@@ -89,13 +89,14 @@ export default function useResults({
   const [totalMercury, setTotalMercury] = useState<string>('')
   const [valueGold, setValueGold] = useState<number>(0)
   const [tabActive, settab] = useState<number | null>(null)
-  const { sumTotal, inflationData, dolarData } = useCalculator()
+  const { sumTotal } = useCalculator()
   const { isBrazil, isPeru, isColombia, isEquador, getDistrictData } =
     useCountry()
   const { convertAllinGold, convertAllinHectare, cubicMeters } = useConvertAll()
   const { getPopSize100kmRadius } = usePopSize100kmRadius()
   const { general } = useFixedCalculator()
-  const { data: goldPriceData } = useGoldPrice();
+  // const { data: goldPriceData } = useGoldPrice();
+  const { goldPriceData, dollarPriceData } = usePriceData();
 
 
   const convertCurrency = useCallback(
@@ -114,7 +115,7 @@ export default function useResults({
     console.log('goldPrice in calculator', goldPrice)
     const totalGoldwithPrice = totalGold * goldPrice
     const totalGoldPriceWithCountry = isBrazil
-      ? totalGoldwithPrice * (dolarData?.value || 0)
+      ? totalGoldwithPrice * (dollarPriceData.value || 0)
       : totalGoldwithPrice
     setValueGold(totalGoldPriceWithCountry)
   }, [isBrazil, dataCalculator, convertAllinGold])
@@ -538,9 +539,6 @@ export default function useResults({
     infographicMercury,
     tabActive,
     language,
-    settab,
-    inflationData,
-    goldPriceData,
-    dolarData
+    settab
   }
 }

@@ -1,17 +1,16 @@
 import { FormInputs } from '@/components/FormCalculator'
-import { countryCodes, retortTypes, typeMiningTypes } from '@/enums'
+import { retortTypes, typeMiningTypes } from '@/enums'
 import convertGramsToKg from '@/utils/convertGramsToKg'
 import roundValue from '@/utils/roundValue'
 import roundPercent from '@/utils/roundPercent'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import useAppContext from '../useAppContext'
 import useConvertAll from '../useConvertAll'
 import useCountry from '../useCountry'
 import useDeforestation from './useDeforesation'
 import useMercury from './useMercury/indext'
 import useSiltingOfRivers from './useSiltingOfRivers/indext'
-import useInflation from '../useInflation'
-import useDollar from '../useDollar'
+import { usePriceData } from '@/store/api'
 
 export interface DataCalculatorProps {
   dataCalculator: FormInputs
@@ -39,21 +38,24 @@ export default function useCalculator() {
     []
   )
   const { isBrazil, getValueToCountry, currentCountry } = useCountry();
-  const inflationData = useInflation(currentCountry?.country);
-  const yearOfRef = useMemo(
-    () => currentCountry?.country === countryCodes.BR
-      ? 2022
-      : (
-          currentCountry?.country === countryCodes.CO ||
-          currentCountry?.country === countryCodes.PE ||
-          currentCountry?.country === countryCodes.EC
-        )
-        ? 2023
-        : 2024,
-    [currentCountry]
-  );
+  // const inflationData = useInflation(currentCountry?.country);
+  // const yearOfRef = useMemo(
+  //   () => currentCountry?.country === countryCodes.BR
+  //     ? 2022
+  //     : (
+  //         currentCountry?.country === countryCodes.CO ||
+  //         currentCountry?.country === countryCodes.PE ||
+  //         currentCountry?.country === countryCodes.EC
+  //       )
+  //       ? 2023
+  //       : 2024,
+  //   [currentCountry]
+  // );
 
-  const dolarData = useDollar();
+  // const dolarData = useDollar();
+  // console.log('inflation--Data', inflationData);
+  // console.log('dolar--Data', dolarData);
+  const { inflationData, dollarPriceData } = usePriceData();
 
   const {
     bioprospectingCalculator,
@@ -119,11 +121,11 @@ export default function useCalculator() {
     (total: number) => {
       if (isBrazil) {
         const valueInflation2020at2021 = calculateInflation(14.58, total)
-        const valueInflation = calculateInflation(inflationData.data?.data, total)
+        const valueInflation = calculateInflation(inflationData.data, total)
         const totalInflation = valueInflation2020at2021 + valueInflation + total
         return totalInflation
       } else {
-        const valueInflation = calculateInflation(inflationData.data?.data, total)
+        const valueInflation = calculateInflation(inflationData.data, total)
         const totalInflation = valueInflation + total
         return totalInflation
       }
@@ -133,7 +135,7 @@ export default function useCalculator() {
 
   const calculatorTotalImpact = useCallback(
     (total: number) => {
-      const totalWithDolar = getValueToCountry(total, dolarData?.data?.value || 0)
+      const totalWithDolar = getValueToCountry(total, dollarPriceData.value || 0)
       return totalWithInflation(totalWithDolar)
     },
     [totalWithInflation, getValueToCountry]
@@ -561,8 +563,6 @@ export default function useCalculator() {
     getcalculator,
     calculatorDeforestation,
     sumTotal,
-    inflationData: {...inflationData.data, yearOfRef },
-    dolarData: dolarData.data,
     impacts: {
       deforestationImpacts,
       siltingOfRiversImpacts,

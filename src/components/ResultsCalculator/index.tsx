@@ -9,6 +9,7 @@ import useReport from '@/hooks/useReport'
 import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
 import useCountry from '@/hooks/useCountry'
+import { usePriceData } from '@/store/api'
 
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
@@ -28,6 +29,7 @@ export default function ResultsCalculator({
   const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } =
     impacts
   const { isBrazil } = useCountry();
+  const { goldPriceData, inflationData, dollarPriceData } = usePriceData();
 
   const {
     totalGold,
@@ -48,10 +50,7 @@ export default function ResultsCalculator({
     infographicDeforestation,
     infographicMercury,
     infographicSiltingOfRivers,
-    settab,
-    inflationData,
-    goldPriceData,
-    dolarData
+    settab
   } = useResults({ results, dataCalculator, language });
   const { downloadPDF, loadingPDF, setLoading } = useReport({
     results,
@@ -190,10 +189,10 @@ export default function ResultsCalculator({
 
           {/* Row 1 - Inflation */}
           <div>
-            {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef}`)}
+            {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}
           </div>
           <div>
-            {inflationData.data?.toFixed(2)}
+            {inflationData.data?.toFixed(2) ?? 'N/A'}
           </div>
           <div>
             {inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
@@ -207,7 +206,7 @@ export default function ResultsCalculator({
             {resume.headnote.table.rows[1].index}
           </div>
           <div>
-            {goldPriceData?.data.toFixed(2)}
+            {goldPriceData.data?.toFixed(2) ?? 'N/A'}
           </div>
           <div>
             {goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
@@ -223,13 +222,13 @@ export default function ResultsCalculator({
               {resume.headnote.table.rows[2].index}
             </div>
             <div>
-              {dolarData?.value.toFixed(2)}
+              {dollarPriceData.value?.toFixed(2) ?? 'N/A'}
             </div>
             <div>
-              {dolarData?.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
+              {dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
             </div>
             <div>
-              {dolarData?.date ? new Date(dolarData.date).toLocaleDateString('en-CA') : 'N/A'}
+              {dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
             </div>
             </>
           }

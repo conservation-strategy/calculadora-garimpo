@@ -8,6 +8,7 @@ import { LanguageTypeProps } from '@/store/state'
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces'
 import { typeMiningTypes } from '@/enums'
 import useCountry from './useCountry'
+import { usePriceData } from '@/store/api'
 
 interface useReportProps {
   results: resultsType
@@ -30,14 +31,12 @@ export default function useReport({
     textUsesTypes,
     textDeforestation,
     textSiltingOfRivers,
-    textMercury,
-    inflationData,
-    goldPriceData,
-    dolarData
+    textMercury
   } = useResults({ results, dataCalculator, language })
 
   const [loadingPDF, setLoading] = useState<string | boolean>('start')
   const { isBrazil } = useCountry();
+  const { inflationData, goldPriceData, dollarPriceData } = usePriceData();
 
   const getBase64ImageFromURL = useCallback((url: string) => {
     return new Promise((resolve, reject) => {
@@ -251,18 +250,18 @@ export default function useReport({
           },
           {
             text: `${language.calculator.resume.headnote.table.rows[0].index
-                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)}: ${inflationData.data?.toFixed(2)} (${language.calculator.resume.headnote.table.columns[2]}: ${inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}).`,
+                    .replace('<yearOfRef>', `${inflationData.yearOfRef}`)}: ${inflationData.data?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}).`,
             fontSize: 8,
             // marginTop: 10,
           },
           {
-            text: `${language.calculator.resume.headnote.table.rows[1].index}: ${goldPriceData?.data.toFixed(2)} (${language.calculator.resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'}).`,
+            text: `${language.calculator.resume.headnote.table.rows[1].index}: ${goldPriceData.data?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A'}).`,
             fontSize: 8,
             // marginTop: 10,            
           },
           isBrazil
           ? {
-            text: `${language.calculator.resume.headnote.table.rows[2].index}: ${dolarData?.value} (${language.calculator.resume.headnote.table.columns[2]}: ${dolarData?.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${dolarData?.date ? new Date(dolarData.date).toLocaleDateString('en-CA') : 'N/A'}).`,
+            text: `${language.calculator.resume.headnote.table.rows[2].index}: ${dollarPriceData.value?.toFixed(2) ?? 'N/A'} (${language.calculator.resume.headnote.table.columns[2]}: ${dollarPriceData.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0]}; ${language.calculator.resume.headnote.table.columns[3]} ${dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}).`,
             fontSize: 8,
             pageBreak: 'after'
           } 
