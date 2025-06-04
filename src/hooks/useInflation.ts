@@ -17,7 +17,7 @@ const useInflation = (country: countryCodes | undefined) => {
         const fetchInflation = async () => {
             setIsLoading(true)
             try {
-                const response = await fetch(`/api/inflation?country=${country}&force-refresh=true`);
+                const response = await fetch(`/api/inflation?country=${country}`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch inflation data');
                 }
