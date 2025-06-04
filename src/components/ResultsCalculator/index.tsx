@@ -174,65 +174,58 @@ export default function ResultsCalculator({
               .replace('<source>', dolarData?.fallback ? resume.headnote[2].source[1] : resume.headnote[2].source[0])
           }`}
         </S.HeaderNote>} */}
-        <S.HeaderNote>
-          {resume.headnote.note}
-        </S.HeaderNote>
-        <S.HeaderIndexTable>          
-          {/* Header row */}
-          {resume.headnote.table.columns.map((item, index) => (
-              <div key={index}
-              style={{ color: '#5b5b5b'}}
-              >
-                {item}
+          {/* <S.HeaderIndexTable>          
+            {resume.headnote.table.columns.map((item, index) => (
+                <div key={index}
+                style={{ color: '#5b5b5b'}}
+                >
+                  {item}
+                </div>
+            ))}
+
+            <div>
+              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}
+            </div>
+            <div>
+              {inflationData.data?.toFixed(2) ?? 'N/A'}
+            </div>
+            <div>
+              {inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
+            </div>
+            <div>
+              {inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
+            </div>
+
+            <div>
+              {resume.headnote.table.rows[1].index}
+            </div>
+            <div>
+              {goldPriceData.data?.toFixed(2) ?? 'N/A'}
+            </div>
+            <div>
+              {goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
+            </div>
+            <div>
+              {goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
+            </div>
+
+            {isBrazil &&
+              <>
+              <div>
+                {resume.headnote.table.rows[2].index}
               </div>
-          ))}
-
-          {/* Row 1 - Inflation */}
-          <div>
-            {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}
-          </div>
-          <div>
-            {inflationData.data?.toFixed(2) ?? 'N/A'}
-          </div>
-          <div>
-            {inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
-          </div>
-          <div>
-            {inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
-          </div>
-
-          {/* Row 2 - Gold Price */}
-          <div>
-            {resume.headnote.table.rows[1].index}
-          </div>
-          <div>
-            {goldPriceData.data?.toFixed(2) ?? 'N/A'}
-          </div>
-          <div>
-            {goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
-          </div>
-          <div>
-            {goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
-          </div>
-
-          {/* Row 3 - Dollar */}
-          {isBrazil &&
-            <>
-            <div>
-              {resume.headnote.table.rows[2].index}
-            </div>
-            <div>
-              {dollarPriceData.value?.toFixed(2) ?? 'N/A'}
-            </div>
-            <div>
-              {dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
-            </div>
-            <div>
-              {dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
-            </div>
-            </>
-          }
-      </S.HeaderIndexTable>
+              <div>
+                {dollarPriceData.value?.toFixed(2) ?? 'N/A'}
+              </div>
+              <div>
+                {dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
+              </div>
+              <div>
+                {dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
+              </div>
+              </>
+            }
+        </S.HeaderIndexTable> */}
 
       </S.ResultsHeadline>
       <S.ButtonPDF>
@@ -288,6 +281,38 @@ export default function ResultsCalculator({
       <S.GraphicResume>
         <ResumeCharts data={resumeDataChart} />
       </S.GraphicResume>
+      <S.IndexNote>
+        {resume.headnote.note}
+          <ul>
+            <li>
+              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}{': '}
+              {inflationData.data?.toFixed(2) ?? 'N/A'}{' '}
+              {`(
+              ${resume.headnote.table.columns[2]}: ${inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
+              ; ${resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
+              ).`}
+            </li>
+            <li>
+              {resume.headnote.table.rows[1].index}{': '}
+              {goldPriceData.data?.toFixed(2) ?? 'N/A'}{' '}
+              {`(
+                ${resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
+                ; ${resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
+              ).`}
+            </li>
+            {isBrazil && 
+              <li>
+                {resume.headnote.table.rows[2].index}{': '}
+                {dollarPriceData.value?.toFixed(2) ?? 'N/A'}{' '}
+                {`(
+                  ${resume.headnote.table.columns[2]}: ${dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
+                  ; ${resume.headnote.table.columns[3]} ${dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
+                ).`}
+              </li>
+            }
+          </ul>
+      </S.IndexNote>
+
       <div style={{ gridArea: 'charts-preview' }}>
         {showChartsPrint && (
           <div>

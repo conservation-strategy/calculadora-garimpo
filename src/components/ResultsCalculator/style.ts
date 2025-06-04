@@ -15,6 +15,7 @@ export const Container = styled.div`
     'button_pdf button_pdf'
     'resume_graphic resume_graphic'
     'values values'
+    'index_note index_note'
     'charts-preview charts-preview'
     'impacts_text_valuation impacts_text_valuation'
     'tab tab';
@@ -26,6 +27,7 @@ export const Container = styled.div`
       'headline headline headline . button_pdf'
       'impacts_text_resume impacts_text_resume impacts_text_resume . .'
       'values values resume_graphic resume_graphic resume_graphic'
+      'index_note index_note index_note . .'
       'charts-preview charts-preview charts-preview charts-preview charts-preview'
       'impacts_text_valuation impacts_text_valuation impacts_text_valuation . .'
       'tab tab tab tab tab';
@@ -62,7 +64,8 @@ export const HeaderIndexTable = styled.div`
   }
 `
 
-export const HeaderNote = styled.div`
+export const IndexNote = styled.div`
+  grid-area: index_note;
   font-style: italic;
   color: #5b5b5b;
   margin-bottom: .5rem;
@@ -76,6 +79,14 @@ export const HeaderNote = styled.div`
   @media(min-width: ${breakpoints.lg}) {
     font-size: 14px;
   }
+  
+  > ul {
+    margin-left: .75em;
+    list-style-type: '- ';
+    > li {
+      margin-top: .2em
+    }
+  } 
   
 `
 
