@@ -2,9 +2,14 @@ import { fetchWithRetries } from "@/lib/api";
 import { calculateCumulativeInflation } from "@/utils/inflation";
 import { countryCodes } from "@/enums";
 
-export const CACHE_VERSION = '1.0';
-export const CACHE_DURATION = 30 * 24 * 60 * 60; // 1 MONTH
-export const CACHE_REVALIDATION = 24 * 60 * 60; // 1 DAY
+export const INFLATION_CACHE_VERSION = '1.0';
+export const INFLATION_CACHE_DURATION = 30 * 24 * 60 * 60; // 1 MONTH
+export const INFLATION_CACHE_REVALIDATION = 24 * 60 * 60; // 1 DAY
+
+export interface InflationDataResponse {
+    fallback?: boolean;
+    data?: number;
+}
 
 interface FREDObservation {
     realtime_start: string;

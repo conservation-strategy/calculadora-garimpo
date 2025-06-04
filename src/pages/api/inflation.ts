@@ -1,7 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { fetchCumulativeInflationData } from '@/lib/api/inflation';
 import { countryCodes } from '@/enums';
-import { CACHE_VERSION, CACHE_DURATION, CACHE_REVALIDATION } from '@/lib/api/inflation';
+import { 
+  INFLATION_CACHE_VERSION, 
+  INFLATION_CACHE_DURATION, 
+  INFLATION_CACHE_REVALIDATION 
+} from '@/lib/api/inflation';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
@@ -25,7 +29,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const response = await fetchCumulativeInflationData(country as countryCodes);
     const responseWithMetadata = {
       ...response,
-      cacheVersion: CACHE_VERSION,
+      cacheVersion: INFLATION_CACHE_VERSION,
       cachedAt: new Date().toISOString()
     };
 
@@ -41,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
       const fallbackWithMetadata = {
         ...fallback,
-        cacheVersion: CACHE_VERSION,
+        cacheVersion: INFLATION_CACHE_VERSION,
         cachedAt: new Date().toISOString()
       };
 
@@ -49,8 +53,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.setHeader('Cache-Control', 'no-store');
       } else {
         res.setHeader('Vary', 'x-cache-version');
-        res.setHeader('x-cache-version', CACHE_VERSION);
-        res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
+        res.setHeader('x-cache-version', INFLATION_CACHE_VERSION);
+        res.setHeader('Cache-Control', `public, s-maxage=${INFLATION_CACHE_DURATION}, stale-while-revalidate=${INFLATION_CACHE_REVALIDATION}`);
       }
 
       return res.status(200).json(fallbackWithMetadata);
@@ -60,8 +64,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.setHeader('Cache-Control', 'no-store');
     } else {
       res.setHeader('Vary', 'x-cache-version');
-      res.setHeader('x-cache-version', CACHE_VERSION);
-      res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
+      res.setHeader('x-cache-version', INFLATION_CACHE_VERSION);
+      res.setHeader('Cache-Control', `public, s-maxage=${INFLATION_CACHE_DURATION}, stale-while-revalidate=${INFLATION_CACHE_REVALIDATION}`);
     }
 
     return res.status(200).json(responseWithMetadata);

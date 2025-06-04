@@ -1,8 +1,8 @@
 import { fetchWithRetries } from ".";
 
-export const CACHE_VERSION = '1.0';
-export const CACHE_DURATION = 7 * 24 * 60 * 60; // 1 WEEK
-export const CACHE_REVALIDATION = 24 * 60 * 60; // 1 DAY
+export const GOLD_CACHE_VERSION = '1.0';
+export const GOLD_CACHE_DURATION = 7 * 24 * 60 * 60; // 1 WEEK
+export const GOLD_CACHE_REVALIDATION = 24 * 60 * 60; // 1 DAY
 
 const METAL_PRICE_API_KEY = process.env.METAL_PRICE_API_KEY;
 const METAL_PRICE_API_URL = `https://api.metalpriceapi.com/v1/latest?api_key=${METAL_PRICE_API_KEY}&base=USD&currencies=XAU`;
@@ -16,8 +16,8 @@ export const ozToGrams = (oz: number) => {
 
 
 export interface GoldPriceResponse {
-    data: number;
-    fallback: boolean;
+    data?: number;
+    fallback?: boolean;
     timestamp?: string;
     error?: string;
 }

@@ -1,9 +1,9 @@
 import { fetchWithRetries } from ".";
 
 export interface DollarQuotationResponse {
-    fallback: boolean;
-    value: number;
-    date: string;
+    fallback?: boolean;
+    value?: number;
+    date?: string;
 }
 
 export async function fetchDollarQuotation(date=new Date(), fallback=false) {

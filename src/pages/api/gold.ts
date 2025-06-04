@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { CACHE_DURATION, CACHE_VERSION, CACHE_REVALIDATION, fetchGoldPriceInUSD } from '@/lib/api/gold';
+import { GOLD_CACHE_DURATION, GOLD_CACHE_VERSION, GOLD_CACHE_REVALIDATION, fetchGoldPriceInUSD } from '@/lib/api/gold';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== 'GET') {
@@ -21,7 +21,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const responseWithMetadata = {
     ...response,
-    cacheVersion: CACHE_VERSION,
+    cacheVersion: GOLD_CACHE_VERSION,
     cachedAt: new Date().toISOString()
   };
   
@@ -29,8 +29,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader('Cache-Control', 'no-store');
   } else {
     res.setHeader('Vary', 'x-cache-version');
-    res.setHeader('x-cache-version', CACHE_VERSION);
-    res.setHeader('Cache-Control', `public, s-maxage=${CACHE_DURATION}, stale-while-revalidate=${CACHE_REVALIDATION}`);
+    res.setHeader('x-cache-version', GOLD_CACHE_VERSION);
+    res.setHeader('Cache-Control', `public, s-maxage=${GOLD_CACHE_DURATION}, stale-while-revalidate=${GOLD_CACHE_REVALIDATION}`);
   }
   
   return res.status(200).json(responseWithMetadata);
