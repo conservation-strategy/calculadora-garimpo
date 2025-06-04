@@ -1,7 +1,7 @@
 import { GlobalStyle } from '@/styles/global'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { AppContextProvider } from '@/store/proveider'
+import { AppContextProvider } from '@/store/state/proveider'
 import useAppContext from '@/hooks/useAppContext'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
 import { Analytics } from '@vercel/analytics/react'

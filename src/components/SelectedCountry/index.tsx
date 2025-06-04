@@ -1,6 +1,6 @@
 import * as S from './style'
 import * as SG from '@/styles/global'
-import { CountryProps } from '@/store/proveider'
+import { CountryProps } from '@/store/state/proveider'
 import useAppContext from '@/hooks/useAppContext'
 import { FormEvent, useCallback, useEffect, useState } from 'react'
 import { event as gaEvent } from "nextjs-google-analytics";

@@ -10,8 +10,8 @@ import {
   usesValuesTypes,
   valueHypothesisTypes
 } from '@/enums'
-import { LanguageTypeProps } from '@/store'
-import { dataCalculatorTypes, resultsType } from '@/store/proveider'
+import { LanguageTypeProps } from '@/store/state'
+import { dataCalculatorTypes, resultsType } from '@/store/state/proveider'
 import roundPercent from '@/utils/roundPercent'
 import roundValue from '@/utils/roundValue'
 import ToBRL from '@/utils/toBRL'

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { CountryProps } from '@/store/proveider'
+import { CountryProps } from '@/store/state/proveider'
 import { countryCodes } from '@/enums'
 
 const brazil: CountryProps = { country: countryCodes.BR, label: 'Brasil' }
