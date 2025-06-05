@@ -287,8 +287,8 @@ export default function ResultsCalculator({
         {resume.headnote.note}
           <ul>
             <li>
-              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? referenceYears[currentCountry?.country!]}`)}{': '}
-              {inflationData.data?.toFixed(2) ?? inflationBackupValues[currentCountry?.country!]}{' '}
+              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ? inflationData.yearOfRef : currentCountry ? referenceYears[currentCountry.country] : 'N/A'}`)}{': '}
+              {inflationData.data ? inflationData.data?.toFixed(2) : currentCountry ? inflationBackupValues[currentCountry.country] : 'N/A'}{' '}
               {`(
               ${resume.headnote.table.columns[2]}: ${inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
               ; ${resume.headnote.table.columns[3]} ${new Date(inflationData.cachedAt || inflationBackupValues.date).toLocaleDateString('en-CA')}
