@@ -548,14 +548,14 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlValueHypothesis>
 
-      <S.FormControlInflation>
+      {/* <S.FormControlInflation>
         <label>{inflation.label}</label>
         <SG.Input
           type="number"
           {...register('inflation')}
           placeholder={inflation.placeholder}
         />
-      </S.FormControlInflation>
+      </S.FormControlInflation> */}
 
       <S.FormControlUsesTypes>
         <label>{form.useCalculator.headline}</label>

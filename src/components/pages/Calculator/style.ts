@@ -107,7 +107,6 @@ export const Form = styled.form<FormProps>`
     'pitDepth'
     'machineCapacity'
     'valueHypothesis'
-    'inflation'
     'useTypes'
     'submit';
 
@@ -122,7 +121,6 @@ export const Form = styled.form<FormProps>`
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
       'valueHypothesis valueHypothesis useTypes useTypes'
-      'inflation inflation inflation inflation'
       'submit submit submit submit';
   }
   @media (min-width: 1440px) {
@@ -137,7 +135,6 @@ export const Form = styled.form<FormProps>`
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
       'valueHypothesis valueHypothesis useTypes useTypes'
-      'inflation inflation inflation inflation'
       'submit submit submit submit';
   }
   @media(min-width: 1680px) {
@@ -152,7 +149,6 @@ export const Form = styled.form<FormProps>`
       'machineCapacity machineCapacity machineCapacity machineCapacity'
       'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
       'useTypes useTypes useTypes useTypes'
-      'inflation inflation inflation inflation'
       'submit submit submit submit';  
   }
   @media (min-width: ${breakpoints.lg}) {
