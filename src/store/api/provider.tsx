@@ -95,7 +95,7 @@ export function PriceAPIProvider({ children }: PriceProviderProps) {
             const responseData = await response.json();
             console.log('inflationData', responseData);
             const yearOfRef = currentCountry.country === countryCodes.BR
-                ? 2022
+                ? 2020
                 : (
                     currentCountry.country === countryCodes.CO ||
                     currentCountry.country === countryCodes.PE ||

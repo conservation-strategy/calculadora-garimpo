@@ -120,9 +120,9 @@ export default function useCalculator() {
   const totalWithInflation = useCallback(
     (total: number) => {
       if (isBrazil) {
-        const valueInflation2020at2021 = calculateInflation(14.58, total)
+        // const valueInflation2020at2021 = calculateInflation(14.58, total)
         const valueInflation = calculateInflation(inflationData.data, total)
-        const totalInflation = valueInflation2020at2021 + valueInflation + total
+        const totalInflation = valueInflation + total
         return totalInflation
       } else {
         const valueInflation = calculateInflation(inflationData.data, total)
