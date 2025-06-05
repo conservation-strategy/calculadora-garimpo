@@ -60,11 +60,12 @@ export function PriceAPIProvider({ children }: PriceProviderProps) {
             const dollarResponse = await fetch(`/api/dollar`);
             const goldResponse = await fetch('/api/gold');
             if (!dollarResponse.ok || !goldResponse.ok) {
-                throw new Error(`
-                    Failed to fetch dollar price data. Status: 
-                    - gold: ${goldResponse.status}
-                    - dollar: ${dollarResponse.status}
-                `);
+                const message = `Failed to fetch price data. Status: 
+                - Dollar: ${dollarResponse.status}
+                - Gold: ${goldResponse.status}
+                ` 
+                console.error(message);
+                setError({ message });
             }
             const dollarData = await dollarResponse.json();
             const goldData = await goldResponse.json();
