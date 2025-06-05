@@ -4,7 +4,7 @@ import { doppioOne, gudea } from '@/fonts/fonts';
 interface ButtonProps {
   variant: 'primary' | 'outline';
   maxWidth?: number;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 interface TextProps {
