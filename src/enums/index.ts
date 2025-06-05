@@ -7,7 +7,7 @@ export enum dispatchTypes {
 
 export enum currency {
   dolar = 5.59,
-  gold = 62.59,
+  gold = 107.9218743282423,
   update = "2025-06-05 13:07:30.991"
 }
 
