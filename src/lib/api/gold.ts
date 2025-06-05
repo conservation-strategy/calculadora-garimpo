@@ -79,7 +79,7 @@ export const fetchGoldPriceInUSD = async (): Promise<GoldPriceResponse> => {
         };
     } catch(error: any) {
         return {
-            data: 0,
+            data: undefined,
             fallback: false,
             error: error.message || 'Failed to fetch gold price data'
         };
