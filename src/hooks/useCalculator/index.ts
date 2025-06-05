@@ -53,8 +53,7 @@ export default function useCalculator() {
   // );
 
   // const dolarData = useDollar();
-  // console.log('inflation--Data', inflationData);
-  // console.log('dolar--Data', dolarData);
+  // console.log('inflation--Data', inflationData)
   const { inflationData, dollarPriceData } = usePriceData();
 
   const {
@@ -138,7 +137,7 @@ export default function useCalculator() {
       const totalWithDolar = getValueToCountry(total, dollarPriceData.value || 0)
       return totalWithInflation(totalWithDolar)
     },
-    [totalWithInflation, getValueToCountry]
+    [totalWithInflation, getValueToCountry, dollarPriceData.value]
   )
 
   const calculatorDeforestation = useCallback(
