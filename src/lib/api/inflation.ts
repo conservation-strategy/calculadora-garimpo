@@ -67,6 +67,16 @@ export const referenceYears = {
     // [countryCodes.BO]: 2024
 }
 
+export const inflationBackupValues = {
+    [countryCodes.BR]: 33.34462854936184,
+    [countryCodes.CO]: 7.187276026742517,
+    [countryCodes.EC]: 7.187276026742517,
+    [countryCodes.PE]: 7.187276026742517,
+    [countryCodes.GU]: 2.949525204852077,
+    [countryCodes.SU]: 2.949525204852077,
+    date: "2025-06-05T17:42:11.463Z"
+}
+
 function validateEnvVariables() {
     if (!process.env.FRED_API_KEY) {
         throw new Error('FRED_API_KEY environment variable is not set');
