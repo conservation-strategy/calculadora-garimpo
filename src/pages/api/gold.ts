@@ -15,6 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await fetchGoldPriceInUSD();
   
   if (response.error) {
+    console.error(response.error);
     res.setHeader('Cache-Control', 'no-store');
     return res.status(500).json(response);
   }
