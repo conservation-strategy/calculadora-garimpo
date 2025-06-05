@@ -1,6 +1,5 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import useCountry from '@/hooks/useCountry';
-import { countryCodes } from '@/enums';
 import { InflationDataResponse, GoldPriceResponse, DollarQuotationResponse, referenceYears } from '@/lib/api';
 
 
@@ -30,24 +29,11 @@ interface PriceProviderProps {
   children: ReactNode;
 }
 
-const initialStateInflation: InflationDataResponseWithCache = {
-    fallback: undefined,
-    data: undefined,
-    cachedAt: undefined,
-    cacheVersion: undefined
-}
-
-const initialStateDollar: DollarQuotationResponse = {
-    fallback: undefined,
-    value: undefined,
-    date: undefined
-}
-
 
 export function PriceAPIProvider({ children }: PriceProviderProps) {
   const [goldPriceData, setGoldPriceData] = useState<GoldPriceResponseWithCache>({});
-  const [inflationData, setInflationData] = useState<InflationDataResponseWithCache>(initialStateInflation);
-  const [dollarPriceData, setDollarPriceData] = useState<DollarQuotationResponse>(initialStateDollar);
+  const [inflationData, setInflationData] = useState<InflationDataResponseWithCache>({});
+  const [dollarPriceData, setDollarPriceData] = useState<DollarQuotationResponse>({});
   const [isLoadingPriceData, setIsLoadingPriceData] = useState(false);
   const [isLoadingInflationData, setIsLoadingInflationData] = useState(false);
   const [error, setError] = useState<any>(null);
