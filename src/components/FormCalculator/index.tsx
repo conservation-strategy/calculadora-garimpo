@@ -1,5 +1,5 @@
 import useAppContext from '@/hooks/useAppContext'
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { CountryList } from '@/components/SelectedCountry'
 
@@ -25,6 +25,7 @@ import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
 import useInflation from '@/hooks/useInflation'
 import useGoldPrice from '@/hooks/useGoldPrice'
+import { usePriceData } from '@/store/api'
 
 export interface FormInputs {
   knowRegion: string
@@ -129,8 +130,10 @@ export default function FormCalculator() {
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
   const knowCapacity = watch('knowMachineCapacity');
-  const _state = watch('state');
-
+  // const _state = watch('state');
+  const { isLoadingInflationData } = usePriceData();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const buttonTimeout = useRef<NodeJS.Timeout | null>(null);
   // console.log('state string', _state);
   // console.log('country field', country_field);
 
@@ -138,6 +141,16 @@ export default function FormCalculator() {
   // const goldPriceData = useGoldPrice();
 
   // console.log('gold price', goldPriceData);
+
+  useEffect(() => {
+    if(isLoadingInflationData) {
+      setIsButtonDisabled(true)
+    } else {
+      buttonTimeout.current = setTimeout(() => {
+        setIsButtonDisabled(false);
+      }, 500);
+    }
+  }, [isLoadingInflationData])
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -559,8 +572,13 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlUsesTypes>
 
-      <S.ButtonSubmit id="btn-calcular" variant="primary">
-        {form.btn_calculator.btn}
+      <S.ButtonSubmit id="btn-calcular" variant="primary" disabled={isButtonDisabled}>
+        {/* {isLoadingInflationData
+          ? <S.LoadingSpinner/> 
+          : form.btn_calculator.btn
+        } */}
+        <span style={isButtonDisabled ? { opacity: .5 } : {}}>{form.btn_calculator.btn}</span>
+        {isButtonDisabled && <S.LoadingSpinner/>}
       </S.ButtonSubmit>
     </SCalc.Form>
   )

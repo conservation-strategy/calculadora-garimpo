@@ -3,7 +3,8 @@ import { doppioOne, gudea } from '@/fonts/fonts';
 
 interface ButtonProps {
   variant: 'primary' | 'outline';
-  maxWidth?: number
+  maxWidth?: number;
+  disabled: boolean;
 }
 
 interface TextProps {
@@ -103,6 +104,7 @@ export const Button = styled.button<ButtonProps>`
   font-family: inherit;
   width: 100%;
   max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : 'none' )};
+  pointer-events: ${({ disabled }) => (disabled ? 'none' : 'auto')};
   border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
