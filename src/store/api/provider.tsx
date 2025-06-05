@@ -1,7 +1,8 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import useCountry from '@/hooks/useCountry';
 import { countryCodes } from '@/enums';
-import { InflationDataResponse, GoldPriceResponse, DollarQuotationResponse } from '@/lib/api';
+import { InflationDataResponse, GoldPriceResponse, DollarQuotationResponse, referenceYears } from '@/lib/api';
+
 
 export interface GoldPriceResponseWithCache extends GoldPriceResponse {
     cacheVersion?: string;
@@ -94,15 +95,7 @@ export function PriceAPIProvider({ children }: PriceProviderProps) {
             }
             const responseData = await response.json();
             console.log('inflationData', responseData);
-            const yearOfRef = currentCountry.country === countryCodes.BR
-                ? 2020
-                : (
-                    currentCountry.country === countryCodes.CO ||
-                    currentCountry.country === countryCodes.PE ||
-                    currentCountry.country === countryCodes.EC
-                )
-                ? 2023
-                : 2024;
+            const yearOfRef = referenceYears[currentCountry.country];
             const data = {...responseData, yearOfRef}
             setInflationData(data);
         } catch (error: any) {

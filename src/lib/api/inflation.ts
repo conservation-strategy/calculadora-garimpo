@@ -57,14 +57,14 @@ export function extractValues(data: InflationDataObject[]): (string | number)[] 
     return data.map(item => item.value);
 }
 
-const referenceYears = {
-    'BR': 2022,
-    'CO': 2023,
-    'EC': 2023,
-    'PE': 2023,
-    'GU': 2024,
-    'SU': 2024,
-    'BO': 2024
+export const referenceYears = {
+    [countryCodes.BR]: 2020,
+    [countryCodes.CO]: 2023,
+    [countryCodes.EC]: 2023,
+    [countryCodes.PE]: 2023,
+    [countryCodes.GU]: 2024,
+    [countryCodes.SU]: 2024,
+    // [countryCodes.BO]: 2024
 }
 
 function validateEnvVariables() {
