@@ -635,7 +635,8 @@
                   ]
                 }
               ]
-            }   
+            },
+            "error": "O(s) valor(es) acima está(ão) desatualizado(s) devido a uma falha na API. Atualize a página e tente novamente se precisar de valores atualizados."
           },
           "results": "Resultado",
           "download_pdf": "Baixar PDF",
@@ -1829,7 +1830,8 @@
                   ]
                 }
               ]
-            }
+            },
+            "error": "Los valores anteriores están desactualizados debido a un error en la API. Actualice la página y vuelva a intentarlo si necesita valores actualizados."
           },
           "results": "Resultado",
           "download_pdf": "Descargar PDF",
@@ -3023,7 +3025,8 @@
                   ]
                 }
               ]
-            }
+            },
+            "error": "The above values are outdated due to a failure in the API. Refresh the page and try again if you need fresh values."
           },        
           "results": "Results",
           "download_pdf": "Download PDF",

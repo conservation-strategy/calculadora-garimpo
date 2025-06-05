@@ -6,8 +6,9 @@ export enum dispatchTypes {
 }
 
 export enum currency {
-  dolar = 5.33,
-  gold = 62.59
+  dolar = 5.59,
+  gold = 62.59,
+  update = "2025-06-05 13:07:30.991"
 }
 
 export enum knowRegionTypes {

@@ -1,5 +1,5 @@
 import { FormInputs } from '@/components/FormCalculator'
-import { retortTypes, typeMiningTypes } from '@/enums'
+import { countryCodes, currency, retortTypes, typeMiningTypes } from '@/enums'
 import convertGramsToKg from '@/utils/convertGramsToKg'
 import roundValue from '@/utils/roundValue'
 import roundPercent from '@/utils/roundPercent'
@@ -11,6 +11,7 @@ import useDeforestation from './useDeforesation'
 import useMercury from './useMercury/indext'
 import useSiltingOfRivers from './useSiltingOfRivers/indext'
 import { usePriceData } from '@/store/api'
+import { inflationBackupValues } from '@/lib/api'
 
 export interface DataCalculatorProps {
   dataCalculator: FormInputs
@@ -120,11 +121,15 @@ export default function useCalculator() {
     (total: number) => {
       if (isBrazil) {
         // const valueInflation2020at2021 = calculateInflation(14.58, total)
-        const valueInflation = calculateInflation(inflationData.data, total)
+        const valueInflation = calculateInflation(inflationData.data || inflationBackupValues[countryCodes.BR], total)        
+        if(!inflationData.data) console.warn('Using backup harcoded value for inflation');
         const totalInflation = valueInflation + total
         return totalInflation
       } else {
-        const valueInflation = calculateInflation(inflationData.data, total)
+        const valueInflation = inflationData.data
+          ? calculateInflation(inflationData.data, total)
+          : calculateInflation(currentCountry? inflationBackupValues[currentCountry.country] : 0, total)
+        if(!inflationData.data) console.warn('Using backup harcoded value for inflation');
         const totalInflation = valueInflation + total
         return totalInflation
       }
@@ -134,7 +139,8 @@ export default function useCalculator() {
 
   const calculatorTotalImpact = useCallback(
     (total: number) => {
-      const totalWithDolar = getValueToCountry(total, dollarPriceData.value || 0)
+      const totalWithDolar = getValueToCountry(total, dollarPriceData.value ?? currency.dolar)
+      if(!dollarPriceData.value) console.warn('Using backup hardcoded value for dollarPrice')
       return totalWithInflation(totalWithDolar)
     },
     [totalWithInflation, getValueToCountry, dollarPriceData.value]

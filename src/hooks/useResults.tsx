@@ -111,12 +111,14 @@ export default function useResults({
       dataCalculator: dataCalculator as FormInputs
     })
     // const goldPriceData = await getGoldPrice();
-    const goldPrice = goldPriceData?.data || 0
+    const goldPrice = goldPriceData.data || currency.gold
+    if(!goldPriceData.data) console.warn('Using backup hardcoded value for goldPrice')
     console.log('goldPrice in calculator', goldPrice)
     const totalGoldwithPrice = totalGold * goldPrice
     const totalGoldPriceWithCountry = isBrazil
-      ? totalGoldwithPrice * (dollarPriceData.value || 0)
+      ? totalGoldwithPrice * (dollarPriceData.value || currency.dolar)
       : totalGoldwithPrice
+    if(isBrazil && !dollarPriceData.value) console.warn('Using backup hardcoded value for gold');
     setValueGold(totalGoldPriceWithCountry)
   }, [isBrazil, dataCalculator, convertAllinGold])
 

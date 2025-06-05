@@ -10,6 +10,8 @@ import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
 import useCountry from '@/hooks/useCountry'
 import { usePriceData } from '@/store/api'
+import { inflationBackupValues, referenceYears } from '@/lib/api'
+import { currency } from '@/enums'
 
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
@@ -28,7 +30,7 @@ export default function ResultsCalculator({
   const { resume, pdf, valuation, impacts } = calculator
   const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } =
     impacts
-  const { isBrazil } = useCountry();
+  const { isBrazil, currentCountry } = useCountry();
   const { goldPriceData, inflationData, dollarPriceData } = usePriceData();
 
   const {
@@ -285,32 +287,38 @@ export default function ResultsCalculator({
         {resume.headnote.note}
           <ul>
             <li>
-              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}{': '}
-              {inflationData.data?.toFixed(2) ?? 'N/A'}{' '}
+              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? referenceYears[currentCountry?.country!]}`)}{': '}
+              {inflationData.data?.toFixed(2) ?? inflationBackupValues[currentCountry?.country!]}{' '}
               {`(
               ${resume.headnote.table.columns[2]}: ${inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
-              ; ${resume.headnote.table.columns[3]} ${inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
-              ).`}
+              ; ${resume.headnote.table.columns[3]} ${new Date(inflationData.cachedAt || inflationBackupValues.date).toLocaleDateString('en-CA')}
+              )`}
+              {!inflationData.data && <span style={{ color: 'red' }}>{' '}*</span>}
             </li>
             <li>
               {resume.headnote.table.rows[1].index}{': '}
-              {goldPriceData.data?.toFixed(2) ?? 'N/A'}{' '}
+              {goldPriceData.data?.toFixed(2) ?? currency.gold}{' '}
               {`(
                 ${resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
-                ; ${resume.headnote.table.columns[3]} ${goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
-              ).`}
+                ; ${resume.headnote.table.columns[3]} ${new Date(goldPriceData.timestamp || currency.update).toLocaleDateString('en-CA')}
+              )`}
+              {!goldPriceData.data && <span style={{ color: 'red' }}>{' '}*</span>}
             </li>
             {isBrazil && 
               <li>
                 {resume.headnote.table.rows[2].index}{': '}
-                {dollarPriceData.value?.toFixed(2) ?? 'N/A'}{' '}
+                {dollarPriceData.value?.toFixed(2) ?? currency.dolar}{' '}
                 {`(
                   ${resume.headnote.table.columns[2]}: ${dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
-                  ; ${resume.headnote.table.columns[3]} ${dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
-                ).`}
+                  ; ${resume.headnote.table.columns[3]} ${new Date(dollarPriceData.date || currency.update).toLocaleDateString('en-CA')}
+                )`}
+                {!dollarPriceData.value && <span style={{ color: 'red' }}>{' '}*</span>}
               </li>
             }
           </ul>
+          {(!inflationData.data || !goldPriceData.data || (isBrazil && !dollarPriceData.value)) &&
+            <span style={{ color: 'red' }}>{resume.headnote.error}</span>
+          }
       </S.IndexNote>
 
       <div style={{ gridArea: 'charts-preview' }}>
