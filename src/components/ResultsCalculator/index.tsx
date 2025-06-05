@@ -317,7 +317,7 @@ export default function ResultsCalculator({
             }
           </ul>
           {(!inflationData.data || !goldPriceData.data || (isBrazil && !dollarPriceData.value)) &&
-            <span style={{ color: 'red' }}>{resume.headnote.error}</span>
+            <span style={{ color: 'red' }}>* {resume.headnote.error}</span>
           }
       </S.IndexNote>
 
