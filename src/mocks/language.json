@@ -767,7 +767,17 @@
             "GInHg": "g de Hg",
             "kgDeAu": "kg de Au",
             "kgDeAu_ha": "kg de Au / ha"
-          }
+          }        
+        },
+        "footnote": {
+          "intro": "Os valores apresentados na calculadora são atualizados automaticamente com base em fontes oficiais e confiáveis:",
+          "list": [
+            "Inflação acumulada: calculada a partir de dados do Banco Mundial;",
+            "Taxa de câmbio: obtida junto ao Banco Central do Brasil;",
+            "Preço do ouro: atualizado por meio de integração com as APIs da GoldAPI e MetalpriceAPI."
+          ],
+          "conclusion": "Esses indicadores estão sujeitos a variações diárias, o que pode impactar os resultados da calculadora ao longo do tempo.",
+          "error": "Alguns dos valores mencionados acima podem estar desatualizados devido a falha na API. Atualize a página e tente novamente caso precise de dados atualizados."
         }
       },
       "about": {
@@ -1962,7 +1972,17 @@
             "GInHg": "g de Hg",
             "kgDeAu": "kg de Au",
             "kgDeAu_ha": "kg de Au / ha"
-          }
+          }          
+        },
+        "footnote": {
+          "intro": "Los valores presentados en la calculadora se actualizan automáticamente basándose en fuentes oficiales y confiables:",
+          "list": [
+            "Inflación acumulada: calculada a partir de datos del Banco Mundial;",
+            "Tipo de cambio: obtenido del Banco Central de Brasil;",
+            "Precio del oro: actualizado mediante integración con las APIs de GoldAPI y MetalpriceAPI."
+          ],
+          "conclusion": "Estos indicadores están sujetos a variaciones diarias, lo que puede impactar los resultados de la calculadora a lo largo del tiempo.",
+          "error": "Algunos de los valores mencionados anteriormente pueden estar desactualizados debido a fallos en la API. Actualice la página e intente nuevamente si necesita datos actualizados."
         }
       },
       "about": {
@@ -3158,6 +3178,16 @@
             "kgDeAu": "kg of Au",
             "kgDeAu_ha": "kg of Au / ha"
           }
+        },
+        "footnote": {
+          "intro": "The values presented in the calculator are automatically updated based on official and reliable sources:",
+          "list": [
+            "Accumulated inflation: calculated from World Bank data;",
+            "Exchange rate: obtained from the Central Bank of Brazil;",
+            "Gold price: updated through integration with the GoldAPI and MetalpriceAPI."
+          ],
+          "conclusion": "These indicators are subject to daily variations, which may impact the calculator's results over time.",
+          "error": "Some of the values mentioned above may be outdated due to API failure. Refresh the page and try again if you need updated data."
         }
       },
       "about": {

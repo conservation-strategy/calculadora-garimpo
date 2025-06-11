@@ -10,9 +10,6 @@ import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
 import useCountry from '@/hooks/useCountry'
 import { usePriceData } from '@/store/api'
-import { inflationBackupValues, referenceYears } from '@/lib/api'
-import { currency } from '@/enums'
-
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
 
@@ -27,7 +24,7 @@ export default function ResultsCalculator({
   const { state } = useAppContext()
   const { results, dataCalculator, language } = state
   const { calculator } = language
-  const { resume, pdf, valuation, impacts } = calculator
+  const { resume, pdf, valuation, impacts, footnote } = calculator
   const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } =
     impacts
   const { isBrazil, currentCountry } = useCountry();
@@ -283,43 +280,6 @@ export default function ResultsCalculator({
       <S.GraphicResume>
         <ResumeCharts data={resumeDataChart} />
       </S.GraphicResume>
-      <S.IndexNote>
-        {resume.headnote.note}
-          <ul>
-            <li>
-              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ? inflationData.yearOfRef : currentCountry ? referenceYears[currentCountry.country] : 'N/A'}`)}{': '}
-              {inflationData.data ? inflationData.data?.toFixed(2) : currentCountry ? inflationBackupValues[currentCountry.country] : 'N/A'}{' '}
-              {`(
-              ${resume.headnote.table.columns[2]}: ${inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
-              ; ${resume.headnote.table.columns[3]} ${new Date(inflationData.cachedAt || inflationBackupValues.date).toLocaleDateString('en-CA')}
-              )`}
-              {!inflationData.data && <span style={{ color: 'red' }}>{' '}*</span>}
-            </li>
-            <li>
-              {resume.headnote.table.rows[1].index}{': '}
-              {goldPriceData.data?.toFixed(2) ?? currency.gold}{' '}
-              {`(
-                ${resume.headnote.table.columns[2]}: ${goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
-                ; ${resume.headnote.table.columns[3]} ${new Date(goldPriceData.timestamp || currency.update).toLocaleDateString('en-CA')}
-              )`}
-              {!goldPriceData.data && <span style={{ color: 'red' }}>{' '}*</span>}
-            </li>
-            {isBrazil && 
-              <li>
-                {resume.headnote.table.rows[2].index}{': '}
-                {dollarPriceData.value?.toFixed(2) ?? currency.dolar}{' '}
-                {`(
-                  ${resume.headnote.table.columns[2]}: ${dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
-                  ; ${resume.headnote.table.columns[3]} ${new Date(dollarPriceData.date || currency.update).toLocaleDateString('en-CA')}
-                )`}
-                {!dollarPriceData.value && <span style={{ color: 'red' }}>{' '}*</span>}
-              </li>
-            }
-          </ul>
-          {(!inflationData.data || !goldPriceData.data || (isBrazil && !dollarPriceData.value)) &&
-            <div style={{ color: 'red', marginTop: '.2em' }}>* {resume.headnote.error}</div>
-          }
-      </S.IndexNote>
 
       <div style={{ gridArea: 'charts-preview' }}>
         {showChartsPrint && (
@@ -516,6 +476,18 @@ export default function ResultsCalculator({
               </S.Table>
             </S.TableResponsive>
           </S.TableWrapper>
+          <S.IndexNote>
+            {footnote.intro}
+            <ul>
+              {footnote.list.map(item => (
+                <li>{item}</li>
+              ))}
+            </ul>
+            {footnote.conclusion}
+            {(!inflationData.data || !goldPriceData.data || (isBrazil && !dollarPriceData.value)) &&
+            <div style={{ color: 'red', marginTop: '.2em' }}>{footnote.error}</div>
+            }
+          </S.IndexNote>
         </S.TabContent>
       </S.TapWrapper>
     </S.Container>
