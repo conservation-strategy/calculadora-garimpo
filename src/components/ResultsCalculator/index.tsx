@@ -479,8 +479,8 @@ export default function ResultsCalculator({
           <S.IndexNote>
             {footnote.intro}
             <ul>
-              {footnote.list.map(item => (
-                <li>{item}</li>
+              {footnote.list.map((item, index) => (
+                <li key={index}>{item}</li>
               ))}
             </ul>
             {footnote.conclusion}
