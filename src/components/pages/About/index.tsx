@@ -29,9 +29,9 @@ export default function About() {
           <SG.Headline>{history.headline}</SG.Headline>
           <SG.Text>{history.paragraphy_01}</SG.Text>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: history.paragraphy_02 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text>{history.paragraphy_03}</SG.Text>
         </S.WrapperText>

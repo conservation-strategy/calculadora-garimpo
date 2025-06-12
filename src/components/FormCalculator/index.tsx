@@ -10,6 +10,7 @@ import useCountry from '@/hooks/useCountry'
 import Options, { OptionsWithStandartFlagging } from './Options'
 import {
   analysisUnitTypes,
+  // knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
   usesValuesTypes
@@ -20,6 +21,7 @@ import stateEquador from '@/mocks/stateEquador.json'
 import stateBolivia from '@/mocks/stateBolivia.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
+import { relative } from 'path'
 import { event as gaEvent } from "nextjs-google-analytics";
 
 export interface FormInputs {
@@ -30,13 +32,15 @@ export interface FormInputs {
   district: string
   typeMining: '0' | '1' | '2'
   retort: string
-  analysisUnit: '1' | '2' | '3' | '5'
+  analysisUnit: '1' | '2' | '3' | '5' | '6'
   qtdAnalysis: string
   motorPower: string
   pitdepth: string
   valueHypothesis: string
   inflation: string
   usesTypes: '1' | '2' | '3'
+  knowMachineCapacity: string | null
+  machineCapacity: string | null
 }
 
 type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
@@ -118,7 +122,8 @@ export default function FormCalculator() {
       knowRegion: knowRegionTypes.YES,
       retort: '1',
       analysisUnit: '1',
-      usesTypes: '1'
+      usesTypes: '1',
+      machineCapacity: '70'
     }
   })
 
@@ -128,10 +133,9 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
-  // const motor_power = watch('motorPower')
-  // const protected_area = watch('isProtectedArea');
-
-  // console.log('protected area', Number(protected_area) ? 'yes' : 'no', protected_area)
+  // const knowCapacity = watch('knowMachineCapacity');
+  const _state = watch('state');
+  
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -200,6 +204,7 @@ export default function FormCalculator() {
   useEffect(() => {
     if (isBrazil) {
       setStateListForCountry(stateBrazil)
+      // setValue('state', `${stateBrazil[0].id}`)
     } else if (isPeru) {
       setStateListForCountry(statePeru)
     } else if (isEquador) {
@@ -208,6 +213,44 @@ export default function FormCalculator() {
       setStateListForCountry(stateBolivia)
     }
   }, [isBrazil, isPeru, isEquador])
+
+  useEffect(() => {
+    if(
+      country_field !== 'PE' && 
+      Number(analysisUnit) === analysisUnitTypes.QTD_MACHINES
+    ) {
+      setValue(
+        'analysisUnit', 
+        `${form.analysisUnit.options[typeMiningValue][0].value as analysisUnitTypes}`
+      )
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country_field])
+
+  // useEffect(() => {
+  //   if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
+  //     // setValue(
+  //     //   'knowMachineCapacity', knowMachineCapacityTypes.NO
+  //     // );
+  //     setValue(
+  //       'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
+  //     );
+  //   }
+  // }, [analysisUnit])
+
+  // useEffect(() => {
+  //   if(knowCapacity === knowMachineCapacityTypes.NO) {
+  //     // setTimeout(() => {}, 20);
+  //     setValue(
+  //       'machineCapacity',
+  //       `${form.suggestedMachineCapacity.options[0]}`
+  //     )
+  //   } else {
+  //     console.log('changing capacity')
+  //     setValue('machineCapacity', null)
+  //   }
+  // }, [knowCapacity])
+
 
   const handleState = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
@@ -218,12 +261,21 @@ export default function FormCalculator() {
     [getDistrictForState, setValue]
   )
 
+  useEffect(() => {
+    // console.log('setting district...')
+    // console.log('districtList', districtList);
+    if(districtList.length){
+      setValue('district', districtList[0].id);
+    }
+  }, [_state, districtList]);
+
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
 
       const analysisUnit = Number(getValues('analysisUnit'))
       const qtdAnalysis = Number(getValues('qtdAnalysis'))
+      const machineCap = Number(getValues('machineCapacity'))
       if (!qtdAnalysis || qtdAnalysis < 0) {
         if (analysisUnit === analysisUnitTypes.AMOUNT_GOLD) {
           setError('qtdAnalysis', { message: form.qtdAnalysis[2].error })
@@ -233,15 +285,23 @@ export default function FormCalculator() {
           setError('qtdAnalysis', { message: form.qtdAnalysis[5].error })
         } else if (analysisUnit === analysisUnitTypes.YEARS_OF_MINING) {
           setError('qtdAnalysis', { message: form.qtdAnalysis[3].error })
+        } else if (analysisUnit === analysisUnitTypes.QTD_MACHINES) {
+          setError('qtdAnalysis', { message: form.qtdAnalysis[6].error})
         }
         changeDataCalculator(null)
+      } else if (
+        analysisUnit === analysisUnitTypes.QTD_MACHINES &&
+        (!machineCap || machineCap < 0 || isNaN(machineCap))
+      ) {
+        clearErrors('qtdAnalysis')
+        setError('machineCapacity', { message: form.openMachineCapacity.error })
       } else {
         clearErrors('qtdAnalysis')
+        clearErrors('machineCapacity')
         changeDataCalculator(getValues())
         getcalculator(getValues())
         gaEvent("submit_form", {
-          category: "Calculator",
-          label: "Calculator",
+          form_name: "Calculator"
         });
       }
     },
@@ -302,6 +362,64 @@ export default function FormCalculator() {
       </S.FormControlPitDepthOrMotorPower>
     )
   }
+  
+  let FormControlMachineCapacity = null
+
+  if(analysisUnit === '6') {
+    FormControlMachineCapacity = (
+      <>
+      {/* <S.FormControlKnowMachineCapacity>
+        <label>{form.knowMachineCapacity.label}</label>
+        <SG.Select {...register('knowMachineCapacity')}>
+          {form.knowMachineCapacity.options.map((opt) => (
+            <option key={opt.text} value={opt.value}>
+              {opt.text}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlKnowMachineCapacity>
+      {knowCapacity === '0'
+        ? <S.FormControlMachineCapacity>
+            <label>{form.suggestedMachineCapacity.label}</label>
+            <SG.Select {...register('machineCapacity')}>
+              {form.suggestedMachineCapacity.options.map((opt) => (
+                <option key={opt} value={opt}>
+                  {opt}
+                </option>
+              ))}
+            </SG.Select>
+          </S.FormControlMachineCapacity>
+        : <S.FormControlMachineCapacity>
+            <label>{form.openMachineCapacity.label}</label>
+            <div style={{ position: 'relative' }}>
+              <SG.Input
+              onWheel={(e: FormEvent<HTMLInputElement>) => e.currentTarget.blur()}
+              error={errors.machineCapacity !== undefined}
+              type="number"
+              {...register('machineCapacity')}
+              placeholder={"0"}
+              />
+              <SG.InputUnit>m³/h</SG.InputUnit>
+            </div>
+            {errors.machineCapacity && (
+              <S.MessageError>{errors.machineCapacity.message}</S.MessageError>
+            )}
+          </S.FormControlMachineCapacity>
+      } */}
+      <S.FormControlMachineCapacity>
+        <label>{form.suggestedMachineCapacity.label}</label>
+        <SG.Select {...register('machineCapacity')}>
+          {form.suggestedMachineCapacity.options.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt === 70 ? `${opt} ${form.suggestedMachineCapacity.standart}` : opt}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlMachineCapacity>      
+      </>
+    )
+  }
+
 
   let FormControlProtectedArea = null
 
@@ -335,12 +453,12 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form isProtectedAreaVisible={FormControlProtectedArea !== null} onSubmit={handleSubmit}>
+    <SCalc.Form isProtectedAreaVisible={FormControlProtectedArea !== null} onSubmit={handleSubmit} hasUF={!!isBrazil || !!isPeru || !!isEquador}>
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
           <SG.Select {...register('country')}>
-            {CountryList.map((country) => (
+            {[...CountryList].sort((a, b) => a.label.localeCompare(b.label)).map((country) => (
               <option key={country.label} value={country.country}>
                 {CountryDictionary[language.id as LanguageId][country.country]}
               </option>
@@ -393,7 +511,7 @@ export default function FormCalculator() {
           </>
         ) : (
           <>
-            <S.FormControlCity style={formControlCityStyles}>
+            <S.FormControlCity>
               <label>{district}</label>
               <SG.Select {...register('district')}>
                 {districtList.map((district) => (
@@ -427,7 +545,10 @@ export default function FormCalculator() {
         <label htmlFor="analysisUnit">{form.analysisUnit.label}</label>
         <SG.Select id="analysisUnit" {...register('analysisUnit')}>
           {typeMiningValue && (
-            <Options data={form.analysisUnit.options[typeMiningValue]} />
+            <Options data={ country?.country === 'PE' 
+              ? form.analysisUnit.options.peru![typeMiningValue] 
+              : form.analysisUnit.options[typeMiningValue]} 
+            />
           )}
         </SG.Select>
       </S.FormControlUnitAnalysis>
@@ -447,6 +568,8 @@ export default function FormCalculator() {
       </S.FormControlHectare>
 
       {FormControlPitDepthOrMotorPower}
+
+      {FormControlMachineCapacity}
 
       <S.FormControlValueHypothesis style={formControlValueHypothesisStyles}>
         <label>{valueHypothesis.label}</label>
@@ -479,7 +602,7 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlUsesTypes>
 
-      <S.ButtonSubmit id="btn-calcular" variant="primary" style={{ marginTop: '14px' }}>
+      <S.ButtonSubmit id="btn-calcular" variant="primary">
         {form.btn_calculator.btn}
       </S.ButtonSubmit>
     </SCalc.Form>

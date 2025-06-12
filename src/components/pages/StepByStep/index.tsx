@@ -58,37 +58,37 @@ export default function StepByStep() {
       <SG.Container style={{ paddingTop: 0 }}>
         <S.WrapperText>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.soptexttitle }}
-            ></div>
+            ></span>
           </SG.Text>
 
           <SG.Headline size="25px">{setLocation.headline}</SG.Headline>
 
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_01 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_list1 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_list2 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_list3 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_o3 }}
-            ></div>
+            ></span>
           </SG.Text>
         </S.WrapperText>
 
@@ -105,9 +105,9 @@ export default function StepByStep() {
                 <br />
                 <br />
                 <SG.Text>
-                  <div
+                  <span
                     dangerouslySetInnerHTML={{ __html: typeminig.description }}
-                  ></div>
+                  ></span>
                 </SG.Text>
               </S.Card>
             ))}
@@ -120,11 +120,11 @@ export default function StepByStep() {
         <S.WrapperText>
           <SG.Headline>{typeMining.items[RETORT_INDEX].headline}</SG.Headline>
           <SG.Text>
-            <div
+            <span
               dangerouslySetInnerHTML={{
                 __html: typeMining.items[RETORT_INDEX].description
               }}
-            ></div>
+            ></span>
           </SG.Text>
         </S.WrapperText>
 
@@ -179,22 +179,22 @@ export default function StepByStep() {
         <S.WrapperText>
           <SG.Headline>{useCalculator.headline}</SG.Headline>
           <SG.Text>
-            <div dangerouslySetInnerHTML={{ __html: useCalculator.text }}></div>
+            <span dangerouslySetInnerHTML={{ __html: useCalculator.text }}></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: useCalculator.paragraphy_01 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: useCalculator.paragraphy_02 }}
-            ></div>
+            ></span>
           </SG.Text>
           <SG.Text weight="600">
-            <div
+            <span
               dangerouslySetInnerHTML={{ __html: useCalculator.paragraphy_03 }}
-            ></div>
+            ></span>
           </SG.Text>
         </S.WrapperText>
 

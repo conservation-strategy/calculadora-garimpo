@@ -22,7 +22,7 @@ export default function useSiltingOfRivers() {
     erosionSiltingUp,
     protectedAreaMultiplier
   } = useFixedCalculator()
-  const { hectareToGold, goldToHecatere } = useConvertAll()
+  const { hectareToGold, goldToHecatere, numberOfMachinesToGold, numberOfMachinesToHecare } = useConvertAll()
 
   const cavaGroundingCostAuFertileCalculator = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
@@ -38,7 +38,9 @@ export default function useSiltingOfRivers() {
       const gold =
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
           ? hectareToGold({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToGold({ dataCalculator })
+            : qtdAnalysis
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
       const distanciaGarimpoCentro = currentDistrict.Distancia_Garimpo_Centro
@@ -130,9 +132,15 @@ export default function useSiltingOfRivers() {
         }
       } else if (
         typemining === typeMiningTypes.PIT &&
-        analysisUnit === analysisUnitTypes.AMOUNT_GOLD
+        (analysisUnit === analysisUnitTypes.AMOUNT_GOLD || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
-        const revolvedSoloTon = qtdAnalysis / pitProductivity
+        let goldGrams: number;
+        if(analysisUnit === analysisUnitTypes.QTD_MACHINES) {
+          goldGrams = numberOfMachinesToGold({ dataCalculator });
+        } else {
+          goldGrams = qtdAnalysis;
+        }
+        const revolvedSoloTon = goldGrams / pitProductivity
         const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
         const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
         const losslessVolume = toUpturnedSoil / densityGold
@@ -232,7 +240,9 @@ export default function useSiltingOfRivers() {
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
 
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
@@ -305,11 +315,17 @@ export default function useSiltingOfRivers() {
         return toCostNormalGroundingWithFreight
       } else if (
         typemining === typeMiningTypes.PIT &&
-        analysisUnit == analysisUnitTypes.AMOUNT_GOLD
+        (analysisUnit == analysisUnitTypes.AMOUNT_GOLD || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
+        let goldGrams: number;
         // Input por Ouro
+        if(analysisUnit === analysisUnitTypes.QTD_MACHINES) {
+          goldGrams = numberOfMachinesToGold({ dataCalculator });
+        } else {
+          goldGrams = qtdAnalysis;
+        }
         const normalGroundDepth = hollowMediumDepth - averageDepthOfFertileEarth
-        const revolvedSoloTon = qtdAnalysis / hollowMediumDepth
+        const revolvedSoloTon = goldGrams / hollowMediumDepth
         const revolvedSterileTon = revolvedSoloTon * sterileOre
         const totalSoloRevolved = revolvedSoloTon + revolvedSterileTon
         const losslessVolume = totalSoloRevolved / densityGold
@@ -410,7 +426,9 @@ export default function useSiltingOfRivers() {
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
 
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
@@ -508,10 +526,16 @@ export default function useSiltingOfRivers() {
         return ferryDredgingDamageValue
       } else if (
         typemining === typeMiningTypes.PIT &&
-        analysisUnit === analysisUnitTypes.AMOUNT_GOLD
+        (analysisUnit === analysisUnitTypes.AMOUNT_GOLD || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
-        //input ouro
-        const upturnedGroundTon = qtdAnalysis / cavaAverageProductivity
+        let goldGrams: number;
+        // Input por Ouro
+        if(analysisUnit === analysisUnitTypes.QTD_MACHINES) {
+          goldGrams = numberOfMachinesToGold({ dataCalculator });
+        } else {
+          goldGrams = qtdAnalysis;
+        }
+        const upturnedGroundTon = goldGrams / cavaAverageProductivity
         const revolvedSterileTon =
           upturnedGroundTon * relationshipWithSterileOre
         const toSoloRevolved = upturnedGroundTon + revolvedSterileTon
@@ -660,7 +684,9 @@ export default function useSiltingOfRivers() {
       const valueHeCtare =
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
           ? goldToHecatere({ dataCalculator })
-          : qtdAnalysis
+          : analysisUnit === analysisUnitTypes.QTD_MACHINES
+            ? numberOfMachinesToHecare({ dataCalculator })
+            : qtdAnalysis
 
       if (txPrevalence === valueHypothesisTypes.CONSERVATIVE) {
         const discountRate = 0.03
@@ -685,7 +711,7 @@ export default function useSiltingOfRivers() {
             : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
-          analysisUnit === analysisUnitTypes.IMPACTED_AREA
+          (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
           const cost = VPLhectareSilting * valueHeCtare
           return isProtectedArea
@@ -724,7 +750,7 @@ export default function useSiltingOfRivers() {
             : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
-          analysisUnit === analysisUnitTypes.IMPACTED_AREA
+          (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
           const cost = VPLhectareSilting * valueHeCtare
           return isProtectedArea

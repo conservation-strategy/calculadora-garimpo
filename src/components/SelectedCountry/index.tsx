@@ -50,8 +50,7 @@ export default function SelectCountry() {
     )
     setCountry(findCountry[0])
     gaEvent("select_country", {
-      category: "Form",
-      label: event.currentTarget.value,
+      country: event.currentTarget.value,
     });
   }, [])
 

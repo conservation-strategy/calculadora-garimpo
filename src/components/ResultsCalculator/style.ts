@@ -8,12 +8,10 @@ interface TabHeaderItemProps {
 export const Container = styled.div`
   width: 100%;
   display: grid;
-  padding: 50px 0;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     'headline headline'
     'button_pdf button_pdf'
-    'impacts_text_resume impacts_text_resume'
     'resume_graphic resume_graphic'
     'values values'
     'charts-preview charts-preview'
@@ -36,7 +34,7 @@ export const Container = styled.div`
 export const ResultsHeadline = styled.div`
   grid-area: headline;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   @media (min-width: ${breakpoints.md}) {
     display: inline-block;
   }
@@ -44,7 +42,7 @@ export const ResultsHeadline = styled.div`
 
 export const ButtonPDF = styled.div`
   grid-area: button_pdf;
-  display: none;
+  padding: 0 24px;
   button {
     display: flex;
     gap: 16px;
@@ -58,7 +56,11 @@ export const ButtonPDF = styled.div`
 
 export const ImpactTextValuation = styled.div`
   grid-area: impacts_text_valuation;
-  margin-bottom: 80px;
+  margin-bottom: 1rem;
+  @media(min-width: ${breakpoints.lg}) {
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
 `
 
 export const ImpactText = styled.div`
@@ -169,7 +171,12 @@ export const Infographic = styled.img`
 
 export const TableWrapper = styled.div`
   grid-area: table;
-  padding: 50px 0;
+  padding: 0 0 50px;
+  margin-top: -2rem;
+  @media(min-width: ${breakpoints.lg}){
+    margin-top: 0;
+    padding: 50px 0;
+  }
 `
 
 export const TableResponsive = styled.div`
@@ -212,8 +219,10 @@ export const WrapperInfografic = styled.div`
   margin-left: auto;
   margin-right: auto;
   grid-area: infographic;
+  margin-top: 2rem;
   @media (min-width: ${breakpoints.lg}) {
     width: 70%;
+    margin-top: 0;
   }
 `
 

@@ -145,10 +145,10 @@
           }
         ],
         "disclaimer": {
-          "text": "A CSF não se responsabiliza pelas consequências do uso da calculadora"
+          "text": "A CSF não se responsabiliza pelas consequências do uso da calculadora."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · Todos os direitos reservados"
         }
       },
       "home": {
@@ -268,17 +268,17 @@
               {
                 "headline": "Aluvião",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": " Extração de minério pela escavação de valas (cavas) abertas, em geral, na beira de rios. Também conhecido como garimpo de baixão ou de barranco, é o tipo de garimpo ilegal mais comum na Amazônia."
+                "description": " Extração de minério pela escavação de valas (cavas) abertas, em geral, na beira de rios. Também conhecido como garimpo de baixão ou de barranco, é o tipo de garimpo ilegal mais comum na Amazônia. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: hectare impactado ou gramas de ouro extraído."
               },
               {
                 "headline": "Balsa",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extração de minério pela dragagem do leito dos rios. Realizada em barcos ou flutuantes, não gera desmatamento, mas tem maior impacto em termos de contaminação dos rios por mercúrio."
+                "description": "Extração de minério pela dragagem do leito dos rios. Realizada em barcos ou flutuantes, não gera desmatamento, mas tem maior impacto em termos de contaminação dos rios por mercúrio. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: Quantidade de balsas em um ano ou grama de ouro extraído."
               },
               {
                 "headline": "Poço",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extração de minério por meio de túneis subterrâneos. Tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério."
+                "description": "Extração de minério por meio de túneis subterrâneos. Tem menores impactos em termos de desmatamento e erosão, porém também utiliza o mercúrio no processamento do minério. Para esse tipo de extração, pode-se analisar por duas unidades de entrada: Anos de exploração do garimpo ou grama de ouro extraído."
               },
               {
                 "headline": "Uso de retorta",
@@ -293,13 +293,13 @@
           "unitMeasurement": {
             "headline": "Unidade de medida",
             "paragraphy_01": "Anos de exploração do garimpo:",
-            "paragraphy_02": "Para o garimpo de poço, sua idade pode ser utilizada como uma aproximação do tamanho, quantidade de ouro extraído e de mercúrio utilizado.",
+            "paragraphy_02": "Para o garimpo de poço, sua idade pode ser utilizada como uma aproximação do tamanho, quantidade de ouro extraído e de mercúrio utilizado. Aplicado apenas no garimpo de poço.",
             "paragraphy_o3": "Quantidade de ouro:",
-            "paragraphy_04": "Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Essa unidade de medida pode ser utilizada quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata.",
+            "paragraphy_04": "Considera o contexto médio de produtividade e impacto de garimpo na Amazônia. Essa unidade de medida pode ser utilizada quando ocorre apreensão de ouro ilegal sem que se saiba sua origem exata. Aplicado em todos os tipos de garimpo: aluvião, balsa ou poço.",
             "paragraphy_o5": "Quantidade de balsas em um ano:",
-            "paragraphy_06": "Para o garimpo de balsas, é necessário que o usuário saiba a quantidade de balsas/dragas existentes em um determinado rio. Ao realizar o cálculo, é possível também inserir a potência do motor da balsa, que no Brasil e no Equador é em média de 55cv, na Colômbia, 100cv, e no Peru, de 130cv.",
+            "paragraphy_06": "Para o garimpo de balsas, é necessário que o usuário saiba a quantidade de balsas/dragas existentes em um determinado rio. Ao realizar o cálculo, é possível também inserir a potência do motor da balsa, que no Brasil e no Equador é em média de 55cv, na Colômbia, 100cv, e no Peru, de 130cv. Aplicado apenas no garimpo de balsa.",
             "paragraphy_o7": "Tamanho do garimpo:",
-            "paragraphy_08": "Para o garimpo de aluvião, seu tamanho é dado pela multiplicação de sua área pela profundidade média das cavas. Essa unidade de medida é utilizada quando se conhece o local do garimpo ilegal, havendo possibilidade de detalhar o contexto com parâmetros específicos."
+            "paragraphy_08": "Para o garimpo de aluvião, seu tamanho é dado pela multiplicação de sua área pela profundidade média das cavas. Essa unidade de medida é utilizada quando se conhece o local do garimpo ilegal, havendo possibilidade de detalhar o contexto com parâmetros específicos. Aplicado apenas no garimpo de aluvião."
           },
           "ValuesHypotheses": {
             "headline": "Hipóteses de valores",
@@ -307,9 +307,9 @@
           },
           "Inflation": {
             "headline": "Inflação",
-            "paragraphy_01": "Os valores originais da calculadora são de 2022. Para atualizá-los para o ano corrente, insira o valor acumulado da inflação entre janeiro de 2023 e o ano em que estiver fazendo o cálculo. Por exemplo, se entre 2023 e 2025 houve uma inflação acumulada de 7,5%, insira o valor 7,5 no campo indicado. No Brasil, você pode calcular a inflação acumulada pelo ",
-            "siteIBGE": "site do IBGE.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "Os valores originais da calculadora são de: 2022 para o Brasil; 2023 para a Colômbia, Peru e Equador; 2024 para Guiana, Suriname e Bolívia. Para atualizá-los para o ano corrente, insira o valor acumulado da inflação. Por exemplo, se entre 2023 e 2025 houve uma inflação acumulada de 7,5%, insira o valor 7,5 no campo indicado. Os valores da inflação anual por país podem ser observados na ",
+            "siteIBGE": "base de dados do Banco Mundial.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Usos da calculadora",
@@ -393,6 +393,46 @@
           "analysisUnit": {
             "label": "Unidade de análise",
             "options": {
+              "peru": {
+                "0": [
+                  {
+                    "text": "Tamanho do garimpo",
+                    "value": 1
+                  },
+                  {
+                    "text": "Quantidade de ouro",
+                    "value": 2
+                  },
+                  {
+                    "text": "Número de máquinas escavadoras",
+                    "value": 6
+                  }
+                ],
+                "1": [
+                  {
+                    "text": "Quantidade de balsas em 1 ano",
+                    "value": 5
+                  },
+                  {
+                    "text": "Quantidade de ouro",
+                    "value": 2
+                  }
+                ],
+                "2": [
+                  {
+                    "text": "Anos de exploração do garimpo",
+                    "value": 3
+                  },
+                  {
+                    "text": "Quantidade de ouro",
+                    "value": 2
+                  },
+                  {
+                    "text": "Número de máquinas escavadoras",
+                    "value": 6
+                  }                  
+                ]
+              },
               "0": [
                 {
                   "text": "Tamanho do garimpo",
@@ -441,6 +481,10 @@
             "5": {
               "label": "Balsa(s)",
               "error": "Informe a quantidade de balsas"
+            },
+            "6": {
+              "label": "Máquina(s)",
+              "error": "Informe a quantidade de máquinas"
             }
           },
           "motorPower": {
@@ -525,6 +569,30 @@
                 "value": 20
               }
             ]
+          },
+          "knowMachineCapacity": {
+            "label": "Você Conhece o rendimento (m³/h) da Máquina?",
+            "options": [
+              {
+                "text": "Não",
+                "value": 0
+              },
+              {
+                "text": "Sim",
+                "value": 1
+              }
+            ]
+          },
+          "suggestedMachineCapacity": {
+            "label": "Rendimento da máquina (m³/h)",
+            "options": [
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
+            ],
+            "standart": "(Valor padrão)"
+          },
+          "openMachineCapacity": {
+            "label": "Insira o rendimento da máquina",
+            "error": "Informe o rendimento da máquina ou selecione um dos valores sugeridos"
           },
           "valueHypothesis": {
             "label": "Hipóteses de valores",
@@ -659,6 +727,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Perda de Qi em Fetos",
             "sub_impact_soil_remediation": "Remediação do solo",
             "sub_impact_neuropsychological_symptoms": "Sintomas Neuropsicológicos",
+            "sub_impact_water_remediation": "Remediação da água",
             "paragraphy_01": "A extração de 1 kg de ouro utiliza $HgAuRatio de mercúrio, dos quais $lossPercentHgInWater são despejados nos rios. Destes, 3% são metilados, se tornando ainda mais tóxicos e sendo absorvidos por peixes, que podem migrar por até 2000km, contaminando as pessoas que se alimentam deles. De modo conservador, consideramos que o raio de dispersão do mercúrio é de 100km, em que, dentro dele, <strong>$people pessoas</strong> estão expostas a riscos aumentados pela exposição ao mercúrio oriundo do garimpo.",
             "paragraphy_02": "Dependendo do nível de consumo de peixes, um indivíduo terá um aumento médio do nível de mercúrio entre 4ug/g e 15ug/g, levando a problemas neuropsicológicos, cognitivos e cardíacos.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"
@@ -1255,10 +1324,10 @@
           }
         ],
         "disclaimer": {
-          "text": "CSF no se hace responsable de las consecuencias del uso de la calculadora"
+          "text": "CSF no se responsabiliza por las consecuencias del uso de la calculadora."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · Todos los derechos reservados"
         }
       },
       "home": {
@@ -1378,17 +1447,17 @@
               {
                 "headline": "Aluvial",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": "Extracción de mineral mediante la excavación de zanjas abiertas (cavidades), generalmente en las orillas de los ríos. También conocido como “garimpo de barranco”, es el tipo de extracción minera ilegal más común en la Amazonía."
+                "description": "Extracción de mineral mediante la excavación de zanjas abiertas (cavidades), generalmente en las orillas de los ríos. También conocido como “garimpo de barranco”, es el tipo de extracción minera ilegal más común en la Amazonía. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: hectárea impactada o gramos de oro extraído."
               },
               {
                 "headline": "Balsa (flotante)",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extracción de mineral por dragado de cauces de ríos. Realizado en balsas o botes flotantes, no genera deforestación, pero tiene un mayor impacto debido a la contaminación por mercurio de los ríos."
+                "description": "Extracción de mineral por dragado de cauces de ríos. Realizado en balsas o botes flotantes, no genera deforestación, pero tiene un mayor impacto debido a la contaminación por mercurio de los ríos. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: la cantidad de balsas en un año o gramos de oro extraído."
               },
               {
                 "headline": "Socavón",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extracción de mineral a través de túneles subterráneos. Tiene menores impactos en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral."
+                "description": "Extracción de mineral a través de túneles subterráneos. Tiene menores impactos en términos de deforestación y erosión, pero también utiliza mercurio en el procesamiento del mineral. Para este tipo de extracción, el análisis se puede realizar utilizando dos unidades de entrada: años de explotación de la minería o gramos de oro extraído."
               },
               {
                 "headline": "Uso de retorta",
@@ -1403,13 +1472,13 @@
           "unitMeasurement": {
             "headline": "Unidad de medida",
             "paragraphy_01": "Años de exploración de la mina:",
-            "paragraphy_02": "La edad de la mina se puede utilizar como una aproximación del tamaño, cantidad de oro extraído y mercurio utilizado.",
+            "paragraphy_02": "La edad de la mina se puede utilizar como una aproximación del tamaño, cantidad de oro extraído y mercurio utilizado. Aplicado sólo en minería de pozos.",
             "paragraphy_o3": "Cantidad de oro:",
-            "paragraphy_04": "Considera el contexto promedio de productividad e impacto de la minería en la Amazonía. Esta unidad de medida puede ser utilizada cuando se incauta oro ilegal sin conocer su origen exacto.",
+            "paragraphy_04": "Considera el contexto promedio de productividad e impacto de la minería en la Amazonía. Esta unidad de medida puede ser utilizada cuando se incauta oro ilegal sin conocer su origen exacto. Aplicado en todo tipo de minería: aluvión, balsa o pozo.",
             "paragraphy_o5": "Número de balsas en un año:",
-            "paragraphy_06": "Para la minería de balsa, es necesario que el usuario conozca el número de balsas/dragas en un río determinado. Al realizar el cálculo, también es posible insertar la potencia del motor de la balsa, que en Brasil y Ecuador es en promedio de 55hp, en Colombia de 100hp y en Perú de 130hp.",
+            "paragraphy_06": "Para la minería de balsa, es necesario que el usuario conozca el número de balsas/dragas en un río determinado. Al realizar el cálculo, también es posible insertar la potencia del motor de la balsa, que en Brasil y Ecuador es en promedio de 55hp, en Colombia de 100hp y en Perú de 130hp. Sólo se aplica a la minería de ferry.",
             "paragraphy_o7": "Tamaño de la mina:",
-            "paragraphy_08": "El tamaño de la mina se obtiene multiplicando su área por la profundidad promedio de las fosas. Se utiliza cuando se conoce la ubicación de la minería ilegal, con la posibilidad de detallar el contexto con parámetros específicos."
+            "paragraphy_08": "El tamaño de la mina se obtiene multiplicando su área por la profundidad promedio de las fosas. Se utiliza cuando se conoce la ubicación de la minería ilegal, con la posibilidad de detallar el contexto con parámetros específicos. Aplicado únicamente en minería aluvial."
           },
           "ValuesHypotheses": {
             "headline": "Hipótesis de valor",
@@ -1417,9 +1486,9 @@
           },
           "Inflation": {
             "headline": "Inflación",
-            "paragraphy_01": "Los valores originales de la calculadora corresponden al año 2022. Para actualizar al año actual, ingrese el valor de inflación acumulada entre enero de 2023 y el año que está calculando. Por ejemplo, si entre 2023 y 2025 hubo una inflación acumulada de 7,5%, ingrese el valor 7,5 en el campo indicado. En Brasil, se puede calcular la inflación acumulada por el ",
-            "siteIBGE": "sitio web de IBGE.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "Los valores originales de la calculadora son: 2022 para Brasil; 2023 para Colombia, Perú y Ecuador; 2024 para Guyana, Surinam y Bolivia. Para actualizarlos para el año en curso, ingrese el valor de inflación acumulada. Por ejemplo, si entre 2023 y 2025 hubo una inflación acumulada del 7,5%, ingrese el valor 7,5 en el campo indicado. Los valores de inflación anual por país se pueden ver en la ",
+            "siteIBGE": "base de datos del Banco Mundial.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Usos de la calculadora",
@@ -1503,6 +1572,46 @@
           "analysisUnit": {
             "label": "Unidad de análisis",
             "options": {
+              "peru": {
+                "0": [
+                  {
+                    "text": "Tamaño de la mina",
+                    "value": 1
+                  },
+                  {
+                    "text": "Cantidad de oro",
+                    "value": 2
+                  },
+                  {
+                    "text": "Número de máquinas retroexcavadoras",
+                    "value": 6
+                  }
+                ],
+                "1": [
+                  {
+                    "text": "Número de balsas en un año",
+                    "value": 5
+                  },
+                  {
+                    "text": "Cantidad de oro",
+                    "value": 2
+                  }
+                ],
+                "2": [
+                  {
+                    "text": "Años de exploración de la mina",
+                    "value": 3
+                  },
+                  {
+                    "text": "Cantidad de oro",
+                    "value": 2
+                  },
+                  {
+                    "text": "Número de maquinas excavadoras",
+                    "value": 6
+                  }                  
+                ]
+              },
               "0": [
                 {
                   "text": "Tamaño de la mina",
@@ -1551,6 +1660,10 @@
             "5": {
               "label": "Balsas (flotantes)",
               "error": "Introduzca el número de ferries"
+            },
+            "6": {
+              "label": "Maquinas",
+              "error": "Introduzca el número de maquinas"
             }
           },
           "motorPower": {
@@ -1635,6 +1748,31 @@
                 "value": 20
               }
             ]
+          },
+          "knowMachineCapacity": {
+            "label": "¿Conoce el rendimiento (m³/h) de la máquina?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Sí",
+                "value": 1
+              }
+            ]
+          },
+          "suggestedMachineCapacity": {
+            "label": "Rendimiento de la máquina (m³/h)",
+            "options": [
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
+            ],
+            "standart": "(Valor estandar)"
+          },
+          "openMachineCapacity": {
+            "label": "Introduzca el rendimiento de la máquina",
+            "error": "Introduzca el rendimiento de la máquina o seleccione uno de los valores sugeridos"
+
           },
           "valueHypothesis": {
             "label": "Hipótesis de valor",
@@ -1769,6 +1907,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Pérdida de Qi en Fetos",
             "sub_impact_soil_remediation": "Remediación del suelo",
             "sub_impact_neuropsychological_symptoms": "Síntomas neuropsicológicos",
+            "sub_impact_water_remediation": "Remediación del agua",
             "paragraphy_01": "La extracción de 1 kg de oro utiliza $HgAuRatio de mercurio, de los cuales el $lossPercentHgInWater se vierte en los ríos. De estos, el 3% están metilados, volviéndose aún más tóxicos y siendo absorbidos por los peces, que pueden migrar hasta 2000 km, contaminando a las personas que se alimentan de ellos. En un escenario conservador, consideramos que el radio de dispersión del mercurio es de 100 km, dentro del cual <strong>$people personas</strong> están expuestas a mayores riesgos por exposición al mercurio proveniente de la minería.",
             "paragraphy_02": "Dependiendo del nivel de consumo de pescado, un individuo tendrá un aumento promedio en el nivel de mercurio entre 4 ug/g y 15 ug/g, lo que provocará problemas neuropsicológicos, cognitivos y cardíacos.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"
@@ -2231,7 +2370,7 @@
         },
         "menu": [
           {
-            "label": "Homepage",
+            "label": "Home",
             "href": "/"
           },
           {
@@ -2366,10 +2505,10 @@
           }
         ],
         "disclaimer": {
-          "text": "CSF is not responsible for any consequences of using the Calculator"
+          "text": "CSF is not responsible for the consequences of using the calculator."
         },
         "copy": {
-          "copyright": "Copyright ©️ 2020 CSF All rights reserved."
+          "copyright": "©️ CSF · All rights reserved"
         }
       },
       "home": {
@@ -2468,7 +2607,7 @@
           "loading": "Wait! Generating report in PDF.."
         },
         "safeArea": {
-          "headline": "Mining Impact Calculator"
+          "headline": "Mining Impacts Calculator"
         },
         "guide": {
           "title": {
@@ -2489,17 +2628,17 @@
               {
                 "headline": "Alluvial",
                 "image_url": "/assets/images/aluviao.webp",
-                "description": "Extraction of ore by digging open trenches (cavities), generally on the banks of rivers. Also known as garimpo de barranco, it is the most common type of illegal mining in the Amazon."
+                "description": "Extraction of ore by digging open trenches (cavities), generally on the banks of rivers. Also known as garimpo de barranco, it is the most common type of illegal mining in the Amazon. For this type of extraction, analysis can be conducted using two input units: impacted hectare or grams of extracted gold."
               },
               {
                 "headline": "Ferry",
                 "image_url": "/assets/images/balsa.webp",
-                "description": "Extraction of ore by dredging riverbeds. The ore is then carried out on rafts or floating boats. This does not generate deforestation, but it has a greater impact in terms of mercury contamination of rivers."
+                "description": "Extraction of ore by dredging riverbeds. The ore is then carried out on rafts or floating boats. This does not generate deforestation, but it has a greater impact in terms of mercury contamination of rivers. For this type of extraction, analysis can be conducted using two input units: the number of dredges in a year or grams of extracted gold."
               },
               {
                 "headline": "Pit",
                 "image_url": "/assets/images/poco.webp",
-                "description": "Extraction of ore through underground tunnels. It has lower impacts in terms of deforestation and erosion, but it also uses mercury in mineral processing."
+                "description": "Extraction of ore through underground tunnels. It has lower impacts in terms of deforestation and erosion, but it also uses mercury in mineral processing. For this type of extraction, analysis can be conducted using two input units: years of mining exploitation or grams of extracted gold."
               },
               {
                 "headline": "Retort use",
@@ -2514,13 +2653,13 @@
           "unitMeasurement": {
             "headline": "Units of measurement",
             "paragraphy_01": "Years of exploration of the mine:",
-            "paragraphy_02": "The age of the mine can be used as an approximation of the size, amount of gold extracted and mercury used.",
+            "paragraphy_02": "The age of the mine can be used as an approximation of the size, amount of gold extracted and mercury used. Applied only in well mining.",
             "paragraphy_o3": "Amount of gold:",
-            "paragraphy_04": "Considers the average context of productivity and impact of mining in the Amazon. It is used when illegal gold is seized without knowing its exact origin.",
+            "paragraphy_04": "Considers the average context of productivity and impact of mining in the Amazon. It is used when illegal gold is seized without knowing its exact origin. Applied in all types of mining: alluvium, ferry or well.",
             "paragraphy_o5": "Number of rafts in a year",
-            "paragraphy_06": "For ferry mining, it is necessary to know the number of bolts/dredgers in a given river. When using the tool, it is also possible to insert the power of the ferry's engine, which in Brazil and Ecuador is on average 55hp, in Colombia, 100hp, and in Peru, 130hp.",
+            "paragraphy_06": "For ferry mining, it is necessary to know the number of bolts/dredgers in a given river. When using the tool, it is also possible to insert the power of the ferry's engine, which in Brazil and Ecuador is on average 55hp, in Colombia, 100hp, and in Peru, 130hp. Only applied to ferry mining.",
             "paragraphy_o7": "Mine size:",
-            "paragraphy_08": "For alluvial mining, the size of the mine is obtained by multiplying its area by the average depth of the pits. It is used when the location of illegal mining is known, with the possibility of detailing the context with specific parameters."
+            "paragraphy_08": "For alluvial mining, the size of the mine is obtained by multiplying its area by the average depth of the pits. It is used when the location of illegal mining is known, with the possibility of detailing the context with specific parameters. Applied only in alluvial mining."
           },
           "ValuesHypotheses": {
             "headline": "Value hypothesis",
@@ -2528,9 +2667,9 @@
           },
           "Inflation": {
             "headline": "Inflation",
-            "paragraphy_01": "The original values of the calculator are for 2022. To update to the current year, enter the cumulative inflation value between January 2023 and the year you are calculating. For example, if between 2023 and 2025 there was a cumulative inflation of 7.5%, enter the value 7.5 in the indicated field. In Brazil, cumulative inflation can be calculated on the ",
-            "siteIBGE": "IBGE website.",
-            "href": "https://www.ibge.gov.br/explica/inflacao.php"
+            "paragraphy_01": "The original values of the calculator are: 2022 for Brazil; 2023 for Colombia, Peru and Ecuador; 2024 for Guyana, Suriname and Bolivia. To update them for the current year, enter the accumulated inflation value. For example, if between 2023 and 2025 there was accumulated inflation of 7.5%, enter the value 7.5 in the indicated field. Annual inflation values by country can be seen in ",
+            "siteIBGE": "the World Bank database.",
+            "href": "https://www.worldbank.org/en/research/brief/inflation-database"
           },
           "useCalculator": {
             "headline": "Uses of the Calculator",
@@ -2614,6 +2753,46 @@
           "analysisUnit": {
             "label": "Unit(s) of measurement",
             "options": {
+              "peru": {
+                "0": [
+                  {
+                    "text": "Mining size",
+                    "value": 1
+                  },
+                  {
+                    "text": "Amount of gold",
+                    "value": 2
+                  },
+                  {
+                    "text": "Quantity of excavator machines",
+                    "value": 6
+                  }
+                ],
+                "1": [
+                  {
+                    "text": "Number of ferries in 1 year",
+                    "value": 5
+                  },
+                  {
+                    "text": "Amount of gold",
+                    "value": 2
+                  }
+                ],
+                "2": [
+                  {
+                    "text": "Years of mining exploration",
+                    "value": 3
+                  },
+                  {
+                    "text": "Amount of gold",
+                    "value": 2
+                  },
+                  {
+                    "text": "Quantity of excavator machines",
+                    "value": 6
+                  }                  
+                ]
+              },
               "0": [
                 {
                   "text": "Mining size",
@@ -2662,6 +2841,10 @@
             "5": {
               "label": "Ferries",
               "error": "Enter the number of ferries"
+            },
+            "6": {
+              "label": "Machines",
+              "error": "Enter the number of machines"
             }
           },
           "motorPower": {
@@ -2746,6 +2929,30 @@
                 "value": 20
               }
             ]
+          },
+          "knowMachineCapacity": {
+            "label": "Do you know the machine's yiled?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Yes",
+                "value": 1
+              }
+            ]
+          },
+          "suggestedMachineCapacity": {
+            "label": "Machine yield (m³/h)",
+            "options": [
+              2.5, 5, 10, 20, 40, 70 , 100, 120, 140, 160 
+            ],
+            "standart": "(Standart value)"
+          },
+          "openMachineCapacity": {
+            "label": "Enter machine yield",
+            "error": "Enter machine yield or select one of the suggested values"
           },
           "valueHypothesis": {
             "label": "Value hypothesis",
@@ -2859,7 +3066,7 @@
             "sub_impact_forest_products": "Forest products",
             "sub_impact_recreation": "Recreation",
             "sub_impact_culture_and_species": "Culture and Species",
-            "paragraphy_01": "The extraction of <strong>$grams grams of gold</strong> is carried out in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates a total deforestation of <strong>$hectare hectares</strong >, including indirect deforestation.",
+            "paragraphy_01": "The extraction of <strong>$grams grams of gold</strong> is carried out in an area of, on average, <strong>$withoutOverflow hectares</strong>, and generates a total deforestation of <strong>$hectare hectares</strong>, including indirect deforestation.",
             "paragraphy_02": "The deforestation of these <strong>$hectare hectares</strong> hectares leads to the loss of opportunities to carry out other activities, such as the extraction of non-timber forest products, recreational and cultural use, and the maintenance of ecosystem services for climate regulation and erosion control.",
             "infograpuic_url": "/assets/infographic/deforestationPTBR.svg",
             "withOverflow": "(overflow).",
@@ -2880,6 +3087,7 @@
             "sub_impact_loss_of_Qi_in_Fetuses": "Loss of Qi in Fetuses",
             "sub_impact_soil_remediation": "Soil remediation",
             "sub_impact_neuropsychological_symptoms": "Neuropsychological Symptoms",
+            "sub_impact_water_remediation": "Water remediation",
             "paragraphy_01": "The extraction of 1 kg of gold uses $HgAuRatio of mercury, of which $lossPercentHgInWater is discharged into rivers. Of these, 3% are methylated, becoming even more toxic and being absorbed by fish, which can migrate up to 2,000 km, contaminating people who eat them. Conservatively, we consider that the radius of mercury dispersion is 100 km, in which, within it, <strong>$people</strong> people are exposed to greater risks due to exposure to mercury from mining.",
             "paragraphy_02": "Depending on the level of fish consumption, an individual will have an average increase in mercury level between 4ug/g and 15ug/g, leading to neuropsychological, cognitive and cardiac problems.",
             "infograpuic_url": "/assets/infographic/mercuryContaminationPTBR.svg"

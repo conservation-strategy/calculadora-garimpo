@@ -100,6 +100,7 @@ interface SoilMercuryRemediationProps {
   lossPercentHgInSoil: number
   HgContainedSoilinGrassPerTon: number
   DensidadeSolo: number
+  DensidadeSedimento: number
   remediationCostUSDPerTonOfSoil: number
 }
 
@@ -264,6 +265,7 @@ export default function useFixedCalculator() {
     lossPercentHgInSoil: 0.14,
     HgContainedSoilinGrassPerTon: 0.24,
     DensidadeSolo: 2.76,
+    DensidadeSedimento: 2.7,
     remediationCostUSDPerTonOfSoil: 37.6
   }
 
@@ -314,7 +316,7 @@ export default function useFixedCalculator() {
 
     carbon.carbonCostPerHaUSD = 259.73
 
-    recoverOfTopSoll.hectare = 0.31
+    recoverOfTopSoll.hectare = 0.1
     recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 933.19
     recoverOfTopSoll.soilSurfaceRecPerHa = 2536.63
     recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500

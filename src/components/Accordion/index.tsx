@@ -37,7 +37,10 @@ export default function Accordion({ Items }: AccordionProps) {
             <S.AccordionHeader showBorderBottom={index === Items.length - 1 && !openIndexes.includes(Items.length - 1) ? false : true}>
               <S.AccordionTitle>{title}</S.AccordionTitle>
               <S.AccordionIcon>
-                <i className="fi fi-rr-plus-small"></i>
+                {openIndexes.includes(index)
+                  ? <i className="fi fi-rr-minus-small"></i>
+                  : <i className="fi fi-rr-plus-small"></i>
+                }
               </S.AccordionIcon>
             </S.AccordionHeader>
           }

@@ -72,8 +72,7 @@ export default function ResultsCalculator({
     }, 500)
     document.body.style.overflow = 'hidden'
     gaEvent("download_pdf", {
-      category: "Download",
-      label: "Download PDF",
+      pdf_name: "Report",
     });
   }, [downloadPDF])
 
@@ -126,7 +125,7 @@ export default function ResultsCalculator({
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>
           <i className="fi fi-rr-document" style={{ fontSize: '20px' }}></i>
-          {resume.download_pdf}
+          {"Download PDF"}
         </SG.Button>
       </S.ButtonPDF>
       <S.ValuesWrapper>
@@ -170,8 +169,6 @@ export default function ResultsCalculator({
       </S.ValuesWrapper>
 
       <S.ImpactTextValuation>
-        <br />
-        <br />
         <SG.Headline>{valuation.headline}</SG.Headline>
         <SG.Text>{textUsesTypes}</SG.Text>
       </S.ImpactTextValuation>

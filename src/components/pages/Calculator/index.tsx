@@ -21,6 +21,7 @@ interface GuideProps {
 export default function Calculator() {
   const [guideList, setGuide] = useState<GuideProps[]>([])
   const [scrollResults, setResults] = useState(false)
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { state } = useAppContext()
   const { language, dataCalculator } = state
   const { calculator } = language
@@ -53,35 +54,35 @@ export default function Calculator() {
         content: (
           <>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_01 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list1
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list2
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: setLocation.paragraphy_list3
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: setLocation.paragraphy_o3 }}
-              ></div>
+              ></span>
             </SG.Text>
           </>
         )
@@ -93,20 +94,22 @@ export default function Calculator() {
             {typeMining.items
               .filter((item, index) => index !== RETORT_INDEX)
               .map((typeminig) => (
-                <S.Box key={typeminig.headline}>
+                <div key={typeminig.headline}
+                style={{ marginBottom: '2rem' }}
+                >
                   <SG.Headline size="24px">{typeminig.headline}</SG.Headline>
                   <br />
                   <img src={typeminig.image_url} alt={typeminig.headline} />
                   <br />
                   <br />
                   <SG.Text>
-                    <div
+                    <span
                       dangerouslySetInnerHTML={{
                         __html: typeminig.description
                       }}
-                    ></div>
+                    ></span>
                   </SG.Text>
-                </S.Box>
+                </div>
               ))}
           </>
         )
@@ -159,30 +162,30 @@ export default function Calculator() {
         content: (
           <>
             <SG.Text>
-              <div
+              <span
                 dangerouslySetInnerHTML={{ __html: useCalculator.text }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_01
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_02
                 }}
-              ></div>
+              ></span>
             </SG.Text>
             <SG.Text weight="600">
-              <div
+              <span
                 dangerouslySetInnerHTML={{
                   __html: useCalculator.paragraphy_03
                 }}
-              ></div>
+              ></span>
             </SG.Text>
           </>
         )
@@ -192,7 +195,7 @@ export default function Calculator() {
   }, [guide])
 
   return (
-    <Layout headline={safeArea.headline} safeAreaHeight="200px" align="left">
+    <Layout headline={safeArea.headline} safeAreaHeight="200px" align="left" isCalculator>
       {/* <SEO title={safeArea.headline} /> */}
       <SEO
         title={seoMetadata.calculator.title}
@@ -200,15 +203,39 @@ export default function Calculator() {
         image={seoMetadata.calculator.image}
       />
         <SG.Container fontSize='12.8px' style={{ paddingLeft: 0 }}>
-          <S.WrapperCalculator>
-            <S.Guide>
-              <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
-              <Accordion Items={guideList} />
-            </S.Guide>
+          <S.WrapperCalculator>            
+            <div>
+              <SG.Headline style={{ transform: 'translateY(-1.5rem)' }}>
+                {safeArea.headline}
+              </SG.Headline>
+              <S.Guide>              
+                <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
+                <Accordion Items={guideList} />
+              </S.Guide>
+              <S.MobileGuide>
+                <S.DropdownButton
+                onClick={() => setIsDropdownOpen(prev => !prev)}
+                >
+                  <SG.Headline size='1.5625em'>{title.headline}</SG.Headline>
+                  <i className="fi fi-sr-angle-down"
+                  style={{
+                    fontWeight: 'bold',
+                    transition: 'transform 0.2s',
+                    transitionDelay: '0.2s',
+                    transformOrigin: 'center',
+                    transform: `${isDropdownOpen ? 'scaleY(-1) translateY(30%)' : 'scaleY(1) translateY(-20%)'}`
+                  }}
+                ></i>                  
+                </S.DropdownButton>
+                <S.DropdownContent isOpen={isDropdownOpen}>
+                  <Accordion Items={guideList} />
+                </S.DropdownContent>
+              </S.MobileGuide>
+            </div>
             <FormCalculator />
           </S.WrapperCalculator>
         </SG.Container>
-      <SG.Container>
+      <SG.Container padding='0 24px 50px'>
         <ResultsCalculator scrollResults={scrollResults} />
       </SG.Container>
     </Layout>

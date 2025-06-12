@@ -62,6 +62,25 @@ export default function useConvertAll() {
         //console.log('grama de ouro', goldGrass)
         return goldGrass
       } else if (
+        // typeMining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+        const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+        const diasAno = 365;
+        const qtde1EscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+        const volumeComPerda = qtde1EscavadeiraM3porAno * qtdAnalysis;
+        const perdaOuroEscavacao = general ? general.excavationGoldLoss : 0;
+        const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
+        const densidadeOuro = general ? general.densityGold : 0;
+        const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
+        const relacaoMinerioEsteril = 7;
+        const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
+        const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
+        const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed;
+        // console.log('gramaDeOuro', gramaDeOuro)
+        return gramaDeOuro;
+      } else if (
         typeMining === typeMiningTypes.FERRY &&
         analysisUnit === analysisUnitTypes.QTD_FERRY
       ) {
@@ -127,6 +146,18 @@ export default function useConvertAll() {
         return {
           hectare,
           value: 0
+        }
+      } else if (analysisUnit === analysisUnitTypes.QTD_MACHINES) { /** VERIFICAR SE EXISTE DIFERENÇA ENTRE ALUVIAO E POÇO !!! */
+        const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+        const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+        const diasAno = 365;
+        const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+        const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;  
+        const areaAfetadaM2 = volumeComPerda / pitDepth;
+        const hectare = areaAfetadaM2 / 10000
+        return {
+          hectare,
+          value: hectare * overflow
         }
       } else {
         const hectare = qtdAnalysis
@@ -195,11 +226,33 @@ export default function useConvertAll() {
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
           return `${Math.round(volumeM3 * 100) / 100} m³`
+        } else if(
+          typeMining === typeMiningTypes.PIT &&
+          analysisUnit === analysisUnitTypes.QTD_MACHINES
+        ) {
+          const gold = numberOfMachinesToGold({ dataCalculator });
+          const revolvedSoloTon = gold / cavaAverageProductivity
+          const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
+          const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
+          const losslessVolume = toUpturnedSoil / densityGold
+          volumeM3 = losslessVolume * excavationGoldLoss
+          return `${Math.round(volumeM3 * 100) / 100} m³`
         } else if (
           typeMining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
         ) {
           const revolvedSoloTon = qtdAnalysis / cavaAverageProductivity
+          const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
+          const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
+          const losslessVolume = toUpturnedSoil / densityGold
+          volumeM3 = losslessVolume * excavationGoldLoss
+          return `${Math.round(volumeM3 * 100) / 100} m³`
+        } else if (
+          typeMining === typeMiningTypes.ALLUVION &&
+          analysisUnit === analysisUnitTypes.QTD_MACHINES
+        ) {
+          const gold = numberOfMachinesToGold({ dataCalculator });
+          const revolvedSoloTon = gold / cavaAverageProductivity
           const upturnedSterileTon = revolvedSoloTon * sterileOreEnhancement
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold
@@ -312,12 +365,60 @@ export default function useConvertAll() {
     [general]
   )
 
+/** Metodologia Peru */
+  const numberOfMachinesToGold  = useCallback(
+    ({ dataCalculator } : DataCalculatoProps) => {
+      const qtdAnalysis = Number(dataCalculator.qtdAnalysis);
+      const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+      // const pitDepth = Number(dataCalculator.pitdepth);
+
+      const densidadeOuro = general ? general.densityGold : 0;
+      const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+      const perdaOuroEscavacao = general ? general.excavationGoldLoss : 0;
+      // const densidadeOuro = 2.76;
+      // const perdaOuroEscavacao = 2;
+      // const horasEscavadeiraDia = 10;
+      const diasAno = 365;
+      const relacaoMinerioEsteril = 7;
+
+      const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia *  qtdEscavadeiraM3porHora;
+      const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;
+      const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
+      const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
+      const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
+      // const tonEsterilRevolvida = totalSoloRevolvida - totalMinerioRevolvida;
+      const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
+      const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed
+      return gramaDeOuro;      
+    },
+    [general]
+  )
+
+  const numberOfMachinesToHecare = useCallback(
+    ({ dataCalculator } : DataCalculatoProps ) => {
+      const pitDepth = Number(dataCalculator.pitdepth);
+      const qtdAnalysis = Number(dataCalculator.qtdAnalysis);
+      const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+
+      const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+      const diasAno = 365;
+      const qtde1EscavadeiraM3porAno = diasAno * horasEscavadeiraDia * qtdEscavadeiraM3porHora;
+      const volumeComPerda = qtde1EscavadeiraM3porAno * qtdAnalysis;
+      /**confirmar se volumeComPerda é usado nessa equação abaixo ou deve ser outra variavel */
+      const areaAfetadaM2 = volumeComPerda / pitDepth;
+      const hectare = areaAfetadaM2 / 10000;
+
+      return Math.round(hectare * 100) / 100;      
+    },
+    [general]
+  )
+
   const goldToHectarePorHe = useCallback((hectare: number, gold: number) => {
     const goldenGramForHectare = hectare / gold
     return goldenGramForHectare
   }, [])
 
-  const proporcaoKgporHectare = useCallback(
+  const proporcaoGramaPorHectare = useCallback(
     ({ dataCalculator }: DataCalculatoProps) => {
       const sterileMineralRelation = 7
 
@@ -348,15 +449,15 @@ export default function useConvertAll() {
         const lossyVolume = volumeWithoutLoss * excavationGoldLoss
         const affectedAreaM2 = lossyVolume / pitDepth
         const hectare = affectedAreaM2 / 10000
-        const proporcaoKgporHectare = goldGrass / hectare
-        //console.log('proporcaoKgporHectare', proporcaoKgporHectare)
-        return proporcaoKgporHectare
+        const proporcaoGramaPorHectare = goldGrass / hectare
+        //console.log('proporcaoGramaPorHectare', proporcaoGramaPorHectare)
+        return proporcaoGramaPorHectare
       } else if (
         typeMining === typeMiningTypes.PIT &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
-        const proporcaoKgporHectare = qtdAnalysis / hectare
-        return proporcaoKgporHectare
+        const proporcaoGramaPorHectare = qtdAnalysis / hectare
+        return proporcaoGramaPorHectare
       } else if (analysisUnit === analysisUnitTypes.AMOUNT_GOLD) {
         const turnedSoilTon = qtdAnalysis / cavaAverageProductivity
         const turnedSterileTon = turnedSoilTon * sterileMineralRelation
@@ -365,12 +466,36 @@ export default function useConvertAll() {
         const lossyVolume = volumeWithoutLoss * excavationGoldLoss
         const affectedAreaM2 = lossyVolume / pitDepth
         const hectare = affectedAreaM2 / 10000
-        const proporcaoKgporHectare = qtdAnalysis / hectare
+        const proporcaoGramaPorHectare = qtdAnalysis / hectare
 
-        return proporcaoKgporHectare
+        return proporcaoGramaPorHectare
       } else if (typeMining === typeMiningTypes.FERRY) {
         return 0
-      } else {
+      } else if (
+        typeMining === typeMiningTypes.ALLUVION &&  /**VERIFICAR: tem diferença entre ALUVIAO e POÇO !!!  */
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
+      ) {
+        const qtdEscavadeiraM3porHora = Number(dataCalculator.machineCapacity);
+      
+        const densidadeOuro = general ? general.densityGold : 0;
+        const horasEscavadeiraDia = general ? general.excavatorHoursDays : 0;
+        const perdaOuroEscavacao = general ? general.excavationGoldLoss : 0;
+        const diasAno = 365;
+        const relacaoMinerioEsteril = 7;
+        const qtdEscavadeiraM3porAno = diasAno * horasEscavadeiraDia *  qtdEscavadeiraM3porHora;
+        const volumeComPerda = qtdEscavadeiraM3porAno * qtdAnalysis;
+        const volumeSemPerda = volumeComPerda / perdaOuroEscavacao;
+        const totalSoloRevolvida = volumeSemPerda * densidadeOuro;
+        const totalMinerioRevolvida = totalSoloRevolvida / (1 + relacaoMinerioEsteril);
+        const produtividadeGramaPorTonMinerioMed = general ? general.cavaAverageProductivity : 0;
+        const gramaDeOuro = totalMinerioRevolvida * produtividadeGramaPorTonMinerioMed;
+        const areaAfetadaM2 = volumeComPerda / pitDepth;
+        const areaAfetadaHa = areaAfetadaM2 / 10000;
+        const gramaOuroporHectare = gramaDeOuro / areaAfetadaHa;
+        return gramaOuroporHectare;
+      }
+      
+      else {
         const hectare = qtdAnalysis
         const affectedAreaM2 = hectare * 10000
         const lossyVolume = pitDepth * affectedAreaM2
@@ -379,9 +504,9 @@ export default function useConvertAll() {
         const calculationBaseTon = toSoilUpturned / (sterileMineralRelation + 1)
         const revolvedMineralTon = calculationBaseTon * 1
         const goldGrass = cavaAverageProductivity * revolvedMineralTon
-        const proporcaoKgporHectare = goldGrass / hectare
+        const proporcaoGramaPorHectare = goldGrass / hectare
 
-        return proporcaoKgporHectare
+        return proporcaoGramaPorHectare
       }
     },
     [general, recoverOfTopSoll]
@@ -394,6 +519,8 @@ export default function useConvertAll() {
     goldToHecatere,
     hectareToGold,
     goldToHectarePorHe,
-    proporcaoKgporHectare
+    proporcaoGramaPorHectare,
+    numberOfMachinesToGold,
+    numberOfMachinesToHecare
   }
 }
