@@ -81,7 +81,8 @@ export const Box = styled.div`
 `
 
 interface FormProps {
-  hasUF: boolean
+  knowRegion: boolean
+  hasUF: boolean;
   isProtectedAreaVisible?: boolean;
 }
 
@@ -95,13 +96,32 @@ export const Form = styled.form<FormProps>`
   gap: 10px;
   align-items: flex-end;
   grid-template-columns: repeat(1, 1fr);
-  grid-template-areas:
+   grid-template-areas:
     'country'
-    'knowRegion'
-    'isProtectedArea'
-    'state'
-    'city'
-    'typeMIning'
+    ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
+      ? `
+        'knowRegion'
+        'isProtectedArea'
+      ` 
+      : `
+        'knowRegion'
+      `
+    }
+    ${({ knowRegion, hasUF }) => knowRegion
+      ? hasUF
+        ? `
+          'state'
+          'city'
+          'typeMIning'        
+        `
+        : `
+          'city'
+          'typeMIning'          
+        `
+      : `
+        'typeMIning'
+      `        
+    }
     'retort'
     'unitAnalysis'
     'hectare'
@@ -116,9 +136,25 @@ export const Form = styled.form<FormProps>`
     padding: 20px 24px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
-      'country country knowRegion knowRegion'
-      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
-      'typeMIning typeMIning typeMIning typeMIning'
+      'country country country country'
+      ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
+        ? `'knowRegion knowRegion isProtectedArea isProtectedArea'` 
+        : `'knowRegion knowRegion knowRegion knowRegion'`
+      }
+      ${({ knowRegion, hasUF }) => knowRegion
+        ?  hasUF 
+          ? `
+            'state state city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+          ` 
+          : `
+            'city city city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+          `
+        : `
+          'typeMIning typeMIning typeMIning typeMIning'
+        `
+      }
       'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
@@ -131,9 +167,22 @@ export const Form = styled.form<FormProps>`
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
       'country country country country'
-      'knowRegion knowRegion knowRegion knowRegion'
-      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
-      'typeMIning typeMIning typeMIning typeMIning'
+      ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
+        ? `'isProtectedArea isProtectedArea knowRegion knowRegion'` 
+        : `'knowRegion knowRegion knowRegion knowRegion'`
+      }
+      ${({ knowRegion, hasUF }) => knowRegion
+        ?  hasUF 
+          ? `
+            'state state city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+          ` 
+          : `
+            'city city city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+            `
+        : `'typeMIning typeMIning typeMIning typeMIning'`
+      }
       'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
@@ -145,32 +194,29 @@ export const Form = styled.form<FormProps>`
     padding: 28px 30px;
     grid-template-areas:
       'country country country country'
-      'knowRegion knowRegion knowRegion knowRegion'
-      ${({ hasUF }) => hasUF ? `'state state city city'` : `'city city city city'`}
-      'typeMIning typeMIning typeMIning typeMIning'
+      ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
+        ? `'isProtectedArea isProtectedArea knowRegion knowRegion'` 
+        : `'knowRegion knowRegion knowRegion knowRegion'`
+      }
+      ${({ knowRegion, hasUF }) => knowRegion
+        ?  hasUF 
+          ? `
+            'state state city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+          ` 
+          : `
+            'city city city city'
+            'typeMIning typeMIning typeMIning typeMIning'
+            `
+        : `'typeMIning typeMIning typeMIning typeMIning'`
+      }
       'unitAnalysis unitAnalysis retort retort'
       'hectare hectare pitDepth pitDepth'
       'machineCapacity machineCapacity machineCapacity machineCapacity'
       'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
       'useTypes useTypes useTypes useTypes'
       'inflation inflation inflation inflation'
-      'useTypes useTypes useTypes useTypes'
       'submit submit submit submit';
-
-    ${({ isProtectedAreaVisible }) => isProtectedAreaVisible && css`
-      grid-template-areas:
-        'country country country country'
-        'knowRegion knowRegion isProtectedArea isProtectedArea'
-        'state state city city'
-        'typeMIning typeMIning typeMIning typeMIning'
-        'retort retort retort retort'
-        'unitAnalysis unitAnalysis unitAnalysis unitAnalysis'
-        'hectare hectare pitDepth pitDepth'
-        'valueHypothesis valueHypothesis valueHypothesis valueHypothesis'
-        'inflation inflation inflation inflation'
-        'useTypes useTypes useTypes useTypes'
-        'submit submit submit submit';
-    `}
   }
 
   @media (min-width: ${breakpoints.lg}) {

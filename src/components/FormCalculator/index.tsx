@@ -135,6 +135,8 @@ export default function FormCalculator() {
   const knowRegion_field = watch('knowRegion')
   // const knowCapacity = watch('knowMachineCapacity');
   const _state = watch('state');
+
+  console.log('current state', _state)
   
 
   useEffect(() => {
@@ -453,7 +455,12 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form isProtectedAreaVisible={FormControlProtectedArea !== null} onSubmit={handleSubmit} hasUF={!!isBrazil || !!isPeru || !!isEquador}>
+    <SCalc.Form
+    knowRegion={knowRegion_field === "1"} 
+    isProtectedAreaVisible={FormControlProtectedArea !== null} 
+    onSubmit={handleSubmit} 
+    hasUF={!!isBrazil || !!isPeru || !!isEquador || !!isBolivia}
+    >
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
