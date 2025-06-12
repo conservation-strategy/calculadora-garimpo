@@ -253,6 +253,10 @@ export default function FormCalculator() {
   //   }
   // }, [knowCapacity])
 
+  useEffect(() => {
+    setValue('state', stateListForCountry[0].id)
+  }, [knowRegion_field]);
+
 
   const handleState = useCallback(
     (event: ChangeEvent<HTMLSelectElement>) => {
