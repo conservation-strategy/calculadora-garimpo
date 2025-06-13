@@ -2,7 +2,7 @@ import * as S from './style'
 import * as SG from '@/styles/global'
 import { CountryProps } from '@/store/state/proveider'
 import useAppContext from '@/hooks/useAppContext'
-import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 import { event as gaEvent } from "nextjs-google-analytics";
 import { countryCodes } from '@/enums'
 
@@ -32,7 +32,7 @@ export const CountryList: CountryProps[] = [
     label: 'Suriname'
   },
   {
-    country: 'BO',
+    country: countryCodes.BO,
     label: 'Bolivia'
   }
 ]
