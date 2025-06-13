@@ -7,7 +7,7 @@ import * as S from './style'
 import * as SCalc from '../pages/Calculator/style'
 import * as SG from '@/styles/global'
 import useCountry from '@/hooks/useCountry'
-import Options from './Options'
+import Options, { OptionsWithStandartFlagging } from './Options'
 import {
   analysisUnitTypes,
   countryCodes,
@@ -19,6 +19,7 @@ import {
 import stateBrazil from '@/mocks/state.json'
 import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
+import stateBolivia from '@/mocks/stateBolivia.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
 // import { relative } from 'path'
@@ -29,6 +30,7 @@ import { usePriceData } from '@/store/api'
 
 export interface FormInputs {
   knowRegion: string
+  isProtectedArea: '0' | '1'
   country: string
   state: string
   district: string
@@ -78,6 +80,7 @@ const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
 export default function FormCalculator() {
   const [stateListForCountry, setStateListForCountry] =
     useState<any>(stateBrazil)
+  const [ standartMotorPower, setStandartMotorPower ] = useState("55");
   const { state, changeCountry, changeDataCalculator } = useAppContext()
   const {
     isBrazil,
@@ -86,6 +89,7 @@ export default function FormCalculator() {
     isEquador,
     isGuiana,
     isSuriname,
+    isBolivia,
     district: districtList,
     currentCountry: country,
     getDistrictForState
@@ -119,7 +123,8 @@ export default function FormCalculator() {
       knowRegion: knowRegionTypes.YES,
       retort: '1',
       analysisUnit: '1',
-      usesTypes: '1'
+      usesTypes: '1',
+      machineCapacity: '70'
     }
   })
 
@@ -129,12 +134,13 @@ export default function FormCalculator() {
   const analysisUnit = watch('analysisUnit')
   const country_field = watch('country')
   const knowRegion_field = watch('knowRegion')
-  const knowCapacity = watch('knowMachineCapacity');
-  // const _state = watch('state');
+  // const knowCapacity = watch('knowMachineCapacity');
+  const _state = watch('state');
   const { isLoadingInflationData } = usePriceData();
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const buttonTimeout = useRef<NodeJS.Timeout | null>(null);
-  // console.log('state string', _state);
+  // console.log('current state', _state)
+  
   // console.log('country field', country_field);
 
   // const inflationData = useInflation(country?.country);
@@ -176,12 +182,19 @@ export default function FormCalculator() {
           findCountry[0].country === 'EC'
         ) {
           setValue('motorPower', '55')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'CO') {
           setValue('motorPower', '100')
+          setStandartMotorPower('55')
+        } else if(findCountry[0].country === 'BO') {
+          setValue('motorPower', '100')
+          setStandartMotorPower('100')
         }
       }
+      // console.log('motorPower', motor_power)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country_field])
@@ -194,9 +207,14 @@ export default function FormCalculator() {
         changeCountry(findCountry)
         if (findCountry.country === 'BR' || findCountry.country === 'EC') {
           setValue('motorPower', '55')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'CO') {
+          setValue('motorPower', '100')
+          setStandartMotorPower('55');
+        } else if (findCountry.country === 'BO') {
           setValue('motorPower', '100')
         }
       }
@@ -212,6 +230,8 @@ export default function FormCalculator() {
       setStateListForCountry(statePeru)
     } else if (isEquador) {
       setStateListForCountry(stateEquador)
+    } else if (isBolivia) {
+      setStateListForCountry(stateBolivia)
     }
   }, [isBrazil, isPeru, isEquador])
 
@@ -228,29 +248,33 @@ export default function FormCalculator() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country_field])
 
-  useEffect(() => {
-    if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
-      setValue(
-        'knowMachineCapacity', knowMachineCapacityTypes.NO
-      );
-      setValue(
-        'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
-      );
-    }
-  }, [analysisUnit])
+  // useEffect(() => {
+  //   if(analysisUnit === `${analysisUnitTypes.QTD_MACHINES}`) {
+  //     // setValue(
+  //     //   'knowMachineCapacity', knowMachineCapacityTypes.NO
+  //     // );
+  //     setValue(
+  //       'machineCapacity', `${form.suggestedMachineCapacity.options[0]}`
+  //     );
+  //   }
+  // }, [analysisUnit])
+
+  // useEffect(() => {
+  //   if(knowCapacity === knowMachineCapacityTypes.NO) {
+  //     // setTimeout(() => {}, 20);
+  //     setValue(
+  //       'machineCapacity',
+  //       `${form.suggestedMachineCapacity.options[0]}`
+  //     )
+  //   } else {
+  //     console.log('changing capacity')
+  //     setValue('machineCapacity', null)
+  //   }
+  // }, [knowCapacity])
 
   useEffect(() => {
-    if(knowCapacity === knowMachineCapacityTypes.NO) {
-      // setTimeout(() => {}, 20);
-      setValue(
-        'machineCapacity',
-        `${form.suggestedMachineCapacity.options[0]}`
-      )
-    } else {
-      console.log('changing capacity')
-      setValue('machineCapacity', null)
-    }
-  }, [knowCapacity])
+    setValue('state', stateListForCountry[0].id)
+  }, [knowRegion_field]);
 
 
   const handleState = useCallback(
@@ -261,6 +285,14 @@ export default function FormCalculator() {
     },
     [getDistrictForState, setValue]
   )
+
+  useEffect(() => {
+    // console.log('setting district...')
+    // console.log('districtList', districtList);
+    if(districtList.length){
+      setValue('district', districtList[0].id);
+    }
+  }, [_state, districtList]);
 
   const handleSubmit = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -324,7 +356,7 @@ export default function FormCalculator() {
 
   let stateName = form.state.stateBrasil
 
-  if (isPeru) {
+  if (isPeru || isBolivia) {
     stateName = form.state.statePeru
   } else if (isEquador) {
     stateName = form.state.stateEquador
@@ -345,11 +377,12 @@ export default function FormCalculator() {
     Number(typeMiningValue) === typeMiningTypes.FERRY &&
     Number(analysisUnit) === analysisUnitTypes.QTD_FERRY
   ) {
+    const flag = motorPower.default
     FormControlPitDepthOrMotorPower = (
       <S.FormControlPitDepthOrMotorPower>
         <label>{motorPower.label}</label>
         <SG.Select {...register('motorPower')}>
-          <Options data={motorPower.options} />
+          <OptionsWithStandartFlagging data={motorPower.options} standart={{ value: standartMotorPower, flag }} />
         </SG.Select>
       </S.FormControlPitDepthOrMotorPower>
     )
@@ -403,7 +436,7 @@ export default function FormCalculator() {
         <SG.Select {...register('machineCapacity')}>
           {form.suggestedMachineCapacity.options.map((opt) => (
             <option key={opt} value={opt}>
-              {opt}
+              {opt === 70 ? `${opt} ${form.suggestedMachineCapacity.standart}` : opt}
             </option>
           ))}
         </SG.Select>
@@ -412,6 +445,26 @@ export default function FormCalculator() {
     )
   }
 
+
+  let FormControlProtectedArea = null
+
+  if(
+    country?.country === 'BO' && 
+    knowRegion_field === knowRegionTypes.YES
+  ) {
+    FormControlProtectedArea = (
+      <S.FormControlProtectedArea>
+        <label>{form.isProtectedArea.label}</label>
+        <SG.Select {...register('isProtectedArea')}>
+          {form.isProtectedArea.options.map((opt) => (
+            <option key={opt.text} value={opt.value}>
+              {opt.text}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlProtectedArea>      
+    )
+  }
 
   const formControlCityStyles = isMobile
     ? undefined
@@ -425,7 +478,12 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form onSubmit={handleSubmit} hasUF={!!isBrazil || !!isPeru || !!isEquador}>
+    <SCalc.Form
+    knowRegion={knowRegion_field === "1"} 
+    isProtectedAreaVisible={FormControlProtectedArea !== null} 
+    onSubmit={handleSubmit} 
+    hasUF={!!isBrazil || !!isPeru || !!isEquador || !!isBolivia}
+    >
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
@@ -450,8 +508,10 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlKnowRegion>
 
+      {FormControlProtectedArea}
+
       {knowRegion_field === knowRegionTypes.YES ? (
-        isBrazil || isPeru || isEquador ? (
+        isBrazil || isPeru || isEquador || isBolivia ? (
           <>
             <S.FormControlState>
               <label>{stateName}</label>

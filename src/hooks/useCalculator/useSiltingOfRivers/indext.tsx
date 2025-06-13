@@ -19,7 +19,8 @@ export default function useSiltingOfRivers() {
     cavaGroundingCostAuNorm,
     cavaGroundingCostAuFertile,
     dredgingAndRiverSediments,
-    erosionSiltingUp
+    erosionSiltingUp,
+    protectedAreaMultiplier
   } = useFixedCalculator()
   const { hectareToGold, goldToHecatere, numberOfMachinesToGold, numberOfMachinesToHecare } = useConvertAll()
 
@@ -668,6 +669,13 @@ export default function useSiltingOfRivers() {
       const qtdAnalysis = Number(dataCalculator.qtdAnalysis)
       const analysisUnit = Number(dataCalculator.analysisUnit)
 
+      const isProtectedArea = Number(dataCalculator.isProtectedArea)
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value
+        : 0
+
+        console.log('erosion protected', isProtectedArea, fatorProtectedArea)
+
       const siltingUpCostPerHaUSD = erosionSiltingUp
         ? erosionSiltingUp.siltingUpCostPerHaUSD
         : 0
@@ -689,19 +697,26 @@ export default function useSiltingOfRivers() {
         if (typemining === typeMiningTypes.FERRY) {
           return 0
         } else if (typemining === typeMiningTypes.PIT) {
-          const r =  VPLhectareSilting * 0.31 * 12
-          console.log('erosão' , r )
-          return r
+          const cost = VPLhectareSilting * 0.31 * 12
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
         ) {
-          return VPLhectareSilting * valueHeCtare * 12
+          const cost = VPLhectareSilting * valueHeCtare * 12
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
           (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
-          return VPLhectareSilting * valueHeCtare
+          const cost = VPLhectareSilting * valueHeCtare
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else {
           return 0
         }
@@ -721,17 +736,26 @@ export default function useSiltingOfRivers() {
         if (typemining === typeMiningTypes.FERRY) {
           return 0
         } else if (typemining === typeMiningTypes.PIT) {
-          return VPLhectareSilting * 0.31 * 12
+          const cost = VPLhectareSilting * 0.31 * 12
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
         ) {
-          return VPLhectareSilting * valueHeCtare * 12
+          const cost = VPLhectareSilting * valueHeCtare * 12
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else if (
           typemining === typeMiningTypes.ALLUVION &&
           (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
         ) {
-          return VPLhectareSilting * valueHeCtare
+          const cost = VPLhectareSilting * valueHeCtare
+          return isProtectedArea
+            ? cost * fatorProtectedArea
+            : cost
         } else {
           return 0
         }

@@ -89,7 +89,7 @@ const customLabel = ({
   )
 }
 
-const customLegend = ({ payload }: any) => {
+const customLegend = ({ payload, isBrazil }: any) => {
   return (
     <>
       {payload.map((item: any) => (
@@ -97,7 +97,12 @@ const customLegend = ({ payload }: any) => {
           <S.LabelColor color={item.payload.fill} />
           <S.LegendeTextWrapper key={item.name}>
             <S.LegendHeadline>{item.payload.name}</S.LegendHeadline>
-            <S.LegendText>{toBRL(Number(item.payload.value))}</S.LegendText>
+            <S.LegendText>
+              {isBrazil 
+                ? toBRL(Number(item.payload.value))
+                : toUSD(Number(item.payload.value))
+              }
+            </S.LegendText>
           </S.LegendeTextWrapper>
         </S.LegendWrapper>
       ))}
@@ -141,7 +146,7 @@ export default function ImpactChart({
       <PieChart width={350} height={650}>
         <Legend
           margin={{ top: 50 }}
-          content={customLegend}
+          content={(props) => customLegend({ ...props, isBrazil })}
           layout="vertical"
           verticalAlign="bottom"
           align="right"
@@ -174,7 +179,7 @@ export default function ImpactChart({
         <PieChart width={chartWidth} height={chartHeight}>
           <Legend
             margin={{ top: 50 }}
-            content={customLegend}
+            content={(props) => customLegend({ ...props, isBrazil })}
             layout="vertical"
             verticalAlign={verticalAlign}
             align="right"

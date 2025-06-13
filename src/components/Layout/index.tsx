@@ -122,7 +122,9 @@ export default function Layout({
             </div>
           </S.HeroContent>
           <S.ScrollDown isScrolled={isScrolled} >
-            <ChevronCompactDown/>
+            <div style={{ width: '100%', height: 'auto' }}>
+              <ChevronCompactDown/>
+            </div>
           </S.ScrollDown>
           </>
         : !isCalculator && 

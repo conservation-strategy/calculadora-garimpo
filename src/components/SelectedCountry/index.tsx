@@ -30,6 +30,10 @@ export const CountryList: CountryProps[] = [
   {
     country: countryCodes.SU,
     label: 'Suriname'
+  },
+  {
+    country: 'BO',
+    label: 'Bolivia'
   }
 ]
 

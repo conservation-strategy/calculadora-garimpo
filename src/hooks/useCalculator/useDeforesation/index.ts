@@ -18,7 +18,8 @@ export default function useDeforestation() {
     carbon,
     general,
     recoverOfTopSoll,
-    woodAndNonWoodProducts
+    woodAndNonWoodProducts,
+    protectedAreaMultiplier
   } = useFixedCalculator()
   const {
     hectareToGold,
@@ -37,7 +38,12 @@ export default function useDeforestation() {
       const analysisUnit = Number(dataCalculator.analysisUnit)
       const { hectare } = convertAllinHectare({ dataCalculator })
       const pitHectare = recoverOfTopSoll ? recoverOfTopSoll.hectare : 0
+      const isProtectedArea = Number(dataCalculator.isProtectedArea)
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value 
+        : 0    
 
+      console.log('biopros protected', isProtectedArea, fatorProtectedArea)
       //console.log('bioprospecting', bioprospectingCostByUSD_conservative, bioprospectingCostByUSD, discountRate)
 
       //const bioprospectingCostByBRL = txPrevalence === CONSERVATIVE ? 68.19 : 116.95
@@ -54,19 +60,19 @@ export default function useDeforestation() {
         return 0
       } else if (typemining === typeMiningTypes.PIT) {
         const valorTotalBioprospeccao = VPLBioprospecting * pitHectare * 12
-        return valorTotalBioprospeccao
+        return isProtectedArea ? valorTotalBioprospeccao * fatorProtectedArea : valorTotalBioprospeccao
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
         const valorTotalBioprospeccao = VPLBioprospecting * hectare * 12
-        return valorTotalBioprospeccao
+        return isProtectedArea ? valorTotalBioprospeccao * fatorProtectedArea : valorTotalBioprospeccao
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
       ) {
         const valorTotalBioprospeccao = VPLBioprospecting * hectare
-        return valorTotalBioprospeccao
+        return isProtectedArea ? valorTotalBioprospeccao * fatorProtectedArea : valorTotalBioprospeccao
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.QTD_MACHINES
@@ -89,7 +95,12 @@ export default function useDeforestation() {
       const { hectare } = convertAllinHectare({ dataCalculator })
       const pitHectare = recoverOfTopSoll ? recoverOfTopSoll.hectare : 0
       //console.log('carbon', carbonCostPerHaUSD)
+      const isProtectedArea = Number(dataCalculator.isProtectedArea)
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value 
+        : 0 
 
+        console.log('carbon protected', isProtectedArea, fatorProtectedArea)
       const txDiscount = 0.03
       //const carbonCostPerHaUSD = 887.74;
 
@@ -100,16 +111,22 @@ export default function useDeforestation() {
         return 0
       } else if (typemining === typeMiningTypes.PIT) {
         const valorTotalCarbono = VPLCarbon * pitHectare * 12
-        return valorTotalCarbono
+        return isProtectedArea ? valorTotalCarbono * fatorProtectedArea : valorTotalCarbono
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
         const valorTotalCarbono = VPLCarbon * hectare * 12
-        return valorTotalCarbono
+        return isProtectedArea ? valorTotalCarbono * fatorProtectedArea : valorTotalCarbono
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
+      ) {
+        const valorTotalCarbono = VPLCarbon * hectare
+        return isProtectedArea ? valorTotalCarbono * fatorProtectedArea : valorTotalCarbono
+      } else if (
+        typemining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         const valorTotalCarbono = VPLCarbon * hectare
         return valorTotalCarbono
@@ -118,7 +135,7 @@ export default function useDeforestation() {
         analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         const valorTotalCarbono = VPLCarbon * hectare
-        return valorTotalCarbono
+        return isProtectedArea ? valorTotalCarbono * fatorProtectedArea : valorTotalCarbono
       } else {
         return 0
       }
@@ -134,6 +151,13 @@ export default function useDeforestation() {
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
       const { hectare } = convertAllinHectare({ dataCalculator })
       const pitHectare = recoverOfTopSoll ? recoverOfTopSoll.hectare : 0
+
+      const isProtectedArea = Number(dataCalculator.isProtectedArea)
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value
+        : 0
+
+        console.log('species protected', isProtectedArea, fatorProtectedArea)
 
       const densidadePop2010 = currentDistrict?.densidadePop2010
       const perCapitaPIBPaisUSD = general ? general.GDPperCapitaBrazilUSD : 0
@@ -158,22 +182,39 @@ export default function useDeforestation() {
       if (typemining === typeMiningTypes.FERRY) {
         return 0
       } else if (typemining === typeMiningTypes.PIT) {
-        return VPLHectareCulturedAndSpecies * pitHectare * 12
+        const cost = VPLHectareCulturedAndSpecies * pitHectare * 12
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
-        return VPLHectareCulturedAndSpecies * hectare * 12
+        const cost = VPLHectareCulturedAndSpecies * hectare * 12
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.IMPACTED_AREA
+      ) {
+        const cost = VPLHectareCulturedAndSpecies * hectare
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
+      } else if (
+        typemining === typeMiningTypes.ALLUVION &&
+        analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         return VPLHectareCulturedAndSpecies * hectare
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
-        return VPLHectareCulturedAndSpecies * hectare
+        const cost = VPLHectareCulturedAndSpecies * hectare
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
       } else {
         return 0
       }
@@ -314,6 +355,13 @@ export default function useDeforestation() {
       const { hectare } = convertAllinHectare({ dataCalculator })
       const pitHectare = recoverOfTopSoll ? recoverOfTopSoll.hectare : 0
 
+      const isProtectedArea = Number(dataCalculator.isProtectedArea);
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value
+        : 0
+
+        console.log('recreation protected', isProtectedArea, fatorProtectedArea)
+
       const currentDistrict = getDistrictData(Number(dataCalculator.district))
 
       const densidadePop2010 = currentDistrict?.densidadePop2010
@@ -338,17 +386,20 @@ export default function useDeforestation() {
       if (typemining === typeMiningTypes.FERRY) {
         return 0
       } else if (typemining === typeMiningTypes.PIT) {
-        return VPLHaRecreation * pitHectare * 12
+        const cost = VPLHaRecreation * pitHectare * 12
+        return isProtectedArea ? cost * fatorProtectedArea : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
-        return VPLHaRecreation * hectare * 12
+        const cost = VPLHaRecreation * hectare * 12
+        return isProtectedArea ? cost * fatorProtectedArea : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
-        return VPLHaRecreation * hectare
+        const cost = VPLHaRecreation * hectare
+        return isProtectedArea ? cost * fatorProtectedArea : cost
       } else {
         return 0
       }
@@ -369,6 +420,13 @@ export default function useDeforestation() {
       const { hectare } = convertAllinHectare({ dataCalculator })
       const pitHectare = recoverOfTopSoll ? recoverOfTopSoll.hectare : 0
 
+      const isProtectedArea = Number(dataCalculator.isProtectedArea)
+      const fatorProtectedArea = protectedAreaMultiplier
+        ? protectedAreaMultiplier.value
+        : 0
+
+        console.log('pmnm protected', isProtectedArea, fatorProtectedArea)
+
       const custoHaProdutosMadeireirosENaoMadeirosUSD = woodAndNonWoodProducts
         ? woodAndNonWoodProducts.costPMNMPerHaYearUSD
         : 0
@@ -382,17 +440,26 @@ export default function useDeforestation() {
       if (typemining === typeMiningTypes.FERRY) {
         return 0
       } else if (typemining === typeMiningTypes.PIT) {
-        return VPLwoodAndNonWoodProducts * pitHectare * 12
+        const cost = VPLwoodAndNonWoodProducts * pitHectare * 12
+        return isProtectedArea 
+          ? cost * fatorProtectedArea 
+          : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.AMOUNT_GOLD
       ) {
-        return VPLwoodAndNonWoodProducts * hectare * 12
+        const cost = VPLwoodAndNonWoodProducts * hectare * 12
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         (analysisUnit === analysisUnitTypes.IMPACTED_AREA || analysisUnit === analysisUnitTypes.QTD_MACHINES)
       ) {
-        return VPLwoodAndNonWoodProducts * hectare
+        const cost = VPLwoodAndNonWoodProducts * hectare
+        return isProtectedArea
+          ? cost * fatorProtectedArea
+          : cost
       } else {
         return 0
       }

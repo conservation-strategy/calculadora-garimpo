@@ -25,10 +25,10 @@ export const SafeArea = styled.div<SafeAreaProps>`
   flex-direction: column;
 
   @media(min-width: ${breakpoints.md}) {
-    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
+    min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 84px)' : 'none')};
   }
 
-  @media(min-width: ${breakpoints.lg}) {
+  @media(min-width: ${breakpoints.xl}) {
     min-height: ${({ isHome }) => (isHome ? 'calc(100vh - 100px)' : 'none')};
   }
 `
@@ -53,8 +53,12 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
   left: 0;
   width: 100%;
   height: 100%;
-
+  
   @media(min-width: ${breakpoints.md}) {
+    top: ${({ isHome }) => (isHome ? '84px' : '0')};
+  }
+
+  @media(min-width: ${breakpoints.xl}) {
     top: ${({ isHome }) => (isHome ? '100px' : '0')};
   }
 
@@ -65,16 +69,31 @@ export const BgImageContainer = styled.div<BgImageContainerProps>`
 
 export const ScrollDown = styled.div<ScrollDownProps>`
   position: absolute;
-  z-index: 2;
-  bottom: 8%;
+  z-index: 5;
+  top: 0;
   left: 0;
   right: 0;
   margin-inline: auto;
-  width: 64px;
-  height: auto;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: end;
   color: #fff;
-  transition: opacity 750ms ease-in-out;
+  transition: opacity 1s ease-in-out;
   opacity: ${({ isScrolled }) => (isScrolled ? 0 : 1)};
+  pointer-events: none;
+  width: 2.5rem;
+  padding: 0 0 77px;
+
+  @media(min-width: ${breakpoints.md}) {
+    width: 3rem;
+    padding: 0 0 84px;
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    width: 4rem;
+    padding: 0 0 100px;
+  }
 
   
 `

@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "sigla": "La Paz"
+    },
+    {
+        "id": 2,
+        "sigla": "Cochabamba"
+    },{
+        "id": 3,
+        "sigla": "Santa Cruz"
+    },
+    {
+        "id": 4,
+        "sigla": "Beni"
+    },
+    {
+        "id": 5,
+        "sigla": "Pando"
+    }
+]

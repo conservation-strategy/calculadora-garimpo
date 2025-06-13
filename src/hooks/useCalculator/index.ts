@@ -212,6 +212,7 @@ export default function useCalculator() {
           value: totalCulturedAndSpecies
         }
       ]
+      // console.log('deforestation', totalImpacts)
 
       setDeforestation(totalImpacts)
     },
@@ -281,6 +282,8 @@ export default function useCalculator() {
         name: language.calculator.impacts.siltingOfRivers.sub_impact_erosion,
         value: totalErosionSiltingUp
       })
+
+      console.log('silting of rivers', totalImpacts)
 
       setSiltingOfRivers(totalImpacts)
       return {
