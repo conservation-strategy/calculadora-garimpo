@@ -11,7 +11,7 @@ import Options, { OptionsWithStandartFlagging } from './Options'
 import {
   analysisUnitTypes,
   countryCodes,
-  knowMachineCapacityTypes,
+  // knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
   usesValuesTypes
@@ -24,8 +24,8 @@ import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
 // import { relative } from 'path'
 import { event as gaEvent } from "nextjs-google-analytics";
-import useInflation from '@/hooks/useInflation'
-import useGoldPrice from '@/hooks/useGoldPrice'
+// import useInflation from '@/hooks/useInflation'
+// import useGoldPrice from '@/hooks/useGoldPrice'
 import { usePriceData } from '@/store/api'
 
 export interface FormInputs {
@@ -51,6 +51,7 @@ type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
 
 const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
   'pt_BR': {
+    [countryCodes.BO]: 'Bolívia',
     [countryCodes.BR]: 'Brasil',
     [countryCodes.EC]: 'Equador',
     [countryCodes.PE]: 'Perú',
@@ -59,6 +60,7 @@ const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
     [countryCodes.SU]: 'Suriname'
   },
   'en_US': {
+    [countryCodes.BO]: 'Bolivia',
     [countryCodes.BR]: 'Brazil',
     [countryCodes.EC]: 'Ecuador',
     [countryCodes.PE]: 'Peru',
@@ -67,6 +69,7 @@ const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
     [countryCodes.SU]: 'Suriname'
   },
   'es_ES': {
+    [countryCodes.BO]: 'Bolivia',
     [countryCodes.BR]: 'Brasil',
     [countryCodes.EC]: 'Ecuador',
     [countryCodes.PE]: 'Perú',
