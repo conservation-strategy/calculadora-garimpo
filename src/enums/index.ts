@@ -76,6 +76,7 @@ export enum ROUTE {
 }
 
 export enum countryCodes {
+  BO = 'BO',
   BR = 'BR',
   EC = 'EC',
   PE = 'PE',

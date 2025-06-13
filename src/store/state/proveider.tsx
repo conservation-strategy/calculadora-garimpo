@@ -12,7 +12,7 @@ interface ProviderProps {
 export type languageTypes = 'pt_BR' | 'en_US' | 'es_ES' | string
 
 export interface CountryProps {
-  country: countryCodes | 'BO'
+  country: countryCodes
   label: 'Brasil' | 'Ecuador' | 'Perú' | 'Colombia' | 'Guiana' | 'Suriname' | 'Bolivia'
 }
 
