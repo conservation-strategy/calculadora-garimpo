@@ -168,7 +168,7 @@ export const Form = styled.form<FormProps>`
     grid-template-areas:
       'country country country country'
       ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
-        ? `'isProtectedArea isProtectedArea knowRegion knowRegion'` 
+        ? `'knowRegion knowRegion isProtectedArea isProtectedArea'` 
         : `'knowRegion knowRegion knowRegion knowRegion'`
       }
       ${({ knowRegion, hasUF }) => knowRegion
@@ -195,7 +195,7 @@ export const Form = styled.form<FormProps>`
     grid-template-areas:
       'country country country country'
       ${({ isProtectedAreaVisible }) => isProtectedAreaVisible 
-        ? `'isProtectedArea isProtectedArea knowRegion knowRegion'` 
+        ? `'knowRegion knowRegion isProtectedArea isProtectedArea '` 
         : `'knowRegion knowRegion knowRegion knowRegion'`
       }
       ${({ knowRegion, hasUF }) => knowRegion
