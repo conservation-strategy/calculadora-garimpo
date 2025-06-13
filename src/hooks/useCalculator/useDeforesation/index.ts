@@ -129,12 +129,6 @@ export default function useDeforestation() {
         analysisUnit === analysisUnitTypes.QTD_MACHINES
       ) {
         const valorTotalCarbono = VPLCarbon * hectare
-        return valorTotalCarbono
-      } else if (
-        typemining === typeMiningTypes.ALLUVION &&
-        analysisUnit === analysisUnitTypes.QTD_MACHINES
-      ) {
-        const valorTotalCarbono = VPLCarbon * hectare
         return isProtectedArea ? valorTotalCarbono * fatorProtectedArea : valorTotalCarbono
       } else {
         return 0
@@ -202,11 +196,6 @@ export default function useDeforestation() {
         return isProtectedArea
           ? cost * fatorProtectedArea
           : cost
-      } else if (
-        typemining === typeMiningTypes.ALLUVION &&
-        analysisUnit === analysisUnitTypes.QTD_MACHINES
-      ) {
-        return VPLHectareCulturedAndSpecies * hectare
       } else if (
         typemining === typeMiningTypes.ALLUVION &&
         analysisUnit === analysisUnitTypes.QTD_MACHINES
