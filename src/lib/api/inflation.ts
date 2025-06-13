@@ -64,7 +64,7 @@ export const referenceYears = {
     [countryCodes.PE]: 2023,
     [countryCodes.GU]: 2024,
     [countryCodes.SU]: 2024,
-    // [countryCodes.BO]: 2024
+    [countryCodes.BO]: 2024
 }
 
 export const inflationBackupValues = {
@@ -74,6 +74,7 @@ export const inflationBackupValues = {
     [countryCodes.PE]: 7.187276026742517,
     [countryCodes.GU]: 2.949525204852077,
     [countryCodes.SU]: 2.949525204852077,
+    [countryCodes.BO]:2.949525204852077,
     date: "2025-06-05T17:42:11.463Z"
 }
 
