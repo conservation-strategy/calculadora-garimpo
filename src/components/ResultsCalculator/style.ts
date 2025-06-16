@@ -6,6 +6,7 @@ interface TabHeaderItemProps {
 }
 
 export const Container = styled.div`
+  position: relative;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -31,14 +32,72 @@ export const Container = styled.div`
   }
 `
 
+export const HeaderIndexTable = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(4, auto);
+  border: 1px solid #d9d9d9;
+  > div {
+    display: flex;
+    align-items: center;
+    padding: 8px 10px;
+    border-bottom: 1px solid #d9d9d9;
+    border-right: 1px solid #d9d9d9;
+    &:nth-child(4n) {
+      border-right: none;
+    }
+    &:nth-last-child(-n+4) {
+      border-bottom: none;
+    }
+  }
+
+  font-size: 12px;
+
+  @media(min-width: ${breakpoints.md}) {
+    font-size: 14px
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    font-size: 16px
+  }
+`
+
+export const IndexNote = styled.div`
+  font-style: italic;
+  color: #5b5b5b;
+  margin-bottom: .5rem;
+
+  font-size: 10px;
+  max-width: 76ch;
+
+  @media(min-width: ${breakpoints.md}) {
+    font-size: 12px;
+  }
+
+  @media(min-width: ${breakpoints.lg}) {
+    font-size: 14px;
+  }
+  
+  > ul {
+    margin-left: .75em;
+    list-style-type: '- ';
+    > li {
+      margin-top: .2em
+    }
+  } 
+  
+`
+
 export const ResultsHeadline = styled.div`
   grid-area: headline;
   display: flex;
+  flex-direction: column;
   justify-content: start;
-  @media (min-width: ${breakpoints.md}) {
-    display: inline-block;
-  }
+  align-items: start;
 `
+// @media (min-width: ${breakpoints.md}) {
+//   display: inline-block;
+// }
 
 export const ButtonPDF = styled.div`
   grid-area: button_pdf;
@@ -227,18 +286,16 @@ export const WrapperInfografic = styled.div`
 `
 
 export const LoadingWrapper = styled.div`
-  width: 500px;
+  
+  width: 100%;
+  max-width: 500px;
   padding: 30px;
-  border-radius: 8px;
-  position: fixed;
+  border-radius: 8px;  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
-  z-index: 9999;
-  left: 50%;
-  margin-left: -250px;
-  top: 30%;
+  z-index: 9999;  
   background-color: #fff;
   overflow: hidden;
 `

@@ -1,17 +1,18 @@
 import { GlobalStyle } from '@/styles/global'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { AppContextProvider } from '@/store/proveider'
+import { AppContextProvider } from '@/store/state/proveider'
 import useAppContext from '@/hooks/useAppContext'
 import { GoogleAnalytics } from 'nextjs-google-analytics'
 import { Analytics } from '@vercel/analytics/react'
 import { hotjar } from 'react-hotjar'
 import { useEffect } from 'react'
 import Script from 'next/script'
+import { PriceAPIProvider } from '@/store/api'
 
 export default function App({ Component, pageProps }: AppProps) {
   const { state } = useAppContext()
-  const { language } = state
+  // const { language } = state
 
   useEffect(() => {
     hotjar.initialize(3421391, 6)
@@ -24,12 +25,14 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyle />
       <AppContextProvider>
-        <Script type="text/javascript" id="lgpd">
-          {`(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`}
-        </Script>
-        <GoogleAnalytics trackPageViews />
-        <Component {...pageProps} />
-        <Analytics />
+        <PriceAPIProvider>
+          <Script type="text/javascript" id="lgpd">
+            {`(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);`}
+          </Script>
+          <GoogleAnalytics trackPageViews />
+          <Component {...pageProps} />
+          <Analytics />
+        </PriceAPIProvider>
       </AppContextProvider>
     </>
   )

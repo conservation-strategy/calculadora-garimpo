@@ -10,8 +10,8 @@ import {
   usesValuesTypes,
   valueHypothesisTypes
 } from '@/enums'
-import { LanguageTypeProps } from '@/store'
-import { dataCalculatorTypes, resultsType } from '@/store/proveider'
+import { LanguageTypeProps } from '@/store/state'
+import { dataCalculatorTypes, resultsType } from '@/store/state/proveider'
 import roundPercent from '@/utils/roundPercent'
 import roundValue from '@/utils/roundValue'
 import ToBRL from '@/utils/toBRL'
@@ -22,6 +22,8 @@ import useConvertAll from './useConvertAll'
 import useCountry from './useCountry'
 import useFixedCalculator from './useFixedCalculator'
 import usePopSize100kmRadius from './usePopSize100kmRadius'
+// import { getGoldPrice } from '@/lib/api/gold'
+import { usePriceData } from '@/store/api'
 
 export interface textImpactProps {
   paragraphy_01: string
@@ -93,6 +95,9 @@ export default function useResults({
   const { convertAllinGold, convertAllinHectare, cubicMeters } = useConvertAll()
   const { getPopSize100kmRadius } = usePopSize100kmRadius()
   const { general } = useFixedCalculator()
+  // const { data: goldPriceData } = useGoldPrice();
+  const { goldPriceData, dollarPriceData } = usePriceData();
+
 
   const convertCurrency = useCallback(
     (value: number) => {
@@ -101,14 +106,19 @@ export default function useResults({
     [isBrazil]
   )
 
-  const getValueGold = useCallback(() => {
+  const getValueGold = useCallback(async() => {
     const totalGold = convertAllinGold({
       dataCalculator: dataCalculator as FormInputs
     })
-    const totalGoldwithPrice = totalGold * currency.gold
+    // const goldPriceData = await getGoldPrice();
+    const goldPrice = goldPriceData.data || currency.gold
+    if(!goldPriceData.data) console.warn('Using backup hardcoded value for goldPrice')
+    console.log('goldPrice in calculator', goldPrice)
+    const totalGoldwithPrice = totalGold * goldPrice
     const totalGoldPriceWithCountry = isBrazil
-      ? totalGoldwithPrice * currency.dolar
+      ? totalGoldwithPrice * (dollarPriceData.value || currency.dolar)
       : totalGoldwithPrice
+    if(isBrazil && !dollarPriceData.value) console.warn('Using backup hardcoded value for gold');
     setValueGold(totalGoldPriceWithCountry)
   }, [isBrazil, dataCalculator, convertAllinGold])
 

@@ -1,5 +1,5 @@
 import useAppContext from '@/hooks/useAppContext'
-import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
+import { ChangeEvent, FormEvent, useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { CountryList } from '@/components/SelectedCountry'
 
@@ -7,9 +7,10 @@ import * as S from './style'
 import * as SCalc from '../pages/Calculator/style'
 import * as SG from '@/styles/global'
 import useCountry from '@/hooks/useCountry'
-import Options from './Options'
+import Options, { OptionsWithStandartFlagging } from './Options'
 import {
   analysisUnitTypes,
+  countryCodes,
   // knowMachineCapacityTypes,
   knowRegionTypes,
   typeMiningTypes,
@@ -18,13 +19,18 @@ import {
 import stateBrazil from '@/mocks/state.json'
 import statePeru from '@/mocks/statePeru.json'
 import stateEquador from '@/mocks/stateEquador.json'
+import stateBolivia from '@/mocks/stateBolivia.json'
 import useCalculator from '@/hooks/useCalculator'
 import useResize from '@/hooks/useResize'
-import { relative } from 'path'
+// import { relative } from 'path'
 import { event as gaEvent } from "nextjs-google-analytics";
+// import useInflation from '@/hooks/useInflation'
+// import useGoldPrice from '@/hooks/useGoldPrice'
+import { usePriceData } from '@/store/api'
 
 export interface FormInputs {
   knowRegion: string
+  isProtectedArea: '0' | '1'
   country: string
   state: string
   district: string
@@ -43,30 +49,33 @@ export interface FormInputs {
 
 type LanguageId = 'pt_BR' | 'en_US' | 'es_ES';
 
-const CountryDictionary = {
-  'pt_BR' : {
-    'BR': 'Brasil',
-    'EC': 'Equador',
-    'PE': 'Perú',
-    'CO': 'Colômbia',
-    'GU': 'Guiana',
-    'SU': 'Suriname'
+const CountryDictionary: Record<LanguageId, Record<countryCodes, string>> = {
+  'pt_BR': {
+    [countryCodes.BO]: 'Bolívia',
+    [countryCodes.BR]: 'Brasil',
+    [countryCodes.EC]: 'Equador',
+    [countryCodes.PE]: 'Perú',
+    [countryCodes.CO]: 'Colômbia',
+    [countryCodes.GU]: 'Guiana',
+    [countryCodes.SU]: 'Suriname'
   },
-  'en_US' : {
-    'BR': 'Brazil',
-    'EC': 'Ecuador',
-    'PE': 'Peru',
-    'CO': 'Colombia',
-    'GU': 'Guiana',
-    'SU': 'Suriname'
+  'en_US': {
+    [countryCodes.BO]: 'Bolivia',
+    [countryCodes.BR]: 'Brazil',
+    [countryCodes.EC]: 'Ecuador',
+    [countryCodes.PE]: 'Peru',
+    [countryCodes.CO]: 'Colombia',
+    [countryCodes.GU]: 'Guiana',
+    [countryCodes.SU]: 'Suriname'
   },
-  'es_ES' : {
-    'BR': 'Brasil',
-    'EC': 'Ecuador',
-    'PE': 'Perú',
-    'CO': 'Colombia',
-    'GU': 'Guyana',
-    'SU': 'Surinam'
+  'es_ES': {
+    [countryCodes.BO]: 'Bolivia',
+    [countryCodes.BR]: 'Brasil',
+    [countryCodes.EC]: 'Ecuador',
+    [countryCodes.PE]: 'Perú',
+    [countryCodes.CO]: 'Colombia',
+    [countryCodes.GU]: 'Guyana',
+    [countryCodes.SU]: 'Surinam'
   }
 }
 
@@ -74,6 +83,7 @@ const CountryDictionary = {
 export default function FormCalculator() {
   const [stateListForCountry, setStateListForCountry] =
     useState<any>(stateBrazil)
+  const [ standartMotorPower, setStandartMotorPower ] = useState("55");
   const { state, changeCountry, changeDataCalculator } = useAppContext()
   const {
     isBrazil,
@@ -82,6 +92,7 @@ export default function FormCalculator() {
     isEquador,
     isGuiana,
     isSuriname,
+    isBolivia,
     district: districtList,
     currentCountry: country,
     getDistrictForState
@@ -128,7 +139,27 @@ export default function FormCalculator() {
   const knowRegion_field = watch('knowRegion')
   // const knowCapacity = watch('knowMachineCapacity');
   const _state = watch('state');
+  const { isLoadingInflationData } = usePriceData();
+  const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const buttonTimeout = useRef<NodeJS.Timeout | null>(null);
+  // console.log('current state', _state)
   
+  // console.log('country field', country_field);
+
+  // const inflationData = useInflation(country?.country);
+  // const goldPriceData = useGoldPrice();
+
+  // console.log('gold price', goldPriceData);
+
+  useEffect(() => {
+    if(isLoadingInflationData) {
+      setIsButtonDisabled(true)
+    } else {
+      buttonTimeout.current = setTimeout(() => {
+        setIsButtonDisabled(false);
+      }, 500);
+    }
+  }, [isLoadingInflationData])
 
   useEffect(() => {
     const value = Number(typeMiningValue)
@@ -154,12 +185,19 @@ export default function FormCalculator() {
           findCountry[0].country === 'EC'
         ) {
           setValue('motorPower', '55')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55')
         } else if (findCountry[0].country === 'CO') {
           setValue('motorPower', '100')
+          setStandartMotorPower('55')
+        } else if(findCountry[0].country === 'BO') {
+          setValue('motorPower', '100')
+          setStandartMotorPower('100')
         }
       }
+      // console.log('motorPower', motor_power)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [country_field])
@@ -172,9 +210,14 @@ export default function FormCalculator() {
         changeCountry(findCountry)
         if (findCountry.country === 'BR' || findCountry.country === 'EC') {
           setValue('motorPower', '55')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'PE') {
           setValue('motorPower', '130')
+          setStandartMotorPower('55');
         } else if (findCountry.country === 'CO') {
+          setValue('motorPower', '100')
+          setStandartMotorPower('55');
+        } else if (findCountry.country === 'BO') {
           setValue('motorPower', '100')
         }
       }
@@ -190,6 +233,8 @@ export default function FormCalculator() {
       setStateListForCountry(statePeru)
     } else if (isEquador) {
       setStateListForCountry(stateEquador)
+    } else if (isBolivia) {
+      setStateListForCountry(stateBolivia)
     }
   }, [isBrazil, isPeru, isEquador])
 
@@ -229,6 +274,10 @@ export default function FormCalculator() {
   //     setValue('machineCapacity', null)
   //   }
   // }, [knowCapacity])
+
+  useEffect(() => {
+    setValue('state', stateListForCountry[0].id)
+  }, [knowRegion_field]);
 
 
   const handleState = useCallback(
@@ -310,7 +359,7 @@ export default function FormCalculator() {
 
   let stateName = form.state.stateBrasil
 
-  if (isPeru) {
+  if (isPeru || isBolivia) {
     stateName = form.state.statePeru
   } else if (isEquador) {
     stateName = form.state.stateEquador
@@ -331,11 +380,12 @@ export default function FormCalculator() {
     Number(typeMiningValue) === typeMiningTypes.FERRY &&
     Number(analysisUnit) === analysisUnitTypes.QTD_FERRY
   ) {
+    const flag = motorPower.default
     FormControlPitDepthOrMotorPower = (
       <S.FormControlPitDepthOrMotorPower>
         <label>{motorPower.label}</label>
         <SG.Select {...register('motorPower')}>
-          <Options data={motorPower.options} />
+          <OptionsWithStandartFlagging data={motorPower.options} standart={{ value: standartMotorPower, flag }} />
         </SG.Select>
       </S.FormControlPitDepthOrMotorPower>
     )
@@ -399,6 +449,26 @@ export default function FormCalculator() {
   }
 
 
+  let FormControlProtectedArea = null
+
+  if(
+    country?.country === 'BO' && 
+    knowRegion_field === knowRegionTypes.YES
+  ) {
+    FormControlProtectedArea = (
+      <S.FormControlProtectedArea>
+        <label>{form.isProtectedArea.label}</label>
+        <SG.Select {...register('isProtectedArea')}>
+          {form.isProtectedArea.options.map((opt) => (
+            <option key={opt.text} value={opt.value}>
+              {opt.text}
+            </option>
+          ))}
+        </SG.Select>
+      </S.FormControlProtectedArea>      
+    )
+  }
+
   const formControlCityStyles = isMobile
     ? undefined
     : { gridArea: 'knowRegion', marginTop: '115px', marginBottom: '-15px' }
@@ -411,7 +481,12 @@ export default function FormCalculator() {
       }
 
   return (
-    <SCalc.Form onSubmit={handleSubmit} hasUF={!!isBrazil || !!isPeru || !!isEquador}>
+    <SCalc.Form
+    knowRegion={knowRegion_field === "1"} 
+    isProtectedAreaVisible={FormControlProtectedArea !== null} 
+    onSubmit={handleSubmit} 
+    hasUF={!!isBrazil || !!isPeru || !!isEquador || !!isBolivia}
+    >
       {country && (
         <S.FormControlCountry>
           <label htmlFor="country">{form.country.label}</label>
@@ -436,8 +511,10 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlKnowRegion>
 
+      {FormControlProtectedArea}
+
       {knowRegion_field === knowRegionTypes.YES ? (
-        isBrazil || isPeru || isEquador ? (
+        isBrazil || isPeru || isEquador || isBolivia ? (
           <>
             <S.FormControlState>
               <label>{stateName}</label>
@@ -534,14 +611,14 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlValueHypothesis>
 
-      <S.FormControlInflation>
+      {/* <S.FormControlInflation>
         <label>{inflation.label}</label>
         <SG.Input
           type="number"
           {...register('inflation')}
           placeholder={inflation.placeholder}
         />
-      </S.FormControlInflation>
+      </S.FormControlInflation> */}
 
       <S.FormControlUsesTypes>
         <label>{form.useCalculator.headline}</label>
@@ -558,8 +635,13 @@ export default function FormCalculator() {
         </SG.Select>
       </S.FormControlUsesTypes>
 
-      <S.ButtonSubmit id="btn-calcular" variant="primary">
-        {form.btn_calculator.btn}
+      <S.ButtonSubmit id="btn-calcular" variant="primary" disabled={isButtonDisabled}>
+        {/* {isLoadingInflationData
+          ? <S.LoadingSpinner/> 
+          : form.btn_calculator.btn
+        } */}
+        <span style={isButtonDisabled ? { opacity: .5 } : {}}>{form.btn_calculator.btn}</span>
+        {isButtonDisabled && <S.LoadingSpinner/>}
       </S.ButtonSubmit>
     </SCalc.Form>
   )

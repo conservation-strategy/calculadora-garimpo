@@ -1,12 +1,14 @@
-import { dataCalculatorTypes, resultsType } from '@/store/proveider'
+import { dataCalculatorTypes, resultsType } from '@/store/state/proveider'
 import { useCallback, useState } from 'react'
 import * as pdfMake from 'pdfmake/build/pdfmake'
 import * as pdfFonts from 'pdfmake/build/vfs_fonts'
 import domtoimage from 'dom-to-image'
 import useResults from './useResults'
-import { LanguageTypeProps } from '@/store'
+import { LanguageTypeProps } from '@/store/state'
 import { Content, TDocumentDefinitions } from 'pdfmake/interfaces'
 import { typeMiningTypes } from '@/enums'
+import useCountry from './useCountry'
+import { usePriceData } from '@/store/api'
 import { extractLabelFromHtmlAnchor, parseHtmlToLinkObject, parseHtmlToLinkObjectWithLabel } from '@/utils/text'
 
 interface useReportProps {
@@ -34,6 +36,8 @@ export default function useReport({
   } = useResults({ results, dataCalculator, language })
 
   const [loadingPDF, setLoading] = useState<string | boolean>('start')
+  const { isBrazil } = useCountry();
+  const { inflationData, goldPriceData, dollarPriceData } = usePriceData();
 
   const getBase64ImageFromURL = useCallback((url: string) => {
     return new Promise((resolve, reject) => {
@@ -240,7 +244,7 @@ export default function useReport({
             ],
             marginTop: 30,
             pageBreak: 'after'
-          }
+          },          
         ]
 
         const deforestationPage: Content = isFerry
@@ -409,15 +413,81 @@ export default function useReport({
           },
           {
             text: parseHtmlToLinkObjectWithLabel(language.methodology.paragraphy_12),
-            marginBottom: 15
+            marginBottom: 15,
+            pageBreak:'after'
           },
+        ]
 
+        const notesPage: Content = [
+          // {
+          //   text: language.calculator.resume.headnote.note,
+          // },
+          // {
+          //   table: {
+          //     headerRows: 1,
+          //     widths: ['auto', 'auto', 'auto', 'auto'],
+          //     body: [
+          //       [
+          //         { text: language.calculator.resume.headnote.table.columns[0], style: 'tableHeader', fontSize: 8, bold: true },
+          //         { text: language.calculator.resume.headnote.table.columns[1], style: 'tableHeader', fontSize: 8, bold: true },
+          //         { text: language.calculator.resume.headnote.table.columns[2], style: 'tableHeader', fontSize: 8, bold: true },
+          //         { text: language.calculator.resume.headnote.table.columns[3], style: 'tableHeader', fontSize: 8, bold: true }
+          //       ],
+          //       [
+          //         { text: language.calculator.resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef}`), fontSize: 8 },
+          //         { text: `${inflationData.data?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+          //         { text: inflationData.fallback ? language.calculator.resume.headnote.table.rows[0].source[1] : language.calculator.resume.headnote.table.rows[0].source[0], fontSize: 8 },
+          //         { text: inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+          //       ],
+          //       [
+          //         { text: language.calculator.resume.headnote.table.rows[1].index, fontSize: 8 },
+          //         { text: `${goldPriceData.data?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+          //         { text: goldPriceData?.fallback ? language.calculator.resume.headnote.table.rows[1].source[1] : language.calculator.resume.headnote.table.rows[1].source[0], fontSize: 8 },
+          //         { text: goldPriceData?.timestamp ? new Date(goldPriceData.timestamp).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+          //       ],
+          //       ...(isBrazil ? [[
+          //         { text: language.calculator.resume.headnote.table.rows[2].index, fontSize: 8 },
+          //         { text: `${dollarPriceData.value?.toFixed(2) ?? 'N/A'}`, fontSize: 8 },
+          //         { text: dollarPriceData.fallback ? language.calculator.resume.headnote.table.rows[2].source[1] : language.calculator.resume.headnote.table.rows[2].source[0], fontSize: 8 },
+          //         { text: dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A', fontSize: 8 }
+          //       ]] : [])
+          //     ]
+          //   },
+          //   margin: [0, 5, 0, 0],
+          // },
+          {
+            text: language.calculator.footnote.intro,
+            fontSize: 8
+          },
+          {
+            ul: [
+              {
+                text: language.calculator.footnote.list[0],
+                marginTop: 4
+              },
+              {
+                text: language.calculator.footnote.list[1],
+                marginTop: 4
+              },
+              {
+                text: language.calculator.footnote.list[2],
+                marginTop: 4
+              }
+            ],
+            fontSize: 8
+          },
+          {
+            text: language.calculator.footnote.conclusion,
+            fontSize: 8,
+            marginTop: 4
+          },
           {
             text: language.footer.disclaimer.text,
             alignment: 'left',
             marginBottom: 15,
-            marginTop: 20
-          }
+            marginTop: 20,
+            fontSize: 8
+          }          
         ]
 
         const docDefinition: TDocumentDefinitions = {
@@ -433,7 +503,8 @@ export default function useReport({
             ...deforestationPage,
             ...siltingOfRiverPage,
             ...mercuryPage,
-            ...impactsNotMonetaryPage
+            ...impactsNotMonetaryPage,
+            ...notesPage
           ],
           header: () => {
             return headerPage

@@ -339,6 +339,19 @@
               }
             ]
           },
+          "isProtectedArea": {
+            "label": "Impacto dentro de área protegida?",
+            "options": [
+              {
+                "text": "Não",
+                "value": 0
+              },
+              {
+                "text": "Sim",
+                "value": 1
+              }
+            ]
+          },
           "state": {
             "stateBrasil": "UF",
             "statePeru": "Departamento",
@@ -517,7 +530,8 @@
                 "text": "250cv",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(valor padrão)"
           },
           "pitdepth": {
             "label": "Profundidade da cava",
@@ -608,7 +622,37 @@
           }
         },
         "resume": {
-          "resumeText": "Resumo",
+          "resumeText": "Resumo",          
+          "headnote": {
+            "note": "Os índices abaixo foram utilizados para estimar o valor dos impactos.",
+            "table":{
+              "columns": ["Índice", "Valor", "Fonte", "Atualizado em"],            
+              "rows":[
+                {
+                  "index": "Inflação acumulada desde <yearOfRef> (%)",
+                  "source": [
+                    "Banco Mundial",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Preço do ouro (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "Câmbio do US$ (R$)",
+                  "source": [
+                    "Banco Central do Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
+              ]
+            },
+            "error": "O(s) valor(es) acima está(ão) desatualizado(s) devido a uma falha na API. Atualize a página e tente novamente se precisar de valores atualizados."
+          },
           "results": "Resultado",
           "download_pdf": "Baixar PDF",
           "monetary_impacts": "Impactos monetários",
@@ -624,7 +668,7 @@
           "component_graphics_gold": "ouro",
           "component_graphics_silting": "assoreamento",
           "TextTotalImpacts": {
-            "impactedArea": "para $value hactare(s)",
+            "impactedArea": "para $value hectare(s)",
             "amoutGold": "para $value gramas de ouro",
             "yearsOfMining": "para $value anos de garimpo",
             "ferry": "para $value balsas"
@@ -738,7 +782,17 @@
             "GInHg": "g de Hg",
             "kgDeAu": "kg de Au",
             "kgDeAu_ha": "kg de Au / ha"
-          }
+          }        
+        },
+        "footnote": {
+          "intro": "Os valores apresentados na calculadora são atualizados automaticamente com base em fontes oficiais e confiáveis:",
+          "list": [
+            "Inflação acumulada: calculada a partir de dados do Banco Mundial;",
+            "Taxa de câmbio: obtida junto ao Banco Central do Brasil;",
+            "Preço do ouro: atualizado por meio de integração com as APIs da GoldAPI e MetalpriceAPI."
+          ],
+          "conclusion": "Esses indicadores estão sujeitos a variações diárias, o que pode impactar os resultados da calculadora ao longo do tempo.",
+          "error": "Alguns dos valores mencionados acima podem estar desatualizados devido a falha na API. Atualize a página e tente novamente caso precise de dados atualizados."
         }
       },
       "about": {
@@ -1504,6 +1558,19 @@
               }
             ]
           },
+          "isProtectedArea": {
+            "label": "¿Impactos dentro de un área protegida?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Sí",
+                "value": 1
+              }
+            ]
+          },
           "state": {
             "stateBrasil": "UF",
             "statePeru": "Departamento",
@@ -1647,7 +1714,7 @@
                 "value": 25
               },
               {
-                "text": "55cv (Valor estándar)",
+                "text": "55cv",
                 "value": 55
               },
               {
@@ -1682,7 +1749,8 @@
                 "text": "250cv",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(Valor estándar)"
           },
           "pitdepth": {
             "label": "Profundidad del socavón",
@@ -1775,6 +1843,36 @@
         },
         "resume": {
           "resumeText": "Resumo",
+          "headnote": {
+            "note": "Los índices siguientes se utilizaron para estimar el valor de los impactos.",
+            "table":{
+              "columns": ["Índice", "Valor", "Fuente", "Actualizado el"],
+              "rows":[
+                {
+                  "index": "Inflación acumulada desde <yearOfRef>: (%)",
+                  "source": [
+                    "Banco Mundial",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Precio del oro (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "Cambio del US$ (R$)",
+                  "source": [
+                    "Banco Central de Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
+              ]
+            },
+            "error": "Los valores anteriores están desactualizados debido a un error en la API. Actualice la página y vuelva a intentarlo si necesita valores actualizados."
+          },
           "results": "Resultado",
           "download_pdf": "Descargar PDF",
           "monetary_impacts": "Impactos monetarios",
@@ -1904,7 +2002,17 @@
             "GInHg": "g de Hg",
             "kgDeAu": "kg de Au",
             "kgDeAu_ha": "kg de Au / ha"
-          }
+          }          
+        },
+        "footnote": {
+          "intro": "Los valores presentados en la calculadora se actualizan automáticamente basándose en fuentes oficiales y confiables:",
+          "list": [
+            "Inflación acumulada: calculada a partir de datos del Banco Mundial;",
+            "Tipo de cambio: obtenido del Banco Central de Brasil;",
+            "Precio del oro: actualizado mediante integración con las APIs de GoldAPI y MetalpriceAPI."
+          ],
+          "conclusion": "Estos indicadores están sujetos a variaciones diarias, lo que puede impactar los resultados de la calculadora a lo largo del tiempo.",
+          "error": "Algunos de los valores mencionados anteriormente pueden estar desactualizados debido a fallos en la API. Actualice la página e intente nuevamente si necesita datos actualizados."
         }
       },
       "about": {
@@ -2671,6 +2779,19 @@
               }
             ]
           },
+          "isProtectedArea": {
+            "label": "Impacts within protected area?",
+            "options": [
+              {
+                "text": "No",
+                "value": 0
+              },
+              {
+                "text": "Yes",
+                "value": 1
+              }
+            ]
+          },
           "state": {
             "stateBrasil": "State",
             "statePeru": "Department",
@@ -2814,7 +2935,7 @@
                 "value": 25
               },
               {
-                "text": "55hp (Standard value)",
+                "text": "55hp",
                 "value": 55
               },
               {
@@ -2849,7 +2970,8 @@
                 "text": "250hp",
                 "value": 250
               }
-            ]
+            ],
+            "default": "(Standard value)"
           },
           "pitdepth": {
             "label": "Pit depth",
@@ -2926,7 +3048,7 @@
             ]
           },
           "inflation": {
-            "label": "Accumulated inflation since January 2022 (%)",
+            "label": "Accumulated inflation since January ",
             "placeholder": "Enter inflation in this format: 10 or 6.2"
           },
           "useCalculator": {
@@ -2941,6 +3063,36 @@
         },
         "resume": {
           "resumeText": "Resume",
+          "headnote": {
+            "note": "The indexes below were used to estimate the value of the impacts.",
+            "table":{
+              "columns": ["Index", "Value", "Source", "Date"],            
+              "rows":[
+                {
+                  "index": "Accumulated inflation since <yearOfRef> (%)",
+                  "source": [
+                    "World Bank",
+                    "FRED"
+                  ]
+                },
+                {
+                  "index": "Gold price (US$/g)",
+                  "source": [
+                    "Metalprice API",
+                    "GoldAPI.io"
+                  ]
+                },
+                {
+                  "index": "US$ exchange rate (R$)",
+                  "source": [
+                    "Banco Central do Brasil",
+                    "CurrencyBeacon"
+                  ]
+                }
+              ]
+            },
+            "error": "The above values are outdated due to a failure in the API. Refresh the page and try again if you need fresh values."
+          },        
           "results": "Results",
           "download_pdf": "Download PDF",
           "monetary_impacts": "Monetary impacts",
@@ -3071,6 +3223,16 @@
             "kgDeAu": "kg of Au",
             "kgDeAu_ha": "kg of Au / ha"
           }
+        },
+        "footnote": {
+          "intro": "The values presented in the calculator are automatically updated based on official and reliable sources:",
+          "list": [
+            "Accumulated inflation: calculated from World Bank data;",
+            "Exchange rate: obtained from the Central Bank of Brazil;",
+            "Gold price: updated through integration with the GoldAPI and MetalpriceAPI."
+          ],
+          "conclusion": "These indicators are subject to daily variations, which may impact the calculator's results over time.",
+          "error": "Some of the values mentioned above may be outdated due to API failure. Refresh the page and try again if you need updated data."
         }
       },
       "about": {

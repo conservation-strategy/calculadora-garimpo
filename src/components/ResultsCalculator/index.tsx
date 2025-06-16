@@ -8,6 +8,8 @@ import useResults, { Tabs } from '@/hooks/useResults'
 import useReport from '@/hooks/useReport'
 import useResize from '@/hooks/useResize'
 import { event as gaEvent } from "nextjs-google-analytics";
+import useCountry from '@/hooks/useCountry'
+import { usePriceData } from '@/store/api'
 
 export type TypeInfographic = 'deforestation' | 'siltingOfRivers' | 'mercury'
 
@@ -22,9 +24,11 @@ export default function ResultsCalculator({
   const { state } = useAppContext()
   const { results, dataCalculator, language } = state
   const { calculator } = language
-  const { resume, pdf, valuation, impacts } = calculator
+  const { resume, pdf, valuation, impacts, footnote } = calculator
   const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } =
     impacts
+  const { isBrazil, currentCountry } = useCountry();
+  const { goldPriceData, inflationData, dollarPriceData } = usePriceData();
 
   const {
     totalGold,
@@ -46,7 +50,7 @@ export default function ResultsCalculator({
     infographicMercury,
     infographicSiltingOfRivers,
     settab
-  } = useResults({ results, dataCalculator, language })
+  } = useResults({ results, dataCalculator, language });
   const { downloadPDF, loadingPDF, setLoading } = useReport({
     results,
     dataCalculator,
@@ -110,17 +114,118 @@ export default function ResultsCalculator({
       {loadingPDF === true && (
         <>
           <S.Overlay />
-          <S.LoadingWrapper>
-            <img src="/assets/images/checklist.gif" width={80} alt="" />
-            <SG.Text>{pdf.loading}</SG.Text>
-          </S.LoadingWrapper>
+          <SG.Container
+          style={{ 
+            position: 'fixed',
+            top: '30%', 
+            left: 0, 
+            width: '100%', 
+            zIndex: '999', 
+            display: 'flex', 
+            justifyContent: 'center' 
+          }}
+          >
+            <S.LoadingWrapper>
+              <img src="/assets/images/checklist.gif" width={80} alt="" />
+              <SG.Text>{pdf.loading}</SG.Text>
+            </S.LoadingWrapper>
+          </SG.Container>
         </>
       )}
 
+      {/* <S.HeaderNote>
+        {`
+        Inflação acumulada desde ${inflationData.yearOfRef} usada: ${inflationData.data?.toFixed(2)}%.
+        Fonte: (${inflationData.fallback ? 'FRED' : 'Banco Mundial'}).
+        `}
+      </S.HeaderNote> */}
+
       <S.ResultsHeadline>
         <SG.Headline weight="300" color={SG.colors.primary}>
-          {resume.results}
+          {resume.results}          
         </SG.Headline>
+        {/* <S.HeaderNote>
+          {`${
+            resume.headnote[0].text
+              .replace('<yearOfRef>', `${inflationData.yearOfRef}`)
+              .replace('<inflationData>', (inflationData?.data ?? 0).toFixed(2))
+              .replace('<source>', inflationData.fallback ? resume.headnote[0].source[1] : resume.headnote[0].source[0])
+              .replace('<date>', inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A')
+          }`}
+        </S.HeaderNote>
+        <S.HeaderNote>
+          {`${
+            resume.headnote[1].text
+              .replace('<priceData>', `${goldPriceData?.data.toFixed(2)}`)
+              .replace('<date>', goldPriceData?.timestamp ? 
+                new Date(goldPriceData.timestamp).toLocaleDateString('en-CA')
+                : 'N/A')
+              .replace('<source>', goldPriceData?.fallback ? resume.headnote[1].source[1] : resume.headnote[1].source[0])
+          }`}
+        </S.HeaderNote>
+        {isBrazil && <S.HeaderNote>
+          {`${
+            resume.headnote[2].text
+              .replace('<priceData>', `${dolarData?.value.toFixed(2)}`)
+              .replace('<date>', dolarData?.date ? 
+                new Date(dolarData.date).toLocaleDateString('en-CA')
+                : 'N/A')
+              .replace('<source>', dolarData?.fallback ? resume.headnote[2].source[1] : resume.headnote[2].source[0])
+          }`}
+        </S.HeaderNote>} */}
+          {/* <S.HeaderIndexTable>          
+            {resume.headnote.table.columns.map((item, index) => (
+                <div key={index}
+                style={{ color: '#5b5b5b'}}
+                >
+                  {item}
+                </div>
+            ))}
+
+            <div>
+              {resume.headnote.table.rows[0].index.replace('<yearOfRef>', `${inflationData.yearOfRef ?? 'N/A'}`)}
+            </div>
+            <div>
+              {inflationData.data?.toFixed(2) ?? 'N/A'}
+            </div>
+            <div>
+              {inflationData.fallback ? resume.headnote.table.rows[0].source[1] : resume.headnote.table.rows[0].source[0]}
+            </div>
+            <div>
+              {inflationData.cachedAt ? new Date(inflationData.cachedAt).toLocaleDateString('en-CA') : 'N/A'}
+            </div>
+
+            <div>
+              {resume.headnote.table.rows[1].index}
+            </div>
+            <div>
+              {goldPriceData.data?.toFixed(2) ?? 'N/A'}
+            </div>
+            <div>
+              {goldPriceData?.fallback ? resume.headnote.table.rows[1].source[1] : resume.headnote.table.rows[1].source[0]}
+            </div>
+            <div>
+              {goldPriceData?.timestamp ? new Date(goldPriceData?.timestamp).toLocaleDateString('en-CA') : 'N/A'}
+            </div>
+
+            {isBrazil &&
+              <>
+              <div>
+                {resume.headnote.table.rows[2].index}
+              </div>
+              <div>
+                {dollarPriceData.value?.toFixed(2) ?? 'N/A'}
+              </div>
+              <div>
+                {dollarPriceData.fallback ? resume.headnote.table.rows[2].source[1] : resume.headnote.table.rows[2].source[0]}
+              </div>
+              <div>
+                {dollarPriceData.date ? new Date(dollarPriceData.date).toLocaleDateString('en-CA') : 'N/A'}
+              </div>
+              </>
+            }
+        </S.HeaderIndexTable> */}
+
       </S.ResultsHeadline>
       <S.ButtonPDF>
         <SG.Button variant="primary" onClick={handleDownload}>
@@ -175,6 +280,7 @@ export default function ResultsCalculator({
       <S.GraphicResume>
         <ResumeCharts data={resumeDataChart} />
       </S.GraphicResume>
+
       <div style={{ gridArea: 'charts-preview' }}>
         {showChartsPrint && (
           <div>
@@ -370,6 +476,18 @@ export default function ResultsCalculator({
               </S.Table>
             </S.TableResponsive>
           </S.TableWrapper>
+          <S.IndexNote>
+            {footnote.intro}
+            <ul>
+              {footnote.list.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            {footnote.conclusion}
+            {(!inflationData.data || !goldPriceData.data || (isBrazil && !dollarPriceData.value)) &&
+            <div style={{ color: 'red', marginTop: '.2em' }}>{footnote.error}</div>
+            }
+          </S.IndexNote>
         </S.TabContent>
       </S.TapWrapper>
     </S.Container>

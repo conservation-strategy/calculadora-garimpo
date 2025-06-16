@@ -1,5 +1,5 @@
 import { FormInputs } from '@/components/FormCalculator'
-import { dispatchTypes } from '@/enums'
+import { countryCodes, dispatchTypes } from '@/enums'
 import { DataImpacts, DataImpactsNoMonetary } from '@/hooks/useCalculator'
 import { ReactNode, useCallback, useReducer } from 'react'
 import { AppContext, INITIAL_STATE } from '.'
@@ -12,9 +12,10 @@ interface ProviderProps {
 export type languageTypes = 'pt_BR' | 'en_US' | 'es_ES' | string
 
 export interface CountryProps {
-  country: 'BR' | 'EC' | 'PE' | 'CO' | 'GU' | 'SU'
-  label: 'Brasil' | 'Ecuador' | 'Perú' | 'Colombia' | 'Guiana' | 'Suriname'
+  country: countryCodes
+  label: 'Brasil' | 'Ecuador' | 'Perú' | 'Colombia' | 'Guiana' | 'Suriname' | 'Bolivia'
 }
+
 
 export interface ResultsProps {
   deforestation: DataImpacts[]

@@ -117,6 +117,11 @@ interface WoodAndNonWoodProductsProps {
   discountRate: number
 }
 
+interface ProtecAreaMultiplier {
+  value: number
+}
+
+
 interface fixedValuesProps {
   general: generalProps | null
   carbon: CarbonProps | null
@@ -132,11 +137,12 @@ interface fixedValuesProps {
   soilMercuryRemediation: SoilMercuryRemediationProps | null
   hypertension: HypertensionProps | null
   woodAndNonWoodProducts: WoodAndNonWoodProductsProps | null
+  protectedAreaMultiplier: ProtecAreaMultiplier | null
 }
 
 export default function useFixedCalculator() {
   const { state } = useAppContext()
-  const { isPeru, isEquador, isColombia } = useCountry()
+  const { isPeru, isEquador, isColombia, isBolivia } = useCountry()
   const motorPower = state.dataCalculator?.motorPower
 
   let fixedValues: fixedValuesProps = {
@@ -153,7 +159,8 @@ export default function useFixedCalculator() {
     heartAttack: null,
     soilMercuryRemediation: null,
     hypertension: null,
-    woodAndNonWoodProducts: null
+    woodAndNonWoodProducts: null,
+    protectedAreaMultiplier: null
   }
 
   /************************
@@ -266,6 +273,10 @@ export default function useFixedCalculator() {
     costPMNMPerHaYearUSD: 152.8,
     discountRate: 0.03
   }
+
+  const protectedAreaMultiplier = {
+    value: 1
+  };
 
   if (isPeru) {
     general.speciesForZero = 105
@@ -526,7 +537,96 @@ export default function useFixedCalculator() {
 
     woodAndNonWoodProducts.costPMNMPerHaYearUSD = 119.81
     woodAndNonWoodProducts.discountRate = 0.03
+  } else if (isBolivia) {
+    protectedAreaMultiplier.value = 1.38
+
+    general.speciesForZero = 162
+    general.GDPperCapitaBrazilUSD = 14906 /**mudado de 3701 */
+    general.celciusTemperature = 24 /** */
+    general.kmRotatedPerLiter = 2.5 /** */
+    general.excavationGoldLoss = 2 /** */
+    general.priceLiterDieselUSD = 0.54 /** */
+    general.densityGold = 2.76 /** */
+    general.averageDriverSalaryFreightPerKmUSD = 0.22 /** */
+    general.quantityOfGoldGramsPerYearWell = 12800 /** */
+    general.averageDepthOfFertileEarth = 0.4 /** */
+    general.quantitOfM3ExcavatorPerHour = 100 /** */
+    general.HgAuRatio = 7 /** */
+    general.percentLossHgInWater_convervative = 0.09 /** */
+    general.percentLossHgInWater = 0.12 /** */
+    general.percentLossHgInWater_ferry__convervative = 0.17 /** */
+    general.percentLossHgInWater_ferry = 0.28 /** */
+    general.methyladPercent_conservative = 0.11 /** */
+    general.methyladPercent = 0.22 /** */
+    general.ruralIndividualWeight = 55 /** */
+    general.urbanindividualWeight = 68 /** */
+    general.levelMediumContaminationFish = 0.19 /**mudado de 0.119 */
+    general.AverageFishConsumptionPerDayInRuralGrams = 107.9 /** */
+    general.consumptionMediumFishByDayInGramsUrban = 30 /**era 2.97 */
+    general.densityPopulationalRegionNorth2060 = 0.39 /** */
+    general.excavatorHoursDays = 10 /** */
+    general.excavatorCostPerKMUSD = 0.76
+    general.hollowMediumDepth = 50 /** */
+    general.cavaAverageProductivity = 0.17 /** */
+    general.prodGoldMonthFerry = 380 /** */
+    general.aDALYUSD = 11103 /** */
+
+    bioprospecting.bioprospectingCostByUSD_conservative = 13.64 /** */
+    bioprospecting.bioprospectingCostByUSD = 23.39/** */
+    bioprospecting.discountRate = 0.03 /** */
+
+    carbon.carbonCostPerHaUSD = 93.46 /** */
+
+    recoverOfTopSoll.hectare = 0.31 /** */
+    recoverOfTopSoll.soilSurfaceRecPerHa_conservative = 872 /** */
+    recoverOfTopSoll.soilSurfaceRecPerHa = 4250 /** */
+    recoverOfTopSoll.capacityLoadTruckNumberOfSeedlings = 1500 /** */
+    recoverOfTopSoll.superficialSeedlingsPerHa = 1000 /** */
+    recoverOfTopSoll.transportCostChangesPerKm = 0.22 /** */
+
+    erosionSiltingUp.siltingUpCostPerHaUSD = 18 /** */
+
+    dredgingAndRiverSediments.dredgingCostPerM3 = 4.69 /** */
+    dredgingAndRiverSediments.prodOuroKgporMes = 0.00604 /** */
+    // dredgingAndRiverSediments.averageMotorPower = 147
+    dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonth = 9.96 /** */
+    dredgingAndRiverSediments.equivalentErosionTonPerHaPerYear = 12.54 /** */
+    dredgingAndRiverSediments.erosionControlUSD = 13.28 /** */
+    dredgingAndRiverSediments.productionSedimentTurnsFeatherTonnesPerMonthGold = 6.54 /** */
+    dredgingAndRiverSediments.siltingPercentage = 0.15 /** */
+    dredgingAndRiverSediments.theAmountOfSedimentPer1DredgeM3PerHour = 250 /** */
+    dredgingAndRiverSediments.transportCost1DredgeUSD = 0.76 /** */
+
+    cavaGroundingCostAuNorm.normalCavaGroundingCostUSD = 0.2 /** */
+    cavaGroundingCostAuFertile.groundingCostFertilePitUSD = 5.08 /** */
+
+    lossQI.birthRate = 22 /** */
+
+    neuroSymptomsGarimpeiro.amountOfGoldminersYear = 2496 /** CONFIRMAR */
+    neuroSymptomsGarimpeiro.neuroTreatmentCostPerGoldMinerUSD = 353 /** */
+
+    heartAttack.proMenOver40ByPopTotal = 0.24 /** */
+    //heartAttack.accumulatedRiskMercuryInfarction = 0.0178
+    heartAttack.annualInfarctTreatmentCostUSD = 6196 /** */
+    heartAttack.propHomensAcima40AnosComInfartoporPopHomensAcima40anosRegiaoPais = 0.00044 /** */
+    heartAttack.duracaoDaIncapacidadeInfarto = 22 /** */
+
+    hypertension.AnnualHypertensionCostTreatamentUSD = 96.15 /** */
+    hypertension.propOfPeopleOver20YearsOfAgeByTotalPop = 0.563 /** */
+    //hypertension.accumulatedRiskMercuryHypertension = 0.0121
+    hypertension.propAcima20AnosComHipertensaoporPopAcima20anosRegiaoPais = 0.0009 //0.022
+    hypertension.duracaoDaIncapacidadeHipertensao = 45 /** */
+
+    soilMercuryRemediation.lossPercentHgInSoil_conservative = 0.088 /** */
+    soilMercuryRemediation.lossPercentHgInSoil = 0.14 /** */
+    soilMercuryRemediation.HgContainedSoilinGrassPerTon = 0.2 /** */
+    soilMercuryRemediation.DensidadeSolo = 2.76 /** */
+    soilMercuryRemediation.remediationCostUSDPerTonOfSoil = 45.67 /** */
+
+    woodAndNonWoodProducts.costPMNMPerHaYearUSD = 433 /** */
+    woodAndNonWoodProducts.discountRate = 0.03 /** */
   }
+
 
   fixedValues = {
     bioprospecting,
@@ -542,7 +642,8 @@ export default function useFixedCalculator() {
     lossQI,
     neuroSymptomsGarimpeiro,
     recoverOfTopSoll,
-    soilMercuryRemediation
+    soilMercuryRemediation,
+    protectedAreaMultiplier
   }
 
   return fixedValues

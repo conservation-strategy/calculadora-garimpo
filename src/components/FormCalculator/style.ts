@@ -25,6 +25,9 @@ export const FormControlCountry = styled(FormControl)`
 export const FormControlKnowRegion = styled(FormControl)`
   grid-area: knowRegion;
 `
+export const FormControlProtectedArea = styled(FormControl)`
+  grid-area: isProtectedArea;
+`
 export const FormControlState = styled(FormControl)`
   grid-area: state;
 `
@@ -76,6 +79,7 @@ export const FormControlUsesTypes = styled(FormControl)`
 export const ButtonSubmit = styled(Button)`
   grid-area: submit;
   margin-top: 4px;
+  position: relative;
 
   @media(min-width: 1440px) {
     margin-top: 8px
@@ -91,3 +95,22 @@ export const MessageError = styled.span`
   color: red;
   font-weight: bold;
 `
+export const LoadingSpinner = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1em;
+  height: 1em;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+`
+

@@ -144,19 +144,19 @@ export default function Calculator() {
           </>
         )
       },
-      {
-        title: Inflation.headline,
-        content: (
-          <>
-            <SG.Text>
-              {Inflation.paragraphy_01}
-              <Link href={Inflation.href} target="_blank" rel='noreferrer'>
-                {Inflation.siteIBGE}
-              </Link>
-            </SG.Text>
-          </>
-        )
-      },
+      // {
+      //   title: Inflation.headline,
+      //   content: (
+      //     <>
+      //       <SG.Text>
+      //         {Inflation.paragraphy_01}
+      //         <Link href={Inflation.href} target="_blank" rel='noreferrer'>
+      //           {Inflation.siteIBGE}
+      //         </Link>
+      //       </SG.Text>
+      //     </>
+      //   )
+      // },
       {
         title: useCalculator.headline,
         content: (

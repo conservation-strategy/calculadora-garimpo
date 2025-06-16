@@ -1,5 +1,5 @@
 import { FormInputs } from '@/components/FormCalculator'
-import { retortTypes, typeMiningTypes } from '@/enums'
+import { countryCodes, currency, retortTypes, typeMiningTypes } from '@/enums'
 import convertGramsToKg from '@/utils/convertGramsToKg'
 import roundValue from '@/utils/roundValue'
 import roundPercent from '@/utils/roundPercent'
@@ -10,6 +10,8 @@ import useCountry from '../useCountry'
 import useDeforestation from './useDeforesation'
 import useMercury from './useMercury/indext'
 import useSiltingOfRivers from './useSiltingOfRivers/indext'
+import { usePriceData } from '@/store/api'
+import { inflationBackupValues } from '@/lib/api'
 
 export interface DataCalculatorProps {
   dataCalculator: FormInputs
@@ -36,7 +38,25 @@ export default function useCalculator() {
   const [impactsNotMonetary, setNoMonetary] = useState<DataImpactsNoMonetary[]>(
     []
   )
-  const { isBrazil, getValueToCountry } = useCountry()
+  const { isBrazil, getValueToCountry, currentCountry } = useCountry();
+  // const inflationData = useInflation(currentCountry?.country);
+  // const yearOfRef = useMemo(
+  //   () => currentCountry?.country === countryCodes.BR
+  //     ? 2022
+  //     : (
+  //         currentCountry?.country === countryCodes.CO ||
+  //         currentCountry?.country === countryCodes.PE ||
+  //         currentCountry?.country === countryCodes.EC
+  //       )
+  //       ? 2023
+  //       : 2024,
+  //   [currentCountry]
+  // );
+
+  // const dolarData = useDollar();
+  // console.log('inflation--Data', inflationData)
+  const { inflationData, dollarPriceData } = usePriceData();
+
   const {
     bioprospectingCalculator,
     carbonCalculator,
@@ -74,65 +94,84 @@ export default function useCalculator() {
     return totalValue
   }, [])
 
-  const calculateInflation = useCallback((inflation: number, total: number) => {
+  const calculateInflation = useCallback((inflation: number | undefined, total: number) => {
     if (inflation) {
       return (inflation / 100) * total
     }
     return 0
   }, [])
 
+  // const totalWithInflation = useCallback(
+  //   (inflation: number, total: number) => {
+  //     if (isBrazil) {
+  //       const valueInflation2020at2021 = calculateInflation(14.58, total)
+  //       const valueInflation = calculateInflation(inflation, total)
+  //       const totalInflation = valueInflation2020at2021 + valueInflation + total
+  //       return totalInflation
+  //     } else {
+  //       const valueInflation = calculateInflation(inflation, total)
+  //       const totalInflation = valueInflation + total
+  //       return totalInflation
+  //     }
+  //   },
+  //   [isBrazil, calculateInflation]
+  // )
+
   const totalWithInflation = useCallback(
-    (inflation: number, total: number) => {
+    (total: number) => {
       if (isBrazil) {
-        const valueInflation2020at2021 = calculateInflation(14.58, total)
-        const valueInflation = calculateInflation(inflation, total)
-        const totalInflation = valueInflation2020at2021 + valueInflation + total
+        // const valueInflation2020at2021 = calculateInflation(14.58, total)
+        const valueInflation = calculateInflation(inflationData.data || inflationBackupValues[countryCodes.BR], total)        
+        if(!inflationData.data) console.warn('Using backup harcoded value for inflation');
+        const totalInflation = valueInflation + total
         return totalInflation
       } else {
-        const valueInflation = calculateInflation(inflation, total)
+        const valueInflation = inflationData.data
+          ? calculateInflation(inflationData.data, total)
+          : calculateInflation(currentCountry? inflationBackupValues[currentCountry.country] : 0, total)
+        if(!inflationData.data) console.warn('Using backup harcoded value for inflation');
         const totalInflation = valueInflation + total
         return totalInflation
       }
     },
-    [isBrazil, calculateInflation]
+    [isBrazil, calculateInflation, inflationData.data]
   )
 
   const calculatorTotalImpact = useCallback(
-    (total: number, inflation: number) => {
-      const totalWithDolar = getValueToCountry(total, 5.33)
-      return totalWithInflation(Number(inflation), totalWithDolar)
+    (total: number) => {
+      const totalWithDolar = getValueToCountry(total, dollarPriceData.value ?? currency.dolar)
+      if(!dollarPriceData.value) console.warn('Using backup hardcoded value for dollarPrice')
+      return totalWithInflation(totalWithDolar)
     },
-    [totalWithInflation, getValueToCountry]
+    [totalWithInflation, getValueToCountry, dollarPriceData.value]
   )
 
   const calculatorDeforestation = useCallback(
     (data: FormInputs) => {
       const bio = bioprospectingCalculator({ dataCalculator: data })
-      const totalBio = calculatorTotalImpact(bio, Number(data.inflation))
+      const totalBio = calculatorTotalImpact(bio)
 
       const carbon = carbonCalculator({ dataCalculator: data })
-      const totalCarbon = calculatorTotalImpact(carbon, Number(data.inflation))
+      const totalCarbon = calculatorTotalImpact(carbon)
 
       const culturedAndSpecies = culturedAndSpeciesCalculator({
         dataCalculator: data
       })
       const totalCulturedAndSpecies = calculatorTotalImpact(
         culturedAndSpecies,
-        Number(data.inflation)
+        
       )
 
       const recoveryOfTopsoil = recoveryOfTopsoilCalculator({
         dataCalculator: data
       })
       const totalRecoveryOfTopsoil = calculatorTotalImpact(
-        recoveryOfTopsoil,
-        Number(data.inflation)
+        recoveryOfTopsoil        
       )
 
       const recreation = recreationCalculator({ dataCalculator: data })
       const totalRecreation = calculatorTotalImpact(
-        recreation,
-        Number(data.inflation)
+        recreation        
       )
 
       const woodAndNonWoodProducts = woodAndNonWoodProductsCalculator({
@@ -140,7 +179,7 @@ export default function useCalculator() {
       })
       const totalWoodAndNonWoodProducts = calculatorTotalImpact(
         woodAndNonWoodProducts,
-        Number(data.inflation)
+        
       )
 
       const totalImpacts = [
@@ -173,6 +212,7 @@ export default function useCalculator() {
           value: totalCulturedAndSpecies
         }
       ]
+      // console.log('deforestation', totalImpacts)
 
       setDeforestation(totalImpacts)
     },
@@ -194,31 +234,27 @@ export default function useCalculator() {
         dataCalculator: data
       })
       const totalcavaGroundingCostAuNorm = calculatorTotalImpact(
-        cavaGroundingCostAuNorm,
-        Number(data.inflation)
+        cavaGroundingCostAuNorm
       )
 
       const { value: cavaGroundingCostAuFertile, lossyVolume } =
         cavaGroundingCostAuFertileCalculator({ dataCalculator: data })
       const totalcavaGroundingCostAuFertile = calculatorTotalImpact(
-        cavaGroundingCostAuFertile,
-        Number(data.inflation)
+        cavaGroundingCostAuFertile
       )
 
       const dredgingAndRiverSediments = dredgingAndRiverSedimentsCalculator({
         dataCalculator: data
       })
       const totalDredgingAndRiverSediments = calculatorTotalImpact(
-        dredgingAndRiverSediments,
-        Number(data.inflation)
+        dredgingAndRiverSediments
       )
 
       const erosionSiltingUp = erosionSiltingUpCalculator({
         dataCalculator: data
       })
       const totalErosionSiltingUp = calculatorTotalImpact(
-        erosionSiltingUp,
-        Number(data.inflation)
+        erosionSiltingUp
       )
 
       const totalImpacts: DataImpacts[] = []
@@ -247,6 +283,8 @@ export default function useCalculator() {
         value: totalErosionSiltingUp
       })
 
+      console.log('silting of rivers', totalImpacts)
+
       setSiltingOfRivers(totalImpacts)
       return {
         impactNotMonetary
@@ -271,8 +309,7 @@ export default function useCalculator() {
       const { value: neuroSymptomsGarimpeiro, qtdOfMinersAffected } =
         neuroSymptomsGarimpeiroCalculator({ dataCalculator: data })
       const totalNeuroSymptomsGarimpeiro = calculatorTotalImpact(
-        neuroSymptomsGarimpeiro,
-        Number(data.inflation)
+        neuroSymptomsGarimpeiro        
       )
 
       const {
@@ -280,13 +317,12 @@ export default function useCalculator() {
         concentrationMediaMercuryHair,
         porcentNascidosVivosPerdaQIAcimaDe2Pts
       } = lossQICalculator({ dataCalculator: data })
-      const totalLossQI = calculatorTotalImpact(lossQI, Number(data.inflation))
+      const totalLossQI = calculatorTotalImpact(lossQI )
 
       const { value: hypertension, peopleAbove20YearsoldInTheRegionIn52Years } =
         hypertensionCalculator({ dataCalculator: data })
       const totalHypertension = calculatorTotalImpact(
-        hypertension,
-        Number(data.inflation)
+        hypertension        
       )
 
       const {
@@ -296,16 +332,14 @@ export default function useCalculator() {
         menOver40InTheRegionIn27Years
       } = heartAttackCalculator({ dataCalculator: data })
       const totalHeartAttack = calculatorTotalImpact(
-        heartAttack,
-        Number(data.inflation)
+        heartAttack        
       )
 
       const soilMercuryRemediation = soilMercuryRemediationCalculator({
         dataCalculator: data
       })
       const totalSoilMercuryRemediation = calculatorTotalImpact(
-        soilMercuryRemediation,
-        Number(data.inflation)
+        soilMercuryRemediation        
       )
 
       const waterMercuryRemediation = waterMercuryRemediationCalculator({
@@ -313,8 +347,7 @@ export default function useCalculator() {
       }) 
 
       const totalWaterMercuryRemediation = calculatorTotalImpact(
-        waterMercuryRemediation,
-        Number(data.inflation)
+        waterMercuryRemediation        
       )
 
       const totalImpacts: DataImpacts[] = []

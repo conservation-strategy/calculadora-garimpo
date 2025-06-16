@@ -1,34 +1,39 @@
 import * as S from './style'
 import * as SG from '@/styles/global'
-import { CountryProps } from '@/store/proveider'
+import { CountryProps } from '@/store/state/proveider'
 import useAppContext from '@/hooks/useAppContext'
-import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { FormEvent, useCallback, useState } from 'react'
 import { event as gaEvent } from "nextjs-google-analytics";
+import { countryCodes } from '@/enums'
 
 export const CountryList: CountryProps[] = [
   {
-    country: 'BR',
+    country: countryCodes.BR,
     label: 'Brasil'
   },
   {
-    country: 'EC',
+    country: countryCodes.EC,
     label: 'Ecuador'
   },
   {
-    country: 'PE',
+    country: countryCodes.PE,
     label: 'Perú'
   },
   {
-    country: 'CO',
+    country: countryCodes.CO,
     label: 'Colombia'
   },
   {
-    country: 'GU',
+    country: countryCodes.GU,
     label: 'Guiana'
   },
   {
-    country: 'SU',
+    country: countryCodes.SU,
     label: 'Suriname'
+  },
+  {
+    country: countryCodes.BO,
+    label: 'Bolivia'
   }
 ]
 
