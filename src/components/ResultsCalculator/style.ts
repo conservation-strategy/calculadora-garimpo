@@ -202,9 +202,9 @@ export const TabContentITem = styled.div<TabHeaderItemProps>`
     'graphic'
     'infographic'
     'table';
-  row-gap: 100px;
   align-items: center;
   @media (min-width: ${breakpoints.lg}) {
+    row-gap: 100px;
     grid-template-columns: repeat(6, 1fr);
     grid-template-areas:
       'content content graphic graphic graphic graphic'
@@ -218,7 +218,6 @@ export const TabContentItemText = styled.div`
 
 export const WrapperGraphic = styled.div`
   grid-area: graphic;
-  height: 420px;
   display: flex;
   align-items: center;
 `
