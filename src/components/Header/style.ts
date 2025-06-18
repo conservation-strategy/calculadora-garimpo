@@ -35,6 +35,10 @@ export const ButtonBarMenu = styled.button`
   font-size: 24px;
   color: #fff;
   margin-left: auto;
+
+  @media(min-width: ${breakpoints.lg}) {
+    display: none;
+  }
 `
 
 // export const Logo = styled.div`
@@ -127,6 +131,16 @@ export const MenuMobile = styled.nav<MenuItemProps>`
     gap: 1.5rem;
   }
 `
+export const MenuTopContainer = styled.div`
+  width: 100%;
+  padding: 0;
+  @media (min-width: ${breakpoints.md}) {
+    width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 24px;
+  }
+`
 
 export const MenuTop = styled.div`
   display: flex;
@@ -204,7 +218,7 @@ export const DropDownText = styled.span`
   font-size: inherit;
   font-weight: 700;
   letter-spacing: inherit;
-  line-height: 17px;
+  line-height: 150%;
   color: inherit;
   @media (min-width: ${breakpoints.md}) {
     font-size: 24px;
@@ -290,4 +304,13 @@ export const Overlay = styled.div`
   top: 0;
   left: 0;
   transition: all 0.3s;
+`
+export const LogoDropdownContainer = styled.div`
+  display: none;
+  gap: .75rem;
+  align-items: center;
+
+  @media(min-width: ${breakpoints.lg}) {
+    display: flex;
+  }
 `

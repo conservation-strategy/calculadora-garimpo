@@ -69,7 +69,7 @@ export default function Header({
     <>
     {/* mobile overlay menu */}
     <S.MenuMobile active={openMenu}>
-      {ismobileOrTablet && (
+      <S.MenuTopContainer>
         <S.MenuTop>              
           <S.Logo          
             // className="opacity-[0.6] ml-2"
@@ -87,48 +87,48 @@ export default function Header({
             <CloseIcon/>
           </button>         
         </S.MenuTop>
-      )}
+      </S.MenuTopContainer>
       <S.MenuItemsContainer>
         {menu.map((item) => (
           <S.MenuItem key={item.label} onClick={() => route.push(item.href)}>
             {item.label}
           </S.MenuItem>
         ))}
-        {ismobileOrTablet && (
-          <S.DropDownMobile 
-          onClick={handleDropdown}
-          ref={dropdownRef}
-          >
-            <S.DropDownMobileButton>
-              <S.DropDownText>{language.label}</S.DropDownText>
-              <i className="fi fi-rr-angle-small-down"
-              style={{
-                position: 'absolute',
-                right: 0,
-                top: 0,
-                bottom: 0,
-                marginBlock: 'auto',
-                height: '22px',
-                marginLeft: '0.5rem',
-                transition: 'transform 0.2s',
-                transitionDelay: '0.2s',
-                transformOrigin: 'center',
-                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
-              }}></i>
-            </S.DropDownMobileButton>
-            <S.DropDownBoxMobile active={dropdown}>
-              <div onClick={() => changeLanguage('pt_BR')}>
-                Português
-              </div>
-              <div onClick={() => changeLanguage('es_ES')}>
-                Español
-              </div>
-              <div onClick={() => changeLanguage('en_US')}>
-                English
-              </div>
-            </S.DropDownBoxMobile>
-          </S.DropDownMobile>
-        )}
+        
+        <S.DropDownMobile 
+        onClick={handleDropdown}
+        ref={dropdownRef}
+        >
+          <S.DropDownMobileButton>
+            <S.DropDownText>{language.label}</S.DropDownText>
+            <i className="fi fi-rr-angle-small-down"
+            style={{
+              position: 'absolute',
+              right: 0,
+              top: 0,
+              bottom: 0,
+              marginBlock: 'auto',
+              height: '22px',
+              marginLeft: '0.5rem',
+              transition: 'transform 0.2s',
+              transitionDelay: '0.2s',
+              transformOrigin: 'center',
+              transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
+            }}></i>
+          </S.DropDownMobileButton>
+          <S.DropDownBoxMobile active={dropdown}>
+            <div onClick={() => changeLanguage('pt_BR')}>
+              Português
+            </div>
+            <div onClick={() => changeLanguage('es_ES')}>
+              Español
+            </div>
+            <div onClick={() => changeLanguage('en_US')}>
+              English
+            </div>
+          </S.DropDownBoxMobile>
+        </S.DropDownMobile>
+      
       </S.MenuItemsContainer>
       <a 
       href='https://www.conservation-strategy.org/' 
@@ -171,7 +171,7 @@ export default function Header({
               alt='Logo Calculadora Garimpo' 
             />
           </Link>
-          {!ismobileOrTablet &&
+          
             <S.MenuDesktop>
               {menu.map((item) => (
                 <S.MenuItem key={item.label} onClick={() => route.push(item.href)}
@@ -181,60 +181,55 @@ export default function Header({
                 </S.MenuItem>
               ))}
             </S.MenuDesktop>
-          }
+        
         </div>
-        {ismobileOrTablet && (
-          <S.ButtonBarMenu onClick={() => setMenu(true)}>
-            <i className="fi fi-rr-menu-burger"></i>
-          </S.ButtonBarMenu>
-        )}
-
-        {!ismobileOrTablet && (
-          <div style={{
-            display: 'flex',
-            gap: '0.75rem',
-            alignItems: 'center'
-          }}>
-            <S.DropDown 
-            onClick={handleDropdown}
-            ref={dropdownRef}
-            >
-              <S.DropDownText>{language.label}</S.DropDownText>
-              <i className="fi fi-rr-angle-small-down"
-              style={{
-                height: '16px',
-                transition: 'transform 0.2s',
-                transitionDelay: '0.2s',
-                transformOrigin: 'center',
-                transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
-              }}
-              ></i>
-              <S.DropDownBox active={dropdown}>
-                <S.DropdownItem onClick={() => changeLanguage('pt_BR')}>
-                  Português
-                </S.DropdownItem>
-                <S.DropdownItem onClick={() => changeLanguage('es_ES')}>
-                  Español
-                </S.DropdownItem>
-                <S.DropdownItem onClick={() => changeLanguage('en_US')}>
-                  English
-                </S.DropdownItem>
-              </S.DropDownBox>
-            </S.DropDown>
-            <div style={{ backgroundColor: "#F7EEEE" , width: '1px', height: '2.5rem' , opacity: 0.3 }}></div>
-            <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
-              <Image          
-                // className="opacity-[0.6] ml-2"
-                src="/assets/images/logo.png"
-                alt="CSF"
-                width={34}
-                height={34}
-                sizes="(max-width: 1024px) 40px, 34px"
-                priority
-              />
-            </a>
-          </div>
-        )}
+        
+        <S.ButtonBarMenu onClick={() => setMenu(true)}>
+          <i className="fi fi-rr-menu-burger"></i>
+        </S.ButtonBarMenu>
+      
+        {/* only desktop */}
+        <S.LogoDropdownContainer>
+          <S.DropDown 
+          onClick={handleDropdown}
+          ref={dropdownRef}
+          >
+            <S.DropDownText>{language.label}</S.DropDownText>
+            <i className="fi fi-rr-angle-small-down"
+            style={{
+              height: '16px',
+              transition: 'transform 0.2s',
+              transitionDelay: '0.2s',
+              transformOrigin: 'center',
+              transform: `${dropdown ? 'scaleY(-1)' : 'scaleY(1)'}`
+            }}
+            ></i>
+            <S.DropDownBox active={dropdown}>
+              <S.DropdownItem onClick={() => changeLanguage('pt_BR')}>
+                Português
+              </S.DropdownItem>
+              <S.DropdownItem onClick={() => changeLanguage('es_ES')}>
+                Español
+              </S.DropdownItem>
+              <S.DropdownItem onClick={() => changeLanguage('en_US')}>
+                English
+              </S.DropdownItem>
+            </S.DropDownBox>
+          </S.DropDown>
+          <div style={{ backgroundColor: "#F7EEEE" , width: '1px', height: '2.5rem' , opacity: 0.3 }}></div>
+          <a href='https://www.conservation-strategy.org/' target='_blank' rel='noreferrer' style={{ opacity: 0.6, marginLeft: '10px' }}>
+            <Image          
+              // className="opacity-[0.6] ml-2"
+              src="/assets/images/logo.png"
+              alt="CSF"
+              width={34}
+              height={34}
+              sizes="(max-width: 1024px) 40px, 34px"
+              priority
+            />
+          </a>
+        </S.LogoDropdownContainer>
+        {/*  */}
 
         {/* <S.Logo>
           <img src="/assets/images/logo.png" alt="CSF" style={{marginLeft: '10px'}} />
