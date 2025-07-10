@@ -7,6 +7,8 @@ interface InflationData {
     cachedAt: string;
 }
 
+// DEPRECATED
+// replaced with context /store/api/provider
 const useInflation = (country: countryCodes | undefined) => {
     const [data, setData] = useState<InflationData>();
     const [isLoading, setIsLoading] = useState(false);
