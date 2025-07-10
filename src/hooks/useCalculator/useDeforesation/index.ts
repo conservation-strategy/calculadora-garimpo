@@ -151,7 +151,7 @@ export default function useDeforestation() {
         ? protectedAreaMultiplier.value
         : 0
 
-        console.log('species protected', isProtectedArea, fatorProtectedArea)
+        // console.log('species protected', isProtectedArea, fatorProtectedArea)
 
       const densidadePop2010 = currentDistrict?.densidadePop2010
       const perCapitaPIBPaisUSD = general ? general.GDPperCapitaBrazilUSD : 0
