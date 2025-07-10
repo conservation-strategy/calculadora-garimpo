@@ -78,7 +78,9 @@ export const inflationBackupValues = {
     date: "2025-06-05T17:42:11.463Z"
 }
 
-function validateEnvVariables() {
+export const brUSDInflation = 22.69889816743693;
+
+export function validateEnvVariables() {
     if (!process.env.FRED_API_KEY) {
         throw new Error('FRED_API_KEY environment variable is not set');
     }
