@@ -1,0 +1,147 @@
+import { countryCodes } from '@/enums';
+import { logApiRequest } from '@/lib/api/utils';
+import { NextApiRequest, NextApiResponse } from 'next';
+import { CalculatorArgs } from '@/lib/api/external/store';
+import { getCityData } from '@/lib/calculator';
+import { calculateImpact } from '@/lib/api/external';
+import { brUSDInflation, inflationBackupValues, referenceYears } from '@/lib/api';
+import { fetchDollarInflation } from '@/lib/api/external/inflation';
+
+export type CalculationRequest = {
+  locations: CalculatorArgs[];
+}
+
+type CalculationResponse = {
+  totalImpact: number;
+}
+
+type ErrorResponse = {
+  error: string;
+  details?: string;
+}
+
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<CalculationResponse | ErrorResponse>
+) {
+  
+  const startTime = Date.now();  
+  try {
+    // Method check (although middleware already handles OPTIONS)
+    if (req.method !== 'POST') {
+      return res.status(405).json({ 
+        error: 'Method not allowed',
+        details: 'Only POST requests are accepted'
+      });
+    }
+
+    // Input validation with detailed errors
+    const { locations } = req.body as CalculationRequest;
+    
+    if (!locations) {
+      return res.status(400).json({ 
+        error: 'Missing data',
+        details: 'The locations array is required'
+      });
+    }
+
+    if (!Array.isArray(locations)) {
+      return res.status(400).json({ 
+        error: 'Invalid data type',
+        details: 'locations must be an array'
+      });
+    }
+
+    if (locations.length === 0) {
+      return res.status(400).json({ 
+        error: 'Empty data',
+        details: 'locations array cannot be empty'
+      });
+    }
+    
+    let totalImpact = 0;
+    let prevRefYear = null;
+    for (let index = 0; index < locations.length; index++) {
+      // Validate each location with specific error messages
+      const location = locations[index];
+      if (!location.country || !Object.values(countryCodes).includes(location.country as countryCodes)) {
+        return res.status(400).json({ 
+          error: 'Invalid country',
+          details: `Location at index ${index} has invalid country code. Valid codes are: ${Object.values(countryCodes).join(', ')}`
+        });
+      }
+
+      const cityData = getCityData(location.country, location.city);
+      if (!location.city || typeof location.city !== 'string' || !cityData) {
+        return res.status(400).json({ 
+          error: 'Invalid city',
+          details: `Location at index ${index} has invalid or missing city`
+        });
+      }
+      
+      if (typeof location.affectedArea !== 'number' || location.affectedArea <= 0) {
+        return res.status(400).json({ 
+          error: 'Invalid area',
+          details: `Location at index ${index} has invalid or missing area`
+        });
+      }
+
+      const refYear = referenceYears[location.country];
+      let inflation = null;
+      if(refYear !== prevRefYear) {
+        const response = await fetchDollarInflation(refYear);
+        if(!response.ok) {
+          console.log('fetch from primary source failed. Status:', response.status);
+          const fallback = await fetchDollarInflation(refYear, true);
+          if(!fallback.ok) {
+            console.error(`Failed to fetch inflation data. Status: ${fallback.status}`);
+            console.log("Using inflation backup values");
+            inflation = location.country === countryCodes.BR
+              ? brUSDInflation
+              : inflationBackupValues[location.country];
+          } else {
+            const inflationData = await fallback.json();
+            inflation = inflationData.data;
+          }
+        } else {
+          const inflationData = await response.json();
+          inflation = inflationData.data;
+        }
+        prevRefYear = refYear;
+      }
+      if(!inflation) throw new Error("Error fetching inflationData");
+      console.log(`acc inflation for country ${location.country}: ${inflation}`);
+      const inflationCorr = (inflation / 100) + 1;
+
+      const impact = calculateImpact(location) * inflationCorr;
+      console.log(`total impact for ${location.city}: ${impact}`);
+      totalImpact += impact;
+    }
+
+    // Perform calculations
+    // const result = await calculateImpact(locations);
+
+    // Cache results for 1 hour if calculations are expensive
+    res.setHeader('Cache-Control', 'public, max-age=3600, stale-while-revalidate=600');
+    logApiRequest(req, 200, Date.now() - startTime);
+    return res.status(200).json({ totalImpact });
+  } catch (error) {
+    console.error('Error processing calculation:', error);
+    logApiRequest(req, 500, Date.now() - startTime);
+    return res.status(500).json({ 
+      error: 'Internal server error',
+      details: 'An unexpected error occurred while processing the calculation'
+    });
+  }
+}
+
+// Implement your calculation logic here
+// async function calculateImpact(locations: CalculatorArgs[]): Promise<CalculationResponse> {
+//   // Your calculation implementation
+//   return {
+//     totalImpact: 990,
+//     mercuryExposure: 990,
+//     deforestationArea: 990,
+//     economicLoss: 990
+//   }
+// }
