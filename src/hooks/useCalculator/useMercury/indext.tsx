@@ -1666,8 +1666,8 @@ export default function useMercury() {
       }
       const valueHypothesis = Number(dataCalculator.valueHypothesis)
       const typeMining = Number(dataCalculator.typeMining)
-      const qtdAnalysis = Number(dataCalculator.qtdAnalysis)
-      const analysisUnit = Number(dataCalculator.analysisUnit)
+      // const qtdAnalysis = Number(dataCalculator.qtdAnalysis)
+      // const analysisUnit = Number(dataCalculator.analysisUnit)
 
       const hgAuRatio = general ? general.HgAuRatio : 0
       const hgLostInWater = general
@@ -1707,8 +1707,9 @@ export default function useMercury() {
     [
       general,
       soilMercuryRemediation,
-      hectareToGold,
-      numberOfMachinesToGold
+      // hectareToGold,
+      // numberOfMachinesToGold
+      convertAllinGold
     ]
   )
 
