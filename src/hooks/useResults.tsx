@@ -24,6 +24,7 @@ import useFixedCalculator from './useFixedCalculator'
 import usePopSize100kmRadius from './usePopSize100kmRadius'
 // import { getGoldPrice } from '@/lib/api/gold'
 import { usePriceData } from '@/store/api'
+import { formatNumberToLocale } from '@/utils/formatNumber'
 
 export interface textImpactProps {
   paragraphy_01: string
@@ -297,8 +298,8 @@ export default function useResults({
       }
 
       paragraphy_01 = `${language.calculator.impacts.deforestation.paragraphy_01
-        .replace('$grams', goldValue.toString())
-        .replace('$hectare', hectareValue.toString())
+        .replace('$grams', formatNumberToLocale(goldValue))
+        .replace('$hectare', formatNumberToLocale(hectareValue))
         .replace(
           '$withoutOverflow',
           withoutOverflow.toString()
@@ -306,7 +307,7 @@ export default function useResults({
       paragraphy_02 =
         language.calculator.impacts.deforestation.paragraphy_02.replace(
           '$hectare',
-          hectareValue.toString()
+          formatNumberToLocale(hectareValue)
         )
     }
     setTextDeforestation({
@@ -331,7 +332,7 @@ export default function useResults({
       const volumeM3 = cubicMeters({ dataCalculator })
 
       paragraphy_01 = language.calculator.impacts.siltingOfRivers.paragraphy_01
-        .replace('$grams', goldValue.toString())
+        .replace('$grams', formatNumberToLocale(goldValue))
         .replace('$volumeM3', volumeM3)
       paragraphy_02 =
         language.calculator.impacts.siltingOfRivers.paragraphy_02.replace(
@@ -366,7 +367,7 @@ export default function useResults({
 
       paragraphy_01 =
         language.calculator.impacts.mercuryContamination.paragraphy_01
-          .replace('$people', people.toLocaleString('pt-BR'))
+          .replace('$people', formatNumberToLocale(people))
           .replace('$HgAuRatio', `${HgAuRatio}kg`)
           .replace(
             '$lossPercentHgInWater',

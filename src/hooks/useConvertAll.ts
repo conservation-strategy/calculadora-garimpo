@@ -1,8 +1,9 @@
 import { FormInputs } from '@/components/FormCalculator'
 import { analysisUnitTypes, typeMiningTypes } from '@/enums'
 import { useCallback } from 'react'
-import useAppContext from './useAppContext'
+// import useAppContext from './useAppContext'
 import useFixedCalculator from './useFixedCalculator'
+import { formatNumberToLocale } from '@/utils/formatNumber'
 
 export interface DataCalculatoProps {
   dataCalculator: FormInputs
@@ -225,7 +226,7 @@ export default function useConvertAll() {
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
-          return `${Math.round(volumeM3 * 100) / 100} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3 * 100) / 100)} m³`
         } else if(
           typeMining === typeMiningTypes.PIT &&
           analysisUnit === analysisUnitTypes.QTD_MACHINES
@@ -236,7 +237,7 @@ export default function useConvertAll() {
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
-          return `${Math.round(volumeM3 * 100) / 100} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3 * 100) / 100)} m³`
         } else if (
           typeMining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
@@ -246,7 +247,7 @@ export default function useConvertAll() {
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
-          return `${Math.round(volumeM3 * 100) / 100} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3 * 100) / 100)} m³`
         } else if (
           typeMining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.QTD_MACHINES
@@ -257,14 +258,14 @@ export default function useConvertAll() {
           const toUpturnedSoil = revolvedSoloTon + upturnedSterileTon
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
-          return `${Math.round(volumeM3 * 100) / 100} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3 * 100) / 100)} m³`
         } else if (
           typeMining === typeMiningTypes.ALLUVION &&
           analysisUnit === analysisUnitTypes.IMPACTED_AREA
         ) {
           const affectedAreaM2 = qtdAnalysis * 10000
           volumeM3 = pitDepth * affectedAreaM2
-          return `${Math.round(volumeM3 * 100) / 100} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3 * 100) / 100)} m³`
         } else if (
           typeMining === typeMiningTypes.FERRY &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
@@ -272,7 +273,7 @@ export default function useConvertAll() {
           //const productionSedimentTurnsFeatherTonnesPerMonthGold = 6.262;
           const prodSedimentoViraPlumaTon =
             productionSedimentTurnsFeatherTonnesPerMonthGold * qtdAnalysis
-          return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton`
+          return `${formatNumberToLocale(Math.round(prodSedimentoViraPlumaTon * 100) / 100)} ton`
         } else if (
           typeMining === typeMiningTypes.FERRY &&
           analysisUnit === analysisUnitTypes.QTD_FERRY
@@ -302,7 +303,7 @@ export default function useConvertAll() {
             prodOuroTotalBalsaDragagem *
             qtdAnalysis
 
-          return `${Math.round(prodSedimentoViraPlumaTon * 100) / 100} ton`
+          return `${formatNumberToLocale(Math.round(prodSedimentoViraPlumaTon * 100) / 100)} ton`
         }
       }
       return ''
