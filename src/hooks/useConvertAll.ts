@@ -216,7 +216,7 @@ export default function useConvertAll() {
           const toUpturnedSoil = upturnedSterileTon + revolvedSoloTon
           const losslessVolume = toUpturnedSoil / densityGold
           volumeM3 = losslessVolume * excavationGoldLoss
-          return `${Math.round(volumeM3)} m³`
+          return `${formatNumberToLocale(Math.round(volumeM3))} m³`
         } else if (
           typeMining === typeMiningTypes.PIT &&
           analysisUnit === analysisUnitTypes.AMOUNT_GOLD
