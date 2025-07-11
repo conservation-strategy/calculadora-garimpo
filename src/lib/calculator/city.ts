@@ -46,7 +46,7 @@ function getCities(country: countryCodes) {
 
 
 export function getCityData (country: countryCodes, city: string): CityDataNamed | null {
-    let cities = getCities(country);
+    const cities = getCities(country);
     let cityData: CityDataNamed;
     if(country === countryCodes.BR) {
         const _city = (cities as Array<CityDataBR>).find(c => c.município === city);
