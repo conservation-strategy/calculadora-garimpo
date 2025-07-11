@@ -61,6 +61,7 @@ export default async function handler(
     
     let totalImpact = 0;
     let prevRefYear = null;
+    let inflation = null;
     for (let index = 0; index < locations.length; index++) {
       // Validate each location with specific error messages
       const location = locations[index];
@@ -87,7 +88,6 @@ export default async function handler(
       }
 
       const refYear = referenceYears[location.country];
-      let inflation = null;
       if(refYear !== prevRefYear) {
         const response = await fetchDollarInflation(refYear);
         if(!response.ok) {
