@@ -1951,7 +1951,7 @@
           "deforestation": {
             "headline": "Deforestación",
             "sub_impact_reforestation": "Reforestación",
-            "sub_impact_Carbon": "Carbón",
+            "sub_impact_Carbon": "Carbono",
             "sub_impact_Bioprospecting": "Bioprospección",
             "sub_impact_forest_products": "Productos forestales",
             "sub_impact_recreation": "Recreación",
@@ -1964,7 +1964,7 @@
           },
           "siltingOfRivers": {
             "headline": "Erosión",
-            "sub_impact_pit_grounding": "Toma de tierra de cava",
+            "sub_impact_pit_grounding": "Relleno del pozo",
             "sub_impact_erosion": "Erosión",
             "sub_impact_dredging_of_sediments_in_the_river": "Dragado de sedimentos en el río.",
             "paragraphy_01": "La extracción de <strong>$grams gramos de oro</strong> genera erosión/sedimentación de <strong>$volumeM3</strong> de suelo, en promedio.",
