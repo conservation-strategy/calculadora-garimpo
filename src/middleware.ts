@@ -1,121 +1,125 @@
 // src/middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { validateApiKey, checkRateLimit, rateLimitStore } from '@/lib/api/auth/apiKeys';
 
-// request size config
+// Request size config
 const MAX_BODY_SIZE = 1024 * 50; // 50KB limit
 
-// Rate limit configuration
-const RATE_LIMIT = {
-  WINDOW_SIZE: 60 * 1000, // 1 minute in milliseconds
-  MAX_REQUESTS: 100
-};
-
-// In-memory store
-const rateLimit = new Map();
-
 const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-api-key', // Add x-api-key for future auth
-  'Access-Control-Expose-Headers': 'X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset'
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, x-api-key',
+    'Access-Control-Expose-Headers': 'X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset'
 };
-
 
 export async function middleware(request: NextRequest) {
-  // Only apply to calculate endpoint
-  if (!request.nextUrl.pathname.startsWith('/api/calculate')) {
-    return NextResponse.next();
-  }
+    // Only apply to calculate endpoint
+    if (!request.nextUrl.pathname.startsWith('/api/calculate')) {
+        return NextResponse.next();
+    }
 
-  // Handle preflight requests
-  if (request.method === 'OPTIONS') {
-    return new NextResponse(null, {
-      headers: {
-        ...corsHeaders,
-        'Access-Control-Max-Age': '86400', // 24 hours
-      },
+    // Handle preflight requests
+    if (request.method === 'OPTIONS') {
+        return new NextResponse(null, {
+            headers: {
+                ...corsHeaders,
+                'Access-Control-Max-Age': '86400',
+            },
+        });
+    }
+
+    // Check request size
+    if (request.headers.get('content-length') && 
+        parseInt(request.headers.get('content-length')!) > MAX_BODY_SIZE) {
+        return new NextResponse(
+            JSON.stringify({ 
+                error: 'Request too large',
+                details: 'Request body exceeds 50KB limit'
+            }),
+            {
+                status: 413,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...corsHeaders
+                }
+            }
+        );
+    }
+
+    // API Key validation
+    const apiKey = request.headers.get('x-api-key');
+    const origin = request.headers.get('origin');
+
+    if (!apiKey) {
+        return new NextResponse(
+            JSON.stringify({
+                error: 'Unauthorized',
+                details: 'Missing API key'
+            }),
+            {
+                status: 401,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...corsHeaders
+                }
+            }
+        );
+    }
+
+    const keyConfig = validateApiKey(apiKey, origin);
+    if (!keyConfig) {
+        return new NextResponse(
+            JSON.stringify({
+                error: 'Forbidden',
+                details: 'Invalid API key or unauthorized origin'
+            }),
+            {
+                status: 403,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...corsHeaders
+                }
+            }
+        );
+    }
+
+    // Check rate limit
+    if (!checkRateLimit(apiKey)) {
+        return new NextResponse(
+            JSON.stringify({
+                error: 'Too many requests',
+                details: `Rate limit of ${keyConfig.rateLimit} requests per minute exceeded`
+            }),
+            {
+                status: 429,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...corsHeaders,
+                    'Retry-After': '60'
+                }
+            }
+        );
+    }
+
+    // Add headers to successful response
+    const response = NextResponse.next();
+    Object.entries(corsHeaders).forEach(([key, value]) => {
+        response.headers.set(key, value);
     });
-  }
 
-  // check request size
-  if (request.headers.get('content-length') && 
-      parseInt(request.headers.get('content-length')!) > MAX_BODY_SIZE) {
-    return new NextResponse(
-      JSON.stringify({ 
-        error: 'Request too large',
-        details: 'Request body exceeds 50KB limit'
-      }),
-      {
-        status: 413,
-        headers: {
-          'Content-Type': 'application/json',
-          ...corsHeaders
-        },
-      }
-    );
-  }
-  const ip = request.ip ?? request.headers.get('x-forwarded-for') ?? 'anonymous';
-  const now = Date.now();
+    // Add rate limit info to headers
+    const rateData = rateLimitStore.get(apiKey);
+    if (rateData) {
+        response.headers.set('X-RateLimit-Limit', keyConfig.rateLimit.toString());
+        response.headers.set('X-RateLimit-Remaining', 
+            (keyConfig.rateLimit - rateData.requests.length).toString()
+        );
+    }
 
-  const windowData = rateLimit.get(ip) ?? {
-    requests: [],
-    windowStart: now,
-  };
-
-  // Clean old requests
-  windowData.requests = windowData.requests.filter(
-    (time: number) => time > now - RATE_LIMIT.WINDOW_SIZE
-  );
-
-  // Rate limit logic...
-  if (windowData.requests.length >= RATE_LIMIT.MAX_REQUESTS) {
-    const resetTime = windowData.requests[0] + RATE_LIMIT.WINDOW_SIZE;
-    return new NextResponse(
-      JSON.stringify({ 
-        error: 'Too many requests',
-        resetAt: new Date(resetTime).toISOString()
-      }),
-      {
-        status: 429,
-        headers: {
-          'Content-Type': 'application/json',
-          ...corsHeaders,
-          'X-RateLimit-Limit': RATE_LIMIT.MAX_REQUESTS.toString(),
-          'X-RateLimit-Remaining': '0',
-          'X-RateLimit-Reset': resetTime.toString(),
-          'Retry-After': Math.ceil((resetTime - now) / 1000).toString()
-        },
-      }
-    );
-  }
-
-
-  // Update rate limit data
-  windowData.requests.push(now);
-  rateLimit.set(ip, windowData);
-
-  // Add CORS headers to successful responses
-  const response = NextResponse.next();
-  // Add all CORS headers
-  Object.entries(corsHeaders).forEach(([key, value]) => {
-    response.headers.set(key, value);
-  });
-  
-  // Add rate limit headers
-  response.headers.set('X-RateLimit-Limit', RATE_LIMIT.MAX_REQUESTS.toString());
-  response.headers.set(
-    'X-RateLimit-Remaining', 
-    (RATE_LIMIT.MAX_REQUESTS - windowData.requests.length).toString()
-  );
-  response.headers.set(
-    'X-RateLimit-Reset', 
-    (now + RATE_LIMIT.WINDOW_SIZE).toString()
-  );
-
-  return response;
+    return response;
 }
-// Configure matcher for the middleware
+
 export const config = {
-  matcher: '/api/calculate'
+    matcher: '/api/calculate'
 };
