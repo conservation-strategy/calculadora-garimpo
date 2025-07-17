@@ -1,4 +1,4 @@
-import { ProductionKeyManager } from './keyManager';
+import { ApiKeyRecord, ProductionKeyManager } from './keyManager';
 
 const keyManager = new ProductionKeyManager();
 
