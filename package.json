@@ -8,7 +8,8 @@
         "start": "next start",
         "lint": "next lint --dir src",
         "prepare": "husky install",
-        "test:api": "ts-node --project tsconfig.scripts.json scripts/test-api.ts"
+        "test:api": "ts-node --project tsconfig.scripts.json scripts/test-api.ts",
+        "manage-keys": "ts-node --project tsconfig.scripts.json scripts/manage-keys.ts"
     },
     "lint-staged": {
         "src/**/*": [
@@ -50,6 +51,7 @@
         "@types/react-dom": "^18.3.0",
         "@typescript-eslint/eslint-plugin": "^5.58.0",
         "@typescript-eslint/parser": "^5.58.0",
+        "dotenv": "^17.2.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-react": "^7.32.2",

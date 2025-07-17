@@ -1,7 +1,5 @@
-// src/middleware.ts
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import { validateApiKey, checkRateLimit, rateLimitStore } from '@/lib/api/auth/apiKeys';
 
 // Request size config
 const MAX_BODY_SIZE = 1024 * 50; // 50KB limit
@@ -47,10 +45,8 @@ export async function middleware(request: NextRequest) {
         );
     }
 
-    // API Key validation
+    // Basic API key presence check (detailed validation in API route)
     const apiKey = request.headers.get('x-api-key');
-    const origin = request.headers.get('origin');
-
     if (!apiKey) {
         return new NextResponse(
             JSON.stringify({
@@ -67,55 +63,11 @@ export async function middleware(request: NextRequest) {
         );
     }
 
-    const keyConfig = validateApiKey(apiKey, origin);
-    if (!keyConfig) {
-        return new NextResponse(
-            JSON.stringify({
-                error: 'Forbidden',
-                details: 'Invalid API key or unauthorized origin'
-            }),
-            {
-                status: 403,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...corsHeaders
-                }
-            }
-        );
-    }
-
-    // Check rate limit
-    if (!checkRateLimit(apiKey)) {
-        return new NextResponse(
-            JSON.stringify({
-                error: 'Too many requests',
-                details: `Rate limit of ${keyConfig.rateLimit} requests per minute exceeded`
-            }),
-            {
-                status: 429,
-                headers: {
-                    'Content-Type': 'application/json',
-                    ...corsHeaders,
-                    'Retry-After': '60'
-                }
-            }
-        );
-    }
-
-    // Add headers to successful response
+    // Add CORS headers and continue to API route
     const response = NextResponse.next();
     Object.entries(corsHeaders).forEach(([key, value]) => {
         response.headers.set(key, value);
     });
-
-    // Add rate limit info to headers
-    const rateData = rateLimitStore.get(apiKey);
-    if (rateData) {
-        response.headers.set('X-RateLimit-Limit', keyConfig.rateLimit.toString());
-        response.headers.set('X-RateLimit-Remaining', 
-            (keyConfig.rateLimit - rateData.requests.length).toString()
-        );
-    }
 
     return response;
 }

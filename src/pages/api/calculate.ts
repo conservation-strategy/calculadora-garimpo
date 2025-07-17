@@ -6,6 +6,8 @@ import { getCityData } from '@/lib/calculator';
 import { calculateImpact } from '@/lib/api/external';
 import { brUSDInflation, inflationBackupValues, referenceYears } from '@/lib/api';
 import { fetchDollarInflation } from '@/lib/api/external/inflation';
+import { validateApiKey, checkRateLimit, rateLimitStore } from '@/lib/api/auth/apiKeys';
+
 
 export type CalculationRequest = {
   locations: CalculatorArgs[];
@@ -33,6 +35,47 @@ export default async function handler(
         error: 'Method not allowed',
         details: 'Only POST requests are accepted'
       });
+    }
+
+    // API Key validation (now in API route, not middleware)
+    const apiKey = req.headers['x-api-key'] as string;
+    const origin = req.headers.origin;
+
+    if (!apiKey) {
+        return res.status(401).json({
+            error: 'Unauthorized',
+            details: 'Missing API key'
+        });
+    }
+
+    const keyRecord = await validateApiKey(apiKey, origin);
+    if (!keyRecord) {
+        return res.status(403).json({
+            error: 'Forbidden',
+            details: 'Invalid API key or unauthorized origin'
+        });
+    }
+
+    // Rate limiting
+    if (!checkRateLimit(apiKey, keyRecord.rateLimit)) {
+        const rateData = rateLimitStore.get(apiKey);
+        res.setHeader('X-RateLimit-Limit', keyRecord.rateLimit.toString());
+        res.setHeader('X-RateLimit-Remaining', '0');
+        res.setHeader('Retry-After', '60');
+        
+        return res.status(429).json({
+            error: 'Too many requests',
+            details: `Rate limit of ${keyRecord.rateLimit} requests per minute exceeded`
+        });
+    }
+
+    // Add rate limit headers for successful requests
+    const rateData = rateLimitStore.get(apiKey);
+    if (rateData) {
+        res.setHeader('X-RateLimit-Limit', keyRecord.rateLimit.toString());
+        res.setHeader('X-RateLimit-Remaining', 
+            (keyRecord.rateLimit - rateData.requests.length).toString()
+        );
     }
 
     // Input validation with detailed errors

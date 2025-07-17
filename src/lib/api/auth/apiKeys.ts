@@ -1,52 +1,30 @@
-import devApiKeys from '@/config/apiKeys.development.json';
-import prodApiKeys from '@/config/apiKeys.json';
+import { ProductionKeyManager } from './keyManager';
 
-interface ApiKeyConfig {
-    key: string;
-    name: string;
-    rateLimit: number;
-    allowedOrigins: string[];
-}
+const keyManager = new ProductionKeyManager();
 
-interface ApiKeysConfigFile {
-    keys: ApiKeyConfig[];
-}
-
-// In-memory rate limiting
-export const rateLimitStore = new Map<string, {
+// In-memory rate limiting (same as before)
+const rateLimitStore = new Map<string, {
     requests: number[];
     windowStart: number;
 }>();
 
-const typedConfigDev = devApiKeys as ApiKeysConfigFile;
-const typedConfigProd = prodApiKeys as ApiKeysConfigFile;
-
-// Load keys at startup
-const API_KEYS = new Map<string, ApiKeyConfig>(
-    (process.env.NODE_ENV === 'development' ? typedConfigDev : typedConfigProd)
-        .keys.map(key => [key.key, key])
-);
-
-export function validateApiKey(key: string, origin?: string | null): ApiKeyConfig | null {
-    const config = API_KEYS.get(key);
+export async function validateApiKey(key: string, origin?: string | null): Promise<ApiKeyRecord | null> {
+    const record = await keyManager.validateKey(key);
     
-    if (!config) return null;
+    if (!record) return null;
     
     // Optional origin check
-    if (origin && config.allowedOrigins.length > 0) {
-        if (!config.allowedOrigins.includes(origin)) {
+    if (origin && record.allowedOrigins.length > 0) {
+        if (!record.allowedOrigins.includes(origin)) {
             return null;
         }
     }
     
-    return config;
+    return record;
 }
 
-// Optional: Rate limiting helper
-export function checkRateLimit(key: string): boolean {
+export function checkRateLimit(key: string, limit: number): boolean {
     const now = Date.now();
-    const config = API_KEYS.get(key);
-    if (!config) return false;
 
     const windowData = rateLimitStore.get(key) ?? {
         requests: [],
@@ -58,7 +36,7 @@ export function checkRateLimit(key: string): boolean {
         time => time > now - 60000
     );
 
-    if (windowData.requests.length >= config.rateLimit) {
+    if (windowData.requests.length >= limit) {
         return false;
     }
 
@@ -66,3 +44,6 @@ export function checkRateLimit(key: string): boolean {
     rateLimitStore.set(key, windowData);
     return true;
 }
+
+// Export for header access
+export { rateLimitStore };

@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2025-07-17T19:12:23.523Z",
+  "keys": [
+    {
+      "keyHash": "d8a79c649b86347e7eb545e8aa72ec4eb092f6468ba0acb869201570058cc3ca",
+      "keyId": "e0b74cd3-b354-4d17-b283-729e0c584a2c",
+      "name": "csf dev DEV",
+      "environment": "dev",
+      "partner": "csf dev",
+      "createdAt": "2025-07-17T18:40:46.981Z",
+      "isActive": true,
+      "rateLimit": 7,
+      "allowedOrigins": [],
+      "lastUsed": "2025-07-17T19:12:23.523Z"
+    }
+  ]
+}
