@@ -7,7 +7,7 @@ const TEST_API_KEY = process.env.TEST_API_KEY;
 
 const testData = {
     locations: [{
-        city: "Alta Floresta D'Oeste",
+        city: "rio branco",
         country: "BR",
         affectedArea: 2
     }]

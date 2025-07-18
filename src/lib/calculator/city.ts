@@ -49,11 +49,11 @@ export function getCityData (country: countryCodes, city: string): CityDataNamed
     const cities = getCities(country);
     let cityData: CityDataNamed;
     if(country === countryCodes.BR) {
-        const _city = (cities as Array<CityDataBR>).find(c => c.município === city);
+        const _city = (cities as Array<CityDataBR>).find(c => c.município.toLowerCase() === city.toLowerCase());
         if(!_city) return null;
         cityData = {..._city, nome:_city.município}
     } else {
-        const _city = (cities as Array<CityDataNamed>).find(c => c.nome === city);
+        const _city = (cities as Array<CityDataNamed>).find(c => c.nome.toLowerCase() === city.toLowerCase());
         if(!_city) return null;
         cityData = _city
     }
