@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2025-07-17T19:12:23.523Z",
+  "lastUpdated": "2025-07-18T19:01:18.927Z",
   "keys": [
     {
       "keyHash": "d8a79c649b86347e7eb545e8aa72ec4eb092f6468ba0acb869201570058cc3ca",
@@ -13,6 +13,17 @@
       "rateLimit": 7,
       "allowedOrigins": [],
       "lastUsed": "2025-07-17T19:12:23.523Z"
+    },
+    {
+      "keyHash": "840fd8212d308144a5a96f36984ee176f4ffcd5cd9b407b583e35cdcfe1ab589",
+      "keyId": "39038932-c608-42cf-99dc-c63a29b12817",
+      "name": "Earth Genome TEST",
+      "environment": "test",
+      "partner": "Earth Genome",
+      "createdAt": "2025-07-18T19:01:18.926Z",
+      "isActive": true,
+      "rateLimit": 100,
+      "allowedOrigins": []
     }
   ]
 }
