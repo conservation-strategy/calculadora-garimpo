@@ -9,7 +9,7 @@
         "lint": "next lint --dir src",
         "prepare": "husky install",
         "test:api": "ts-node --project tsconfig.scripts.json scripts/test-api.ts",
-        "manage-keys": "ts-node --project tsconfig.scripts.json scripts/manage-keys.ts"
+        "generate-env-keys": "ts-node --project tsconfig.scripts.json scripts/generate-env-keys.ts"
     },
     "lint-staged": {
         "src/**/*": [
