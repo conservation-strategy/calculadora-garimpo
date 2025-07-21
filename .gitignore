@@ -33,6 +33,7 @@ public/workbox-*.js.map
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
