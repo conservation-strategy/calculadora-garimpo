@@ -173,7 +173,7 @@ Administrative regions/districts available upon request.
 ### Single Location Request
 
 ```bash
-curl -X POST https://your-domain.com/api/calculate \
+curl -X POST https://miningcalculator.conservation-strategy.org/api/calculate \
   -H "Content-Type: application/json" \
   -H "x-api-key: your_api_key_here" \
   -d '{
@@ -190,7 +190,7 @@ curl -X POST https://your-domain.com/api/calculate \
 ### Multiple Locations Request
 
 ```bash
-curl -X POST https://your-domain.com/api/calculate \
+curl -X POST https://miningcalculator.conservation-strategy.org/api/calculate \
   -H "Content-Type: application/json" \
   -H "x-api-key: your_api_key_here" \
   -d '{
@@ -212,7 +212,7 @@ curl -X POST https://your-domain.com/api/calculate \
 ### JavaScript Example
 
 ```javascript
-const response = await fetch('https://your-domain.com/api/calculate', {
+const response = await fetch('https://miningcalculator.conservation-strategy.org/api/calculate', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
