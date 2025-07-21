@@ -1,6 +1,6 @@
 import { CalculatorArgs } from "./store";
 import { calculateDeforestationImpact } from "./deforestation";
-import { countryCodes } from "@/enums";
+// import { countryCodes } from "@/enums";
 import { getCountryData } from "@/lib/calculator";
 import { calculateSiltingOfRiversImpact } from "./silting";
 import { calculateMercuryImpact } from "./mercury";
