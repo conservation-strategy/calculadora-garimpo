@@ -1,11 +1,14 @@
 import { CavaGroundingCostAuFertile, CavaGroundingCostAuNormProps, DredgingAndRiverSediments, ErosionSiltingUpProps, generalProps } from "@/types";
-import { hectareToGold, densityGold } from "./gold";
-import { CalculatorArgs, pitDepth, daysInTheYear, hoursWorkedByDredgePerDay } from "./store";
+// import { hectareToGold, densityGold } from "./gold";
+// import { pitDepth, daysInTheYear, hoursWorkedByDredgePerDay } from "./store";
+import { CalculatorArgs } from "@/lib/calculator";
 import { countryCodes } from "@/enums";
 import { getCityData } from "@/lib/calculator";
 import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
 import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
+import { densityGold, hectareToGold } from "./gold";
+import { daysInTheYear, hoursWorkedByDredgePerDay, pitDepth } from "./store";
 
 
 interface SiltingOfRiversArgs extends CalculatorArgs {

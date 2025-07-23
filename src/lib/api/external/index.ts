@@ -1,9 +1,10 @@
-import { CalculatorArgs } from "./store";
-import { calculateDeforestationImpact } from "./deforestation";
-import { countryCodes } from "@/enums";
+import { CalculatorArgs } from "@/lib/calculator";
+import { 
+    calculateDeforestationImpact, 
+    calculateSiltingOfRiversImpact, 
+    calculateMercuryImpact 
+} from "@/lib/calculator";
 import { getCountryData } from "@/lib/calculator";
-import { calculateSiltingOfRiversImpact } from "./silting";
-import { calculateMercuryImpact } from "./mercury";
 
 
 /** FIXED VALUES FOR EXTERNAL API CALCULATOR

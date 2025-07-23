@@ -3,7 +3,7 @@ import { getCityData } from "@/lib/calculator";
 import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
 import { BioProspectingProps, CarbonProps, generalProps, RecoverOfTopSollProps, WoodAndNonWoodProductsProps } from "@/types";
-import { CalculatorArgs } from "./store";
+import { CalculatorArgs } from "@/lib/calculator";
 import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
 
 interface CalculateDeforestationInputs extends CalculatorArgs {

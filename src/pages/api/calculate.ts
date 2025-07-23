@@ -1,7 +1,7 @@
 import { countryCodes } from '@/enums';
 import { logApiRequest } from '@/lib/api/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { CalculatorArgs } from '@/lib/api/external/store';
+import { CalculatorArgs } from '@/lib/calculator';
 import { getCityData } from '@/lib/calculator';
 import { calculateImpact } from '@/lib/api/external';
 import { brUSDInflation, inflationBackupValues, referenceYears } from '@/lib/api';

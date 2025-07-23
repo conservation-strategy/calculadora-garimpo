@@ -1,6 +1,7 @@
 import { generalProps, HeartAttack, HypertensionProps, LossQIProps, NeuroSymptomsGarimpeiroProps, SoilMercuryRemediationProps } from "@/types";
 import { hectareToGold } from "./gold";
-import { CalculatorArgs, daysInTheYear, pitDepth, valueHypothesis } from "./store";
+import { daysInTheYear, pitDepth, valueHypothesis } from "./store";
+import { CalculatorArgs } from "@/lib/calculator";
 import { getCityData } from "@/lib/calculator";
 import { countryCodes } from "@/enums";
 import normDist from "@/utils/normDist";

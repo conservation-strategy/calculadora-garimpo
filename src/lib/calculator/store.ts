@@ -1,10 +1,3 @@
-import { countryCodes } from "@/enums";
-
-export interface CalculatorArgs {
-    city: string;
-    country: countryCodes;
-    affectedArea: number;
-}
 
 export const pitDepth = 2.5;
 export const daysInTheYear = 365;
