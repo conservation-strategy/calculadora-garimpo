@@ -133,6 +133,9 @@ export default function Calculator() {
             <br />
             <SG.Text weight="600">{unitMeasurement.paragraphy_01}</SG.Text>
             <SG.Text>{unitMeasurement.paragraphy_02}</SG.Text>
+            <br />
+            <SG.Text weight="600">{unitMeasurement.paragraphy_09}</SG.Text>
+            <SG.Text>{unitMeasurement.paragraphy_10}</SG.Text>                        
           </>
         )
       },

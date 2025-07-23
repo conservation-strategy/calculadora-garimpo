@@ -35,8 +35,33 @@ export const CardsContainer = styled.div`
   }
 `
 
+export const CardsContainerTrio = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 0 50px 0;
+  align-items: stretch;
+  
+  @media (min-width: ${breakpoints.lg}) {
+    flex-direction: row;
+  }
+`
+
+export const CardsContainerDuo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 0 50px 0;
+  align-items: stretch;
+  
+  @media (min-width: ${breakpoints.lg}) {
+    flex-direction: row;
+  }
+`
+
+
 export const Card = styled.div<CardProps>`
-  width: 100%;
+  width: 100%;  
   height: auto;
   display: ${({ align }) => (align === 'horizontal' ? 'flex' : 'block')};
   gap: 50px;

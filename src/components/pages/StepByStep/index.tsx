@@ -130,36 +130,45 @@ export default function StepByStep() {
 
         <br />
         <SG.Headline>{unitMeasurement.headline}</SG.Headline>
-        <S.CardsContainer>
+        <S.CardsContainerDuo>
           <S.Card style={{ width: '100%' }}>
             <SG.Text weight="600" size="24px">
-              {unitMeasurement.paragraphy_01}
-            </SG.Text>
-            <br />
-            <SG.Text>{unitMeasurement.paragraphy_02}</SG.Text>
-          </S.Card>
-          <S.Card style={{ width: '100%' }}>
-            <SG.Text weight="600" size="24px">
-              {unitMeasurement.paragraphy_o3}
+              {unitMeasurement.paragraphy_o3.slice(0,-1)}
             </SG.Text>
             <br />
             <SG.Text>{unitMeasurement.paragraphy_04}</SG.Text>
           </S.Card>
           <S.Card style={{ width: '100%' }}>
             <SG.Text weight="600" size="24px">
-              {unitMeasurement.paragraphy_o5}
+              {unitMeasurement.paragraphy_o7.slice(0,-1)}
+            </SG.Text>
+            <br />
+            <SG.Text>{unitMeasurement.paragraphy_08}</SG.Text>
+          </S.Card>          
+        </S.CardsContainerDuo>
+        <S.CardsContainerTrio>
+          <S.Card style={{ width: '100%' }}>
+            <SG.Text weight="600" size="24px">
+              {unitMeasurement.paragraphy_o5.slice(0,-1)}
             </SG.Text>
             <br />
             <SG.Text>{unitMeasurement.paragraphy_06}</SG.Text>
           </S.Card>
           <S.Card style={{ width: '100%' }}>
             <SG.Text weight="600" size="24px">
-              {unitMeasurement.paragraphy_o7}
+              {unitMeasurement.paragraphy_01.slice(0,-1)}
             </SG.Text>
             <br />
-            <SG.Text>{unitMeasurement.paragraphy_08}</SG.Text>
-          </S.Card>
-        </S.CardsContainer>
+            <SG.Text>{unitMeasurement.paragraphy_02}</SG.Text>
+          </S.Card>                    
+          <S.Card style={{ width: '100%' }}>
+            <SG.Text weight="600" size="24px">
+              {unitMeasurement.paragraphy_09.slice(0,-1)}
+            </SG.Text>
+            <br />
+            <SG.Text>{unitMeasurement.paragraphy_10}</SG.Text>
+          </S.Card>                    
+        </S.CardsContainerTrio>
 
         <S.WrapperText>
           <SG.Headline>{ValuesHypotheses.headline}</SG.Headline>
