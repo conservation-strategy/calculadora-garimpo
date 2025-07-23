@@ -795,6 +795,11 @@
           "error": "Alguns dos valores mencionados acima podem estar desatualizados devido a falha na API. Atualize a página e tente novamente caso precise de dados atualizados."
         }
       },
+      "map":{
+        "safeArea": {
+          "headline": "Calculadora Mapa"
+        }
+      },
       "about": {
         "headline": "Sobre a Calculadora",
         "whatIts": {
@@ -2015,6 +2020,11 @@
           "error": "Algunos de los valores mencionados anteriormente pueden estar desactualizados debido a fallos en la API. Actualice la página e intente nuevamente si necesita datos actualizados."
         }
       },
+      "map": {
+        "safeArea": {
+          "headline": "Calculadora Mapa"
+        }
+      },
       "about": {
         "headline": "Acerca de la calculadora",
         "whatIts": {
@@ -3233,6 +3243,11 @@
           ],
           "conclusion": "These indicators are subject to daily variations, which may impact the calculator's results over time.",
           "error": "Some of the values mentioned above may be outdated due to API failure. Refresh the page and try again if you need updated data."
+        }
+      },
+      "map": {
+        "safeArea": {
+          "headline": "Map Calculator"
         }
       },
       "about": {
