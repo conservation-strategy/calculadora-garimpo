@@ -10,11 +10,12 @@ export const FormControl = styled.div`
   @media(min-width: 1440px) {
     > label {
       font-size: 14px
+    }
   }
   @media(min-width: 1600px) {
     > label {
       font-size: 15px
-  }  
+    }  
   }
 `
 
