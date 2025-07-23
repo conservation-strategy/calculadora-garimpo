@@ -67,7 +67,7 @@ export function calculateSiltingOfRiversImpact({
         erosionSiltingUpImpact       
     ]);
 
-    return sumValues(impacts);
+    return impacts;
 }
 
 function cavaGroundingCostAuFertileCalculator({

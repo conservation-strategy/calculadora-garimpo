@@ -92,7 +92,7 @@ export function calculateDeforestationImpact({
         woodAndNonWoodProductsImpact
     ]);
 
-    return sumValues(impacts);    
+    return impacts;    
 }
 
 function bioprospectingCalculator({

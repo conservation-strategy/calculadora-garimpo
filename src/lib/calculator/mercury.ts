@@ -129,8 +129,8 @@ export function calculateMercuryImpact ({
         waterMercuryRemediationImpact
     ]);
 
-    console.log('impacts mercurio', impacts)
-    return sumValues(impacts);
+    // console.log('impacts mercurio', impacts)
+    return impacts;
 }
 
 function neuroSymptomsGarimpeiroCalculator ({
