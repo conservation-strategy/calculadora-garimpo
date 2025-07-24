@@ -14,6 +14,15 @@ interface CalculateDeforestationInputs extends CalculatorArgs {
     general: generalProps;
 }
 
+export interface DeforestationImpact{
+    bioProspectingImpact: number;
+    carbonImpact: number;
+    culturedAndSpeciesImpact: number;
+    recoveryOfTopsoilImpact: number;
+    recreationImpact: number;
+    woodAndNonWoodProductsImpact: number;
+}
+
 export function calculateDeforestationImpact({
     country,
     city,
@@ -28,7 +37,7 @@ export function calculateDeforestationImpact({
     // kmRotatedPerLiter,
     // priceLiterDieselUSD,
     // averageDriverSalaryFreightPerKmUSD
-} : CalculateDeforestationInputs) {
+} : CalculateDeforestationInputs) : DeforestationImpact {
     const {
         GDPperCapitaBrazilUSD,
         celciusTemperature,

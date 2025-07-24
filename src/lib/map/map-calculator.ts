@@ -4,13 +4,16 @@ import {
     calculateMercuryImpact, 
     calculateSiltingOfRiversImpact, 
     CalculatorArgs, 
-    getCountryData 
+    DeforestationImpact, 
+    getCountryData, 
+    MercuryImpact, 
+    SiltingOfRiversImpact
 } from "../calculator";
 
 export interface LocationImpact {
-    deforestation: any;
-    siltingOfRivers: any;
-    mercury: any;
+    deforestation: DeforestationImpact;
+    siltingOfRivers: SiltingOfRiversImpact;
+    mercury: MercuryImpact;
     totalImpact: number;
 }
 

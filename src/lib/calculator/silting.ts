@@ -18,6 +18,13 @@ interface SiltingOfRiversArgs extends CalculatorArgs {
     dredgingAndRiverSediments: DredgingAndRiverSediments;
 }
 
+export interface SiltingOfRiversImpact {
+    cavaGroundingCostAuNormImpact: number;
+    cavaGroundingCostAuFertileImpact: number;
+    dredgingAndRiverSedimentsImpact: number;
+    erosionSiltingUpImpact: number;
+}
+
 export function calculateSiltingOfRiversImpact({
     city,
     country,
@@ -27,7 +34,7 @@ export function calculateSiltingOfRiversImpact({
     cavaGroundingCostAuNorm,
     dredgingAndRiverSediments,
     erosionSiltingUp
-} : SiltingOfRiversArgs) {
+} : SiltingOfRiversArgs) : SiltingOfRiversImpact {
     const cavaGroundingCostAuFertileImpact = cavaGroundingCostAuFertileCalculator({
         city,
         country,
@@ -72,7 +79,7 @@ export function calculateSiltingOfRiversImpact({
         cavaGroundingCostAuNormImpact,
         cavaGroundingCostAuFertileImpact: cavaGroundingCostAuFertileImpact.value,
         dredgingAndRiverSedimentsImpact,
-        erosionSiltingUpImpact       
+        erosionSiltingUpImpact
     }
 }
 

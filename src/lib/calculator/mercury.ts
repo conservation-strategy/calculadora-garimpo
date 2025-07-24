@@ -16,6 +16,15 @@ interface MercuryArgs extends CalculatorArgs {
     soilMercuryRemediation: SoilMercuryRemediationProps
 }
 
+export interface MercuryImpact {
+    neuroSymptomsGarimpeiroImpact: number;
+    hypertensionImpact: number;
+    lossQIImpact: number;
+    heartAttackImpact: number;
+    soilMercuryRemediationImpact: number;
+    waterMercuryRemediationImpact: number;
+}
+
 export function calculateMercuryImpact ({
     affectedArea,
     city,
@@ -26,7 +35,7 @@ export function calculateMercuryImpact ({
     lossQI,
     heartAttack,
     soilMercuryRemediation
-} : MercuryArgs) {
+} : MercuryArgs) : MercuryImpact {
     const {
         cavaAverageProductivity,
         excavationGoldLoss,

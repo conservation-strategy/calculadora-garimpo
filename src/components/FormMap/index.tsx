@@ -6,13 +6,23 @@ import Options from "../FormCalculator/Options";
 import { usesValuesTypes } from "@/enums";
 import { useState } from "react";
 
-interface FormInputs {
+interface FormMapProps {
+    onSubmit: () => void;
+}
+
+export interface FormInputs {
     pitdepth: string;
     valueHypothesis: string;
     usesTypes: '1' | '2' | '3';
 }
 
-export default function FormMap() {
+export const formDefaultValues: FormInputs = {
+    pitdepth: '2.5',
+    valueHypothesis: '0.29',
+    usesTypes: '1'
+};
+
+export default function FormMap(props : FormMapProps) {
     const { state, changeCountry, changeDataCalculator } = useAppContext();
     const { language } = state
     const { calculator } = language
@@ -22,14 +32,23 @@ export default function FormMap() {
         getValues,
         watch,
         setValue,
-        setError,
-        clearErrors,
-        formState: { errors }
-    } = useForm<FormInputs>();
+        // setError,
+        // clearErrors,
+        // formState: { errors }
+    } = useForm<FormInputs>({
+        defaultValues: formDefaultValues
+    });
     const [isButtonDisabled, setIsButtonDisabled] = useState(false);
 
+    const { onSubmit } = props;
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        onSubmit();
+    };
+
     return (
-        <S.Form>
+        <S.Form onSubmit={handleSubmit}>
             <S.FormControlPit>
                 <label>{form.pitdepth.label}</label>
                 <SG.Select {...register('pitdepth')}>

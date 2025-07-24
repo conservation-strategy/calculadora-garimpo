@@ -6,14 +6,57 @@ import * as SG from '@/styles/global';
 import * as S from './style';
 import FormMap from "@/components/FormMap";
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import calculateMapImpacts, { LocationImpact } from "@/lib/map/map-calculator";
+import { countryCodes } from "@/enums";
+import { CalculatorArgs } from "@/lib/calculator";
+import { usePriceData } from "@/store/api";
+import ResultsMap, { ResultsMapProps } from "@/components/ResultsMap";
+import { valueHypothesis } from "@/lib/calculator/store";
+import { formDefaultValues } from "@/components/FormMap";
+import { ResultsProps } from "@/store/state/proveider";
+import { DataImpacts } from "@/hooks/useCalculator";
+import { consolidateImpacts } from "./location-impacts";
+import { useMapResults } from "./useMapResults";
 
+const locations = [
+    {
+        city: "Rio Branco",
+        affectedArea: 2,
+        country: countryCodes.BR
+    },
+    {
+        city: "Palca",
+        affectedArea: 4,
+        country: countryCodes.BO
+    }
+] as CalculatorArgs[];
 
 
 export default function MapCalculator() {
     const { state } = useAppContext();
     const { language } = state;
-    const { map } = language;
+    const { map, calculator } = language;
     const { safeArea } = map;
+    // const { inflationData, goldPriceData, dollarPriceData } = usePriceData();
+
+    const [formInputs, setFormInputs] = useState(formDefaultValues);
+    // const [results, setResults] = useState<ResultsMapProps | null>(null);
+    const [impacts, setImpacts] = useState<LocationImpact[]>([]);
+    const [error, setError] = useState<any>(null);
+
+    const results = useMapResults({ impacts, inputs: formInputs });
+
+    const onSubmit = () => {
+        try {
+            const impacts = calculateMapImpacts(locations);
+            setImpacts(impacts);
+            console.log(impacts)
+        } catch (err: any) {
+            console.error(err);
+        }
+    };
+    
 
     return (
         <Layout headline={safeArea.headline} safeAreaHeight="200px" align="left" isCalculator>
@@ -37,9 +80,13 @@ export default function MapCalculator() {
                             />
                         </S.Map>                        
                     </div>
-                    <FormMap/>
+                    <FormMap onSubmit={onSubmit}/>
                 </S.MapContainer>
             </SG.Container>
+            {!!results &&
+            <SG.Container>
+                <ResultsMap {...results} />
+            </SG.Container>}
         </Layout>
     )
 }
