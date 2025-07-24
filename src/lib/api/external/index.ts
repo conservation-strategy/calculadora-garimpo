@@ -5,7 +5,7 @@ import {
     calculateMercuryImpact 
 } from "@/lib/calculator";
 import { getCountryData } from "@/lib/calculator";
-import { sumValues } from "@/utils/filterValues";
+import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
 
 
 /** FIXED VALUES FOR EXTERNAL API CALCULATOR
@@ -81,11 +81,17 @@ export function calculateImpact(args: CalculatorArgs) {
             heartAttack, 
             soilMercuryRemediation
         };
-        const _def = sumValues(calculateDeforestationImpact(deforestationInputs));
-        const _silt = sumValues(calculateSiltingOfRiversImpact(siltingInputs));
-        const _mer = sumValues(calculateMercuryImpact(mercuryInputs));
+        const _def = calculateDeforestationImpact(deforestationInputs);
+        const totalDeforestation = sumValues(filterValuesBelowOnePercent(Object.values(_def)));
+
+        const _silt = calculateSiltingOfRiversImpact(siltingInputs);
+        const totalSilting = sumValues(filterValuesBelowOnePercent(Object.values(_silt)));
+
+        const _mer = calculateMercuryImpact(mercuryInputs);
+        const totalMercury = sumValues(filterValuesBelowOnePercent(Object.values(_mer)));
+
         console.log('impacts', _def, _silt, _mer)
-        const total = _def + _silt + _mer;
+        const total = totalDeforestation + totalSilting + totalMercury;
         return total;
     } catch(error: any) {
         console.error(error)

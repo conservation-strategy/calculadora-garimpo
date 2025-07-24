@@ -4,7 +4,7 @@ import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
 import { BioProspectingProps, CarbonProps, generalProps, RecoverOfTopSollProps, WoodAndNonWoodProductsProps } from "@/types";
 import { CalculatorArgs } from "@/lib/calculator";
-import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
+
 
 interface CalculateDeforestationInputs extends CalculatorArgs {
     bioprospecting: BioProspectingProps;
@@ -83,16 +83,25 @@ export function calculateDeforestationImpact({
     // console.log('culturedAndSpeciesImpact sem inflacao', culturedAndSpeciesImpact)
     // console.log('recoveryOfTopsoilImpact sem inflacao', recoveryOfTopsoilImpact)
     // console.log('woodAndNonWoodProductsImpact sem inflacao', woodAndNonWoodProductsImpact)
-    const impacts = filterValuesBelowOnePercent([
+    // const impacts = filterValuesBelowOnePercent([
+    //     bioProspectingImpact,
+    //     carbonImpact,
+    //     culturedAndSpeciesImpact,
+    //     recoveryOfTopsoilImpact,
+    //     recreationImpact,
+    //     woodAndNonWoodProductsImpact
+    // ]);
+
+    // return impacts;    
+
+    return {
         bioProspectingImpact,
         carbonImpact,
         culturedAndSpeciesImpact,
         recoveryOfTopsoilImpact,
         recreationImpact,
         woodAndNonWoodProductsImpact
-    ]);
-
-    return impacts;    
+    }
 }
 
 function bioprospectingCalculator({

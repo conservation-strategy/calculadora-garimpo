@@ -5,7 +5,6 @@ import { CalculatorArgs } from "@/lib/calculator";
 import { getCityData } from "@/lib/calculator";
 import { countryCodes } from "@/enums";
 import normDist from "@/utils/normDist";
-import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
 
 
 interface MercuryArgs extends CalculatorArgs {
@@ -120,17 +119,26 @@ export function calculateMercuryImpact ({
     // console.log('soilremed s/ inflacao', soilMercuryRemediationImpact)
     // console.log('waterremed s/ inflacao', waterMercuryRemediationImpact)
 
-    const impacts = filterValuesBelowOnePercent([
-        neuroSymptomsGarimpeiroImpact.value,
-        hypertensionImpact.value,
-        lossQIImpact.value,
-        heartAttackImpact.value,
+    // const impacts = filterValuesBelowOnePercent([
+    //     neuroSymptomsGarimpeiroImpact.value,
+    //     hypertensionImpact.value,
+    //     lossQIImpact.value,
+    //     heartAttackImpact.value,
+    //     soilMercuryRemediationImpact,
+    //     waterMercuryRemediationImpact
+    // ]);
+
+    // // console.log('impacts mercurio', impacts)
+    // return impacts;
+
+    return {
+        neuroSymptomsGarimpeiroImpact: neuroSymptomsGarimpeiroImpact.value,
+        hypertensionImpact: hypertensionImpact.value,
+        lossQIImpact: lossQIImpact.value,
+        heartAttackImpact: heartAttackImpact.value,
         soilMercuryRemediationImpact,
         waterMercuryRemediationImpact
-    ]);
-
-    // console.log('impacts mercurio', impacts)
-    return impacts;
+    }
 }
 
 function neuroSymptomsGarimpeiroCalculator ({

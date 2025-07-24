@@ -6,7 +6,6 @@ import { countryCodes } from "@/enums";
 import { getCityData } from "@/lib/calculator";
 import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
-import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
 import { densityGold, hectareToGold } from "./gold";
 import { daysInTheYear, hoursWorkedByDredgePerDay, pitDepth } from "./store";
 
@@ -60,14 +59,21 @@ export function calculateSiltingOfRiversImpact({
         erosionSiltingUp
     });
 
-    const impacts = filterValuesBelowOnePercent([
+    // const impacts = filterValuesBelowOnePercent([
+    //     cavaGroundingCostAuNormImpact,
+    //     cavaGroundingCostAuFertileImpact.value,
+    //     dredgingAndRiverSedimentsImpact,
+    //     erosionSiltingUpImpact       
+    // ]);
+
+    // return impacts;
+
+    return {
         cavaGroundingCostAuNormImpact,
-        cavaGroundingCostAuFertileImpact.value,
+        cavaGroundingCostAuFertileImpact: cavaGroundingCostAuFertileImpact.value,
         dredgingAndRiverSedimentsImpact,
         erosionSiltingUpImpact       
-    ]);
-
-    return impacts;
+    }
 }
 
 function cavaGroundingCostAuFertileCalculator({
