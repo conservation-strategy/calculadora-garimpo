@@ -11,13 +11,13 @@ interface FormMapProps {
 }
 
 export interface FormInputs {
-    pitdepth: string;
+    pitDepth: string;
     valueHypothesis: string;
     usesTypes: '1' | '2' | '3';
 }
 
 export const formDefaultValues: FormInputs = {
-    pitdepth: '2.5',
+    pitDepth: '2.5',
     valueHypothesis: '0.29',
     usesTypes: '1'
 };
@@ -51,7 +51,7 @@ export default function FormMap(props : FormMapProps) {
         <S.Form onSubmit={handleSubmit}>
             <S.FormControlPit>
                 <label>{form.pitdepth.label}</label>
-                <SG.Select {...register('pitdepth')}>
+                <SG.Select {...register('pitDepth')}>
                     <Options data={form.pitdepth.options} />
                 </SG.Select>
             </S.FormControlPit>

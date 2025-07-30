@@ -1,7 +1,7 @@
 import * as S from './style'
 import * as SG from '@/styles/global'
 import ResumeCharts, { ResumeChartsProps } from '../Charts/Resume'
-import { createRef, useCallback, useEffect, useState } from 'react'
+import { createRef, useCallback, useEffect, useMemo, useState } from 'react'
 import useAppContext from '@/hooks/useAppContext'
 import ImpactChart from '../Charts/Impact'
 import useResults, { Tabs } from '@/hooks/useResults'
@@ -13,12 +13,21 @@ import { usePriceData } from '@/store/api'
 import { ResultsProps } from '@/store/state/proveider'
 import { inflationBackupValues } from '@/lib/api'
 import { sumValues } from '@/utils/filterValues'
-import { usesValuesTypes } from '@/enums'
+import { currency, usesValuesTypes } from '@/enums'
 import { DataImpacts } from '@/hooks/useCalculator'
 import { FormInputs } from '../FormMap'
+import { CalculatorArgs } from '@/lib/calculator'
+import { hectareToGold } from '@/lib/calculator/gold'
+import useFixedCalculator from '@/hooks/useFixedCalculator'
+import toUSD from '@/utils/toUSD'
+
+export interface TotalImpactPerLocation extends CalculatorArgs {
+  totalImpact: number;
+}
 
 export interface ResultsMapProps extends ResultsProps {
-    totalImpacts: number[]; // total per location
+    // locations: CalculatorArgs[];
+    totalImpacts: TotalImpactPerLocation[];
     formInputs: FormInputs;
 }
 
@@ -32,16 +41,18 @@ export default function ResultsMap({
     mercury,
     siltingOfRivers,
     impactsNotMonetary,
-    formInputs
+    formInputs,
 } : ResultsMapProps) {
     const { state }= useAppContext();
     const { language } = state;
     const { calculator } = language;
-    const { inflationData, goldPriceData, dollarPriceData } = usePriceData();
+    const { inflationData, goldPriceData } = usePriceData();
     const { currentCountry } = useCountry();
 
     const [textUsesTypes, setTextUsesTypes] = useState('');
-    const [resumeDataChart, setResumeDataChart] = useState<ResumeChartsProps[]>([])
+    const [resumeDataChart, setResumeDataChart] = useState<ResumeChartsProps[]>([]);
+    const [totalGoldValue, setTotalGoldValue] = useState<number | null>(null);
+    const { general } = useFixedCalculator();
 
     const correctForInflation = useCallback((value: number ) => {
         try {
@@ -58,8 +69,50 @@ export default function ResultsMap({
         }
     }, [inflationData.data]);
 
+    const totalAffectedArea = useMemo(
+      () => totalImpacts.reduce((sum, location) => sum + location.affectedArea, 0),
+    [totalImpacts]);
+
+    const totalGold = useMemo(() => {
+      const pitDepth = Number(formInputs.pitDepth);
+      const cavaAverageProductivity = general ? general.cavaAverageProductivity : 0;
+      const excavationGoldLoss = general ? general.excavationGoldLoss : 0;
+      return hectareToGold({ 
+        pitDepth, 
+        area: totalAffectedArea, 
+        cavaAverageProductivity, 
+        excavationGoldLoss 
+      })
+    } , [
+      formInputs,
+      general,
+      totalAffectedArea
+    ]);
+
+    /** correct monetary values for inflation */
+    const totalImpactCorrected = useMemo(
+      () => correctForInflation(totalImpacts.reduce((sum, impact) => sum + impact.totalImpact, 0)),
+      [correctForInflation, totalImpacts]
+    );
+
+    console.log("total impacts prop", totalImpacts);
+    console.log('total correctet', totalImpactCorrected);
+
+  
+    /**calculate gold value */
+    useEffect(() => {    
+      const goldPrice = goldPriceData.data ?? currency.gold;
+      if(!goldPriceData.data) console.warn('Using backup hardcoded value for goldPrice');
+      const goldValueUSD = totalGold * goldPrice;
+      setTotalGoldValue(goldValueUSD);
+    },[
+      totalGold,
+      goldPriceData
+    ]);
+
     const handleDownload = () => {}
 
+    /** get useTypes text content */
     useEffect(() => {
         let textUsesTypes = '';
         const { calculator } = language;
@@ -72,7 +125,7 @@ export default function ResultsMap({
             textUsesTypes = valuation.planning.replace('$value', 'totalMonetary');
         } else if (useType === usesValuesTypes.technology) {
             textUsesTypes = valuation.technology
-            .replace('$valueImpact', sumValues(totalImpacts).toFixed(2))
+            .replace('$valueImpact', totalImpactCorrected.toFixed(2))
             // .replace('$valueMercury', totalMercury)
         }
         setTextUsesTypes(textUsesTypes)
@@ -83,6 +136,9 @@ export default function ResultsMap({
         language
     ]);
 
+    /** format resume chart data
+     * TODO: move block to useResutls
+    */
     useEffect(() => {
         const totalDeforestation = correctForInflation(getImpactSubtotal(deforestation));
         const totalSilting = correctForInflation(getImpactSubtotal(siltingOfRivers));
@@ -96,7 +152,7 @@ export default function ResultsMap({
                     totalSilting,
                 [calculator.resume.component_graphics_mercury]:
                     totalMercury,
-                [calculator.resume.component_graphics_gold]: 0
+                [calculator.resume.component_graphics_gold]: totalGoldValue ?? 0
             }
         ]);
     }, [
@@ -104,7 +160,8 @@ export default function ResultsMap({
         correctForInflation,
         deforestation,
         siltingOfRivers,
-        mercury
+        mercury,
+        totalGoldValue
     ]);
 
     return (
@@ -154,9 +211,11 @@ export default function ResultsMap({
               size="30px"
               style={{ marginBottom: 0 }}
             >
-              {correctForInflation(sumValues(totalImpacts))}
+              {toUSD(totalImpactCorrected)}
             </SG.Text>
-            <SG.Text size="15px">{calculator.resume.TextTotalImpacts.impactedArea}</SG.Text>
+            <SG.Text size="15px">
+              {calculator.resume.TextTotalImpacts.impactedArea.replace('$value', `${totalAffectedArea}`)}
+            </SG.Text>
             <br />
             <br />
             <SG.Text>{calculator.resume.total_gold}</SG.Text>
@@ -166,9 +225,11 @@ export default function ResultsMap({
               size="30px"
               style={{ marginBottom: 0 }}
             >
-              {"totalGold"}
+              {toUSD(totalGoldValue ?? 0)}
             </SG.Text>
-            <SG.Text size="15px">{calculator.resume.TextTotalImpacts.amoutGold}</SG.Text>
+            <SG.Text size="15px">
+              {calculator.resume.TextTotalImpacts.amoutGold.replace('$value', `${totalGold}`)}
+            </SG.Text>
             <br />
             <br />
             <SG.Text>{calculator.resume.total_monetary}</SG.Text>
@@ -178,7 +239,7 @@ export default function ResultsMap({
               size="30px"
               style={{ marginBottom: 0 }}
             >
-              {"totalMonetary"}
+              {toUSD(totalImpactCorrected + (totalGoldValue ?? 0))}
             </SG.Text>
             <SG.Text size="15px">{calculator.resume.custom_label_monetary_total}</SG.Text>
           </S.ValuesWrapper>

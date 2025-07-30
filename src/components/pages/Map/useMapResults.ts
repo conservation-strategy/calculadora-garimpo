@@ -2,17 +2,19 @@ import { DataImpacts } from "@/hooks/useCalculator";
 import { consolidateImpacts } from "./location-impacts";
 import useAppContext from "@/hooks/useAppContext";
 import { useEffect, useState } from "react";
-import { ResultsMapProps } from "@/components/ResultsMap";
+import { ResultsMapProps, TotalImpactPerLocation } from "@/components/ResultsMap";
 import { LocationImpact } from "@/lib/map/map-calculator";
 import { FormInputs } from "@/components/FormMap";
-
+import { CalculatorArgs } from "@/lib/calculator";
 
 export const useMapResults = ({
     impacts,
-    inputs
+    inputs,
+    locations
 } : {
     impacts: LocationImpact[],
-    inputs: FormInputs
+    inputs: FormInputs,
+    locations: CalculatorArgs[]
 }) => {
     const { state } = useAppContext();
     const { language } = state;
@@ -71,7 +73,7 @@ export const useMapResults = ({
             },
             {
                 name: mercuryContamination.sub_impact_loss_of_Qi_in_Fetuses,
-                value: consolidatedImpacts.mercury.lossQIImpact
+                value: consolidatedImpacts.mercury.lossIQImpact
             },
             {
                 name: mercuryContamination.sub_impact_neuropsychological_symptoms,
@@ -87,11 +89,19 @@ export const useMapResults = ({
             }
         ]
 
+        const totalImpactsPerLocation: TotalImpactPerLocation[] = [];
+        consolidatedImpacts.originalTotalImpacts.map((impact, index) => {
+            totalImpactsPerLocation.push({
+                ...locations[index],
+                totalImpact: impact
+            });
+        })
+
         setResults({
             deforestation: deforestatioData,
             siltingOfRivers: siltingOfRiversData,
             mercury: mercuryData,
-            totalImpacts: consolidatedImpacts.originalTotalImpacts,
+            totalImpacts: totalImpactsPerLocation,
             impactsNotMonetary: [],
             formInputs: inputs
         })

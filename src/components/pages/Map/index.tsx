@@ -21,11 +21,6 @@ import { useMapResults } from "./useMapResults";
 
 const locations = [
     {
-        city: "Rio Branco",
-        affectedArea: 2,
-        country: countryCodes.BR
-    },
-    {
         city: "Palca",
         affectedArea: 4,
         country: countryCodes.BO
@@ -45,7 +40,7 @@ export default function MapCalculator() {
     const [impacts, setImpacts] = useState<LocationImpact[]>([]);
     const [error, setError] = useState<any>(null);
 
-    const results = useMapResults({ impacts, inputs: formInputs });
+    const results = useMapResults({ impacts, inputs: formInputs, locations });
 
     const onSubmit = () => {
         try {

@@ -7,7 +7,9 @@ import {
     DeforestationImpact, 
     getCountryData, 
     MercuryImpact, 
-    SiltingOfRiversImpact
+    MercuryNotMonetary, 
+    SiltingOfRiversImpact,
+    SiltingOfRiversNotMonetary
 } from "../calculator";
 
 export interface LocationImpact {
@@ -15,6 +17,10 @@ export interface LocationImpact {
     siltingOfRivers: SiltingOfRiversImpact;
     mercury: MercuryImpact;
     totalImpact: number;
+    notMonetary: {
+        mercury: MercuryNotMonetary;
+        siltingOfRivers: SiltingOfRiversNotMonetary;
+    }
 }
 
 export default function calculateMapImpacts(args : CalculatorArgs[]) {
@@ -68,14 +74,20 @@ export default function calculateMapImpacts(args : CalculatorArgs[]) {
         const mercury = calculateMercuryImpact(mercuryInputs);
         const totalImpact = 
             sumValues(filterValuesBelowOnePercent(Object.values(deforestation))) + 
-            sumValues(filterValuesBelowOnePercent(Object.values(siltingOfRivers))) + 
-            sumValues(filterValuesBelowOnePercent(Object.values(mercury)));
+            sumValues(filterValuesBelowOnePercent(Object.values(siltingOfRivers).filter(value => typeof value === 'number'))) + 
+            sumValues(filterValuesBelowOnePercent(Object.values(mercury).filter(value => typeof value === 'number')));
+
+        const notMonetary = {
+            mercury: mercury.notMonetary,
+            siltingOfRivers: siltingOfRivers.notMonetary
+        };
         
         impacts.push({
             deforestation,
             siltingOfRivers,
             mercury,
-            totalImpact
+            totalImpact,
+            notMonetary
         });
     }
 

@@ -85,10 +85,10 @@ export function calculateImpact(args: CalculatorArgs) {
         const totalDeforestation = sumValues(filterValuesBelowOnePercent(Object.values(_def)));
 
         const _silt = calculateSiltingOfRiversImpact(siltingInputs);
-        const totalSilting = sumValues(filterValuesBelowOnePercent(Object.values(_silt)));
+        const totalSilting = sumValues(filterValuesBelowOnePercent(Object.values(_silt).filter(value => typeof value === 'number')));
 
         const _mer = calculateMercuryImpact(mercuryInputs);
-        const totalMercury = sumValues(filterValuesBelowOnePercent(Object.values(_mer)));
+        const totalMercury = sumValues(filterValuesBelowOnePercent(Object.values(_mer).filter(value => typeof value === 'number')));
 
         console.log('impacts', _def, _silt, _mer)
         const total = totalDeforestation + totalSilting + totalMercury;

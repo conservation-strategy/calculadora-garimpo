@@ -3,10 +3,15 @@ import { DeforestationImpact } from "@/lib/calculator/deforestation";
 import { SiltingOfRiversImpact } from "@/lib/calculator/silting";
 import { MercuryImpact } from "@/lib/calculator/mercury";
 
+
+export type SiltingOfRiversImpactWithoutNotMonetary = Omit<SiltingOfRiversImpact, 'notMonetary'>;
+export type MercuryImpactWithoutNotMonetary = Omit<MercuryImpact, 'notMonetary'>;
+
+
 export interface ConsolidatedImpacts {
     deforestation: DeforestationImpact;
-    siltingOfRivers: SiltingOfRiversImpact;
-    mercury: MercuryImpact;
+    siltingOfRivers: SiltingOfRiversImpactWithoutNotMonetary;
+    mercury: MercuryImpactWithoutNotMonetary;
     totalImpact: number;
     originalTotalImpacts: number[];
 }
@@ -31,7 +36,7 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
             mercury: {
                 neuroSymptomsGarimpeiroImpact: 0,
                 hypertensionImpact: 0,
-                lossQIImpact: 0,
+                lossIQImpact: 0,
                 heartAttackImpact: 0,
                 soilMercuryRemediationImpact: 0,
                 waterMercuryRemediationImpact: 0
@@ -61,7 +66,7 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
         mercury: {
             neuroSymptomsGarimpeiroImpact: 0,
             hypertensionImpact: 0,
-            lossQIImpact: 0,
+            lossIQImpact: 0,
             heartAttackImpact: 0,
             soilMercuryRemediationImpact: 0,
             waterMercuryRemediationImpact: 0
@@ -88,7 +93,7 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
         // Consolidate mercury impacts
         acc.mercury.neuroSymptomsGarimpeiroImpact += impact.mercury.neuroSymptomsGarimpeiroImpact;
         acc.mercury.hypertensionImpact += impact.mercury.hypertensionImpact;
-        acc.mercury.lossQIImpact += impact.mercury.lossQIImpact;
+        acc.mercury.lossIQImpact += impact.mercury.lossIQImpact;
         acc.mercury.heartAttackImpact += impact.mercury.heartAttackImpact;
         acc.mercury.soilMercuryRemediationImpact += impact.mercury.soilMercuryRemediationImpact;
         acc.mercury.waterMercuryRemediationImpact += impact.mercury.waterMercuryRemediationImpact;

@@ -16,13 +16,24 @@ interface MercuryArgs extends CalculatorArgs {
     soilMercuryRemediation: SoilMercuryRemediationProps
 }
 
+export interface MercuryNotMonetary {
+    mercuryInHair: number;
+    porcentNascidosVivosPerdaQIAcimaDe2Pts: number;
+    qtdOfMinersAffected: number;
+    toMethylatedWater: number;
+    toPopulationAffectedMercuryHair: number;
+    menOver40InTheRegionIn27Years: number;
+    peopleAbove20YearsoldInTheRegionIn52Years: number;
+}
+
 export interface MercuryImpact {
     neuroSymptomsGarimpeiroImpact: number;
     hypertensionImpact: number;
-    lossQIImpact: number;
+    lossIQImpact: number;
     heartAttackImpact: number;
     soilMercuryRemediationImpact: number;
     waterMercuryRemediationImpact: number;
+    notMonetary: MercuryNotMonetary;
 }
 
 export function calculateMercuryImpact ({
@@ -76,7 +87,7 @@ export function calculateMercuryImpact ({
         hypertension
     });
 
-    const lossQIImpact = lossQICalculator({
+    const lossIQImpact = lossQICalculator({
         city,
         country,
         area: affectedArea,
@@ -140,13 +151,32 @@ export function calculateMercuryImpact ({
     // // console.log('impacts mercurio', impacts)
     // return impacts;
 
+    const { mercuryInHair, porcentNascidosVivosPerdaQIAcimaDe2Pts } = lossIQImpact;
+    const { 
+        toMethylatedWater, 
+        toPopulationAffectedMercuryHair, 
+        menOver40InTheRegionIn27Years 
+    } = heartAttackImpact;
+    const { peopleAbove20YearsoldInTheRegionIn52Years } = hypertensionImpact;
+    const { qtdOfMinersAffected } = neuroSymptomsGarimpeiroImpact;
+
     return {
         neuroSymptomsGarimpeiroImpact: neuroSymptomsGarimpeiroImpact.value,
         hypertensionImpact: hypertensionImpact.value,
-        lossQIImpact: lossQIImpact.value,
+        lossIQImpact: lossIQImpact.value,
         heartAttackImpact: heartAttackImpact.value,
         soilMercuryRemediationImpact,
-        waterMercuryRemediationImpact
+        waterMercuryRemediationImpact,
+        notMonetary: {
+            mercuryInHair,
+            porcentNascidosVivosPerdaQIAcimaDe2Pts,
+            qtdOfMinersAffected,
+            toMethylatedWater, 
+            toPopulationAffectedMercuryHair, 
+            menOver40InTheRegionIn27Years,
+            peopleAbove20YearsoldInTheRegionIn52Years
+
+        }
     }
 }
 
@@ -865,10 +895,10 @@ function lossQICalculator ({
     const toLossQIFetuses = daly * aDALYUSD
 
     return {
-    concentrationMediaMercuryHair,
-    porcentNascidosVivosPerdaQIAcimaDe2Pts:
-        porcentNascidosVivosPerdaQIAcimaDe2PtsFinal2, //porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
-    value: toLossQIFetuses
+        mercuryInHair: concentrationMediaMercuryHair,
+        porcentNascidosVivosPerdaQIAcimaDe2Pts:
+            porcentNascidosVivosPerdaQIAcimaDe2PtsFinal2, //porcentNascidosVivosPerdaQIAcimaDe2PtsValue,
+        value: toLossQIFetuses
     }
 }
 
