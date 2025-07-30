@@ -23,7 +23,7 @@ export interface LocationImpact {
     }
 }
 
-export default function calculateMapImpacts(args : CalculatorArgs[]) {
+export function calculateMapImpacts(args : CalculatorArgs[]) {
     const impacts: LocationImpact[] = [];
 
     for(let loc of args) {

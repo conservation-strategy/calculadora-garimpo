@@ -7,7 +7,7 @@ import * as S from './style';
 import FormMap from "@/components/FormMap";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import calculateMapImpacts, { LocationImpact } from "@/lib/map/map-calculator";
+import { calculateMapImpacts, LocationImpact } from "@/lib/map";
 import { countryCodes } from "@/enums";
 import { CalculatorArgs } from "@/lib/calculator";
 import { usePriceData } from "@/store/api";
