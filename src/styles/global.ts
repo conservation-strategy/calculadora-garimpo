@@ -225,6 +225,18 @@ export const Text = styled.p<TextProps>`
   }
 `
 
+export const OList = styled.ol<TextProps>`
+  font-size: ${({ size }) => (size ? size : '14px')};
+  line-height: 150%;
+  font-weight: ${({ weight }) => (weight ? weight : '400')};
+  color: ${({ color }) => (color ? color : '#000')};
+  margin-left: 1.25em;
+  text-align: ${({ align }) => (align ? align : 'left')};
+  @media (min-width: ${breakpoints.md}) {
+    font-size: ${({ size }) => (size ? size : '18px')};
+  }
+`
+
 export const Headline = styled.h2<TextProps>`
   font-family: ${doppioOne.style.fontFamily}, sans-serif;
   font-size: ${({ size }) => (size ? size : '25px')};

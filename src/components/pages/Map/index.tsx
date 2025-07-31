@@ -60,7 +60,7 @@ export default function MapCalculator() {
             description={seoMetadata.calculator.description}
             image={seoMetadata.calculator.image}
             />
-            <SG.Container fontSize='12.8px' style={{ paddingLeft: 0 }}>
+            <SG.Container fontSize='12.8px'>
                 <S.MapContainerGrid>
                     {/* <S.FormGuideContainer> */}
                         <div 
@@ -76,15 +76,12 @@ export default function MapCalculator() {
                         </div>
                         <S.GuideContainer>
                             <SG.Text>
-                                Essa é uma integração com o mapa interativo da Amazon Mining Watch.
+                                Essa é uma integração da <strong>Calculadora de Impactos do Garimpo</strong> com o mapa interativo da <strong>Amazon Mining Watch&copy;</strong>.
                                 <br/>
                                 <br/>
                                 Para usar:                 
-                                <ol
-                                style={{
-                                    marginLeft: '2em'
-                                }}
-                                >
+                            </SG.Text>
+                                <SG.OList>
                                     <li style={{ marginBlock: '1em'}}>
                                         Foque o mapa na área desejada
                                     </li>
@@ -94,8 +91,7 @@ export default function MapCalculator() {
                                     <li style={{ marginBlock: '1em'}}>
                                         Clique em calcular
                                     </li>
-                                </ol>
-                            </SG.Text>
+                                </SG.OList>                       
                         </S.GuideContainer>
                         <S.FormWrapper>
                             <FormMap onSubmit={onSubmit}/>

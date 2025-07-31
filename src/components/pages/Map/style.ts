@@ -38,8 +38,12 @@ import styled from 'styled-components'
 //   }
 // `
 export const GuideContainer = styled.div`
-  padding: 1.25em 1.25em 0 0;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
   grid-column: 1 / span 12;
+  height: fit-content;
   @media(min-width: ${breakpoints.lg}) {
     grid-column: 1 / span 4;
   }
@@ -49,8 +53,10 @@ export const FormWrapper = styled.div`
   position relative;
   z-index:2;
   grid-column: 1 / span 12;
+  grid-row-start: 3;
   @media(min-width: ${breakpoints.lg}) {
     grid-column: 1 / span 4;
+    grid-row-start: 2;
   }
 `
 
@@ -74,22 +80,24 @@ export const MapContainerGrid = styled.div`
 
 export const Map = styled.div`
   grid-column: 1 / span 12;
+  grid-row-start: 2;
   position: relative;
   z-index: 1;
   aspect-ratio: 3 / 4;
-  padding: 2.5em 2em 2.5em 2em;
-  background: #ffffff;
-  box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
-  border-radius: 20px;
+  background: transparent;
 
   @media(min-width: ${breakpoints.md}) {
     aspect-ratio: 1;
   }
 
   @media(min-width: ${breakpoints.lg}) {
+      border-radius: 20px;
+    background: #ffffff;
+    box-shadow: 0px 0px 41.8133px rgba(0, 0, 0, 0.15);
+    padding: 2em;
     aspect-ratio: 4 / 3;
     grid-column: 5 / span 8;
-    grid-row: 1 / span 2;
+    grid-row: 1 / span 3;
   }
 
 `
