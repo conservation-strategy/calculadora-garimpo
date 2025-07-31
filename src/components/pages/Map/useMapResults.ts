@@ -95,13 +95,16 @@ export const useMapResults = ({
                 ...locations[index],
                 totalImpact: impact
             });
-        })
+        });
+
+        const totalGold = impacts.reduce((sum, impact) => sum + impact.totalGold, 0);
 
         setResults({
             deforestation: deforestatioData,
             siltingOfRivers: siltingOfRiversData,
             mercury: mercuryData,
             totalImpacts: totalImpactsPerLocation,
+            totalGold,
             impactsNotMonetary: [],
             formInputs: inputs
         })

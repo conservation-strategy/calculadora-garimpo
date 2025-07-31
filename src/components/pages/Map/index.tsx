@@ -44,7 +44,7 @@ export default function MapCalculator() {
 
     const onSubmit = () => {
         try {
-            const impacts = calculateMapImpacts(locations);
+            const impacts = calculateMapImpacts({ locations, pitDepth: Number(formInputs.pitDepth) });
             setImpacts(impacts);
             console.log(impacts)
         } catch (err: any) {
@@ -61,22 +61,62 @@ export default function MapCalculator() {
             image={seoMetadata.calculator.image}
             />
             <SG.Container fontSize='12.8px' style={{ paddingLeft: 0 }}>
-                <S.MapContainer>
-                    <div>
-                        <SG.Headline style={{ transform: 'translateY(-1.5rem)' }}>
-                            {safeArea.headline}
-                        </SG.Headline>
-                        <S.Map>
-                            <Image
-                            src={'/assets/images/AMW_map.png'}
-                            alt="map"
-                            fill
-                            style={{ objectFit: 'cover' }}
-                            />
-                        </S.Map>                        
-                    </div>
-                    <FormMap onSubmit={onSubmit}/>
-                </S.MapContainer>
+                <S.MapContainerGrid>
+                    {/* <S.FormGuideContainer> */}
+                        <div 
+                        style={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0
+                        }}
+                        >
+                            <SG.Headline style={{ transform: 'translateY(-1.5rem)' }}>
+                                {safeArea.headline}
+                            </SG.Headline>
+                        </div>
+                        <S.GuideContainer>
+                            <SG.Text>
+                                Essa é uma integração com o mapa interativo da Amazon Mining Watch.
+                                <br/>
+                                <br/>
+                                Para usar:                 
+                                <ol
+                                style={{
+                                    marginLeft: '2em'
+                                }}
+                                >
+                                    <li style={{ marginBlock: '1em'}}>
+                                        Foque o mapa na área desejada
+                                    </li>
+                                    <li style={{ marginBlock: '1em'}}>
+                                        Altere os parâmetros do formulário de acordo com o caso analisado
+                                    </li>
+                                    <li style={{ marginBlock: '1em'}}>
+                                        Clique em calcular
+                                    </li>
+                                </ol>
+                            </SG.Text>
+                        </S.GuideContainer>
+                        <S.FormWrapper>
+                            <FormMap onSubmit={onSubmit}/>
+                        </S.FormWrapper>                        
+                    {/* </S.FormGuideContainer> */}
+                    <S.Map>
+                        {/* <Image
+                        src={'/assets/images/AMW_map.png'}
+                        alt="map"
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        /> */}
+                        <iframe
+                        src="https://amazonminingwatch.org/en"
+                        width="100%"
+                        height="100%"
+                        title="Amazon Mining Watch"
+                        >                                
+                        </iframe>
+                    </S.Map>                                            
+                </S.MapContainerGrid>
             </SG.Container>
             {!!results &&
             <SG.Container>

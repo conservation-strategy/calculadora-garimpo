@@ -13,10 +13,10 @@ import { usePriceData } from '@/store/api'
 import { ResultsProps } from '@/store/state/proveider'
 import { inflationBackupValues } from '@/lib/api'
 import { sumValues } from '@/utils/filterValues'
-import { currency, usesValuesTypes } from '@/enums'
+import { countryCodes, currency, usesValuesTypes } from '@/enums'
 import { DataImpacts } from '@/hooks/useCalculator'
 import { FormInputs } from '../FormMap'
-import { CalculatorArgs } from '@/lib/calculator'
+import { CalculatorArgs, getCountryData } from '@/lib/calculator'
 import { hectareToGold } from '@/lib/calculator/gold'
 import useFixedCalculator from '@/hooks/useFixedCalculator'
 import toUSD from '@/utils/toUSD'
@@ -28,6 +28,7 @@ export interface TotalImpactPerLocation extends CalculatorArgs {
 export interface ResultsMapProps extends ResultsProps {
     // locations: CalculatorArgs[];
     totalImpacts: TotalImpactPerLocation[];
+    totalGold: number;
     formInputs: FormInputs;
 }
 
@@ -37,6 +38,7 @@ const getImpactSubtotal = (impact: DataImpacts[]) => {
 
 export default function ResultsMap({
     totalImpacts,
+    totalGold,
     deforestation,
     mercury,
     siltingOfRivers,
@@ -52,7 +54,7 @@ export default function ResultsMap({
     const [textUsesTypes, setTextUsesTypes] = useState('');
     const [resumeDataChart, setResumeDataChart] = useState<ResumeChartsProps[]>([]);
     const [totalGoldValue, setTotalGoldValue] = useState<number | null>(null);
-    const { general } = useFixedCalculator();
+    // const { general } = useFixedCalculator();
 
     const correctForInflation = useCallback((value: number ) => {
         try {
@@ -73,21 +75,21 @@ export default function ResultsMap({
       () => totalImpacts.reduce((sum, location) => sum + location.affectedArea, 0),
     [totalImpacts]);
 
-    const totalGold = useMemo(() => {
-      const pitDepth = Number(formInputs.pitDepth);
-      const cavaAverageProductivity = general ? general.cavaAverageProductivity : 0;
-      const excavationGoldLoss = general ? general.excavationGoldLoss : 0;
-      return hectareToGold({ 
-        pitDepth, 
-        area: totalAffectedArea, 
-        cavaAverageProductivity, 
-        excavationGoldLoss 
-      })
-    } , [
-      formInputs,
-      general,
-      totalAffectedArea
-    ]);
+    // const totalGold = useMemo(() => {
+    //   const pitDepth = Number(formInputs.pitDepth);
+    //   const { general } = getCountryData(countryCodes.BO);
+    //   const cavaAverageProductivity = general ? general.cavaAverageProductivity : 0;
+    //   const excavationGoldLoss = general ? general.excavationGoldLoss : 0;
+    //   return hectareToGold({ 
+    //     pitDepth, 
+    //     area: totalAffectedArea, 
+    //     cavaAverageProductivity, 
+    //     excavationGoldLoss 
+    //   })
+    // } , [
+    //   formInputs,
+    //   totalAffectedArea
+    // ]);
 
     /** correct monetary values for inflation */
     const totalImpactCorrected = useMemo(
@@ -228,7 +230,7 @@ export default function ResultsMap({
               {toUSD(totalGoldValue ?? 0)}
             </SG.Text>
             <SG.Text size="15px">
-              {calculator.resume.TextTotalImpacts.amoutGold.replace('$value', `${totalGold}`)}
+              {calculator.resume.TextTotalImpacts.amoutGold.replace('$value', `${Math.ceil(totalGold)}`)}
             </SG.Text>
             <br />
             <br />

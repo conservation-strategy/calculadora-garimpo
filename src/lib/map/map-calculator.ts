@@ -11,22 +11,30 @@ import {
     SiltingOfRiversImpact,
     SiltingOfRiversNotMonetary
 } from "../calculator";
+import { hectareToGold } from "../calculator/gold";
 
 export interface LocationImpact {
     deforestation: DeforestationImpact;
     siltingOfRivers: SiltingOfRiversImpact;
     mercury: MercuryImpact;
     totalImpact: number;
+    totalGold: number;
     notMonetary: {
         mercury: MercuryNotMonetary;
         siltingOfRivers: SiltingOfRiversNotMonetary;
     }
 }
 
-export function calculateMapImpacts(args : CalculatorArgs[]) {
-    const impacts: LocationImpact[] = [];
+export interface MapCalculatorArgs {
+    locations: CalculatorArgs[];
+    pitDepth: number;
+}
 
-    for(let loc of args) {
+export function calculateMapImpacts(args : MapCalculatorArgs) {
+    const impacts: LocationImpact[] = [];
+    const { locations, pitDepth } = args;
+
+    for(let loc of locations) {
         const countryData = getCountryData(loc.country);
         const {
             bioprospecting,
@@ -76,6 +84,9 @@ export function calculateMapImpacts(args : CalculatorArgs[]) {
             sumValues(filterValuesBelowOnePercent(Object.values(deforestation))) + 
             sumValues(filterValuesBelowOnePercent(Object.values(siltingOfRivers).filter(value => typeof value === 'number'))) + 
             sumValues(filterValuesBelowOnePercent(Object.values(mercury).filter(value => typeof value === 'number')));
+        
+        const { cavaAverageProductivity, excavationGoldLoss } = general;
+        const totalGold = hectareToGold({ pitDepth, cavaAverageProductivity, excavationGoldLoss, area: loc.affectedArea });
 
         const notMonetary = {
             mercury: mercury.notMonetary,
@@ -87,6 +98,7 @@ export function calculateMapImpacts(args : CalculatorArgs[]) {
             siltingOfRivers,
             mercury,
             totalImpact,
+            totalGold,
             notMonetary
         });
     }

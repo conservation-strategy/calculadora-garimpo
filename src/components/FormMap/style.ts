@@ -26,15 +26,6 @@ export const Form = styled.form`
         'submit submit';
   }
   
-  @media(min-width: ${breakpoints.lg}){
-    width: 50%;
-    position: absolute;  
-    bottom: 0;
-    right: 0;
-    background: rgba(255, 255, 255, .4);
-    box-shadow: none;
-    border-radius: 20px 0 0 0;    
-  }
 `
 
 
