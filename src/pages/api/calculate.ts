@@ -5,7 +5,7 @@ import { CalculatorArgs } from '@/lib/calculator';
 import { getCityData } from '@/lib/calculator';
 import { calculateImpact } from '@/lib/api/external';
 import { brUSDInflation, inflationBackupValues, referenceYears } from '@/lib/api';
-import { fetchDollarInflation } from '@/lib/api/external/inflation';
+import { getDollarInflationForStartYear } from '@/lib/api/external/inflation';
 import { validateApiKey, checkRateLimit, rateLimitStore } from '@/lib/api/auth/apiKeys';
 
 
@@ -132,23 +132,14 @@ export default async function handler(
 
       const refYear = referenceYears[location.country];
       if(refYear !== prevRefYear) {
-        const response = await fetchDollarInflation(refYear);
-        if(!response.ok) {
-          console.log('fetch from primary source failed. Status:', response.status);
-          const fallback = await fetchDollarInflation(refYear, true);
-          if(!fallback.ok) {
-            console.error(`Failed to fetch inflation data. Status: ${fallback.status}`);
-            console.log("Using inflation backup values");
-            inflation = location.country === countryCodes.BR
-              ? brUSDInflation
-              : inflationBackupValues[location.country];
-          } else {
-            const inflationData = await fallback.json();
-            inflation = inflationData.data;
-          }
-        } else {
-          const inflationData = await response.json();
-          inflation = inflationData.data;
+        try {
+          inflation = await getDollarInflationForStartYear(refYear);
+        } catch (error) {
+          console.error(error);
+          console.log("Using inflation backup values");
+          inflation = location.country === countryCodes.BR
+            ? brUSDInflation
+            : inflationBackupValues[location.country];
         }
         prevRefYear = refYear;
       }

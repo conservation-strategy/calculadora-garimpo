@@ -54,3 +54,21 @@ export async function fetchDollarInflation(startYear: number, fallback=false) {
         status: 200
     };
 }
+
+export async function getDollarInflationForStartYear(startYear: number) {
+    const response = await fetchDollarInflation(startYear);
+    if(!response.ok) {
+        console.log('fetch from primary source failed. Status:', response.status);
+        const fallback = await fetchDollarInflation(startYear, true);
+        if(!fallback.ok) {
+            console.error(`Failed to fetch inflation data. Status: ${fallback.status}`);
+            throw new Error(`Failed to fetch inflation data. Status: ${fallback.status}`);            
+        } else {
+            const data = await fallback.json();
+            return data.data;
+        }
+    } else {
+        const data = await response.json();
+        return data.data;
+    }    
+}
