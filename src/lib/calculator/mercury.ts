@@ -12,8 +12,9 @@ interface MercuryArgs extends CalculatorArgs {
     neuroSymptomsGarimpeiro: NeuroSymptomsGarimpeiroProps;
     lossQI: LossQIProps;
     hypertension: HypertensionProps;
-    heartAttack: HeartAttack
-    soilMercuryRemediation: SoilMercuryRemediationProps
+    heartAttack: HeartAttack;
+    soilMercuryRemediation: SoilMercuryRemediationProps;
+    inflationCorrection: number;
 }
 
 export interface MercuryNotMonetary {
@@ -45,7 +46,8 @@ export function calculateMercuryImpact ({
     hypertension,
     lossQI,
     heartAttack,
-    soilMercuryRemediation
+    soilMercuryRemediation,
+    inflationCorrection
 } : MercuryArgs) : MercuryImpact {
     const {
         cavaAverageProductivity,
@@ -161,12 +163,12 @@ export function calculateMercuryImpact ({
     const { qtdOfMinersAffected } = neuroSymptomsGarimpeiroImpact;
 
     return {
-        neuroSymptomsGarimpeiroImpact: neuroSymptomsGarimpeiroImpact.value,
-        hypertensionImpact: hypertensionImpact.value,
-        lossIQImpact: lossIQImpact.value,
-        heartAttackImpact: heartAttackImpact.value,
-        soilMercuryRemediationImpact,
-        waterMercuryRemediationImpact,
+        neuroSymptomsGarimpeiroImpact: neuroSymptomsGarimpeiroImpact.value * inflationCorrection,
+        hypertensionImpact: hypertensionImpact.value * inflationCorrection,
+        lossIQImpact: lossIQImpact.value * inflationCorrection,
+        heartAttackImpact: heartAttackImpact.value * inflationCorrection,
+        soilMercuryRemediationImpact: soilMercuryRemediationImpact * inflationCorrection,
+        waterMercuryRemediationImpact: waterMercuryRemediationImpact * inflationCorrection,
         notMonetary: {
             mercuryInHair,
             porcentNascidosVivosPerdaQIAcimaDe2Pts,

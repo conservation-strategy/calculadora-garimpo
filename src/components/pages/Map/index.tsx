@@ -42,9 +42,9 @@ export default function MapCalculator() {
 
     const results = useMapResults({ impacts, inputs: formInputs, locations });
 
-    const onSubmit = () => {
+    const onSubmit = async () => {
         try {
-            const impacts = calculateMapImpacts({ locations, pitDepth: Number(formInputs.pitDepth) });
+            const impacts = await calculateMapImpacts({ locations, pitDepth: Number(formInputs.pitDepth) });
             setImpacts(impacts);
             console.log(impacts)
         } catch (err: any) {

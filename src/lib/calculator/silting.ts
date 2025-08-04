@@ -16,6 +16,7 @@ interface SiltingOfRiversArgs extends CalculatorArgs {
     cavaGroundingCostAuNorm: CavaGroundingCostAuNormProps;
     erosionSiltingUp: ErosionSiltingUpProps;
     dredgingAndRiverSediments: DredgingAndRiverSediments;
+    inflationCorrection: number;
 }
 
 export interface SiltingOfRiversNotMonetary {
@@ -38,7 +39,8 @@ export function calculateSiltingOfRiversImpact({
     cavaGroundingCostAuFertile,
     cavaGroundingCostAuNorm,
     dredgingAndRiverSediments,
-    erosionSiltingUp
+    erosionSiltingUp,
+    inflationCorrection
 } : SiltingOfRiversArgs) : SiltingOfRiversImpact {
     const cavaGroundingCostAuFertileImpact = cavaGroundingCostAuFertileCalculator({
         city,
@@ -81,10 +83,10 @@ export function calculateSiltingOfRiversImpact({
     // return impacts;
 
     return {
-        cavaGroundingCostAuNormImpact,
-        cavaGroundingCostAuFertileImpact: cavaGroundingCostAuFertileImpact.value,
-        dredgingAndRiverSedimentsImpact,
-        erosionSiltingUpImpact,
+        cavaGroundingCostAuNormImpact: cavaGroundingCostAuNormImpact * inflationCorrection,
+        cavaGroundingCostAuFertileImpact: cavaGroundingCostAuFertileImpact.value * inflationCorrection,
+        dredgingAndRiverSedimentsImpact: dredgingAndRiverSedimentsImpact * inflationCorrection,
+        erosionSiltingUpImpact: erosionSiltingUpImpact * inflationCorrection,
         notMonetary: {
             lossyVolume: cavaGroundingCostAuFertileImpact.lossyVolume
         }

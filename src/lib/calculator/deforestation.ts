@@ -12,6 +12,7 @@ interface CalculateDeforestationInputs extends CalculatorArgs {
     recoverOfTopSoll: RecoverOfTopSollProps;
     woodAndNonWoodProducts: WoodAndNonWoodProductsProps;
     general: generalProps;
+    inflationCorrection: number;
 }
 
 export interface DeforestationImpact{
@@ -31,7 +32,8 @@ export function calculateDeforestationImpact({
     carbon,
     recoverOfTopSoll,
     woodAndNonWoodProducts,
-    general
+    general,
+    inflationCorrection
     // GDPperCapitaBrazilUSD,
     // celciusTemperature,
     // kmRotatedPerLiter,
@@ -104,12 +106,12 @@ export function calculateDeforestationImpact({
     // return impacts;    
 
     return {
-        bioProspectingImpact,
-        carbonImpact,
-        culturedAndSpeciesImpact,
-        recoveryOfTopsoilImpact,
-        recreationImpact,
-        woodAndNonWoodProductsImpact
+        bioProspectingImpact: bioProspectingImpact * inflationCorrection,
+        carbonImpact: carbonImpact * inflationCorrection,
+        culturedAndSpeciesImpact: culturedAndSpeciesImpact * inflationCorrection,
+        recoveryOfTopsoilImpact: recoveryOfTopsoilImpact * inflationCorrection,
+        recreationImpact: recreationImpact * inflationCorrection,
+        woodAndNonWoodProductsImpact: woodAndNonWoodProductsImpact * inflationCorrection
     }
 }
 

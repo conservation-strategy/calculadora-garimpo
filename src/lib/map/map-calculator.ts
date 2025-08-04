@@ -12,6 +12,9 @@ import {
     SiltingOfRiversNotMonetary
 } from "../calculator";
 import { hectareToGold } from "../calculator/gold";
+import { brUSDInflation, inflationBackupValues, referenceYears } from "../api";
+import { getDollarInflationForStartYear } from "../api/external/inflation";
+import { countryCodes } from "@/enums";
 
 export interface LocationImpact {
     deforestation: DeforestationImpact;
@@ -30,11 +33,29 @@ export interface MapCalculatorArgs {
     pitDepth: number;
 }
 
-export function calculateMapImpacts(args : MapCalculatorArgs) {
+export async function calculateMapImpacts(args : MapCalculatorArgs) {
     const impacts: LocationImpact[] = [];
     const { locations, pitDepth } = args;
+    let prevRefYear = null;
+    let inflation = 0;
 
     for(let loc of locations) {
+        const refYear = referenceYears[loc.country];
+        if(refYear !== prevRefYear) {
+            try {
+                inflation = await getDollarInflationForStartYear(refYear);
+            } catch (error) {
+                console.error(error);
+                console.log("Using inflation backup values");
+                inflation = loc.country === countryCodes.BR
+                    ? brUSDInflation
+                    : inflationBackupValues[loc.country];
+            }
+            prevRefYear = refYear;
+        }
+        if(!inflation) console.error("Missing inflation value");
+        const inflationCorrection = (inflation / 100) + 1;
+
         const countryData = getCountryData(loc.country);
         const {
             bioprospecting,
@@ -58,7 +79,8 @@ export function calculateMapImpacts(args : MapCalculatorArgs) {
             carbon, 
             recoverOfTopSoll, 
             woodAndNonWoodProducts, 
-            general
+            general,
+            inflationCorrection
         };
         const siltingInputs = {
             ...loc, 
@@ -66,7 +88,8 @@ export function calculateMapImpacts(args : MapCalculatorArgs) {
             erosionSiltingUp, 
             dredgingAndRiverSediments, 
             cavaGroundingCostAuFertile, 
-            cavaGroundingCostAuNorm
+            cavaGroundingCostAuNorm,
+            inflationCorrection
         };
         const mercuryInputs = {
             ...loc,
@@ -75,7 +98,8 @@ export function calculateMapImpacts(args : MapCalculatorArgs) {
             hypertension, 
             lossQI, 
             heartAttack, 
-            soilMercuryRemediation
+            soilMercuryRemediation,
+            inflationCorrection
         };
         const deforestation = calculateDeforestationImpact(deforestationInputs);
         const siltingOfRivers = calculateSiltingOfRiversImpact(siltingInputs);

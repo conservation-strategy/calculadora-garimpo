@@ -48,57 +48,24 @@ export default function ResultsMap({
     const { state }= useAppContext();
     const { language } = state;
     const { calculator } = language;
-    const { inflationData, goldPriceData } = usePriceData();
-    const { currentCountry } = useCountry();
+    const { goldPriceData } = usePriceData();
 
     const [textUsesTypes, setTextUsesTypes] = useState('');
     const [resumeDataChart, setResumeDataChart] = useState<ResumeChartsProps[]>([]);
     const [totalGoldValue, setTotalGoldValue] = useState<number | null>(null);
-    // const { general } = useFixedCalculator();
-
-    const correctForInflation = useCallback((value: number ) => {
-        try {
-            const rate = inflationData.data 
-                ? inflationData.data 
-                : currentCountry 
-                    ? inflationBackupValues[currentCountry?.country]
-                    : null
-            if(rate === null) throw new Error("Could not retrieve inflation data from neither primary nor backup source.");
-            return value * (1 + rate / 100);
-        } catch(err: any) {
-            console.error(err);
-            return value;
-        }
-    }, [inflationData.data]);
 
     const totalAffectedArea = useMemo(
       () => totalImpacts.reduce((sum, location) => sum + location.affectedArea, 0),
     [totalImpacts]);
-
-    // const totalGold = useMemo(() => {
-    //   const pitDepth = Number(formInputs.pitDepth);
-    //   const { general } = getCountryData(countryCodes.BO);
-    //   const cavaAverageProductivity = general ? general.cavaAverageProductivity : 0;
-    //   const excavationGoldLoss = general ? general.excavationGoldLoss : 0;
-    //   return hectareToGold({ 
-    //     pitDepth, 
-    //     area: totalAffectedArea, 
-    //     cavaAverageProductivity, 
-    //     excavationGoldLoss 
-    //   })
-    // } , [
-    //   formInputs,
-    //   totalAffectedArea
-    // ]);
-
+    
     /** correct monetary values for inflation */
-    const totalImpactCorrected = useMemo(
-      () => correctForInflation(totalImpacts.reduce((sum, impact) => sum + impact.totalImpact, 0)),
-      [correctForInflation, totalImpacts]
+    const totalImpactReduced = useMemo(
+      () => totalImpacts.reduce((sum, impact) => sum + impact.totalImpact, 0),
+      [totalImpacts]
     );
 
     console.log("total impacts prop", totalImpacts);
-    console.log('total correctet', totalImpactCorrected);
+    // console.log('total correctet', totalImpactCorrected);
 
   
     /**calculate gold value */
@@ -127,7 +94,7 @@ export default function ResultsMap({
             textUsesTypes = valuation.planning.replace('$value', 'totalMonetary');
         } else if (useType === usesValuesTypes.technology) {
             textUsesTypes = valuation.technology
-            .replace('$valueImpact', totalImpactCorrected.toFixed(2))
+            .replace('$valueImpact', totalImpactReduced.toFixed(2))
             // .replace('$valueMercury', totalMercury)
         }
         setTextUsesTypes(textUsesTypes)
@@ -142,9 +109,9 @@ export default function ResultsMap({
      * TODO: move block to useResutls
     */
     useEffect(() => {
-        const totalDeforestation = correctForInflation(getImpactSubtotal(deforestation));
-        const totalSilting = correctForInflation(getImpactSubtotal(siltingOfRivers));
-        const totalMercury = correctForInflation(getImpactSubtotal(mercury));
+        const totalDeforestation = getImpactSubtotal(deforestation);
+        const totalSilting = getImpactSubtotal(siltingOfRivers);
+        const totalMercury = getImpactSubtotal(mercury);
 
         setResumeDataChart([
             {
@@ -159,7 +126,6 @@ export default function ResultsMap({
         ]);
     }, [
         calculator,
-        correctForInflation,
         deforestation,
         siltingOfRivers,
         mercury,
@@ -213,7 +179,7 @@ export default function ResultsMap({
               size="30px"
               style={{ marginBottom: 0 }}
             >
-              {toUSD(totalImpactCorrected)}
+              {toUSD(totalImpactReduced)}
             </SG.Text>
             <SG.Text size="15px">
               {calculator.resume.TextTotalImpacts.impactedArea.replace('$value', `${totalAffectedArea}`)}
@@ -241,7 +207,7 @@ export default function ResultsMap({
               size="30px"
               style={{ marginBottom: 0 }}
             >
-              {toUSD(totalImpactCorrected + (totalGoldValue ?? 0))}
+              {toUSD(totalImpactReduced + (totalGoldValue ?? 0))}
             </SG.Text>
             <SG.Text size="15px">{calculator.resume.custom_label_monetary_total}</SG.Text>
           </S.ValuesWrapper>
