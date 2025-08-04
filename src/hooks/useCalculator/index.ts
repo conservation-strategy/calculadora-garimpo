@@ -269,7 +269,7 @@ export default function useCalculator() {
         impactNotMonetary.push({
           label: language.calculator.impacts.notMonetary.lossyVolume,
           value: roundValue(lossyVolume),
-          measure: 'm3'
+          measure: 'm³'
         })
       }
 

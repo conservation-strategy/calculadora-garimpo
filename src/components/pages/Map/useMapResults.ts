@@ -1,4 +1,4 @@
-import { DataImpacts } from "@/hooks/useCalculator";
+import { DataImpacts, DataImpactsNoMonetary } from "@/hooks/useCalculator";
 import { consolidateImpacts } from "./location-impacts";
 import useAppContext from "@/hooks/useAppContext";
 import { useEffect, useState } from "react";
@@ -6,6 +6,9 @@ import { ResultsMapProps, TotalImpactPerLocation } from "@/components/ResultsMap
 import { LocationImpact } from "@/lib/map/map-calculator";
 import { FormInputs } from "@/components/FormMap";
 import { CalculatorArgs } from "@/lib/calculator";
+import roundValue from "@/utils/roundValue";
+import convertGramsToKg from "@/utils/convertGramsToKg";
+import { overflow } from "@/lib/calculator/store";
 
 export const useMapResults = ({
     impacts,
@@ -20,7 +23,7 @@ export const useMapResults = ({
     const { language } = state;
     const { calculator } = language;
     const { impacts: __impacts } = calculator;
-    const { deforestation, siltingOfRivers, mercuryContamination } = __impacts;
+    const { deforestation, siltingOfRivers, mercuryContamination, notMonetary } = __impacts;
     const [results, setResults] = useState<ResultsMapProps>();
 
     useEffect(() => {
@@ -82,11 +85,75 @@ export const useMapResults = ({
             {
                 name: mercuryContamination.sub_impact_soil_remediation,
                 value: consolidatedImpacts.mercury.soilMercuryRemediationImpact
-            },
-            {
+            }
+        ]
+        if(consolidatedImpacts.mercury.waterMercuryRemediationImpact) {
+            mercuryData.push({
                 name: mercuryContamination.sub_impact_water_remediation,
                 value: consolidatedImpacts.mercury.waterMercuryRemediationImpact
-            }
+            });
+        }
+
+        const totalGold = impacts.reduce((sum, impact) => sum + impact.totalGold, 0);
+        const totalArea = locations.reduce((sum, loc) => sum + loc.affectedArea, 0);
+        console.log('lossyVolume', consolidatedImpacts.notMonetary.lossyVolume)
+
+        const impactsNotMonetary: DataImpactsNoMonetary[] = [
+            {
+                label: notMonetary.goldGrass,
+                value: convertGramsToKg(totalGold),
+                measure: notMonetary.kgDeAu
+            },
+            {
+                label: notMonetary.proporcaoKgporHectare,
+                value: convertGramsToKg(totalGold) / totalArea,
+                measure: notMonetary.kgDeAu_ha
+            },
+            {
+                label: notMonetary.hecatereGrass,
+                value: totalArea * overflow,
+                measure: 'ha'
+            },
+            {
+                label: notMonetary.lossyVolume,
+                value: roundValue(consolidatedImpacts.notMonetary.lossyVolume),
+                measure: 'm³'
+            },
+            {
+                label: notMonetary.concentrationMediaMercuryHair,
+                value: 0,
+                measure: 'μg/g'
+            },
+            {
+                label: notMonetary.porcentNascidosVivosPerdaQIAcimaDe2Pts,
+                value: 0,
+                measure: '%'
+            },
+            {
+                label: notMonetary.toMethylatedWater,
+                value: roundValue(consolidatedImpacts.notMonetary.toMethylatedWater),
+                measure: notMonetary.GInHg
+            },
+            {
+                label: notMonetary.toPopulationAffectedMercuryHair,
+                value: Math.ceil(consolidatedImpacts.notMonetary.toPopulationAffectedMercuryHair),
+                measure: notMonetary.people
+            },
+            {
+                label: notMonetary.menOver40InTheRegionIn27Years,
+                value: Math.ceil(consolidatedImpacts.notMonetary.menOver40InTheRegionIn27Years),
+                measure: notMonetary.people
+            },
+            {
+                label: notMonetary.peopleAbove20YearsoldInTheRegionIn52Years,
+                value: Math.ceil(consolidatedImpacts.notMonetary.peopleAbove20YearsoldInTheRegionIn52Years),
+                measure: notMonetary.people
+            },
+            {
+                label: notMonetary.qtdOfMinersAffected,
+                value: Math.ceil(consolidatedImpacts.notMonetary.qtdOfMinersAffected),
+                measure: notMonetary.people
+            },
         ]
 
         const totalImpactsPerLocation: TotalImpactPerLocation[] = [];
@@ -97,15 +164,13 @@ export const useMapResults = ({
             });
         });
 
-        const totalGold = impacts.reduce((sum, impact) => sum + impact.totalGold, 0);
-
         setResults({
             deforestation: deforestatioData,
             siltingOfRivers: siltingOfRiversData,
             mercury: mercuryData,
             totalImpacts: totalImpactsPerLocation,
             totalGold,
-            impactsNotMonetary: [],
+            impactsNotMonetary,
             formInputs: inputs
         })
     }, [language, impacts]);

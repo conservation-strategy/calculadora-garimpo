@@ -12,6 +12,7 @@ export interface ConsolidatedImpacts {
     deforestation: DeforestationImpact;
     siltingOfRivers: SiltingOfRiversImpactWithoutNotMonetary;
     mercury: MercuryImpactWithoutNotMonetary;
+    notMonetary: any;
     totalImpact: number;
     originalTotalImpacts: number[];
 }
@@ -41,6 +42,7 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
                 soilMercuryRemediationImpact: 0,
                 waterMercuryRemediationImpact: 0
             },
+            notMonetary: {},
             totalImpact: 0,
             originalTotalImpacts: []
         };
@@ -71,6 +73,15 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
             soilMercuryRemediationImpact: 0,
             waterMercuryRemediationImpact: 0
         },
+        notMonetary: {
+            // mercuryInHair: 0,
+            qtdOfMinersAffected: 0,
+            toMethylatedWater: 0,
+            toPopulationAffectedMercuryHair: 0,
+            menOver40InTheRegionIn27Years: 0,
+            peopleAbove20YearsoldInTheRegionIn52Years: 0,
+            lossyVolume: 0
+        },
         totalImpact: 0,
         originalTotalImpacts: originalTotalImpacts
     };
@@ -97,6 +108,14 @@ export const consolidateImpacts = (impacts: LocationImpact[]): ConsolidatedImpac
         acc.mercury.heartAttackImpact += impact.mercury.heartAttackImpact;
         acc.mercury.soilMercuryRemediationImpact += impact.mercury.soilMercuryRemediationImpact;
         acc.mercury.waterMercuryRemediationImpact += impact.mercury.waterMercuryRemediationImpact;
+
+        // Consolidate not monetary impacts
+        acc.notMonetary.qtdOfMinersAffected += impact.mercury.notMonetary.qtdOfMinersAffected;
+        acc.notMonetary.toMethylatedWater += impact.mercury.notMonetary.toMethylatedWater;
+        acc.notMonetary.toPopulationAffectedMercuryHair += impact.mercury.notMonetary.toPopulationAffectedMercuryHair;
+        acc.notMonetary.menOver40InTheRegionIn27Years += impact.mercury.notMonetary.menOver40InTheRegionIn27Years;
+        acc.notMonetary.peopleAbove20YearsoldInTheRegionIn52Years += impact.mercury.notMonetary.peopleAbove20YearsoldInTheRegionIn52Years;
+        acc.notMonetary.lossyVolume += impact.siltingOfRivers.notMonetary.lossyVolume;
 
         // Consolidate total impact
         acc.totalImpact += impact.totalImpact;

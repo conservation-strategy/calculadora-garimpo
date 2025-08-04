@@ -24,6 +24,11 @@ const locations = [
         city: "Palca",
         affectedArea: 4,
         country: countryCodes.BO
+    },
+    {
+        city: "putumayo",
+        affectedArea: 4,
+        country: countryCodes.CO
     }
 ] as CalculatorArgs[];
 
