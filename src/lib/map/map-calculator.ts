@@ -39,7 +39,7 @@ export async function calculateMapImpacts(args : MapCalculatorArgs) {
     let prevRefYear = null;
     let inflation = 0;
 
-    for(let loc of locations) {
+    for(const loc of locations) {
         const refYear = referenceYears[loc.country];
         if(refYear !== prevRefYear) {
             try {
