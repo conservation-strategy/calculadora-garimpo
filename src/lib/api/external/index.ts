@@ -40,6 +40,7 @@ import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
 export function calculateImpact(args: CalculatorArgs) {
     try {
         const countryData = getCountryData(args.country);
+        const inflationCorrection = 1; // NOT CORRECTING (correction is being made on the totals inside the api handler)
         const {
             bioprospecting,
             carbon,
@@ -62,7 +63,8 @@ export function calculateImpact(args: CalculatorArgs) {
             carbon, 
             recoverOfTopSoll, 
             woodAndNonWoodProducts, 
-            general
+            general,
+            inflationCorrection
         };
         const siltingInputs = {
             ...args, 
@@ -70,7 +72,8 @@ export function calculateImpact(args: CalculatorArgs) {
             erosionSiltingUp, 
             dredgingAndRiverSediments, 
             cavaGroundingCostAuFertile, 
-            cavaGroundingCostAuNorm
+            cavaGroundingCostAuNorm,
+            inflationCorrection
         };
         const mercuryInputs = {
             ...args, 
@@ -79,7 +82,8 @@ export function calculateImpact(args: CalculatorArgs) {
             hypertension, 
             lossQI, 
             heartAttack, 
-            soilMercuryRemediation
+            soilMercuryRemediation,
+            inflationCorrection
         };
         const _def = calculateDeforestationImpact(deforestationInputs);
         const totalDeforestation = sumValues(filterValuesBelowOnePercent(Object.values(_def)));
