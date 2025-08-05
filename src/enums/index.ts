@@ -54,6 +54,7 @@ export enum usesValuesTypes {
 export enum ROUTE {
   home = '/',
   calculator = '/calculator',
+  map = '/map',
   about = '/about',
   contact = '/contact',
   stepByStep = '/step-by-step',

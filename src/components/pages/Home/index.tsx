@@ -23,10 +23,11 @@ export default function Home() {
         <S.Buttons>
           <SG.Button
             maxWidth={200}
-            onClick={() => route.push(ROUTE.stepByStep)}
+            onClick={() => route.push(ROUTE.map)}
             variant="primary"
           >
-            {safeArea.buttonActions.introduction}
+            {/* {safeArea.buttonActions.introduction} */}
+            Map Calculator
           </SG.Button>
           <SG.Button
             maxWidth={200}
