@@ -5,18 +5,12 @@ import seoMetadata from '@/mocks/seo_metadata.json';
 import * as SG from '@/styles/global';
 import * as S from './style';
 import FormMap from "@/components/FormMap";
-import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { calculateMapImpacts, LocationImpact } from "@/lib/map";
 import { countryCodes } from "@/enums";
 import { CalculatorArgs } from "@/lib/calculator";
-import { usePriceData } from "@/store/api";
-import ResultsMap, { ResultsMapProps } from "@/components/ResultsMap";
-import { valueHypothesis } from "@/lib/calculator/store";
+import ResultsMap from "@/components/ResultsMap";
 import { formDefaultValues } from "@/components/FormMap";
-import { ResultsProps } from "@/store/state/proveider";
-import { DataImpacts } from "@/hooks/useCalculator";
-import { consolidateImpacts } from "./location-impacts";
 import { useMapResults } from "./useMapResults";
 
 const locations = [
