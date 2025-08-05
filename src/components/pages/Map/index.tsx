@@ -97,7 +97,7 @@ export default function MapCalculator() {
                                         Adjust the form inputs as needed
                                     </li>
                                     <li style={{ marginBlock: '1em'}}>
-                                        Click 'Calculate Impacts' to see the results
+                                        Click &apos;Calculate Impacts&apos; to see the results
                                     </li>
                                 </SG.OList>                       
                         </S.GuideContainer>
