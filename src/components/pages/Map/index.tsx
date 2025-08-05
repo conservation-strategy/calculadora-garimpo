@@ -90,20 +90,20 @@ export default function MapCalculator() {
                         </div>
                         <S.GuideContainer>
                             <SG.Text>
-                                Essa é uma integração da <strong>Calculadora de Impactos do Garimpo</strong> com o mapa interativo da <strong>Amazon Mining Watch&copy;</strong>.
+                                This is an integration of the <strong>Mining Impact Calculator</strong> with the interactive map from <strong>Amazon Mining Watch&copy;</strong>.
                                 <br/>
                                 <br/>
-                                Para usar:                 
+                                How to use:                 
                             </SG.Text>
                                 <SG.OList>
                                     <li style={{ marginBlock: '1em'}}>
-                                        Foque o mapa na área desejada
+                                        Focus the map on your area of interest
                                     </li>
                                     <li style={{ marginBlock: '1em'}}>
-                                        Altere os parâmetros do formulário de acordo com o caso analisado
+                                        Adjust the form inputs as needed
                                     </li>
                                     <li style={{ marginBlock: '1em'}}>
-                                        Clique em calcular
+                                        Click 'Calculate Impacts' to see the results
                                     </li>
                                 </SG.OList>                       
                         </S.GuideContainer>
