@@ -6,7 +6,7 @@ import * as SG from '@/styles/global';
 import * as S from './style';
 import FormMap from "@/components/FormMap";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { calculateMapImpacts, LocationImpact } from "@/lib/map";
 import { countryCodes } from "@/enums";
 import { CalculatorArgs } from "@/lib/calculator";
@@ -44,6 +44,7 @@ export default function MapCalculator() {
     // const [results, setResults] = useState<ResultsMapProps | null>(null);
     const [impacts, setImpacts] = useState<LocationImpact[]>([]);
     const [error, setError] = useState<any>(null);
+    const resultsRef = useRef<HTMLDivElement>(null);
 
     const results = useMapResults({ impacts, inputs: formInputs, locations });
 
@@ -56,6 +57,14 @@ export default function MapCalculator() {
             console.error(err);
         }
     };
+
+    useEffect(() => {
+        if(results && resultsRef.current) {
+            const top = resultsRef.current.offsetTop
+            window.scrollTo({ top, behavior: 'smooth'})
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [results]);
     
 
     return (
@@ -120,7 +129,7 @@ export default function MapCalculator() {
                 </S.MapContainerGrid>
             </SG.Container>
             {!!results &&
-            <SG.Container>
+            <SG.Container ref={resultsRef}>
                 <ResultsMap {...results} />
             </SG.Container>}
         </Layout>
