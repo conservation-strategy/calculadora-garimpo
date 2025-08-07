@@ -1,7 +1,7 @@
 import { generalProps, HeartAttack, HypertensionProps, LossQIProps, NeuroSymptomsGarimpeiroProps, SoilMercuryRemediationProps } from "@/types";
 import { hectareToGold } from "./gold";
 import { CalculatorArgs, daysInTheYear, pitDepth, valueHypothesis } from "./store";
-import { getCityData } from "@/lib/calculator";
+import { getRegionData } from "@/lib/calculator";
 import { countryCodes } from "@/enums";
 import normDist from "@/utils/normDist";
 import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
@@ -18,7 +18,7 @@ interface MercuryArgs extends CalculatorArgs {
 
 export function calculateMercuryImpact ({
     affectedArea,
-    city,
+    regionId,
     country,
     general,
     neuroSymptomsGarimpeiro,
@@ -50,7 +50,7 @@ export function calculateMercuryImpact ({
     });
 
     const hypertensionImpact = hypertensionCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         cavaAverageProductivity,
@@ -68,7 +68,7 @@ export function calculateMercuryImpact ({
     });
 
     const lossQIImpact = lossQICalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         cavaAverageProductivity,
@@ -86,7 +86,7 @@ export function calculateMercuryImpact ({
     });
 
     const heartAttackImpact = heartAttackCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         general,
@@ -173,7 +173,7 @@ function neuroSymptomsGarimpeiroCalculator ({
 }
 
 function hypertensionCalculator ({
-    city,
+    regionId,
     country,
     area,
     cavaAverageProductivity,
@@ -190,7 +190,7 @@ function hypertensionCalculator ({
     hypertension
 
 } : {
-    city: string;
+    regionId: number;
     country: countryCodes;
     area: number;
     cavaAverageProductivity: number;
@@ -206,8 +206,8 @@ function hypertensionCalculator ({
     AverageFishConsumptionPerDayInRuralGrams: number;
     hypertension: HypertensionProps;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const gold = hectareToGold({
         area,
@@ -234,8 +234,8 @@ function hypertensionCalculator ({
     const constant = 0.1658
 
     const individualAverageWeight =
-        cityData.PopRuralMunicipio * ruralIndividualWeight +
-        cityData.PopUrbMunicipio * urbanindividualWeight;
+        regionData.PopRuralMunicipio * ruralIndividualWeight +
+        regionData.PopUrbMunicipio * urbanindividualWeight;
     const daysIn50years = daysInTheYear * years;
 
     const ingestionMediaDailyMicrogramMercuryUrban =
@@ -245,8 +245,8 @@ function hypertensionCalculator ({
         (AverageFishConsumptionPerDayInRuralGrams *
             levelMediumContaminationFish) / ruralIndividualWeight;
     const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG =
-        cityData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
-        cityData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
+        regionData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
+        regionData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
     const ingestionMediaMercuryDaily1IndividualInGramsPerKG =
         ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG / 1000000;
     const ingestionMediaDailyIndividualInGramsPerDaily =
@@ -258,7 +258,7 @@ function hypertensionCalculator ({
         ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG / 0.1;
     const deflectionPatternAverageMercury = concentrationMediaMercuryHair / 2;
     const rAoQuadrado = Math.pow(100, 2);
-    const popSize100kmRadius = cityData.densidadePop2060 * (Math.PI * rAoQuadrado);
+    const popSize100kmRadius = regionData.densidadePop2060 * (Math.PI * rAoQuadrado);
     const affectedPeople = toMethylatedWater / ingestionMediaMercuryEmyears;
     const toPopulationAffectedMercuryHair =
         affectedPeople < popSize100kmRadius
@@ -539,7 +539,7 @@ function hypertensionCalculator ({
 }
 
 function lossQICalculator ({
-    city,
+    regionId,
     country,
     area,
     cavaAverageProductivity,
@@ -555,7 +555,7 @@ function lossQICalculator ({
     aDALYUSD,
     lossQI
 } : {
-    city: string;
+    regionId: number;
     country: countryCodes;
     area: number;
     cavaAverageProductivity: number;
@@ -572,8 +572,8 @@ function lossQICalculator ({
     lossQI: LossQIProps;
     
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const gold = hectareToGold({
         area,
@@ -595,8 +595,8 @@ function lossQICalculator ({
     //const densityPopulationalRegionNorth2060 = 6.00696;
 
     const individualAverageWeight =
-        cityData.PopRuralMunicipio * ruralIndividualWeight +
-        cityData.PopUrbMunicipio * urbanindividualWeight;
+        regionData.PopRuralMunicipio * ruralIndividualWeight +
+        regionData.PopUrbMunicipio * urbanindividualWeight;
     const ingestionMediaDailyMicrogramMercuryUrban =
         (consumptionMediumFishByDayInGramsUrban *
             levelMediumContaminationFish) /
@@ -605,8 +605,8 @@ function lossQICalculator ({
         (AverageFishConsumptionPerDayInRuralGrams *
             levelMediumContaminationFish) / ruralIndividualWeight;
     const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG =
-        cityData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
-        cityData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
+        regionData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
+        regionData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
     const ingestionMediaMercuryDaily1IndividualInGramsPerKGperDay =
         ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG / 1000000;
     const ingestionMediaDailyIndividualInGramsPerDaily =
@@ -620,7 +620,7 @@ function lossQICalculator ({
     //console.log('concentração médio de mercurio no cabelo', concentrationMediaMercuryHair)
     const deflectionPatternAverageMercury = concentrationMediaMercuryHair / 2
     const rAoQuadrado = Math.pow(100, 2)
-    const popSize100kmRadius = cityData.densidadePop2060 * (Math.PI * rAoQuadrado);
+    const popSize100kmRadius = regionData.densidadePop2060 * (Math.PI * rAoQuadrado);
 
     const affectedPeople = toMethylatedWater / ingestionMediaMercuryIn50years
 
@@ -855,13 +855,13 @@ function lossQICalculator ({
 }
 
 function heartAttackCalculator ({
-    city,
+    regionId,
     country,
     area,
     general,
     heartAttack
 } : {
-    city: string;
+    regionId: number;
     country: countryCodes;
     area: number;
     // cavaAverageProductivity,
@@ -871,8 +871,8 @@ function heartAttackCalculator ({
     general: generalProps;
     heartAttack: HeartAttack;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const gold = hectareToGold({
         area,
@@ -900,8 +900,8 @@ function heartAttackCalculator ({
     //const accumulatedRiskMercuryInfarction = 0.0161;
 
     const individualAverageWeight =
-        cityData.PopRuralMunicipio * general.ruralIndividualWeight +
-        cityData.PopUrbMunicipio * general.urbanindividualWeight
+        regionData.PopRuralMunicipio * general.ruralIndividualWeight +
+        regionData.PopUrbMunicipio * general.urbanindividualWeight
     const daysIn50years = 365 * years
 
     const ingestionMediaDailyMicrogramMercuryUrban =
@@ -911,8 +911,8 @@ function heartAttackCalculator ({
         (general.AverageFishConsumptionPerDayInRuralGrams *
             general.levelMediumContaminationFish) / general.ruralIndividualWeight;
     const ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG =
-        cityData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
-        cityData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
+        regionData.PopRuralMunicipio * ingestionMediaDailyMicrogramMercuryRural +
+        regionData.PopUrbMunicipio * ingestionMediaDailyMicrogramMercuryUrban;
     const ingestionMediaMercuryDaily1IndividualInGramsPerKGDay =
         ingestionMediaMercuryDaily1IndividualInMicrogramsPerKG / 1000000;
     const ingestionMediaDaily1IndividualInGrams =
@@ -926,7 +926,7 @@ function heartAttackCalculator ({
 
     //const rAoQuadrado = Math.pow(100, 2)
     //const popSize100kmRadius = isRegion ? (popDensity2060 * (Math.PI * rAoQuadrado)) : (densityPopulationalRegionNorth2060 * (Math.PI * rAoQuadrado));
-    const popSize100kmRadius = cityData.densidadePop2060 * Math.pow(Math.PI * 100, 2);
+    const popSize100kmRadius = regionData.densidadePop2060 * Math.pow(Math.PI * 100, 2);
 
     const affectedPeople = toMethylatedWater / ingestionMediaMercuryEmyears;
     const toPopulationAffectedMercuryHair =
@@ -1243,8 +1243,8 @@ function soilMercuryRemediationCalculator({
     cavaAverageProductivity: number;
     excavationGoldLoss: number;
 }) {
-    // const cityData = getCityData(country, city);
-    // if(!cityData) throw new Error("Municipality data was not found.");
+    // const regionData = getRegionData(country, regionId);
+    // if(!regionData) throw new Error("Municipality data was not found.");
 
     const gold = hectareToGold({
         area,

@@ -1,7 +1,8 @@
 import { countryCodes } from "@/enums";
 
 export interface CalculatorArgs {
-    city: string;
+    // city: string;
+    regionId: number;
     country: countryCodes;
     affectedArea: number;
 }

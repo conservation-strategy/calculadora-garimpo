@@ -2,7 +2,7 @@ import { CavaGroundingCostAuFertile, CavaGroundingCostAuNormProps, DredgingAndRi
 import { hectareToGold, densityGold } from "./gold";
 import { CalculatorArgs, pitDepth, daysInTheYear, hoursWorkedByDredgePerDay } from "./store";
 import { countryCodes } from "@/enums";
-import { getCityData } from "@/lib/calculator";
+import { getRegionData } from "@/lib/calculator";
 import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
 import { filterValuesBelowOnePercent, sumValues } from "@/utils/filterValues";
@@ -17,7 +17,7 @@ interface SiltingOfRiversArgs extends CalculatorArgs {
 }
 
 export function calculateSiltingOfRiversImpact({
-    city,
+    regionId,
     country,
     affectedArea,
     general,
@@ -27,7 +27,7 @@ export function calculateSiltingOfRiversImpact({
     erosionSiltingUp
 } : SiltingOfRiversArgs) {
     const cavaGroundingCostAuFertileImpact = cavaGroundingCostAuFertileCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         cavaGroundingCostAuFertile,
@@ -35,7 +35,7 @@ export function calculateSiltingOfRiversImpact({
     });
 
     const cavaGroundingCostAuNormImpact = cavaGroundingCostAuNormCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         general,
@@ -43,7 +43,7 @@ export function calculateSiltingOfRiversImpact({
     });
 
     const dredgingAndRiverSedimentsImpact = dredgingAndRiverSedimentsCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         dredgingAndRiverSediments,
@@ -68,13 +68,13 @@ export function calculateSiltingOfRiversImpact({
 }
 
 function cavaGroundingCostAuFertileCalculator({
-    city,
+    regionId,
     country,
     area,
     cavaGroundingCostAuFertile,
     general
 } : {
-    city: string,
+    regionId: number;
     country: countryCodes;
     area: number;
     cavaGroundingCostAuFertile: CavaGroundingCostAuFertile,
@@ -89,8 +89,8 @@ function cavaGroundingCostAuFertileCalculator({
     // priceLiterDieselUSD: number;
     // averageDriverSalaryFreightPerKmUSD: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const {
         cavaAverageProductivity,
@@ -134,13 +134,13 @@ function cavaGroundingCostAuFertileCalculator({
             fertileLandVolume / excavatorQuantityM3PerYearFertileLand
             ) //ok
     const transportCostTotalFreightFertileExcavator =
-        cityData?.Distancia_Garimpo_Centro * excavatorCostPerKMUSD
+        regionData?.Distancia_Garimpo_Centro * excavatorCostPerKMUSD
     const qtLitersDieselConsumedFertil =
-        cityData?.Distancia_Garimpo_Centro / kmRotatedPerLiter
+        regionData?.Distancia_Garimpo_Centro / kmRotatedPerLiter
     const fuelCostFertileFreight =
         priceLiterDieselUSD * qtLitersDieselConsumedFertil
     const freightCostWithFertilDriver =
-        averageDriverSalaryFreightPerKmUSD * cityData?.Distancia_Garimpo_Centro
+        averageDriverSalaryFreightPerKmUSD * regionData?.Distancia_Garimpo_Centro
     const totalCostShippingFertileOneWay =
         freightCostWithFertilDriver +
         fuelCostFertileFreight +
@@ -159,13 +159,13 @@ function cavaGroundingCostAuFertileCalculator({
 }
 
 function cavaGroundingCostAuNormCalculator ({
-    city,
+    regionId,
     country,
     area,
     general,
     cavaGroundingCostAuNorm
 } : {
-    city: string;
+    regionId: number;
     country: countryCodes;
     area: number;
     general: generalProps;
@@ -179,8 +179,8 @@ function cavaGroundingCostAuNormCalculator ({
     // averageDriverSalaryFreightPerKmUSD: number;
     // priceLiterDieselUSD: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const {
         averageDepthOfFertileEarth,
@@ -205,11 +205,11 @@ function cavaGroundingCostAuNormCalculator ({
         ? 1
         : Math.ceil(normalGroundVolume / excavatorQuantityM3PerYear)
     const transportCostTotalFreightNormalExcavator =
-        cityData.Distancia_Garimpo_Centro * excavatorCostPerKMUSD
+        regionData.Distancia_Garimpo_Centro * excavatorCostPerKMUSD
     const AmountOfLitersDieselConsumed =
-        cityData.Distancia_Garimpo_Centro / kmRotatedPerLiter
+        regionData.Distancia_Garimpo_Centro / kmRotatedPerLiter
     const freightCostWithNormalDriver =
-        averageDriverSalaryFreightPerKmUSD * cityData.Distancia_Garimpo_Centro
+        averageDriverSalaryFreightPerKmUSD * regionData.Distancia_Garimpo_Centro
     const fuelCostNormalFreight =
         priceLiterDieselUSD * AmountOfLitersDieselConsumed
     const toCostNormalShippingOneWay =
@@ -227,7 +227,7 @@ function cavaGroundingCostAuNormCalculator ({
 }
 
 function dredgingAndRiverSedimentsCalculator ({
-    city,
+    regionId,
     country,
     area,
     dredgingAndRiverSediments,
@@ -235,7 +235,7 @@ function dredgingAndRiverSedimentsCalculator ({
     averageDriverSalaryFreightPerKmUSD,
     kmRotatedPerLiter
 } : {
-    city: string;
+    regionId: number
     country: countryCodes;
     area: number;
     dredgingAndRiverSediments: DredgingAndRiverSediments;
@@ -243,8 +243,8 @@ function dredgingAndRiverSedimentsCalculator ({
     averageDriverSalaryFreightPerKmUSD: number;
     kmRotatedPerLiter: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
     const affectedAreaM2 = area * 10000
     const volumeWithLoss = pitDepth * affectedAreaM2
@@ -262,13 +262,13 @@ function dredgingAndRiverSedimentsCalculator ({
             volumeLandSiltingRiver / amountOfSedimentPer1M3DredgePerYear
             )
     const shippingCostDredgeBRL =
-        cityData.Distancia_Garimpo_Centro * dredgingAndRiverSediments.transportCost1DredgeUSD
+        regionData.Distancia_Garimpo_Centro * dredgingAndRiverSediments.transportCost1DredgeUSD
     const quantityOfLitersConsumedDiesel =
-        cityData.Distancia_Garimpo_Centro / kmRotatedPerLiter
+        regionData.Distancia_Garimpo_Centro / kmRotatedPerLiter
     const fuelCostFreightDredging =
         priceLiterDieselUSD * quantityOfLitersConsumedDiesel
     const shippingCostWithDredgingDriver =
-        averageDriverSalaryFreightPerKmUSD * cityData.Distancia_Garimpo_Centro
+        averageDriverSalaryFreightPerKmUSD * regionData.Distancia_Garimpo_Centro
     const toCostShippingDredgingOneWay =
         shippingCostWithDredgingDriver +
         fuelCostFreightDredging +

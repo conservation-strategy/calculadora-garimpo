@@ -1,5 +1,5 @@
 import { countryCodes } from "@/enums";
-import { getCityData } from "@/lib/calculator";
+import { getRegionData } from "@/lib/calculator";
 import calcMontante from "@/utils/calcMontante";
 import vpl from "@/utils/vpl";
 import { BioProspectingProps, CarbonProps, generalProps, RecoverOfTopSollProps, WoodAndNonWoodProductsProps } from "@/types";
@@ -16,7 +16,7 @@ interface CalculateDeforestationInputs extends CalculatorArgs {
 
 export function calculateDeforestationImpact({
     country,
-    city,
+    regionId,
     affectedArea,
     bioprospecting,
     carbon,
@@ -47,7 +47,7 @@ export function calculateDeforestationImpact({
     });
 
     const culturedAndSpeciesImpact = culturedAndSpeciesCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         GDPperCapitaBrazilUSD,
@@ -56,7 +56,7 @@ export function calculateDeforestationImpact({
     });
 
     const recoveryOfTopsoilImpact = recoveryOfTopsoilCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         recoverOfTopSoll,
@@ -66,7 +66,7 @@ export function calculateDeforestationImpact({
     });
 
     const recreationImpact = recreationCalculator({
-        city,
+        regionId,
         country,
         area: affectedArea,
         GDPperCapitaBrazilUSD,
@@ -121,27 +121,27 @@ function carbonCalculator({
 }
 
 function culturedAndSpeciesCalculator({
-    city,
+    regionId,
     country,
     area,
     GDPperCapitaBrazilUSD,
     celciusTemperature,
     discountRate // usar a bioprospecting.discountRate
 } : {
-    city: string;
+    regionId: number;
     country: countryCodes;
     area: number;
     GDPperCapitaBrazilUSD: number;
     celciusTemperature: number;
     discountRate: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
 
-    const calc1 = 0.643 * Math.log(cityData.densidadePop2010);
+    const calc1 = 0.643 * Math.log(regionData.densidadePop2010);
     const calc2 = 1.655 * Math.log(GDPperCapitaBrazilUSD);
     const calc3 = 0.234 * celciusTemperature;
-    const calc4 = 2.145 * Math.log(cityData.Especies_por_Municipio);
+    const calc4 = 2.145 * Math.log(regionData.Especies_por_Municipio);
     const calc5 = calc1 + calc2 - calc3 + calc4;
     const calc6 = calc5 - 20.85;
     const speciesCostPerHaUSD = Math.exp(calc6);
@@ -152,10 +152,10 @@ function culturedAndSpeciesCalculator({
         discountRate,
         amounts
     );
-    // console.log('densidadePop2010', cityData.densidadePop2010)
+    // console.log('densidadePop2010', regionData.densidadePop2010)
     // console.log('gdp', GDPperCapitaBrazilUSD)
     // console.log('celsius', celciusTemperature)
-    // console.log('especies por mun', cityData.Especies_por_Municipio)    
+    // console.log('especies por mun', regionData.Especies_por_Municipio)    
     // console.log('speciesCostPerHaUSD', speciesCostPerHaUSD)
     // // console.log('amounts', amounts)
     // console.log('vpl', VPLHectareCulturedAndSpecies)
@@ -164,7 +164,7 @@ function culturedAndSpeciesCalculator({
 }
 
 function recoveryOfTopsoilCalculator({
-    city,
+    regionId,
     country,
     area,
     recoverOfTopSoll,
@@ -172,7 +172,7 @@ function recoveryOfTopsoilCalculator({
     priceLiterDieselUSD,
     averageDriverSalaryFreightPerKmUSD
 } : {
-    city: string,
+    regionId: number,
     country: countryCodes;
     area: number;
     recoverOfTopSoll: RecoverOfTopSollProps;
@@ -180,9 +180,9 @@ function recoveryOfTopsoilCalculator({
     priceLiterDieselUSD: number;
     averageDriverSalaryFreightPerKmUSD: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
-    const distanciaGarimpoCentro = cityData.Distancia_Garimpo_Centro;
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
+    const distanciaGarimpoCentro = regionData.Distancia_Garimpo_Centro;
     
     const numberOfPathsSuperficialSeddlindRecovery =
         (area * recoverOfTopSoll.superficialSeedlingsPerHa) /
@@ -217,26 +217,26 @@ function recoveryOfTopsoilCalculator({
 }
 
 function recreationCalculator ({
-    city,
+    regionId,
     country,
     area,
     GDPperCapitaBrazilUSD,
     celciusTemperature
 } : {
-    city: string,
+    regionId: number,
     country: countryCodes;
     area: number;
     GDPperCapitaBrazilUSD: number;
     celciusTemperature: number;
 }) {
-    const cityData = getCityData(country, city);
-    if(!cityData) throw new Error("Municipality data was not found.");
+    const regionData = getRegionData(country, regionId);
+    if(!regionData) throw new Error("Municipality data was not found.");
     
     const discountRate = 0.03;
-    const calculation1 = 0.562 * Math.log(cityData.densidadePop2010);
+    const calculation1 = 0.562 * Math.log(regionData.densidadePop2010);
     const calculation2 = 0.566 * Math.log(GDPperCapitaBrazilUSD);
     const calculation3 = 0.0178 * celciusTemperature;
-    const calculation4 = 1.133 * Math.log(cityData.Especies_por_Municipio);
+    const calculation4 = 1.133 * Math.log(regionData.Especies_por_Municipio);
     const calculation5 = calculation1 + calculation2 + calculation3 + calculation4;
     const calculation6 = calculation5 - 8.375;
     const recreationCostPerHaUSD = Math.exp(calculation6);

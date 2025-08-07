@@ -2,7 +2,7 @@ import { countryCodes } from '@/enums';
 import { logApiRequest } from '@/lib/api/utils';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { CalculatorArgs } from '@/lib/api/external/store';
-import { getCityData } from '@/lib/calculator';
+import { getRegionData } from '@/lib/calculator';
 import { calculateImpact } from '@/lib/api/external';
 import { brUSDInflation, inflationBackupValues, referenceYears } from '@/lib/api';
 import { fetchDollarInflation } from '@/lib/api/external/inflation';
@@ -115,8 +115,8 @@ export default async function handler(
         });
       }
 
-      const cityData = getCityData(location.country, location.city);
-      if (!location.city || typeof location.city !== 'string' || !cityData) {
+      const regionData = getRegionData(location.country, location.regionId);
+      if (!location.regionId || typeof location.regionId !== 'number' || !regionData) {
         return res.status(400).json({ 
           error: 'Invalid city',
           details: `Location at index ${index} has invalid or missing city`
@@ -157,7 +157,7 @@ export default async function handler(
       const inflationCorr = (inflation / 100) + 1;
 
       const impact = calculateImpact(location) * inflationCorr;
-      console.log(`total impact for ${location.city}: ${impact}`);
+      console.log(`total impact for region ${location.regionId}: ${impact}`);
       totalImpact += impact;
     }
 

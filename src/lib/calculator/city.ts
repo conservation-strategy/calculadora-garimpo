@@ -7,8 +7,9 @@ import provinciasPeru from '@/mocks/provinciasPeru.json'
 import municipiosBolivia from '@/mocks/municipiosBolivia.json';
 import { countryCodes } from '@/enums'
 
-interface CityData {
+interface RegionData {
     id: number;
+    idGIS?: number;
     densidadePop2010: number;
     densidadePop2060: number;
     PopUrbMunicipio: number;
@@ -17,15 +18,15 @@ interface CityData {
     Especies_por_Municipio: number;
 }
 
-interface CityDataBR extends CityData {
+interface RegionDataBR extends RegionData {
     município: string;
 }
 
-interface CityDataNamed extends CityData {
+interface RegionDataNamed extends RegionData {
     nome: string;
 }
 
-function getCities(country: countryCodes) {
+function getRegions(country: countryCodes) {
     switch(country) {
         case countryCodes.BR:
             return MunicipiosCalculadora;
@@ -45,15 +46,19 @@ function getCities(country: countryCodes) {
 }
 
 
-export function getCityData (country: countryCodes, city: string): CityDataNamed | null {
-    const cities = getCities(country);
-    let cityData: CityDataNamed;
+export function getRegionData (country: countryCodes, cityId: number): RegionDataNamed | null {
+    const cities = getRegions(country);
+    let cityData: RegionDataNamed;
     if(country === countryCodes.BR) {
-        const _city = (cities as Array<CityDataBR>).find(c => c.município.toLowerCase() === city.toLowerCase());
+        const _city = (cities as Array<RegionDataBR>).find(c => c.id === cityId);
         if(!_city) return null;
         cityData = {..._city, nome:_city.município}
+    } else if(country === countryCodes.BO) {
+        const _city = (cities as Array<RegionDataNamed>).find(c => c.id === cityId);
+        if(!_city) return null;
+        cityData = _city        
     } else {
-        const _city = (cities as Array<CityDataNamed>).find(c => c.nome.toLowerCase() === city.toLowerCase());
+        const _city = (cities as Array<RegionDataNamed>).find(c => c.idGIS === cityId);
         if(!_city) return null;
         cityData = _city
     }
