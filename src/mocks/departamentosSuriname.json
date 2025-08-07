@@ -1,5 +1,6 @@
 [
   {
+    "idGIS": 8,
     "id": 1,
     "nome": "Saramacca",
     "densidadePop2010": 4.80748074807481,
@@ -10,6 +11,7 @@
     "Especies_por_Municipio": 185
   },
   {
+    "idGIS": 4,
     "id": 2,
     "nome": "Marowijne",
     "densidadePop2010": 3.95374972984655,
@@ -20,8 +22,9 @@
     "Especies_por_Municipio": 81
   },
   {
+    "idGIS": 1,
     "id": 3,
-    "nome": "Broopondo",
+    "nome": "Brokopondo",
     "densidadePop2010": 2.15901683867463,
     "densidadePop2060": 2.15901683867463,
     "PopUrbMunicipio": 0,
@@ -30,6 +33,7 @@
     "Especies_por_Municipio": 495
   },
   {
+    "idGIS": 9,
     "id": 4,
     "nome": "Sipaliwini",
     "densidadePop2010": 0.283915537616703,

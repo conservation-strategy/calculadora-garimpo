@@ -1,5 +1,6 @@
 [
   {
+    "idGIS": "2105",
     "id": 10,
     "uf": "0001",
     "nome": "Sucumbíos",
@@ -11,6 +12,7 @@
     "Especies_por_Municipio": 41
   },
   {
+    "idGIS": "2104",
     "id": 11,
     "uf": "0001",
     "nome": "Shushufindi",
@@ -22,6 +24,7 @@
     "Especies_por_Municipio": 96
   },
   {
+    "idGIS": "2102",
     "id": 12,
     "uf": "0001",
     "nome": "Gonzalo Pizarro",
@@ -33,6 +36,7 @@
     "Especies_por_Municipio": 70
   },
   {
+    "idGIS": "1501",
     "id": 13,
     "uf": "0002",
     "nome": "Tena",
@@ -44,6 +48,7 @@
     "Especies_por_Municipio": 172
   },
   {
+    "idGIS": "1509",
     "id": 14,
     "uf": "0002",
     "nome": "Carlos Julio Arosemena",
@@ -55,6 +60,7 @@
     "Especies_por_Municipio": 16
   },
   {
+    "idGIS": "1402",
     "id": 15,
     "uf": "0003",
     "nome": "Gualaquiza",
@@ -66,6 +72,7 @@
     "Especies_por_Municipio": 57
   },
   {
+    "idGIS": "1901",
     "id": 16,
     "uf": "0004",
     "nome": "Zamora",
@@ -77,6 +84,7 @@
     "Especies_por_Municipio": 146
   },
   {
+    "idGIS": "1909",
     "id": 17,
     "uf": "0004",
     "nome": "Paquisha",
@@ -88,6 +96,7 @@
     "Especies_por_Municipio": 21
   },
   {
+    "idGIS": "1903",
     "id": 18,
     "uf": "0004",
     "nome": "Nangaritza",
@@ -99,6 +108,7 @@
     "Especies_por_Municipio": 78
   },
   {
+    "idGIS": "1902",
     "id": 19,
     "uf": "0004",
     "nome": "Chinchipe",

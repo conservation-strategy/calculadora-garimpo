@@ -1,5 +1,6 @@
 [
   {
+    "idGIS": 1701,
     "id": 26,
     "uf": "004",
     "nome": "Tambopata",
@@ -11,6 +12,7 @@
     "Especies_por_Municipio": 197
   },
   {
+    "idGIS": 1702,
     "id": 27,
     "uf": "004",
     "nome": "Manu",
@@ -22,6 +24,7 @@
     "Especies_por_Municipio": 159
   },
   {
+    "idGIS": 1703,
     "id": 28,
     "uf": "004",
     "nome": "Tahuamanu",
@@ -33,6 +36,7 @@
     "Especies_por_Municipio": 18
   },
   {
+    "idGIS": 1601,
     "id": 29,
     "uf": "003",
     "nome": "Maynas",
@@ -44,6 +48,7 @@
     "Especies_por_Municipio": 212
   },
   {
+    "idGIS": 1602,
     "id": 30,
     "uf": "003",
     "nome": "Alto Amazonas",
@@ -55,6 +60,7 @@
     "Especies_por_Municipio": 95
   },
   {
+    "idGIS": 1603,
     "id": 31,
     "uf": "003",
     "nome": "Loreto",
@@ -66,6 +72,7 @@
     "Especies_por_Municipio": 114
   },
   {
+    "idGIS": 1605,
     "id": 32,
     "uf": "003",
     "nome": "Requena",
@@ -77,6 +84,7 @@
     "Especies_por_Municipio": 87
   },
   {
+    "idGIS": 1606,
     "id": 33,
     "uf": "003",
     "nome": "Ucayali",
@@ -88,6 +96,7 @@
     "Especies_por_Municipio": 49
   },
   {
+    "idGIS": 1607,
     "id": 34,
     "uf": "003",
     "nome": "Datem del Marañón",
@@ -99,6 +108,7 @@
     "Especies_por_Municipio": 94
   },
   {
+    "idGIS": 1604,
     "id": 35,
     "uf": "003",
     "nome": "Mariscal Ramón Castilla",
@@ -110,6 +120,7 @@
     "Especies_por_Municipio": 78
   },
   {
+    "idGIS": 1608,
     "id": 36,
     "uf": "003",
     "nome": "Putumayo",
@@ -121,6 +132,7 @@
     "Especies_por_Municipio": 54
   },
   {
+    "idGIS": 101,
     "id": 37,
     "uf": "001",
     "nome": "Chachapoyas",
@@ -132,6 +144,7 @@
     "Especies_por_Municipio": 2017
   },
   {
+    "idGIS": 102,
     "id": 38,
     "uf": "001",
     "nome": "Bagua",
@@ -143,6 +156,7 @@
     "Especies_por_Municipio": 3877
   },
   {
+    "idGIS": 103,
     "id": 39,
     "uf": "001",
     "nome": "Bongará",
@@ -154,6 +168,7 @@
     "Especies_por_Municipio": 2494
   },
   {
+    "idGIS": 104,
     "id": 40,
     "uf": "001",
     "nome": "Condorcanqui",
@@ -165,6 +180,7 @@
     "Especies_por_Municipio": 4220
   },
   {
+    "idGIS": 105,
     "id": 41,
     "uf": "001",
     "nome": "Luya",
@@ -176,6 +192,7 @@
     "Especies_por_Municipio": 1546
   },
   {
+    "idGIS": 106,
     "id": 42,
     "uf": "001",
     "nome": "Rodríguez de Mendoza",
@@ -187,6 +204,7 @@
     "Especies_por_Municipio": 960
   },
   {
+    "idGIS": 107,
     "id": 43,
     "uf": "001",
     "nome": "Utcubamba",
@@ -198,6 +216,7 @@
     "Especies_por_Municipio": 859
   },
   {
+    "idGIS": 2501,
     "id": 44,
     "uf": "006",
     "nome": "Coronel Portillo",
@@ -209,6 +228,7 @@
     "Especies_por_Municipio": 4535
   },
   {
+    "idGIS": 2502,
     "id": 45,
     "uf": "006",
     "nome": "Atalaya",
@@ -220,6 +240,7 @@
     "Especies_por_Municipio": 1104
   },
   {
+    "idGIS": 2503,
     "id": 46,
     "uf": "006",
     "nome": "Padre Abad",
@@ -231,6 +252,7 @@
     "Especies_por_Municipio": 1571
   },
   {
+    "idGIS": 2504,
     "id": 47,
     "uf": "006",
     "nome": "Purús",
@@ -242,6 +264,7 @@
     "Especies_por_Municipio": 1051
   },
   {
+    "idGIS": 2201,
     "id": 48,
     "uf": "005",
     "nome": "Moyobamba",
@@ -253,6 +276,7 @@
     "Especies_por_Municipio": 1710
   },
   {
+    "idGIS": 2202,
     "id": 49,
     "uf": "005",
     "nome": "Bellavista",
@@ -264,6 +288,7 @@
     "Especies_por_Municipio": 1300
   },
   {
+    "idGIS": 2203,
     "id": 50,
     "uf": "005",
     "nome": "El Dorado",
@@ -275,6 +300,7 @@
     "Especies_por_Municipio": 127
   },
   {
+    "idGIS": 2204,
     "id": 51,
     "uf": "005",
     "nome": "Huallaga",
@@ -286,6 +312,7 @@
     "Especies_por_Municipio": 529
   },
   {
+    "idGIS": 2205,
     "id": 52,
     "uf": "005",
     "nome": "Lamas",
@@ -297,6 +324,7 @@
     "Especies_por_Municipio": 1684
   },
   {
+    "idGIS": 2206,
     "id": 53,
     "uf": "005",
     "nome": "Mariscal Cáceres",
@@ -308,6 +336,7 @@
     "Especies_por_Municipio": 2681
   },
   {
+    "idGIS": 2207,
     "id": 54,
     "uf": "005",
     "nome": "Picota",
@@ -319,6 +348,7 @@
     "Especies_por_Municipio": 722
   },
   {
+    "idGIS": 2208,
     "id": 55,
     "uf": "005",
     "nome": "Rioja",
@@ -330,6 +360,7 @@
     "Especies_por_Municipio": 2335
   },
   {
+    "idGIS": 2209,
     "id": 56,
     "uf": "005",
     "nome": "San Martín",
@@ -341,6 +372,7 @@
     "Especies_por_Municipio": 2685
   },
   {
+    "idGIS": 2210,
     "id": 57,
     "uf": "005",
     "nome": "Tocache",
@@ -352,6 +384,7 @@
     "Especies_por_Municipio": 858
   },
   {
+    "idGIS": 1002,
     "id": 58,
     "uf": "002",
     "nome": "Ambo",
@@ -363,6 +396,7 @@
     "Especies_por_Municipio": 238
   },
   {
+    "idGIS": 1003,
     "id": 59,
     "uf": "002",
     "nome": "Dos de Mayo",
@@ -374,6 +408,7 @@
     "Especies_por_Municipio": 136
   },
   {
+    "idGIS": 1004,
     "id": 60,
     "uf": "002",
     "nome": "Huacaybamba",
@@ -385,6 +420,7 @@
     "Especies_por_Municipio": 114
   },
   {
+    "idGIS": 1005,
     "id": 61,
     "uf": "002",
     "nome": "Huamales",
@@ -396,6 +432,7 @@
     "Especies_por_Municipio": 619
   },
   {
+    "idGIS": 1001,
     "id": 62,
     "uf": "002",
     "nome": "Huánuco",
@@ -407,6 +444,7 @@
     "Especies_por_Municipio": 188
   },
   {
+    "idGIS": 1006,
     "id": 63,
     "uf": "002",
     "nome": "Leoncio Prado",
@@ -418,6 +456,7 @@
     "Especies_por_Municipio": 1962
   },
   {
+    "idGIS": 1007,
     "id": 64,
     "uf": "002",
     "nome": "Marañon",
@@ -429,6 +468,7 @@
     "Especies_por_Municipio": 511
   },
   {
+    "idGIS": 1008,
     "id": 65,
     "uf": "002",
     "nome": "Pachitea",
@@ -440,6 +480,7 @@
     "Especies_por_Municipio": 541
   },
   {
+    "idGIS": 1009,
     "id": 66,
     "uf": "002",
     "nome": "Puerto Inca",
@@ -451,6 +492,7 @@
     "Especies_por_Municipio": 3185
   },
   {
+    "idGIS": 1010,
     "id": 67,
     "uf": "002",
     "nome": "Lauricocha",
@@ -462,6 +504,7 @@
     "Especies_por_Municipio": 148
   },
   {
+    "idGIS": 1011,
     "id": 68,
     "uf": "002",
     "nome": "Yarowilca",
