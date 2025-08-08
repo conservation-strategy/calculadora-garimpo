@@ -447,7 +447,7 @@ export default function useResults({
       getInfographic()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataCalculator, results, language])
+  }, [dataCalculator, results, language, getTextUsesTypes])
 
   useEffect(() => {
     if (dataCalculator && results) {
